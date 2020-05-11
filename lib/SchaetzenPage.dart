@@ -7,12 +7,12 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:testflutter/main.dart';
 
 import 'Question.dart';
 
-//TODO add startpopup for rules and explaination for the UI.
-//Todo mer rundade kanter pa kortet, 
-//vit rand 
+//Todo mer rundade kanter pa kortet,
+//vit rand
 // mellanrum mellan text
 // första bild är spelmenu.
 // där man kan välja
@@ -26,73 +26,79 @@ class SchaetzenPage extends StatefulWidget {
 }
 
 class _SchaetzenPageState extends State<SchaetzenPage> {
-  Question currentQuestion;
+  Question _currentQuestion;
+  int _questionListCount;
   @override
   void initState() {
+    _questionListCount = 0;
+    listQuestions.shuffle();
+
+
     _showMyDialog();
-    _generateRandomQuestion();
+    _getQuestion();
+
     super.initState();
   }
 
-  // _SchaetzenPageState(){
-  //   generateRandomQuestion();
-  // }
-//TODO make it mix the list one time and then pick questions one by one from list,
-  void _generateRandomQuestion() {
-    var rng = new Random();
+  void _getQuestion() {
     //return //widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
     setState(() {
-      currentQuestion =
-          widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
+      if (_questionListCount < widget.listQuestions.length) {
+        _currentQuestion = widget.listQuestions[_questionListCount];
+        _questionListCount++;
+      } else {
+        _questionListCount = 0;
+      }
     });
   }
 
-
 //TODO add gradient to dialog? And maybe card?
   Future<void> _showMyDialog() async {
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Schätzen!',
-         style: TextStyle(
-                        fontFamily: 'Oswald',
-                      ),
-        ),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: <Widget>[
-              Text('Regeln Blablabla',
-               style: TextStyle(
-                       
-                        fontFamily: 'Oswald',
-                      ),),
-
-              
-              Text('Einverstanden?',
-               style: TextStyle(
-                        fontFamily: 'Oswald',
-                      ),),
-            ],
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Schätzen!',
+            style: TextStyle(
+              fontFamily: 'Oswald',
+            ),
           ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Los!'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'Regeln Blablabla',
+                  style: TextStyle(
+                    fontFamily: 'Oswald',
+                  ),
+                ),
+                Text(
+                  'Einverstanden?',
+                  style: TextStyle(
+                    fontFamily: 'Oswald',
+                  ),
+                ),
+              ],
+            ),
           ),
-        ],
-      );
-    },
-  );
-}
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Los!'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(currentQuestion.questionText);
+    print(_currentQuestion.questionText);
     return Scaffold(
         body: Stack(
       children: <Widget>[
@@ -116,13 +122,13 @@ class _SchaetzenPageState extends State<SchaetzenPage> {
         ),
         Center(
             child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 600),
           transitionBuilder: (Widget child, Animation<double> animation) {
             return ScaleTransition(child: child, scale: animation);
           },
           child: QuestionCard(
-            question: currentQuestion,
-            key: ValueKey<Question>(currentQuestion),
+            question: _currentQuestion,
+            key: ValueKey<Question>(_currentQuestion),
           ),
         )),
         Align(
@@ -135,7 +141,7 @@ class _SchaetzenPageState extends State<SchaetzenPage> {
                       borderRadius: BorderRadius.circular(10.0),
                       side: BorderSide(color: Colors.black)),
                   onPressed: () {
-                    _generateRandomQuestion();
+                    _getQuestion();
                   },
                   child: Container(
                     //
@@ -225,7 +231,7 @@ class _QuestionCardState extends State<QuestionCard>
     _question = widget.question;
     _controller = new AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
     );
     _frontScale = new Tween(
       begin: 1.0,
