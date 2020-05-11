@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/Question.dart';
+import 'package:testflutter/SchaetzenPage.dart';
 
-import 'schaetzen.dart';
+import 'SchaetzenPage.dart';
 
 List<Question> listQuestions;
 void main() {
@@ -56,7 +57,6 @@ WidgetsFlutterBinding.ensureInitialized();
 
 List<Question> parseQuestion(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  print(parsed[0].toString());
   return parsed.map<Question>((json) => Question.fromJson(json)).toList();
 }
 
@@ -164,9 +164,11 @@ void _select(GameChoice choice) {
     switch (choice.id) {
   case 0:
     {
+       
       Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => Schaetzen(listQuestions: listQuestions)),
+   
+    MaterialPageRoute(builder: (context) => SchaetzenPage(listQuestions: listQuestions)),
   );
     }
   break;
@@ -226,10 +228,8 @@ void _select(GameChoice choice) {
       itemCount: _players.length + 1,
       padding: const EdgeInsets.all(16.0),
       itemBuilder: (context, index) {
-        print(index);
 
         if (index == _players.length) {
-          print('funkar');
           return _buildLastRow();
         }
         return _buildRow(_players[index], index);
@@ -244,7 +244,6 @@ void _select(GameChoice choice) {
     return ListTile(
       onTap: () {
         setState(() {
-          print('funkar');
           _players.add(Player());
           //myFocusNode.requestFocus(); TODO fix Reqfocus for the right Tile
         });
