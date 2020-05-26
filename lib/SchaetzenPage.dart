@@ -4,7 +4,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async' show Future;
+import 'dart:async' show Future, Timer;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/main.dart';
@@ -31,11 +31,16 @@ class _SchaetzenPageState extends State<SchaetzenPage> {
   @override
   void initState() {
     _questionListCount = 0;
-    listQuestions.shuffle();
+    widget.listQuestions.shuffle();
 
 
-    _showMyDialog();
+   
     _getQuestion();
+
+
+Timer(Duration(milliseconds: 200), () {
+      _showMyDialog();
+    });
 
     super.initState();
   }

@@ -9,75 +9,243 @@ import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/Question.dart';
 import 'package:testflutter/SchaetzenPage.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 import 'SchaetzenPage.dart';
+import 'TruthOrDareQuestion.dart';
+import 'player.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'playerMenuPage.dart';
 
-List<Question> listQuestions;
+//Todo put underscore(private) to items
+//ctrl och click pa ngt bra genväg
+
+List<Question> listEstimateQuestions;
+List<TruthOrDareQuestion> listTruDareQuestions;
 void main() {
-
-  //  loadAsset().then((value) { //TODO look up where you should load assets
-  //   Map mapOfQuestions = json.decode(value);
-  // });
-  
-
-  // loadAsset().then((value) { //TODO look up where you should load assets
-  //   map = json.decode(value);
-  // });
-
-
-  loadAsset().then((value) { //TODO look up where you should load assets
-    listQuestions = value;
-    
+  loadEstimateAsset().then((value) {
+    //TODO look up where you should load assets
+    listEstimateQuestions = value;
   });
 
 
-  
+  loadTruDareAsset().then((value) {
+    //TODO look up where you should load assets
+    listTruDareQuestions = value;
+  });
+
   runApp(MyApp());
 }
 
+//Test of InheritedWidget
+//Try surround Materialapp with inheritedwidget and update Values over updateShouldNotify
+class InheritedTruDarData extends InheritedWidget {
+  InheritedTruDarData({
+    Key key,
+    this.listTruDareQuestions,
+    Widget child,
+  }) : super(key: key, child: child);
+  final List<TruthOrDareQuestion> listTruDareQuestions;
 
+  @override
+  bool updateShouldNotify(InheritedTruDarData old) =>
+      listTruDareQuestions != old.listTruDareQuestions;
 
-Future<String> loadAssetWidget(BuildContext context) async {
-  return await DefaultAssetBundle.of(context).loadString('./assets/res/textfile.json');
+  static InheritedTruDarData of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<InheritedTruDarData>();
+  }
 }
 
-// Future<String> loadAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-  
-//   return await rootBundle.loadString('./assets/res/textfile.json');
-// }
+//Estimate Load
+Future<List<Question>> loadEstimateAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-Future<List<Question>> loadAsset() async {
-WidgetsFlutterBinding.ensureInitialized();
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textfile.json');
 
-  final questionsString = await rootBundle.loadString('./assets/res/textfile.json');
-
-  return parseQuestion(questionsString);
+  return parseEstimateQuestion(questionsString);
 }
 
-List<Question> parseQuestion(String responseBody) {
+List<Question> parseEstimateQuestion(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
   return parsed.map<Question>((json) => Question.fromJson(json)).toList();
 }
 
-class MyApp extends StatelessWidget {
+//TruDare Load
+Future<List<TruthOrDareQuestion>> loadTruDareAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileTruDar.json');
+
+  return parseTruDareQuestion(questionsString);
+}
+
+List<TruthOrDareQuestion> parseTruDareQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<TruthOrDareQuestion>((json) => TruthOrDareQuestion.fromJson(json))
+      .toList();
+}
+
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
-    return MaterialApp(
-      title: 'Startup Name Generator',
-      theme: ThemeData(
-        primaryColor: Colors.yellow,
+    return InheritedTruDarData(
+      child: MaterialApp(
+        title: 'Beerballer Trinkspiele',
+        theme: ThemeData(
+            brightness: Brightness.light,
+            primaryColor: Colors.lightBlue[800],
+            accentColor: Colors.orangeAccent[200],
+            fontFamily: 'Oswald'),
+        home: GameMenu(),
       ),
-      home: PlayersMenu(),
+      listTruDareQuestions: listTruDareQuestions,
     );
   }
 }
 
-class PlayersMenu extends StatefulWidget {
+class GameMenu extends StatelessWidget {
+  final List<GameChoice> _gameChoices = const <GameChoice>[
+    const GameChoice(title: 'Schaetzen', id: 0),
+    const GameChoice(title: 'Wahrheit oder Pflicht', id: 1),
+    const GameChoice(title: 'Ich habe noch nie', id: 2),
+    const GameChoice(title: 'Kategoriespiel', id: 3),
+    const GameChoice(title: 'Game5', id: 4),
+  ];
+
   @override
-  _PlayersMenuState createState() => _PlayersMenuState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _gameChoiceButtons(_gameChoices, context),
+      bottomNavigationBar: _bottomNavigationBarButtons(context),
+      floatingActionButton: _customfloatingactionbutton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+Widget _customfloatingactionbutton() {
+  return Container(
+      height: 75.0,
+      width: 75.0,
+      child: FloatingActionButton(
+          onPressed: () {},
+          child: new ConstrainedBox(
+              constraints: new BoxConstraints.expand(),
+              child: new Image.asset("./assets/images/logo.png",
+                  fit: BoxFit.cover, gaplessPlayback: true))));
+}
+
+//Todo implement this method with all the other buttons, parameter says what to do
+_launchURLInsta() async {
+  final url = 'https://www.instagram.com/beerballer/?hl=en';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+//Todo implement this method with all the other buttons, parameter says what to do
+_launchURLShop() async {
+  final url = 'https://beerballer.com/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+//Todo implement this method with all the other buttons, parameter says what to do
+_launchURLFacebook() async {
+  final url = 'https://www.facebook.com/BeerBaller/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Widget _bottomNavigationBarButtons(BuildContext context) {
+  return BottomAppBar(
+    shape: const CircularNotchedRectangle(),
+    child: Container(
+      //color: Theme.of(context).accentColor,
+      height: 60.0,
+      child: Row /*or Column*/ (
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          IconButton(
+            iconSize: 40.0,
+            icon: Icon(FontAwesomeIcons.info),
+            onPressed: () {},
+          ),
+          IconButton(
+            iconSize: 40.0,
+            icon: Icon(FontAwesomeIcons.shopify),
+            onPressed: _launchURLShop,
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          IconButton(
+            iconSize: 40.0,
+            icon: Icon(FontAwesomeIcons.instagram),
+            onPressed: _launchURLInsta,
+          ),
+          IconButton(
+            iconSize: 40.0,
+            icon: Icon(FontAwesomeIcons.facebook),
+            onPressed: _launchURLFacebook,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _gameChoiceButtons(
+    final List<GameChoice> gameChoices, BuildContext context) {
+  List<Widget> gameChoiceWidgets = [];
+
+  for (var item in gameChoices) {
+    gameChoiceWidgets.add(SizedBox(height: 40));
+    gameChoiceWidgets.add(_gameChoiceButton(item, context));
+  }
+  gameChoiceWidgets.add(SizedBox(height: 40));
+
+  return Center(
+    child: IntrinsicWidth(
+      child: Column /*or Column*/ (
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: gameChoiceWidgets,
+      ),
+    ),
+  );
+}
+
+Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
+  return RaisedButton(
+    color: Color.fromRGBO(255, 255, 255, 0.5),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(color: Colors.black)),
+    onPressed: () {
+      _selectGameChoice(gameChoice, context);
+    },
+    child: Container(
+      //
+      child: Text(
+        gameChoice.title,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 30,
+        ),
+      ),
+    ),
+  );
 }
 
 class GameChoice {
@@ -85,232 +253,62 @@ class GameChoice {
   final String title;
   final int id;
 }
+//TODO Enum better als string?
+// enum UserStatus {
+//   notDetermined,
+//   notSignedIn,
+//   signedIn,
+// }
+// UserStatus.notDetermined;
 
-const List<GameChoice> gameChoices = const <GameChoice>[
-  const GameChoice(title: 'Schaetzen', id: 0),
-  const GameChoice(title: 'Wahrheit oder Pflicht', id: 1),
-  const GameChoice(title: 'Ich habe noch nie', id: 2),
-  const GameChoice(title: 'Kategoriespiel', id: 3),
-];
+void _selectGameChoice(GameChoice choice, BuildContext context) {
+  switch (choice.id) {
+    case 0:
+      {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  SchaetzenPage(listQuestions: listEstimateQuestions)),
+        );
+      }
+      break;
+    case 1:
+      {
+        print(choice.title);
 
-class Player {
-   Player(){
-this.name = 'Kevin'; //lagg till wollnys
-   }
-  Player.fromStart({this.name});
-  String name;
-  bool hasName = false; //TODO fix blacktext when name is inputed, also need confirmation to only play when player have inputed name
-}
-//TODO randomnamn när man trycker pa newplayer?
-//TODO fixa var variable _players, masta vara 
-class _PlayersMenuState extends State<PlayersMenu> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-  final Set<WordPair> _saved = Set<WordPair>();
-  FocusNode myFocusNode;
-
-
-  GameChoice _selectedChoice = gameChoices[0];
-  final _players = <Player>[
-    Player.fromStart(name: 'Player1'),
-    Player.fromStart(name: 'Player2'),
-    Player.fromStart(name: 'Player3'),
-    Player.fromStart(name: 'Player4'),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Debugmenu'),
-          actions: <Widget>[ //TODO put these in separete funktions
-            // Add 3 lines from here...
-            //IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-            // overflow menu
-            PopupMenuButton<GameChoice>(
-              onSelected: _select,
-              itemBuilder: (BuildContext context) {
-                return gameChoices.map((GameChoice choice) {
-                  return PopupMenuItem<GameChoice>(
-                    value: choice,
-                    child: Text(choice.title),
-                  );
-                }).toList();
-              }),
-          ], 
-          // ... to here.
-        ),
-        body: Stack(children: <Widget>[
-          // Container(
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: AssetImage("./assets/images/logo.jpg"),
-          //       fit: BoxFit.scaleDown,
-          //     ),
-          //   ),
-          //   // child: _buildSuggestions(), /* add child content here */
-          // ),
-          Container(
-            color: Color.fromRGBO(255, 255, 255, 0.50),
+        print(listTruDareQuestions);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PlayersMenu(),
           ),
-          Container(
-            child: _buildPlayerList(),
-          )
-        ]));
-  }
+        );
+      }
+      break;
+    case 2:
+      {
+        print(choice.title);
+        // = listTruDareQuestions;
+      //  InheritedTruDarData.of(context).
+       print( InheritedTruDarData.of(context).listTruDareQuestions);
+      }
+      break;
+    case 3:
+      {
+        print(choice.title);
+      }
+      break;
+    case 4:
+      {
+        print(choice.title);
+      }
+      break;
 
-//fix select of routes, avoid switch and more compact class. check out named routes
-void _select(GameChoice choice) {
-
-    switch (choice.id) {
-  case 0:
-    {
-       
-      Navigator.push(
-    context,
-   
-    MaterialPageRoute(builder: (context) => SchaetzenPage(listQuestions: listQuestions)),
-  );
-    }
-  break;
-    
-  default:
-    {
-      print('route not found');
-    }
-}
-  }
-
-@override
-  void initState() {
-    super.initState();
-    myFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    myFocusNode.dispose();
-    super.dispose();
-  }
-  void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          final Iterable<ListTile> tiles = _saved.map(
-            (WordPair pair) {
-              return ListTile(
-                title: Text(
-                  pair.asPascalCase,
-                  style: _biggerFont,
-                ),
-              );
-            },
-          );
-          final List<Widget> divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-
-          return Scaffold(
-            // Add 6 lines from here...
-            appBar: AppBar(
-              title: Text('Saved Suggestions'),
-            ),
-            body: ListView(children: divided),
-          ); // ... to here.
-        },
-      ),
-    );
-  }
-
-  Widget _buildPlayerList() {
-    return ListView.separated(
-      itemCount: _players.length + 1,
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, index) {
-
-        if (index == _players.length) {
-          return _buildLastRow();
-        }
-        return _buildRow(_players[index], index);
-      },
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
-    );
-  }
-
-  Widget _buildLastRow() {
-    return ListTile(
-      onTap: () {
-        setState(() {
-          _players.add(Player());
-          //myFocusNode.requestFocus(); TODO fix Reqfocus for the right Tile
-        });
-      },
-      leading: IconButton( //TODO fixa denna
-        icon: new Icon(Icons.add_circle),
-      ),
-    );
-  }
-
-  Widget _buildRow(Player player, int index) {
-    final myController = TextEditingController();
-
-    return ListTile(
-      title: TextField(
-        style: _biggerFont,
-        controller: myController,
-        focusNode: myFocusNode,
-        onChanged: (text) {
-          _players[index].name = text;
-        },
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: player.name),
-      ),
-
-      trailing: new IconButton(
-        icon: new Icon(Icons.remove_circle),
-        onPressed: () {
-          setState(() {
-            _players.removeAt(index);
-          });
-        },
-      ),
-      // onTap: () {
-      //   showDialog(
-      //       context: context,
-      //       builder: (BuildContext context) {
-      //         return AlertDialog(
-      //           title: Text("Change Name"),
-      //           content: TextField(
-      //             controller: myController,
-      //             decoration: InputDecoration(
-      //                 border: InputBorder.none, hintText: player.name),
-      //           ),
-      //           actions: [
-      //             FlatButton(
-      //               child: Text("Close"),
-      //               onPressed: () {
-      //                 Navigator.of(context).pop();
-      //               },
-      //             ),
-      //             FlatButton(
-      //               child: Text("Accept"),
-      //               onPressed: () {
-      //                 setState(() {
-      //                   print(myController.text);
-      //                   _players[index].name = myController.text;
-      //                   Navigator.of(context).pop();
-      //                 });
-      //               },
-      //             )
-      //           ],
-      //         );
-      //       });
-      // }, // ... to here.
-    );
+    default:
+      {
+        print('route not found');
+      }
+      break;
   }
 }
-
-
