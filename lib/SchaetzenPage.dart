@@ -9,36 +9,31 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/main.dart';
 
-import 'Question.dart';
+import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'Questionclasses/QuestionEstimation.dart';
 
-//Todo mer rundade kanter pa kortet,
-//vit rand
-// mellanrum mellan text
-// första bild är spelmenu.
-// där man kan välja
+//TODO gör swipe och tap tips, ta bort
 
 class SchaetzenPage extends StatefulWidget {
-  final List<Question> listQuestions;
+  final List<QuestionEstimation> listQuestions;
   SchaetzenPage({Key key, @required this.listQuestions}) : super(key: key);
 
   @override
   _SchaetzenPageState createState() => _SchaetzenPageState();
 }
 
-class _SchaetzenPageState extends State<SchaetzenPage> {
-  Question _currentQuestion;
+class _SchaetzenPageState extends State<SchaetzenPage> with TickerProviderStateMixin{
+  QuestionEstimation _currentQuestion;
   int _questionListCount;
   @override
   void initState() {
     _questionListCount = 0;
     widget.listQuestions.shuffle();
 
-
-   
     _getQuestion();
 
-
-Timer(Duration(milliseconds: 200), () {
+    Timer(Duration(milliseconds: 200), () {
       _showMyDialog();
     });
 
@@ -105,112 +100,115 @@ Timer(Duration(milliseconds: 200), () {
   Widget build(BuildContext context) {
     print(_currentQuestion.questionText);
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBarButtons(context),
+        floatingActionButton: Customfloatingactionbutton(InheritedMainWidget.of(context).myLogo, this),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Stack(
-      children: <Widget>[
-        Container(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new AssetImage("./assets/images/bild1.jpg"),
-                alignment: Alignment(-.95, 0),
-                fit: BoxFit.cover,
-              ),
+          children: <Widget>[
+            // Container(
+            //     decoration: new BoxDecoration(
+            //       image: new DecorationImage(
+            //         image: new AssetImage("./assets/images/bild1.jpg"),
+            //         alignment: Alignment(-.95, 0),
+            //         fit: BoxFit.cover,
+            //       ),
+            //     ),
+            //     child: new BackdropFilter(
+            //       filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            //       child: new Container(
+            //         decoration:
+            //             new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+            //       ),
+            //     )),
+            Container(
+              color: Color.fromRGBO(255, 255, 255, 0),
             ),
-            child: new BackdropFilter(
-              filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-              child: new Container(
-                decoration:
-                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+            Center(
+                child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 600),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return ScaleTransition(child: child, scale: animation);
+              },
+              child: QuestionCard(
+                question: _currentQuestion,
+                key: ValueKey<QuestionEstimation>(_currentQuestion),
               ),
             )),
-        Container(
-          color: Color.fromRGBO(255, 255, 255, 0),
-        ),
-        Center(
-            child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 600),
-          transitionBuilder: (Widget child, Animation<double> animation) {
-            return ScaleTransition(child: child, scale: animation);
-          },
-          child: QuestionCard(
-            question: _currentQuestion,
-            key: ValueKey<Question>(_currentQuestion),
-          ),
-        )),
-        Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: RaisedButton(
-                  color: Color.fromRGBO(255, 255, 255, 0.5),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      side: BorderSide(color: Colors.black)),
-                  onPressed: () {
-                    _getQuestion();
-                  },
-                  child: Container(
-                    //
-                    child: Text(
-                      "Nächste Karte",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontFamily: 'Oswald',
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: RaisedButton(
+                      color: Color.fromRGBO(255, 255, 255, 0.5),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: BorderSide(color: Colors.black)),
+                      onPressed: () {
+                        _getQuestion();
+                      },
+                      child: Container(
+                        //
+                        child: Text(
+                          "Nächste Karte",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'Oswald',
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ))),
-        Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    ClipOval(
-                        child: Material(
-                            type: MaterialType.transparency,
-                            child: IconButton(
-                                // color: Color.fromRGBO(255, 255, 255, 0.5),
-                                // shape: RoundedRectangleBorder(
-                                //     borderRadius: BorderRadius.circular(10.0),
-                                //     side: BorderSide(color: Colors.black)),
-                                iconSize: 50,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.close)))),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    ClipOval(
-                        child: Material(
-                            type: MaterialType.transparency,
-                            child: IconButton(
-                              onPressed: () {
-                                _showMyDialog();
-                              },
-                              icon: Icon(Icons.help_outline),
-                              iconSize: 50,
-                              //purple
-                            ))),
-                  ],
-                ))),
-      ],
+                    ))),
+            Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                    padding: const EdgeInsets.all(40.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        ClipOval(
+                            child: Material(
+                                type: MaterialType.transparency,
+                                child: IconButton(
+                                    // color: Color.fromRGBO(255, 255, 255, 0.5),
+                                    // shape: RoundedRectangleBorder(
+                                    //     borderRadius: BorderRadius.circular(10.0),
+                                    //     side: BorderSide(color: Colors.black)),
+                                    iconSize: 50,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    icon: Icon(Icons.close)))),
+                        Spacer(
+                          flex: 2,
+                        ),
+                        ClipOval(
+                            child: Material(
+                                type: MaterialType.transparency,
+                                child: IconButton(
+                                  onPressed: () {
+                                    _showMyDialog();
+                                  },
+                                  icon: Icon(Icons.help_outline),
+                                  iconSize: 50,
+                                  //purple
+                                ))),
+                      ],
+                    ))),
+          ],
 
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () {
-      //     generateRandomQuestion();
-      //   },
-      //   label: Text('Naechste Frage'),
-      //   backgroundColor: Colors.orange,
-      // ),
-    ));
+          // floatingActionButton: FloatingActionButton.extended(
+          //   onPressed: () {
+          //     generateRandomQuestion();
+          //   },
+          //   label: Text('Naechste Frage'),
+          //   backgroundColor: Colors.orange,
+          // ),
+        ));
   }
 }
 
 class QuestionCard extends StatefulWidget {
-  final Question question;
+  final QuestionEstimation question;
 //Card({Key key, @required this.question}) : super(key: key);
   QuestionCard({Key key, this.question}) : super(key: key);
 
@@ -220,7 +218,7 @@ class QuestionCard extends StatefulWidget {
 
 class _QuestionCardState extends State<QuestionCard>
     with TickerProviderStateMixin {
-  Question _question;
+  QuestionEstimation _question;
   AnimationController _controller;
   Animation<double> _frontScale;
   Animation<double> _backScale;

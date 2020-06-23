@@ -9,70 +9,40 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/main.dart';
 
-import 'TruthOrDareQuestion.dart';
+import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'Player.dart';
+import 'Questionclasses/TruthOrDareQuestion.dart';
+
+import 'TypeOfQuestion.dart';
 
 //Question randomperson oder jungste person und dannach reihe? Normaler fall bei random so gibt es eine Flasche
 //Randomperson und spiel wählt ein person aus zufällig, die Objekt für Pflicht/Wahrheit ist.
 
 class TruthOrDarePage extends StatefulWidget {
- 
- // List<TruthOrDareQuestion> listTruthQuestions =
-  final List<TruthOrDareQuestion> listTruthQuestions = [
-    new TruthOrDareQuestion(
-        questionText: "Truthquestion", typeOfQuestion: "truth"),
-    new TruthOrDareQuestion(
-        questionText: "Truthquestion2", typeOfQuestion: "truth"),
-    new TruthOrDareQuestion(
-        questionText: "Truthquestion3", typeOfQuestion: "truth"),
-  ];
+  final List<Player> listPlayer;
 
-  final List<TruthOrDareQuestion> listDareQuestions = [
-    new TruthOrDareQuestion(
-        questionText: "Darequestion", typeOfQuestion: "dare"),
-    new TruthOrDareQuestion(
-        questionText: "Darequestion2", typeOfQuestion: "dare"),
-    new TruthOrDareQuestion(
-        questionText: "Darequestion3", typeOfQuestion: "dare"),
-  ];
-
-
-
+  TruthOrDarePage({Key key, @required this.listPlayer}) : super(key: key);
   @override
   _TruthOrDarePageState createState() => _TruthOrDarePageState();
 }
 
-// _assignQuestionsToLists() {
-  
-
-
- 
-//   for question in InheritedTruDarData.of(context).listTruDareQuestions {
-
-    
-//   }
-
-
-
-// }
-
-
-
-
-class _TruthOrDarePageState extends State<TruthOrDarePage> {
+class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderStateMixin {
   TruthOrDareQuestion _currentQuestion;
   int _truthQuestionListCount;
   int _dareQuestionListCount;
-  bool isCardvisible = false;
-  
+  int _currentPlayerListCount;
+  bool _isCardvisible = false;
+  String _currentPlayerName;
+
   @override
   void initState() {
+    print(widget.listPlayer);
+    widget.listPlayer.shuffle();
     _truthQuestionListCount = 0;
     _dareQuestionListCount = 0;
-    // listQuestions.shuffle();
-
-    _getTruthQuestion();
-    // _getDareQuestion();
-
+    _currentPlayerListCount = 0;
+    _getPlayerName();
     Timer(Duration(milliseconds: 200), () {
       _showMyDialog();
     });
@@ -80,30 +50,77 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
     super.initState();
   }
 
-  void _getTruthQuestion() {
+//HEre enum
+  static List<TruthOrDareQuestion> _getTruthOrDareLists(
+      BuildContext context, TypeOfQuestion type) {
+    List<TruthOrDareQuestion> allQuestionsList =
+        InheritedMainWidget.of(context).listTruDareQuestions;
+
+    allQuestionsList.shuffle();
+
+    List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
+    List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
+   
+
+    for (final element in allQuestionsList) {
+      if (element.typeOfQuestion == TypeOfQuestion.truth) {
+        truthQuestionList.add(element);
+      } else if (element.typeOfQuestion == TypeOfQuestion.dare) {
+        dareQuestionList.add(element);
+      } else {
+        print("Error CardType: " +
+            element.typeOfQuestion.toString()); //TODO Here real logging
+      }
+    }
+
+    if (type == TypeOfQuestion.truth) {
+      return truthQuestionList;
+    } else if (type == TypeOfQuestion.dare) {
+      return dareQuestionList;
+    } else {
+      print("No type assigned"); //TODO Here log
+      return null;
+    }
+  }
+
+  void _getTruthQuestion(List<TruthOrDareQuestion> list) {
     //return //widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
 
-    if (_truthQuestionListCount < widget.listTruthQuestions.length) {
-      _currentQuestion = widget.listTruthQuestions[_truthQuestionListCount];
+    if (_truthQuestionListCount < list.length) {
+      _currentQuestion = list[_truthQuestionListCount];
       _truthQuestionListCount++;
     } else {
       _truthQuestionListCount = 0;
-      _currentQuestion = widget.listTruthQuestions[_truthQuestionListCount];
+      _currentQuestion = list[_truthQuestionListCount];
       _truthQuestionListCount++;
     }
   }
 
-  void _getDareQuestion() {
+  void _getDareQuestion(List<TruthOrDareQuestion> list) {
     //return //widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
 
-    if (_dareQuestionListCount < widget.listDareQuestions.length) {
-      _currentQuestion = widget.listDareQuestions[_dareQuestionListCount];
+    if (_dareQuestionListCount < list.length) {
+      _currentQuestion = list[_dareQuestionListCount];
       _dareQuestionListCount++;
     } else {
       _dareQuestionListCount = 0;
-      _currentQuestion = widget.listDareQuestions[_dareQuestionListCount];
+      _currentQuestion = list[_dareQuestionListCount];
       _dareQuestionListCount++;
     }
+  }
+
+  void _getPlayerName() {
+    
+     if (_currentPlayerListCount < widget.listPlayer.length) {
+      _currentPlayerName = widget.listPlayer[_currentPlayerListCount].name;
+      _currentPlayerListCount++;
+    } else {
+      _currentPlayerListCount = 0;
+      _currentPlayerName = widget.listPlayer[_currentPlayerListCount].name;
+      _currentPlayerListCount++;
+    }
+
+    
   }
 
 //TODO add gradient to dialog? And maybe card?
@@ -149,52 +166,30 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
       },
     );
   }
+//TODO fix too long of a name in playermneu char limit
+  Widget _playerNameText() {
+    return Text(
+      _currentPlayerName,
+      textAlign: TextAlign.center,
+      overflow: TextOverflow.ellipsis,
+      style: new TextStyle(
+        fontSize: 30.0,
+        color: Colors.orange[200],
+      ),
+      //style: TextStyle(fontWeight: FontWeight.bold),
+    );
+  }
 
-//TODO Refactoring here, too crowded
-  @override
-  Widget build(BuildContext context) {
-
-//TODO zum Test
-    // List<TruthOrDareQuestion> listDareQuestions = InheritedTruDarData.of(context).listTruDareQuestions;
-    // print(listDareQuestions);
-
-
-
-    return Scaffold(
-        body: Stack(
-      children: <Widget>[
-        Container(
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: new AssetImage("./assets/images/bild1.jpg"),
-                alignment: Alignment(-.95, 0),
-                fit: BoxFit.cover,
-              ),
-            ),
-            child: new BackdropFilter(
-              filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-              child: new Container(
-                decoration:
-                    new BoxDecoration(color: Colors.white.withOpacity(0.0)),
-              ),
-            )),
-        Container(
-          color: Color.fromRGBO(255, 255, 255, 0),
-        ),
-        Visibility(
-          visible: isCardvisible == true,
-          child: Center(
-            child: QuestionCard(
-              //Here QuestionCard
-              question: _currentQuestion,
-              key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
-            ),
-          ),
-        ),
-        Visibility(
-          visible: isCardvisible == false,
-          child: Center(
-              child: Row(
+  Widget _trueDareButtonsRow(final List<TruthOrDareQuestion> listTruthQuestions,
+      final List<TruthOrDareQuestion> listDareQuestions) {
+    return Visibility(
+      visible: _isCardvisible == false,
+      child: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          _playerNameText(),
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               RaisedButton(
@@ -204,8 +199,8 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   setState(() {
-                    _getTruthQuestion();
-                    isCardvisible = true;
+                    _getTruthQuestion(listTruthQuestions);
+                    _isCardvisible = true;
                   });
                 },
                 child: Container(
@@ -229,8 +224,8 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
                     side: BorderSide(color: Colors.black)),
                 onPressed: () {
                   setState(() {
-                    _getDareQuestion();
-                    isCardvisible = true;
+                    _getDareQuestion(listDareQuestions);
+                    _isCardvisible = true;
                   });
                 },
                 child: Container(
@@ -245,10 +240,56 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
                 ),
               ),
             ],
-          )),
+          )
+        ],
+      )),
+    );
+  }
+
+//TODO Refactoring here, too crowded
+  @override
+  Widget build(BuildContext context) {
+    final List<TruthOrDareQuestion> listTruthQuestions =
+        _getTruthOrDareLists(context, TypeOfQuestion.truth);
+    final List<TruthOrDareQuestion> listDareQuestions =
+        _getTruthOrDareLists(context, TypeOfQuestion.dare);
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBarButtons(context),
+      floatingActionButton: Customfloatingactionbutton(InheritedMainWidget.of(context).myLogo, this),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: Stack(
+      children: <Widget>[
+        // Container(
+        //     decoration: new BoxDecoration(
+        //       image: new DecorationImage(
+        //         image: new AssetImage("./assets/images/bild1.jpg"),
+        //         alignment: Alignment(-.95, 0),
+        //         fit: BoxFit.cover,
+        //       ),
+        //     ),
+        //     child: new BackdropFilter(
+        //       filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+        //       child: new Container(
+        //         decoration:
+        //             new BoxDecoration(color: Colors.white.withOpacity(0.0)),
+        //       ),
+        //     )),
+        Container(
+          color: Color.fromRGBO(255, 255, 255, 0),
         ),
         Visibility(
-          visible: isCardvisible == true,
+          visible: _isCardvisible == true,
+          child: Center(
+            child: QuestionCard(
+              //Here QuestionCard
+              question: _currentQuestion,
+              key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
+            ),
+          ),
+        ),
+        _trueDareButtonsRow(listTruthQuestions, listDareQuestions),
+        Visibility(
+          visible: _isCardvisible == true,
           child: Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
@@ -260,7 +301,8 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> {
                         side: BorderSide(color: Colors.black)),
                     onPressed: () {
                       setState(() {
-                        isCardvisible = false;
+                        _isCardvisible = false;
+                        _getPlayerName();
                       });
                     },
                     child: Container(
@@ -334,15 +376,13 @@ class QuestionCard extends StatefulWidget {
   _QuestionCardState createState() => _QuestionCardState();
 }
 
-class _QuestionCardState extends State<QuestionCard>
-    with TickerProviderStateMixin {
+class _QuestionCardState extends State<QuestionCard>{
   TruthOrDareQuestion _question;
 
   String frontCardText;
 
   @override
   void initState() {
-    print("avf");
     super.initState();
 
     _question = widget.question;
@@ -362,11 +402,15 @@ class _QuestionCardState extends State<QuestionCard>
   @override
   Widget build(BuildContext context) {
     return new Stack(
-      children: <Widget>[
-        questionCardWidget(
+      children: <Widget>[ InkWell(
+        //TODO put this one one Widget up.
+        onTap: () {
+          //onCardToogle();
+        },
+        child: questionCardWidget(
           _question.questionText,
           context,
-        ),
+      )),
       ],
     );
   }

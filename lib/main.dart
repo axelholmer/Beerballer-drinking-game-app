@@ -5,58 +5,67 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
-import 'package:testflutter/Question.dart';
+import 'package:testflutter/NeverEverHaveIPage.dart';
+
+import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/SchaetzenPage.dart';
+import 'package:testflutter/TruthOrDarePage.dart';
+import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'Questionclasses/QuestionNeverHaveI.dart';
 import 'SchaetzenPage.dart';
-import 'TruthOrDareQuestion.dart';
-import 'player.dart';
+import 'Questionclasses/TruthOrDareQuestion.dart';
+import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'playerMenuPage.dart';
+import 'GameChoicheEnum.dart';
 
+//TODO create custom SplashScreen
 //Todo put underscore(private) to items
 //ctrl och click pa ngt bra genväg
 
-List<Question> listEstimateQuestions;
+List<QuestionEstimation> listEstimateQuestions;
 List<TruthOrDareQuestion> listTruDareQuestions;
+List<QuestionNeverHaveI> listNeverEverHAveIquestions;
+
 void main() {
   loadEstimateAsset().then((value) {
     //TODO look up where you should load assets
     listEstimateQuestions = value;
   });
 
-
-  loadTruDareAsset().then((value) {
-    //TODO look up where you should load assets
-    listTruDareQuestions = value;
-  });
-
   runApp(MyApp());
 }
 
-//Test of InheritedWidget
 //Try surround Materialapp with inheritedwidget and update Values over updateShouldNotify
-class InheritedTruDarData extends InheritedWidget {
-  InheritedTruDarData({
+class InheritedMainWidget extends InheritedWidget {
+  InheritedMainWidget({
     Key key,
+    this.myLogo,
     this.listTruDareQuestions,
+    this.listNeverHaveIQuestions,
     Widget child,
   }) : super(key: key, child: child);
   final List<TruthOrDareQuestion> listTruDareQuestions;
+  final List<QuestionNeverHaveI> listNeverHaveIQuestions;
+  final Image myLogo;
 
   @override
-  bool updateShouldNotify(InheritedTruDarData old) =>
-      listTruDareQuestions != old.listTruDareQuestions;
+  bool updateShouldNotify(InheritedMainWidget old) {
+    return listTruDareQuestions != old.listTruDareQuestions &&
+        myLogo != old.myLogo && listNeverHaveIQuestions != old.listNeverHaveIQuestions;
+  }
 
-  static InheritedTruDarData of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<InheritedTruDarData>();
+  static InheritedMainWidget of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<InheritedMainWidget>();
   }
 }
 
 //Estimate Load
-Future<List<Question>> loadEstimateAsset() async {
+Future<List<QuestionEstimation>> loadEstimateAsset() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final questionsString =
@@ -65,9 +74,11 @@ Future<List<Question>> loadEstimateAsset() async {
   return parseEstimateQuestion(questionsString);
 }
 
-List<Question> parseEstimateQuestion(String responseBody) {
+List<QuestionEstimation> parseEstimateQuestion(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Question>((json) => Question.fromJson(json)).toList();
+  return parsed
+      .map<QuestionEstimation>((json) => QuestionEstimation.fromJson(json))
+      .toList();
 }
 
 //TruDare Load
@@ -87,10 +98,61 @@ List<TruthOrDareQuestion> parseTruDareQuestion(String responseBody) {
       .toList();
 }
 
-class MyApp extends StatelessWidget {
+//NeverHaveI LOad
+Future<List<QuestionNeverHaveI>> loadNeverHaveIAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileNeverEver.json');
+
+  return parseNeverHaveIQuestion(questionsString);
+}
+
+List<QuestionNeverHaveI> parseNeverHaveIQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<QuestionNeverHaveI>((json) => QuestionNeverHaveI.fromJson(json))
+      .toList();
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Image myLogo;
+  @override
+  void initState() {
+    // precacheImage(AssetImage("./assets/images/logo.png"), context);
+    // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
+    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    precacheImage(myLogo.image, context);
+
+    loadTruDareAsset().then((value) {
+      setState(() {
+        listTruDareQuestions = value;
+      });
+      
+    });
+
+
+     loadNeverHaveIAsset().then((value) {
+      setState(() {
+        listNeverEverHAveIquestions = value;
+      });
+  
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return InheritedTruDarData(
+    precacheImage(
+        AssetImage("./assets/images/BeerBallerLogo_kleiner.png"), context);
+    // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
+    return InheritedMainWidget(
       child: MaterialApp(
         title: 'Beerballer Trinkspiele',
         theme: ThemeData(
@@ -101,108 +163,35 @@ class MyApp extends StatelessWidget {
         home: GameMenu(),
       ),
       listTruDareQuestions: listTruDareQuestions,
+      listNeverHaveIQuestions: listNeverEverHAveIquestions,
+      myLogo: myLogo,
     );
   }
 }
 
-class GameMenu extends StatelessWidget {
+class GameMenu extends StatefulWidget {
+  @override
+  _GameMenuState createState() => _GameMenuState();
+}
+
+class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
   final List<GameChoice> _gameChoices = const <GameChoice>[
-    const GameChoice(title: 'Schaetzen', id: 0),
-    const GameChoice(title: 'Wahrheit oder Pflicht', id: 1),
-    const GameChoice(title: 'Ich habe noch nie', id: 2),
-    const GameChoice(title: 'Kategoriespiel', id: 3),
-    const GameChoice(title: 'Game5', id: 4),
+    const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
+    const GameChoice(title: 'Wahrheit oder Pflicht', id: GameChoicheEnum.wahrheitOderPflicht),
+    const GameChoice(title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
+    const GameChoice(title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _gameChoiceButtons(_gameChoices, context),
-      bottomNavigationBar: _bottomNavigationBarButtons(context),
-      floatingActionButton: _customfloatingactionbutton(),
+      bottomNavigationBar: BottomNavigationBarButtons(context),
+      floatingActionButton: Customfloatingactionbutton(
+          InheritedMainWidget.of(context).myLogo, this),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-}
-
-Widget _customfloatingactionbutton() {
-  return Container(
-      height: 75.0,
-      width: 75.0,
-      child: FloatingActionButton(
-          onPressed: () {},
-          child: new ConstrainedBox(
-              constraints: new BoxConstraints.expand(),
-              child: new Image.asset("./assets/images/logo.png",
-                  fit: BoxFit.cover, gaplessPlayback: true))));
-}
-
-//Todo implement this method with all the other buttons, parameter says what to do
-_launchURLInsta() async {
-  final url = 'https://www.instagram.com/beerballer/?hl=en';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-//Todo implement this method with all the other buttons, parameter says what to do
-_launchURLShop() async {
-  final url = 'https://beerballer.com/';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-//Todo implement this method with all the other buttons, parameter says what to do
-_launchURLFacebook() async {
-  final url = 'https://www.facebook.com/BeerBaller/';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
-Widget _bottomNavigationBarButtons(BuildContext context) {
-  return BottomAppBar(
-    shape: const CircularNotchedRectangle(),
-    child: Container(
-      //color: Theme.of(context).accentColor,
-      height: 60.0,
-      child: Row /*or Column*/ (
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          IconButton(
-            iconSize: 40.0,
-            icon: Icon(FontAwesomeIcons.info),
-            onPressed: () {},
-          ),
-          IconButton(
-            iconSize: 40.0,
-            icon: Icon(FontAwesomeIcons.shopify),
-            onPressed: _launchURLShop,
-          ),
-          SizedBox(
-            width: 40,
-          ),
-          IconButton(
-            iconSize: 40.0,
-            icon: Icon(FontAwesomeIcons.instagram),
-            onPressed: _launchURLInsta,
-          ),
-          IconButton(
-            iconSize: 40.0,
-            icon: Icon(FontAwesomeIcons.facebook),
-            onPressed: _launchURLFacebook,
-          ),
-        ],
-      ),
-    ),
-  );
 }
 
 Widget _gameChoiceButtons(
@@ -251,7 +240,7 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
 class GameChoice {
   const GameChoice({this.title, this.id});
   final String title;
-  final int id;
+  final GameChoicheEnum id;
 }
 //TODO Enum better als string?
 // enum UserStatus {
@@ -262,36 +251,33 @@ class GameChoice {
 // UserStatus.notDetermined;
 
 void _selectGameChoice(GameChoice choice, BuildContext context) {
-  switch (choice.id) {
+  switch (choice.id.index) {
     case 0:
       {
         Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  SchaetzenPage(listQuestions: listEstimateQuestions)),
-        );
+            context,
+            CustomTransistionAnimation(
+                page: SchaetzenPage(listQuestions: listEstimateQuestions)));
+
       }
       break;
     case 1:
-      {
-        print(choice.title);
+      Navigator.push(context, CustomTransistionAnimation(page: PlayersMenu(GameChoicheEnum.wahrheitOderPflicht, gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,)));
 
-        print(listTruDareQuestions);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => PlayersMenu(),
-          ),
-        );
-      }
+    
       break;
     case 2:
       {
+        Navigator.push(
+            context,
+            CustomTransistionAnimation(
+                page: PlayersMenu(GameChoicheEnum.ichHabeNochNie, gamechoicheenum: GameChoicheEnum.ichHabeNochNie,)));
+
         print(choice.title);
+        print(listNeverEverHAveIquestions);
         // = listTruDareQuestions;
-      //  InheritedTruDarData.of(context).
-       print( InheritedTruDarData.of(context).listTruDareQuestions);
+        //  InheritedTruDarData.of(context).
+
       }
       break;
     case 3:
