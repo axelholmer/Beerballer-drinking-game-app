@@ -1,12 +1,99 @@
 [
     {
-      "text": "drogen aßuer Alkohol, Gras genommen"
+      "typeOfGame": "boardgame",
+      "text": "placeholder boardgame"
+    },
+    { 
+      "typeOfGame": "cardgame",
+      "text": "placeholder cardgame"
     },
     {
-      "text": "auf einer Prüfung geschummelt"
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
     },
     {
-      "text": "Frage3"
+      "typeOfGame": "dicegame",
+      "text": "placeholder dicegame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },{
+      "typeOfGame": "boardgame",
+      "text": "placeholder boardgame"
+    },
+    { 
+      "typeOfGame": "cardgame",
+      "text": "placeholder cardgame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },
+    {
+      "typeOfGame": "dicegame",
+      "text": "placeholder dicegame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },{
+      "typeOfGame": "boardgame",
+      "text": "placeholder boardgame"
+    },
+    { 
+      "typeOfGame": "cardgame",
+      "text": "placeholder cardgame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },
+    {
+      "typeOfGame": "dicegame",
+      "text": "placeholder dicegame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },{
+      "typeOfGame": "boardgame",
+      "text": "placeholder boardgame"
+    },
+    { 
+      "typeOfGame": "cardgame",
+      "text": "placeholder cardgame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },
+    {
+      "typeOfGame": "dicegame",
+      "text": "placeholder dicegame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },{
+      "typeOfGame": "boardgame",
+      "text": "placeholder boardgame"
+    },
+    { 
+      "typeOfGame": "cardgame",
+      "text": "placeholder cardgame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
+    },
+    {
+      "typeOfGame": "dicegame",
+      "text": "placeholder dicegame"
+    },
+    {
+      "typeOfGame": "muggame",
+      "text": "placeholder muggame"
     }
   ]
 

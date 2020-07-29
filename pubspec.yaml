@@ -55,6 +55,7 @@ flutter:
   - assets/res/textfile.json
   - assets/res/textFileTruDar.json
   - assets/res/textFileNeverEver.json
+  - assets/res/textFileCategoryGame.json
   
   # To add assets to your application, add an assets section, like this:
   # assets:

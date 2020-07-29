@@ -6,12 +6,16 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testflutter/CategoryGamePage.dart';
+import 'package:testflutter/InAppGamesPageMenu.dart';
 import 'package:testflutter/NeverEverHaveIPage.dart';
+import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
+import 'package:testflutter/listOfGames.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
@@ -30,6 +34,7 @@ import 'GameChoicheEnum.dart';
 List<QuestionEstimation> listEstimateQuestions;
 List<TruthOrDareQuestion> listTruDareQuestions;
 List<QuestionNeverHaveI> listNeverEverHAveIquestions;
+List<QuestionCategoryGame> listCategoryQuestions;
 
 void main() {
   loadEstimateAsset().then((value) {
@@ -47,16 +52,20 @@ class InheritedMainWidget extends InheritedWidget {
     this.myLogo,
     this.listTruDareQuestions,
     this.listNeverHaveIQuestions,
+    this.listCategoryQuestions,
     Widget child,
   }) : super(key: key, child: child);
   final List<TruthOrDareQuestion> listTruDareQuestions;
   final List<QuestionNeverHaveI> listNeverHaveIQuestions;
+  final List<QuestionCategoryGame> listCategoryQuestions;
   final Image myLogo;
 
   @override
   bool updateShouldNotify(InheritedMainWidget old) {
     return listTruDareQuestions != old.listTruDareQuestions &&
-        myLogo != old.myLogo && listNeverHaveIQuestions != old.listNeverHaveIQuestions;
+        myLogo != old.myLogo &&
+        listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
+        listCategoryQuestions != old.listCategoryQuestions;
   }
 
   static InheritedMainWidget of(BuildContext context) {
@@ -115,6 +124,23 @@ List<QuestionNeverHaveI> parseNeverHaveIQuestion(String responseBody) {
       .toList();
 }
 
+//Category Load
+Future<List<QuestionCategoryGame>> loadCategoryAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileCategoryGame.json');
+
+  return parseCategoryQuestion(questionsString);
+}
+
+List<QuestionCategoryGame> parseCategoryQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<QuestionCategoryGame>((json) => QuestionCategoryGame.fromJson(json))
+      .toList();
+}
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -133,15 +159,18 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         listTruDareQuestions = value;
       });
-      
     });
 
-
-     loadNeverHaveIAsset().then((value) {
+    loadNeverHaveIAsset().then((value) {
       setState(() {
         listNeverEverHAveIquestions = value;
       });
-  
+    });
+
+    loadCategoryAsset().then((value) {
+      setState(() {
+        listCategoryQuestions = value;
+      });
     });
 
     super.initState();
@@ -164,6 +193,7 @@ class _MyAppState extends State<MyApp> {
       ),
       listTruDareQuestions: listTruDareQuestions,
       listNeverHaveIQuestions: listNeverEverHAveIquestions,
+      listCategoryQuestions: listCategoryQuestions,
       myLogo: myLogo,
     );
   }
@@ -175,11 +205,24 @@ class GameMenu extends StatefulWidget {
 }
 
 class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
-  final List<GameChoice> _gameChoices = const <GameChoice>[
-    const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
-    const GameChoice(title: 'Wahrheit oder Pflicht', id: GameChoicheEnum.wahrheitOderPflicht),
-    const GameChoice(title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
-    const GameChoice(title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
+  // final List<GameChoice> _gameChoices = const <GameChoice>[
+  //   const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
+  //   const GameChoice(
+  //       title: 'Wahrheit oder Pflicht',
+  //       id: GameChoicheEnum.wahrheitOderPflicht),
+  //   const GameChoice(
+  //       title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
+  //   const GameChoice(
+  //       title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
+  // ];
+
+  final List<String> _gameChoices = const <String>[
+    "In App Spiele",
+    "Wurfelspiele",
+    "Kartenspiele",
+    "Brettspiele",
+    "Becherspiele",
+    "Sonstiges"
   ];
 
   @override
@@ -195,7 +238,7 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
 }
 
 Widget _gameChoiceButtons(
-    final List<GameChoice> gameChoices, BuildContext context) {
+    final List<String> gameChoices, BuildContext context) {
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
@@ -215,7 +258,7 @@ Widget _gameChoiceButtons(
   );
 }
 
-Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
+Widget _gameChoiceButton(String gameChoice, BuildContext context) {
   return RaisedButton(
     color: Color.fromRGBO(255, 255, 255, 0.5),
     shape: RoundedRectangleBorder(
@@ -227,7 +270,7 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
     child: Container(
       //
       child: Text(
-        gameChoice.title,
+        gameChoice,
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 30,
@@ -250,47 +293,47 @@ class GameChoice {
 // }
 // UserStatus.notDetermined;
 
-void _selectGameChoice(GameChoice choice, BuildContext context) {
-  switch (choice.id.index) {
-    case 0:
+void _selectGameChoice(String choice, BuildContext context) {
+  switch (choice) {
+    case "In App Spiele":
       {
         Navigator.push(
-            context,
-            CustomTransistionAnimation(
-                page: SchaetzenPage(listQuestions: listEstimateQuestions)));
-
+            context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
       }
       break;
-    case 1:
-      Navigator.push(context, CustomTransistionAnimation(page: PlayersMenu(GameChoicheEnum.wahrheitOderPflicht, gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,)));
-
-    
+    case "Wurfelspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
       break;
-    case 2:
+    case "Kartenspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Brettspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Becherspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Sonstiges":
       {
-        Navigator.push(
-            context,
-            CustomTransistionAnimation(
-                page: PlayersMenu(GameChoicheEnum.ichHabeNochNie, gamechoicheenum: GameChoicheEnum.ichHabeNochNie,)));
-
-        print(choice.title);
-        print(listNeverEverHAveIquestions);
-        // = listTruDareQuestions;
-        //  InheritedTruDarData.of(context).
-
+        print("Sonstiges");
       }
       break;
-    case 3:
-      {
-        print(choice.title);
-      }
-      break;
-    case 4:
-      {
-        print(choice.title);
-      }
-      break;
-
     default:
       {
         print('route not found');
