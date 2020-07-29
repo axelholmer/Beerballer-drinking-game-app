@@ -5,312 +5,339 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
-import 'package:testflutter/Question.dart';
+import 'package:testflutter/CategoryGamePage.dart';
+import 'package:testflutter/InAppGamesPageMenu.dart';
+import 'package:testflutter/NeverEverHaveIPage.dart';
+import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
+
+import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/SchaetzenPage.dart';
-
+import 'package:testflutter/TruthOrDarePage.dart';
+import 'package:testflutter/customTransistionAnimation.dart';
+import 'package:testflutter/listOfGames.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'Questionclasses/QuestionNeverHaveI.dart';
 import 'SchaetzenPage.dart';
+import 'Questionclasses/TruthOrDareQuestion.dart';
+import 'Player.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'playerMenuPage.dart';
+import 'GameChoicheEnum.dart';
 
-List<Question> listQuestions;
+//TODO create custom SplashScreen
+//Todo put underscore(private) to items
+//ctrl och click pa ngt bra genväg
+
+List<QuestionEstimation> listEstimateQuestions;
+List<TruthOrDareQuestion> listTruDareQuestions;
+List<QuestionNeverHaveI> listNeverEverHAveIquestions;
+List<QuestionCategoryGame> listCategoryQuestions;
+
 void main() {
-
-  //  loadAsset().then((value) { //TODO look up where you should load assets
-  //   Map mapOfQuestions = json.decode(value);
-  // });
-  
-
-  // loadAsset().then((value) { //TODO look up where you should load assets
-  //   map = json.decode(value);
-  // });
-
-
-  loadAsset().then((value) { //TODO look up where you should load assets
-    listQuestions = value;
-    
+  loadEstimateAsset().then((value) {
+    //TODO look up where you should load assets
+    listEstimateQuestions = value;
   });
 
-
-  
   runApp(MyApp());
 }
 
+//Try surround Materialapp with inheritedwidget and update Values over updateShouldNotify
+class InheritedMainWidget extends InheritedWidget {
+  InheritedMainWidget({
+    Key key,
+    this.myLogo,
+    this.listTruDareQuestions,
+    this.listNeverHaveIQuestions,
+    this.listCategoryQuestions,
+    Widget child,
+  }) : super(key: key, child: child);
+  final List<TruthOrDareQuestion> listTruDareQuestions;
+  final List<QuestionNeverHaveI> listNeverHaveIQuestions;
+  final List<QuestionCategoryGame> listCategoryQuestions;
+  final Image myLogo;
 
+  @override
+  bool updateShouldNotify(InheritedMainWidget old) {
+    return listTruDareQuestions != old.listTruDareQuestions &&
+        myLogo != old.myLogo &&
+        listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
+        listCategoryQuestions != old.listCategoryQuestions;
+  }
 
-Future<String> loadAssetWidget(BuildContext context) async {
-  return await DefaultAssetBundle.of(context).loadString('./assets/res/textfile.json');
+  static InheritedMainWidget of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<InheritedMainWidget>();
+  }
 }
 
-// Future<String> loadAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-  
-//   return await rootBundle.loadString('./assets/res/textfile.json');
-// }
+//Estimate Load
+Future<List<QuestionEstimation>> loadEstimateAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-Future<List<Question>> loadAsset() async {
-WidgetsFlutterBinding.ensureInitialized();
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textfile.json');
 
-  final questionsString = await rootBundle.loadString('./assets/res/textfile.json');
-
-  return parseQuestion(questionsString);
+  return parseEstimateQuestion(questionsString);
 }
 
-List<Question> parseQuestion(String responseBody) {
+List<QuestionEstimation> parseEstimateQuestion(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-  return parsed.map<Question>((json) => Question.fromJson(json)).toList();
+  return parsed
+      .map<QuestionEstimation>((json) => QuestionEstimation.fromJson(json))
+      .toList();
 }
 
-class MyApp extends StatelessWidget {
+//TruDare Load
+Future<List<TruthOrDareQuestion>> loadTruDareAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileTruDar.json');
+
+  return parseTruDareQuestion(questionsString);
+}
+
+List<TruthOrDareQuestion> parseTruDareQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<TruthOrDareQuestion>((json) => TruthOrDareQuestion.fromJson(json))
+      .toList();
+}
+
+//NeverHaveI LOad
+Future<List<QuestionNeverHaveI>> loadNeverHaveIAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileNeverEver.json');
+
+  return parseNeverHaveIQuestion(questionsString);
+}
+
+List<QuestionNeverHaveI> parseNeverHaveIQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<QuestionNeverHaveI>((json) => QuestionNeverHaveI.fromJson(json))
+      .toList();
+}
+
+//Category Load
+Future<List<QuestionCategoryGame>> loadCategoryAsset() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileCategoryGame.json');
+
+  return parseCategoryQuestion(questionsString);
+}
+
+List<QuestionCategoryGame> parseCategoryQuestion(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed
+      .map<QuestionCategoryGame>((json) => QuestionCategoryGame.fromJson(json))
+      .toList();
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Image myLogo;
+  @override
+  void initState() {
+    // precacheImage(AssetImage("./assets/images/logo.png"), context);
+    // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
+    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    precacheImage(myLogo.image, context);
+
+    loadTruDareAsset().then((value) {
+      setState(() {
+        listTruDareQuestions = value;
+      });
+    });
+
+    loadNeverHaveIAsset().then((value) {
+      setState(() {
+        listNeverEverHAveIquestions = value;
+      });
+    });
+
+    loadCategoryAsset().then((value) {
+      setState(() {
+        listCategoryQuestions = value;
+      });
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    return MaterialApp(
-      title: 'Startup Name Generator',
-      theme: ThemeData(
-        primaryColor: Colors.yellow,
+    precacheImage(
+        AssetImage("./assets/images/BeerBallerLogo_kleiner.png"), context);
+    // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
+    return InheritedMainWidget(
+      child: MaterialApp(
+        title: 'Beerballer Trinkspiele',
+        theme: ThemeData(
+            brightness: Brightness.light,
+            primaryColor: Colors.lightBlue[800],
+            accentColor: Colors.orangeAccent[200],
+            fontFamily: 'Oswald'),
+        home: GameMenu(),
       ),
-      home: PlayersMenu(),
+      listTruDareQuestions: listTruDareQuestions,
+      listNeverHaveIQuestions: listNeverEverHAveIquestions,
+      listCategoryQuestions: listCategoryQuestions,
+      myLogo: myLogo,
     );
   }
 }
 
-class PlayersMenu extends StatefulWidget {
+class GameMenu extends StatefulWidget {
   @override
-  _PlayersMenuState createState() => _PlayersMenuState();
+  _GameMenuState createState() => _GameMenuState();
+}
+
+class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
+  // final List<GameChoice> _gameChoices = const <GameChoice>[
+  //   const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
+  //   const GameChoice(
+  //       title: 'Wahrheit oder Pflicht',
+  //       id: GameChoicheEnum.wahrheitOderPflicht),
+  //   const GameChoice(
+  //       title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
+  //   const GameChoice(
+  //       title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
+  // ];
+
+  final List<String> _gameChoices = const <String>[
+    "In App Spiele",
+    "Wurfelspiele",
+    "Kartenspiele",
+    "Brettspiele",
+    "Becherspiele",
+    "Sonstiges"
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _gameChoiceButtons(_gameChoices, context),
+      bottomNavigationBar: BottomNavigationBarButtons(context),
+      floatingActionButton: Customfloatingactionbutton(
+          InheritedMainWidget.of(context).myLogo, this),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+}
+
+Widget _gameChoiceButtons(
+    final List<String> gameChoices, BuildContext context) {
+  List<Widget> gameChoiceWidgets = [];
+
+  for (var item in gameChoices) {
+    gameChoiceWidgets.add(SizedBox(height: 40));
+    gameChoiceWidgets.add(_gameChoiceButton(item, context));
+  }
+  gameChoiceWidgets.add(SizedBox(height: 40));
+
+  return Center(
+    child: IntrinsicWidth(
+      child: Column /*or Column*/ (
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: gameChoiceWidgets,
+      ),
+    ),
+  );
+}
+
+Widget _gameChoiceButton(String gameChoice, BuildContext context) {
+  return RaisedButton(
+    color: Color.fromRGBO(255, 255, 255, 0.5),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        side: BorderSide(color: Colors.black)),
+    onPressed: () {
+      _selectGameChoice(gameChoice, context);
+    },
+    child: Container(
+      //
+      child: Text(
+        gameChoice,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 30,
+        ),
+      ),
+    ),
+  );
 }
 
 class GameChoice {
   const GameChoice({this.title, this.id});
   final String title;
-  final int id;
+  final GameChoicheEnum id;
 }
+//TODO Enum better als string?
+// enum UserStatus {
+//   notDetermined,
+//   notSignedIn,
+//   signedIn,
+// }
+// UserStatus.notDetermined;
 
-const List<GameChoice> gameChoices = const <GameChoice>[
-  const GameChoice(title: 'Schaetzen', id: 0),
-  const GameChoice(title: 'Wahrheit oder Pflicht', id: 1),
-  const GameChoice(title: 'Ich habe noch nie', id: 2),
-  const GameChoice(title: 'Kategoriespiel', id: 3),
-];
-
-class Player {
-   Player(){
-this.name = 'Kevin'; //lagg till wollnys
-   }
-  Player.fromStart({this.name});
-  String name;
-  bool hasName = false; //TODO fix blacktext when name is inputed, also need confirmation to only play when player have inputed name
-}
-//TODO randomnamn när man trycker pa newplayer?
-//TODO fixa var variable _players, masta vara 
-class _PlayersMenuState extends State<PlayersMenu> {
-  final _suggestions = <WordPair>[];
-  final _biggerFont = const TextStyle(fontSize: 18.0);
-  final Set<WordPair> _saved = Set<WordPair>();
-  FocusNode myFocusNode;
-
-
-  GameChoice _selectedChoice = gameChoices[0];
-  final _players = <Player>[
-    Player.fromStart(name: 'Player1'),
-    Player.fromStart(name: 'Player2'),
-    Player.fromStart(name: 'Player3'),
-    Player.fromStart(name: 'Player4'),
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('Debugmenu'),
-          actions: <Widget>[ //TODO put these in separete funktions
-            // Add 3 lines from here...
-            //IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-            // overflow menu
-            PopupMenuButton<GameChoice>(
-              onSelected: _select,
-              itemBuilder: (BuildContext context) {
-                return gameChoices.map((GameChoice choice) {
-                  return PopupMenuItem<GameChoice>(
-                    value: choice,
-                    child: Text(choice.title),
-                  );
-                }).toList();
-              }),
-          ], 
-          // ... to here.
-        ),
-        body: Stack(children: <Widget>[
-          // Container(
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: AssetImage("./assets/images/logo.jpg"),
-          //       fit: BoxFit.scaleDown,
-          //     ),
-          //   ),
-          //   // child: _buildSuggestions(), /* add child content here */
-          // ),
-          Container(
-            color: Color.fromRGBO(255, 255, 255, 0.50),
-          ),
-          Container(
-            child: _buildPlayerList(),
-          )
-        ]));
-  }
-
-//fix select of routes, avoid switch and more compact class. check out named routes
-void _select(GameChoice choice) {
-
-    switch (choice.id) {
-  case 0:
-    {
-       
+void _selectGameChoice(String choice, BuildContext context) {
+  switch (choice) {
+    case "In App Spiele":
+      {
+        Navigator.push(
+            context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
+      }
+      break;
+    case "Wurfelspiele":
       Navigator.push(
-    context,
-   
-    MaterialPageRoute(builder: (context) => SchaetzenPage(listQuestions: listQuestions)),
-  );
-    }
-  break;
-    
-  default:
-    {
-      print('route not found');
-    }
-}
-  }
-
-@override
-  void initState() {
-    super.initState();
-    myFocusNode = FocusNode();
-  }
-
-  @override
-  void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    myFocusNode.dispose();
-    super.dispose();
-  }
-  void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        builder: (BuildContext context) {
-          final Iterable<ListTile> tiles = _saved.map(
-            (WordPair pair) {
-              return ListTile(
-                title: Text(
-                  pair.asPascalCase,
-                  style: _biggerFont,
-                ),
-              );
-            },
-          );
-          final List<Widget> divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-
-          return Scaffold(
-            // Add 6 lines from here...
-            appBar: AppBar(
-              title: Text('Saved Suggestions'),
-            ),
-            body: ListView(children: divided),
-          ); // ... to here.
-        },
-      ),
-    );
-  }
-
-  Widget _buildPlayerList() {
-    return ListView.separated(
-      itemCount: _players.length + 1,
-      padding: const EdgeInsets.all(16.0),
-      itemBuilder: (context, index) {
-
-        if (index == _players.length) {
-          return _buildLastRow();
-        }
-        return _buildRow(_players[index], index);
-      },
-      separatorBuilder: (context, index) {
-        return Divider();
-      },
-    );
-  }
-
-  Widget _buildLastRow() {
-    return ListTile(
-      onTap: () {
-        setState(() {
-          _players.add(Player());
-          //myFocusNode.requestFocus(); TODO fix Reqfocus for the right Tile
-        });
-      },
-      leading: IconButton( //TODO fixa denna
-        icon: new Icon(Icons.add_circle),
-      ),
-    );
-  }
-
-  Widget _buildRow(Player player, int index) {
-    final myController = TextEditingController();
-
-    return ListTile(
-      title: TextField(
-        style: _biggerFont,
-        controller: myController,
-        focusNode: myFocusNode,
-        onChanged: (text) {
-          _players[index].name = text;
-        },
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: player.name),
-      ),
-
-      trailing: new IconButton(
-        icon: new Icon(Icons.remove_circle),
-        onPressed: () {
-          setState(() {
-            _players.removeAt(index);
-          });
-        },
-      ),
-      // onTap: () {
-      //   showDialog(
-      //       context: context,
-      //       builder: (BuildContext context) {
-      //         return AlertDialog(
-      //           title: Text("Change Name"),
-      //           content: TextField(
-      //             controller: myController,
-      //             decoration: InputDecoration(
-      //                 border: InputBorder.none, hintText: player.name),
-      //           ),
-      //           actions: [
-      //             FlatButton(
-      //               child: Text("Close"),
-      //               onPressed: () {
-      //                 Navigator.of(context).pop();
-      //               },
-      //             ),
-      //             FlatButton(
-      //               child: Text("Accept"),
-      //               onPressed: () {
-      //                 setState(() {
-      //                   print(myController.text);
-      //                   _players[index].name = myController.text;
-      //                   Navigator.of(context).pop();
-      //                 });
-      //               },
-      //             )
-      //           ],
-      //         );
-      //       });
-      // }, // ... to here.
-    );
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Kartenspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Brettspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Becherspiele":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: listOfGames(
+                  items: List<String>.generate(10000, (i) => "Item $i"))));
+      break;
+    case "Sonstiges":
+      {
+        print("Sonstiges");
+      }
+      break;
+    default:
+      {
+        print('route not found');
+      }
+      break;
   }
 }
-
-
