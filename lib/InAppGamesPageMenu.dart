@@ -15,6 +15,7 @@ import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
@@ -22,6 +23,7 @@ import 'SchaetzenPage.dart';
 import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'SizeConfig.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
 import 'main.dart';
@@ -203,7 +205,8 @@ class InAppGamesPageMenu extends StatefulWidget {
   InAppGamesPageMenuState createState() => InAppGamesPageMenuState();
 }
 
-class InAppGamesPageMenuState extends State<InAppGamesPageMenu> with TickerProviderStateMixin {
+class InAppGamesPageMenuState extends State<InAppGamesPageMenu>
+    with TickerProviderStateMixin {
   final List<GameChoice> _gameChoices = const <GameChoice>[
     const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
     const GameChoice(
@@ -218,7 +221,8 @@ class InAppGamesPageMenuState extends State<InAppGamesPageMenu> with TickerProvi
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _gameChoiceButtons(_gameChoices, context),
+      backgroundColor: Theme.of(context).primaryColor,
+      body: _gameChoiceWidget(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
           InheritedMainWidget.of(context).myLogo, this),
@@ -227,7 +231,7 @@ class InAppGamesPageMenuState extends State<InAppGamesPageMenu> with TickerProvi
   }
 }
 
-Widget _gameChoiceButtons(
+Widget _gameChoiceWidget(
     final List<GameChoice> gameChoices, BuildContext context) {
   List<Widget> gameChoiceWidgets = [];
 
@@ -238,35 +242,70 @@ Widget _gameChoiceButtons(
   gameChoiceWidgets.add(SizedBox(height: 40));
 
   return Center(
-    child: IntrinsicWidth(
+      child: Column(children: <Widget>[
+    SizedBox(
+      height: SizeConfig.blockSizeVertical * 5,
+    ),
+    Row(children: <Widget>[
+      SizedBox(
+        width: SizeConfig.blockSizeHorizontal * 2,
+      ),
+      CustomBackButton(context),
+    ]),
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "In App spiele",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: SizeConfig.safeBlockHorizontal * 8,
+            color: Color.fromRGBO(238, 237, 237, 1),
+            fontWeight: FontWeight.w900,
+          ),
+        ),
+        Image.asset(
+          "./assets/images/inGameAppIcon.png",
+          //width: SizeConfig.blockSizeHorizontal * ,
+          height: SizeConfig.blockSizeVertical * 8,
+        ),
+      ],
+    ),
+    IntrinsicWidth(
       child: Column /*or Column*/ (
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: gameChoiceWidgets,
       ),
-    ),
-  );
+    )
+  ]));
 }
 
 Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
   return RaisedButton(
-    color: Color.fromRGBO(255, 255, 255, 0.5),
+    color: Theme.of(context).accentColor,
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        side: BorderSide(color: Colors.black)),
+        borderRadius: BorderRadius.circular(11.0),
+        side: BorderSide(
+          color: Theme.of(context).accentColor,
+        )),
     onPressed: () {
       _selectGameChoice(gameChoice, context);
     },
     child: Container(
-      //
-      child: Text(
-        gameChoice.title,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 30,
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          gameChoice.title,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: SizeConfig.safeBlockHorizontal * 6,
+          ),
         ),
-      ),
-    ),
+      ],
+    )),
   );
 }
 

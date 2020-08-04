@@ -10,10 +10,12 @@ import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Player.dart';
 import 'Questionclasses/TruthOrDareQuestion.dart';
 
+import 'SizeConfig.dart';
 import 'TypeOfQuestion.dart';
 
 //Question randomperson oder jungste person und dannach reihe? Normaler fall bei random so gibt es eine Flasche
@@ -27,7 +29,8 @@ class TruthOrDarePage extends StatefulWidget {
   _TruthOrDarePageState createState() => _TruthOrDarePageState();
 }
 
-class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderStateMixin {
+class _TruthOrDarePageState extends State<TruthOrDarePage>
+    with TickerProviderStateMixin {
   TruthOrDareQuestion _currentQuestion;
   int _truthQuestionListCount;
   int _dareQuestionListCount;
@@ -43,9 +46,9 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
     _dareQuestionListCount = 0;
     _currentPlayerListCount = 0;
     _getPlayerName();
-    Timer(Duration(milliseconds: 200), () {
-      _showMyDialog();
-    });
+    // Timer(Duration(milliseconds: 200), () {
+    //   _showMyDialog();
+    // });
 
     super.initState();
   }
@@ -60,7 +63,6 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
 
     List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
     List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
-   
 
     for (final element in allQuestionsList) {
       if (element.typeOfQuestion == TypeOfQuestion.truth) {
@@ -110,8 +112,7 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
   }
 
   void _getPlayerName() {
-    
-     if (_currentPlayerListCount < widget.listPlayer.length) {
+    if (_currentPlayerListCount < widget.listPlayer.length) {
       _currentPlayerName = widget.listPlayer[_currentPlayerListCount].name;
       _currentPlayerListCount++;
     } else {
@@ -119,8 +120,6 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
       _currentPlayerName = widget.listPlayer[_currentPlayerListCount].name;
       _currentPlayerListCount++;
     }
-
-    
   }
 
 //TODO add gradient to dialog? And maybe card?
@@ -166,6 +165,7 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
       },
     );
   }
+
 //TODO fix too long of a name in playermneu char limit
   Widget _playerNameText() {
     return Text(
@@ -173,7 +173,7 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
       textAlign: TextAlign.center,
       overflow: TextOverflow.ellipsis,
       style: new TextStyle(
-        fontSize: 30.0,
+        fontSize: SizeConfig.safeBlockHorizontal * 10,
         color: Colors.orange[200],
       ),
       //style: TextStyle(fontWeight: FontWeight.bold),
@@ -192,11 +192,15 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
-                color: Color.fromRGBO(255, 255, 255, 0.7),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
+              ),
+              Expanded(
+                  child: RaisedButton(
+                color: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(11.0),
+                    side: BorderSide(color: Theme.of(context).accentColor)),
                 onPressed: () {
                   setState(() {
                     _getTruthQuestion(listTruthQuestions);
@@ -209,19 +213,20 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
                     "Wahrheit",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: SizeConfig.safeBlockHorizontal * 6,
                     ),
                   ),
                 ),
-              ),
+              )),
               SizedBox(
-                width: 30, // constrain height
+                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
               ),
-              RaisedButton(
-                color: Color.fromRGBO(255, 255, 255, 0.7),
+              Expanded(
+                  child: RaisedButton(
+                color: Theme.of(context).accentColor,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.black)),
+                    borderRadius: BorderRadius.circular(11.0),
+                    side: BorderSide(color: Theme.of(context).accentColor)),
                 onPressed: () {
                   setState(() {
                     _getDareQuestion(listDareQuestions);
@@ -234,10 +239,13 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
                     "Pflicht",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: SizeConfig.safeBlockHorizontal * 6,
                     ),
                   ),
                 ),
+              )),
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
               ),
             ],
           )
@@ -254,116 +262,113 @@ class _TruthOrDarePageState extends State<TruthOrDarePage> with TickerProviderSt
     final List<TruthOrDareQuestion> listDareQuestions =
         _getTruthOrDareLists(context, TypeOfQuestion.dare);
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBarButtons(context),
-      floatingActionButton: Customfloatingactionbutton(InheritedMainWidget.of(context).myLogo, this),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Stack(
-      children: <Widget>[
-        // Container(
-        //     decoration: new BoxDecoration(
-        //       image: new DecorationImage(
-        //         image: new AssetImage("./assets/images/bild1.jpg"),
-        //         alignment: Alignment(-.95, 0),
-        //         fit: BoxFit.cover,
-        //       ),
-        //     ),
-        //     child: new BackdropFilter(
-        //       filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-        //       child: new Container(
-        //         decoration:
-        //             new BoxDecoration(color: Colors.white.withOpacity(0.0)),
-        //       ),
-        //     )),
-        Container(
-          color: Color.fromRGBO(255, 255, 255, 0),
-        ),
-        Visibility(
-          visible: _isCardvisible == true,
-          child: Center(
-            child: QuestionCard(
-              //Here QuestionCard
-              question: _currentQuestion,
-              key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
+        backgroundColor: Theme.of(context).primaryColor,
+        bottomNavigationBar: BottomNavigationBarButtons(context),
+        floatingActionButton: Customfloatingactionbutton(
+            InheritedMainWidget.of(context).myLogo, this),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: Column(
+          children: <Widget>[
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 5,
             ),
-          ),
-        ),
-        _trueDareButtonsRow(listTruthQuestions, listDareQuestions),
-        Visibility(
-          visible: _isCardvisible == true,
-          child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: RaisedButton(
-                    color: Color.fromRGBO(255, 255, 255, 0.5),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        side: BorderSide(color: Colors.black)),
-                    onPressed: () {
-                      setState(() {
-                        _isCardvisible = false;
-                        _getPlayerName();
-                      });
-                    },
-                    child: Container(
-                      //
-                      child: Text(
-                        "Nächste Person",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: 'Oswald',
-                        ),
-                      ),
-                    ),
-                  ))),
-        ),
-        Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    ClipOval(
-                        child: Material(
-                            type: MaterialType.transparency,
-                            child: IconButton(
-                                // color: Color.fromRGBO(255, 255, 255, 0.5),
-                                // shape: RoundedRectangleBorder(
-                                //     borderRadius: BorderRadius.circular(10.0),
-                                //     side: BorderSide(color: Colors.black)),
-                                iconSize: 50,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: Icon(Icons.close)))),
-                    Spacer(
-                      flex: 2,
-                    ),
-                    ClipOval(
-                        child: Material(
-                            type: MaterialType.transparency,
-                            child: IconButton(
-                              onPressed: () {
-                                _showMyDialog();
-                              },
-                              icon: Icon(Icons.help_outline),
-                              iconSize: 50,
-                              //purple
-                            ))),
-                  ],
-                ))),
-      ],
+            Row(children: <Widget>[
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal * 2,
+              ),
+              CustomBackButton(context),
+            ]),
+            Visibility(
+              visible: _isCardvisible == true,
+              child: Center(
+                child: QuestionCard(
+                  //Here QuestionCard
+                  question: _currentQuestion,
+                  key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 20,
+            ),
+            _trueDareButtonsRow(listTruthQuestions, listDareQuestions),
 
-      // floatingActionButton: FloatingActionButton.extended(
-      //   onPressed: () {
-      //     generateRandomQuestion();
-      //   },
-      //   label: Text('Naechste Frage'),
-      //   backgroundColor: Colors.orange,
-      // ),
-    ));
+            // Visibility(
+            //   visible: _isCardvisible == true,
+            //   child: Align(
+            //       alignment: Alignment.bottomCenter,
+            //       child: Padding(
+            //           padding: const EdgeInsets.all(30.0),
+            //           child: RaisedButton(
+            //             color: Color.fromRGBO(255, 255, 255, 0.5),
+            //             shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(10.0),
+            //                 side: BorderSide(color: Colors.black)),
+            //             onPressed: () {
+            //               setState(() {
+            //                 _isCardvisible = false;
+            //                 _getPlayerName();
+            //               });
+            //             },
+            //             child: Container(
+            //               //
+            //               child: Text(
+            //                 "Nächste Person",
+            //                 textAlign: TextAlign.center,
+            //                 style: TextStyle(
+            //                   fontSize: 30,
+            //                   fontFamily: 'Oswald',
+            //                 ),
+            //               ),
+            //             ),
+            //           ))),
+            // ),
+            // Align(
+            //     alignment: Alignment.topLeft,
+            //     child: Padding(
+            //         padding: const EdgeInsets.all(40.0),
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.start,
+            //           children: <Widget>[
+            //             ClipOval(
+            //                 child: Material(
+            //                     type: MaterialType.transparency,
+            //                     child: IconButton(
+            //                         // color: Color.fromRGBO(255, 255, 255, 0.5),
+            //                         // shape: RoundedRectangleBorder(
+            //                         //     borderRadius: BorderRadius.circular(10.0),
+            //                         //     side: BorderSide(color: Colors.black)),
+            //                         iconSize: 50,
+            //                         onPressed: () {
+            //                           Navigator.pop(context);
+            //                         },
+            //                         icon: Icon(Icons.close)))),
+            //             Spacer(
+            //               flex: 2,
+            //             ),
+            //             ClipOval(
+            //                 child: Material(
+            //                     type: MaterialType.transparency,
+            //                     child: IconButton(
+            //                       onPressed: () {
+            //                         _showMyDialog();
+            //                       },
+            //                       icon: Icon(Icons.help_outline),
+            //                       iconSize: 50,
+            //                       //purple
+            //                     ))),
+            //           ],
+            //         ))),
+          ],
+
+          // floatingActionButton: FloatingActionButton.extended(
+          //   onPressed: () {
+          //     generateRandomQuestion();
+          //   },
+          //   label: Text('Naechste Frage'),
+          //   backgroundColor: Colors.orange,
+          // ),
+        ));
   }
 }
 
@@ -376,7 +381,7 @@ class QuestionCard extends StatefulWidget {
   _QuestionCardState createState() => _QuestionCardState();
 }
 
-class _QuestionCardState extends State<QuestionCard>{
+class _QuestionCardState extends State<QuestionCard> {
   TruthOrDareQuestion _question;
 
   String frontCardText;
@@ -402,15 +407,16 @@ class _QuestionCardState extends State<QuestionCard>{
   @override
   Widget build(BuildContext context) {
     return new Stack(
-      children: <Widget>[ InkWell(
-        //TODO put this one one Widget up.
-        onTap: () {
-          //onCardToogle();
-        },
-        child: questionCardWidget(
-          _question.questionText,
-          context,
-      )),
+      children: <Widget>[
+        InkWell(
+            //TODO put this one one Widget up.
+            onTap: () {
+              //onCardToogle();
+            },
+            child: questionCardWidget(
+              _question.questionText,
+              context,
+            )),
       ],
     );
   }
@@ -418,23 +424,17 @@ class _QuestionCardState extends State<QuestionCard>{
 
 Widget questionCardWidget(String text, BuildContext context) {
   return SizedBox(
-      height: MediaQuery.of(context).size.height *
-          0.7, //TODO can be weird, maybe try with paddingclass
-      width: MediaQuery.of(context).size.width * 0.74,
+      height: SizeConfig.blockSizeVertical * 70,
+      width: SizeConfig.blockSizeHorizontal * 75,
       child: Card(
-          color: Color.fromRGBO(242, 227, 208, 1),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              side: BorderSide(
+                color: Color.fromRGBO(238, 237, 237, 1),
+              )),
+          color: Color.fromRGBO(238, 237, 237, 1),
           elevation: 15.0,
-          child: FractionallySizedBox(
-              widthFactor: 0.9,
-              heightFactor: 0.95,
-              child: Container(
-                  //TODO Try to change Card shadow elevation etc..
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Colors.white, //TODO other white
-                    width: 3,
-                  )),
-                  child: CardSide(text: text)))));
+          child: CardSide(text: text)));
 }
 
 class CardSide extends StatelessWidget {
@@ -446,16 +446,16 @@ class CardSide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: FractionallySizedBox(
-        widthFactor:
-            0.85, //TODO mayby muss try with padding class, can be better for bigger screen, also card stays small.
+        widthFactor: 0.85,
         heightFactor: 0.9,
         child: Center(
           child: AutoSizeText(
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 30,
-              height: 2,
+              fontSize: SizeConfig.safeBlockHorizontal * 7,
+              //height: 2,
+              height: SizeConfig.safeBlockVertical * 0.23,
               fontFamily: 'Oswald',
             ),
           ),

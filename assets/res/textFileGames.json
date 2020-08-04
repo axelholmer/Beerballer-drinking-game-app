@@ -1,0 +1,35 @@
+[
+  { "typeOfGame": "cardgame",
+    "gameName": "Archloch",
+    "playerNumber": "2-6",
+    "gameDuration": "2-5 Minuten",
+    "materials": "Skatblatt",
+    "funFactor": "0.5",
+    "drunknessFac": "0.6",
+    "difficulty": "0.3",
+    "dirtyFactor": "0.3",
+    "imagePath": "./assets/images/games/cardGames/Arschloch.jpg"
+  },
+  { "typeOfGame": "cardgame",
+    "gameName": "Pferderennen",
+    "playerNumber": "2-5",
+    "gameDuration": "5-15 Minuten",
+    "materials": "Skatblatt",
+    "funFactor": "0.6",
+    "drunknessFac": "0.4",
+    "difficulty": "0.3",
+    "dirtyFactor": "0.3",
+    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+  },
+  { "typeOfGame": "cardgame",
+    "gameName": "Mau Mau",
+    "playerNumber": "2-4",
+    "gameDuration": "5-20 Minuten",
+    "materials": "Mau Mau Spielset",
+    "funFactor": "0.4",
+    "drunknessFac": "0.1",
+    "difficulty": "0.9",
+    "dirtyFactor": "1",
+    "imagePath": "./assets/images/games/cardGames/maumau.jpg"
+  }
+]

@@ -16,14 +16,17 @@ import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:testflutter/listOfGames.dart';
+import 'package:tuple/tuple.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'GameClass.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
 import 'SchaetzenPage.dart';
 import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'SizeConfig.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
 
@@ -35,6 +38,11 @@ List<QuestionEstimation> listEstimateQuestions;
 List<TruthOrDareQuestion> listTruDareQuestions;
 List<QuestionNeverHaveI> listNeverEverHAveIquestions;
 List<QuestionCategoryGame> listCategoryQuestions;
+List<GameClass> listGames;
+List<GameClass> listBoardGames;
+List<GameClass> listCupGames;
+List<GameClass> listDiceGames;
+List<GameClass> listCardGames;
 
 void main() {
   loadEstimateAsset().then((value) {
@@ -45,7 +53,7 @@ void main() {
   runApp(MyApp());
 }
 
-//Try surround Materialapp with inheritedwidget and update Values over updateShouldNotify
+//TODO replace Container with SizedBox for Gaps -> more eff
 class InheritedMainWidget extends InheritedWidget {
   InheritedMainWidget({
     Key key,
@@ -141,6 +149,51 @@ List<QuestionCategoryGame> parseCategoryQuestion(String responseBody) {
       .toList();
 }
 
+//Games load
+Future<List<GameClass>> loadGames() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final questionsString =
+      await rootBundle.loadString('./assets/res/textFileGames.json');
+
+  return parseGames(questionsString);
+}
+
+List<GameClass> parseGames(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<GameClass>((json) => GameClass.fromJson(json)).toList();
+}
+
+List<GameClass> sortGamesIntoLists(List<GameClass> list, String game) {
+  List<GameClass> returnList = List<GameClass>();
+  for (var i = 0; i < list.length; i++) {
+    // switch (list[i].typeOfGame) {
+    //   case "boardgame":
+    //     listBoardGames.add(list[i]);
+    //     break;
+    //   case "cardgame":
+    //     listCardGames.add(list[i]);
+    //     break;
+    //   case "dicegame":
+    //     listDiceGames.add(list[i]);
+    //     break;
+    //   case "cupgame":
+    //     listCupGames.add(list[i]);
+    //     break;
+    //   default:
+    //     {
+    //       print('Gamelist not found: ' + list[i].typeOfGame);
+    //     }
+    //     break;
+    // }
+    if (game == list[i].typeOfGame) {
+      returnList.add(list[i]);
+      //print(list[i].gameName);
+    }
+  }
+  return returnList;
+}
+
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
@@ -173,6 +226,12 @@ class _MyAppState extends State<MyApp> {
       });
     });
 
+    loadGames().then((value) {
+      setState(() {
+        listGames = value;
+      });
+    });
+
     super.initState();
   }
 
@@ -180,15 +239,29 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     precacheImage(
         AssetImage("./assets/images/BeerBallerLogo_kleiner.png"), context);
+    precacheImage(AssetImage("./assets/images/boardGameIcon.png"), context);
+    precacheImage(AssetImage("./assets/images/cardGamesIcon.png"), context);
+    precacheImage(AssetImage("./assets/images/cupGamesIcon.png"), context);
+    precacheImage(AssetImage("./assets/images/diceGamesIcon.png"), context);
+    precacheImage(AssetImage("./assets/images/inGameAppIcon.png"), context);
+    precacheImage(AssetImage("./assets/images/otherGamesIcon.png"), context);
+
+    precacheImage(
+        AssetImage("./assets/images/games/cardGames/Arschloch.jpg"), context);
+    precacheImage(
+        AssetImage("./assets/images/games/cardGames/pferderennen.jpg"),
+        context);
+    precacheImage(
+        AssetImage("assets/images/games/cardGames/maumau.jpg"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
     return InheritedMainWidget(
       child: MaterialApp(
         title: 'Beerballer Trinkspiele',
         theme: ThemeData(
             brightness: Brightness.light,
-            primaryColor: Colors.lightBlue[800],
-            accentColor: Colors.orangeAccent[200],
-            fontFamily: 'Oswald'),
+            primaryColor: Color.fromRGBO(36, 36, 36, 1),
+            accentColor: Color.fromRGBO(255, 255, 255, 1),
+            fontFamily: 'Inknut'),
         home: GameMenu(),
       ),
       listTruDareQuestions: listTruDareQuestions,
@@ -216,19 +289,23 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
   //       title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
   // ];
 
-  final List<String> _gameChoices = const <String>[
-    "In App Spiele",
-    "Wurfelspiele",
-    "Kartenspiele",
-    "Brettspiele",
-    "Becherspiele",
-    "Sonstiges"
+  final List<Tuple2<String, String>> _gameChoices =
+      const <Tuple2<String, String>>[
+    Tuple2<String, String>(
+        "In App Spiele", "./assets/images/inGameAppIcon.png"),
+    Tuple2<String, String>("Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+    Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
+    Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
+    Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
+    Tuple2<String, String>("Sonstiges", "./assets/images/otherGamesIcon.png")
   ];
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      body: _gameChoiceButtons(_gameChoices, context),
+      backgroundColor: Theme.of(context).primaryColor,
+      body: _gameChoiceWidgets(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
           InheritedMainWidget.of(context).myLogo, this),
@@ -237,46 +314,92 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
   }
 }
 
-Widget _gameChoiceButtons(
-    final List<String> gameChoices, BuildContext context) {
+Widget _gameChoiceWidgets(
+    final List<Tuple2<String, String>> gameChoices, BuildContext context) {
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: 40));
+    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2.5));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
   }
-  gameChoiceWidgets.add(SizedBox(height: 40));
+  //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2));
 
   return Center(
-    child: IntrinsicWidth(
-      child: Column /*or Column*/ (
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: gameChoiceWidgets,
+      child: Column(
+    children: <Widget>[
+      Container(
+        height: SizeConfig.blockSizeVertical * 11,
       ),
-    ),
-  );
+      Text(
+        "Best of Trinkspiele",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: SizeConfig.safeBlockHorizontal * 8,
+          fontWeight: FontWeight.w900,
+          color: Color.fromRGBO(238, 237, 237, 1),
+          height: 0.4,
+        ),
+      ),
+      Text(
+        "50 Spiele, um nie wieder nüchtern zu sein!",
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: SizeConfig.safeBlockHorizontal * 3.8,
+          fontWeight: FontWeight.w700,
+          color: Color.fromRGBO(238, 237, 237, 1),
+        ),
+      ),
+      Container(
+        height: SizeConfig.blockSizeVertical * 2.5,
+      ),
+      IntrinsicWidth(
+        child: Column /*or Column*/ (
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: gameChoiceWidgets),
+      ),
+    ],
+  ));
 }
 
-Widget _gameChoiceButton(String gameChoice, BuildContext context) {
+Widget _gameChoiceButton(
+    Tuple2<String, String> gameChoice, BuildContext context) {
   return RaisedButton(
-    color: Color.fromRGBO(255, 255, 255, 0.5),
+    color: Theme.of(context).accentColor,
     shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-        side: BorderSide(color: Colors.black)),
+        borderRadius: BorderRadius.circular(11.0),
+        side: BorderSide(
+          color: Theme.of(context).accentColor,
+        )),
     onPressed: () {
       _selectGameChoice(gameChoice, context);
     },
     child: Container(
-      //
-      child: Text(
-        gameChoice,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 30,
+        child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: <Widget>[
+        Container(
+          height: SizeConfig.blockSizeVertical * 8,
+          width: SizeConfig.blockSizeHorizontal * 2,
         ),
-      ),
-    ),
+        Text(
+          gameChoice.item1,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              fontSize: SizeConfig.safeBlockHorizontal * 4,
+              fontWeight: FontWeight.w700),
+        ),
+        Container(
+          height: SizeConfig.blockSizeVertical * 8,
+          width: SizeConfig.blockSizeHorizontal * 15,
+        ),
+        Image.asset(
+          gameChoice.item2,
+          //width: SizeConfig.blockSizeHorizontal * ,
+          height: SizeConfig.blockSizeVertical * 8,
+        ),
+      ],
+    )),
   );
 }
 
@@ -293,8 +416,9 @@ class GameChoice {
 // }
 // UserStatus.notDetermined;
 
-void _selectGameChoice(String choice, BuildContext context) {
-  switch (choice) {
+//TODO a loadFunction for multiplelists
+void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
+  switch (choice.item1) {
     case "In App Spiele":
       {
         Navigator.push(
@@ -302,32 +426,53 @@ void _selectGameChoice(String choice, BuildContext context) {
       }
       break;
     case "Wurfelspiele":
+      listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+      print(listDiceGames);
+      // Navigator.push(
+      //     context,
+      //     CustomTransistionAnimation(
+      //         page: listOfGames(
+      //             items: List<String>.generate(10000, (i) => "Item $i"))));
       Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(
-                  items: List<String>.generate(10000, (i) => "Item $i"))));
+                  items: listDiceGames,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
       break;
     case "Kartenspiele":
+      listCardGames = sortGamesIntoLists(listGames, "cardgame");
+      print(listCardGames);
       Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(
-                  items: List<String>.generate(10000, (i) => "Item $i"))));
+                  items: listCardGames,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
       break;
     case "Brettspiele":
+      listBoardGames = sortGamesIntoLists(listGames, "boardgame");
+      print(listBoardGames);
       Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(
-                  items: List<String>.generate(10000, (i) => "Item $i"))));
+                  items: listBoardGames,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
       break;
     case "Becherspiele":
+      listCupGames = sortGamesIntoLists(listGames, "cupgame");
+      print(listCupGames);
       Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(
-                  items: List<String>.generate(10000, (i) => "Item $i"))));
+                  items: listCupGames,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
       break;
     case "Sonstiges":
       {

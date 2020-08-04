@@ -28,8 +28,8 @@ dependencies:
   gradient_widgets: ^0.5.2
   font_awesome_flutter: ^8.8.1
   url_launcher: ^5.4.2
-
-
+  percent_indicator: ^2.1.5
+  tuple: ^1.0.3
 
 dev_dependencies:
   flutter_test:
@@ -48,15 +48,38 @@ flutter:
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-VariableFont_wght.ttf
+    - family: Inknut
+      fonts:
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Black.ttf
+          weight: 900
 
   assets:
-  - assets/images/PNGFormat_klein.png
-  - assets/images/BeerBallerLogo_kleiner.png
-  - assets/res/textfile.json
-  - assets/res/textFileTruDar.json
-  - assets/res/textFileNeverEver.json
-  - assets/res/textFileCategoryGame.json
-  
+    - assets/images/PNGFormat_klein.png
+    - assets/images/BeerBallerLogo_kleiner.png
+    - assets/res/textfile.json
+    - assets/res/textFileTruDar.json
+    - assets/res/textFileNeverEver.json
+    - assets/res/textFileCategoryGame.json
+    - assets/res/textFileGames.json
+
+    - assets/images/boardGameIcon.png
+    - assets/images/cardGamesIcon.png
+    - assets/images/cupGamesIcon.png
+    - assets/images/inGameAppIcon.png
+    - assets/images/otherGamesIcon.png
+    - assets/images/diceGamesIcon.png
+
+    - assets/images/games/cardGames/Arschloch.jpg
+    - assets/images/games/cardGames/maumau.jpg
+    - assets/images/games/cardGames/pferderennen.jpg
+    
+
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

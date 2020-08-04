@@ -7,6 +7,8 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future, Timer;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:testflutter/CustomWidget/CustomBackButton.dart';
+import 'package:testflutter/SizeConfig.dart';
 import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
@@ -23,7 +25,8 @@ class SchaetzenPage extends StatefulWidget {
   _SchaetzenPageState createState() => _SchaetzenPageState();
 }
 
-class _SchaetzenPageState extends State<SchaetzenPage> with TickerProviderStateMixin{
+class _SchaetzenPageState extends State<SchaetzenPage>
+    with TickerProviderStateMixin {
   QuestionEstimation _currentQuestion;
   int _questionListCount;
   @override
@@ -33,9 +36,9 @@ class _SchaetzenPageState extends State<SchaetzenPage> with TickerProviderStateM
 
     _getQuestion();
 
-    Timer(Duration(milliseconds: 200), () {
-      _showMyDialog();
-    });
+    // Timer(Duration(milliseconds: 200), () {
+    //   _showMyDialog();
+    // });
 
     super.initState();
   }
@@ -100,29 +103,22 @@ class _SchaetzenPageState extends State<SchaetzenPage> with TickerProviderStateM
   Widget build(BuildContext context) {
     print(_currentQuestion.questionText);
     return Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
-        floatingActionButton: Customfloatingactionbutton(InheritedMainWidget.of(context).myLogo, this),
+        floatingActionButton: Customfloatingactionbutton(
+            InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Stack(
+        body: Column(
           children: <Widget>[
-            // Container(
-            //     decoration: new BoxDecoration(
-            //       image: new DecorationImage(
-            //         image: new AssetImage("./assets/images/bild1.jpg"),
-            //         alignment: Alignment(-.95, 0),
-            //         fit: BoxFit.cover,
-            //       ),
-            //     ),
-            //     child: new BackdropFilter(
-            //       filter: new ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
-            //       child: new Container(
-            //         decoration:
-            //             new BoxDecoration(color: Colors.white.withOpacity(0.0)),
-            //       ),
-            //     )),
             Container(
-              color: Color.fromRGBO(255, 255, 255, 0),
+              height: SizeConfig.blockSizeVertical * 5,
             ),
+            Row(children: <Widget>[
+              Container(
+                width: SizeConfig.blockSizeHorizontal * 2,
+              ),
+              CustomBackButton(context),
+            ]),
             Center(
                 child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 600),
@@ -134,66 +130,66 @@ class _SchaetzenPageState extends State<SchaetzenPage> with TickerProviderStateM
                 key: ValueKey<QuestionEstimation>(_currentQuestion),
               ),
             )),
-            Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: RaisedButton(
-                      color: Color.fromRGBO(255, 255, 255, 0.5),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: BorderSide(color: Colors.black)),
-                      onPressed: () {
-                        _getQuestion();
-                      },
-                      child: Container(
-                        //
-                        child: Text(
-                          "Nächste Karte",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Oswald',
-                          ),
-                        ),
-                      ),
-                    ))),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        ClipOval(
-                            child: Material(
-                                type: MaterialType.transparency,
-                                child: IconButton(
-                                    // color: Color.fromRGBO(255, 255, 255, 0.5),
-                                    // shape: RoundedRectangleBorder(
-                                    //     borderRadius: BorderRadius.circular(10.0),
-                                    //     side: BorderSide(color: Colors.black)),
-                                    iconSize: 50,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    icon: Icon(Icons.close)))),
-                        Spacer(
-                          flex: 2,
-                        ),
-                        ClipOval(
-                            child: Material(
-                                type: MaterialType.transparency,
-                                child: IconButton(
-                                  onPressed: () {
-                                    _showMyDialog();
-                                  },
-                                  icon: Icon(Icons.help_outline),
-                                  iconSize: 50,
-                                  //purple
-                                ))),
-                      ],
-                    ))),
+            // Align(
+            //     alignment: Alignment.bottomCenter,
+            //     child: Padding(
+            //         padding: const EdgeInsets.all(30.0),
+            //         child: RaisedButton(
+            //           color: Color.fromRGBO(255, 255, 255, 0.5),
+            //           shape: RoundedRectangleBorder(
+            //               borderRadius: BorderRadius.circular(10.0),
+            //               side: BorderSide(color: Colors.black)),
+            //           onPressed: () {
+            //             _getQuestion();
+            //           },
+            //           child: Container(
+            //             //
+            //             child: Text(
+            //               "Nächste Karte",
+            //               textAlign: TextAlign.center,
+            //               style: TextStyle(
+            //                 fontSize: 30,
+            //                 fontFamily: 'Oswald',
+            //               ),
+            //             ),
+            //           ),
+            //         ))),
+            // Align(
+            //     alignment: Alignment.topLeft,
+            //     child: Padding(
+            //         padding: const EdgeInsets.all(40.0),
+            //         child: Row(
+            //           mainAxisAlignment: MainAxisAlignment.start,
+            //           children: <Widget>[
+            //             ClipOval(
+            //                 child: Material(
+            //                     type: MaterialType.transparency,
+            //                     child: IconButton(
+            //                         // color: Color.fromRGBO(255, 255, 255, 0.5),
+            //                         // shape: RoundedRectangleBorder(
+            //                         //     borderRadius: BorderRadius.circular(10.0),
+            //                         //     side: BorderSide(color: Colors.black)),
+            //                         iconSize: 50,
+            //                         onPressed: () {
+            //                           Navigator.pop(context);
+            //                         },
+            //                         icon: Icon(Icons.close)))),
+            //             Spacer(
+            //               flex: 2,
+            //             ),
+            //             ClipOval(
+            //                 child: Material(
+            //                     type: MaterialType.transparency,
+            //                     child: IconButton(
+            //                       onPressed: () {
+            //                         _showMyDialog();
+            //                       },
+            //                       icon: Icon(Icons.help_outline),
+            //                       iconSize: 50,
+            //                       //purple
+            //                     ))),
+            //           ],
+            //         ))),
           ],
 
           // floatingActionButton: FloatingActionButton.extended(
@@ -313,24 +309,17 @@ typedef void CardToogle();
 Widget questionCardWidget(
     String text, BuildContext context, CardToogle _handleCardToogle) {
   return SizedBox(
-      height: MediaQuery.of(context).size.height *
-          0.7, //TODO can be weird, maybe try with paddingclass
-      width: MediaQuery.of(context).size.width * 0.74,
+      height: SizeConfig.blockSizeVertical * 70,
+      width: SizeConfig.blockSizeHorizontal * 75,
       child: Card(
-          color: Color.fromRGBO(242, 227, 208, 1),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              side: BorderSide(
+                color: Color.fromRGBO(238, 237, 237, 1),
+              )),
+          color: Color.fromRGBO(238, 237, 237, 1),
           elevation: 15.0,
-          child: FractionallySizedBox(
-              widthFactor: 0.9,
-              heightFactor: 0.95,
-              child: Container(
-                  //TODO Try to change Card shadow elevation etc..
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Colors.white, //TODO other white
-                    width: 3,
-                  )),
-                  child:
-                      CardSide(text: text, onCardToogle: _handleCardToogle)))));
+          child: CardSide(text: text, onCardToogle: _handleCardToogle)));
 }
 
 class CardSide extends StatelessWidget {
@@ -339,23 +328,7 @@ class CardSide extends StatelessWidget {
   final String text;
   final CardToogle onCardToogle;
 
-  // Color _getColor(BuildContext context) {
-  //   // The theme depends on the BuildContext because different parts
-  //   // of the tree can have different themes.
-  //   // The BuildContext indicates where the build is
-  //   // taking place and therefore which theme to use.
 
-  //   return inCart ? Colors.black54 : Theme.of(context).primaryColor;
-  // }
-
-  // TextStyle _getTextStyle(BuildContext context) {
-  //   if (!inCart) return null;
-
-  //   return TextStyle(
-  //     color: Colors.black54,
-  //     decoration: TextDecoration.lineThrough,
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -367,15 +340,16 @@ class CardSide extends StatelessWidget {
         child: Container(
           child: FractionallySizedBox(
             widthFactor:
-                0.85, //TODO mayby muss try with padding class, can be better for bigger screen, also card stays small.
+                0.85, 
             heightFactor: 0.9,
             child: Center(
               child: AutoSizeText(
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 30,
-                  height: 2,
+                  fontSize: SizeConfig.safeBlockHorizontal * 7,
+                  //height: 2,
+                  height: SizeConfig.safeBlockVertical * 0.23,
                   fontFamily: 'Oswald',
                 ),
               ),

@@ -10,10 +10,12 @@ import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Player.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
 import 'Questionclasses/TruthOrDareQuestion.dart';
+import 'SizeConfig.dart';
 import 'TypeOfQuestion.dart';
 
 //Question randomperson oder jungste person und dannach reihe? Normaler fall bei random so gibt es eine Flasche
@@ -44,9 +46,9 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
     _questionListCount = 0;
     _currentPlayerListCount = 0;
     _getPlayerName();
-    Timer(Duration(milliseconds: 200), () {
-      _showMyDialog();
-    });
+    // Timer(Duration(milliseconds: 200), () {
+    //   _showMyDialog();
+    // });
 
     super.initState();
   }
@@ -81,7 +83,7 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
       textAlign: TextAlign.center,
       overflow: TextOverflow.ellipsis,
       style: new TextStyle(
-        fontSize: 30.0,
+        fontSize: SizeConfig.safeBlockHorizontal * 10,
         color: Colors.orange[200],
       ),
       //style: TextStyle(fontWeight: FontWeight.bold),
@@ -89,11 +91,34 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
   }
 
   Widget _nextCard() {
+//  RaisedButton(
+//                 color: Theme.of(context).accentColor,
+//                 shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(11.0),
+//                     side: BorderSide(color: Theme.of(context).accentColor)),
+//                 onPressed: () {
+//                   setState(() {
+//                     _getTruthQuestion(listTruthQuestions);
+//                     _isCardvisible = true;
+//                   });
+//                 },
+//                 child: Container(
+//                   //
+//                   child: Text(
+//                     "Wahrheit",
+//                     textAlign: TextAlign.center,
+//                     style: TextStyle(
+//                       fontSize: SizeConfig.safeBlockHorizontal * 6,
+//                     ),
+//                   ),
+//                 ),
+//               )),
+
     return RaisedButton(
-      color: Color.fromRGBO(255, 255, 255, 0.5),
+      color: Theme.of(context).accentColor,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-          side: BorderSide(color: Colors.black)),
+          borderRadius: BorderRadius.circular(11.0),
+          side: BorderSide(color: Theme.of(context).accentColor)),
       onPressed: () {
         setState(() {
           _isCardvisible = true;
@@ -104,8 +129,7 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
           "Ich habe noch nie...",
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 30,
-            fontFamily: 'Oswald',
+            fontSize: SizeConfig.safeBlockHorizontal * 6,
           ),
         ),
       ),
@@ -162,25 +186,35 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
         InheritedMainWidget.of(context).listNeverHaveIQuestions;
     _getQuestion(neverEverHaveIList);
     return Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Stack(
+        body: Column(
           children: <Widget>[
-            Container(
-              color: Color.fromRGBO(255, 255, 255, 0),
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 5,
             ),
+            Row(children: <Widget>[
+              SizedBox(
+                width: SizeConfig.blockSizeHorizontal * 2,
+              ),
+              CustomBackButton(context),
+            ]),
             Visibility(
               visible: _isCardvisible == false,
-              child: Center(
-                  child: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: SizeConfig.blockSizeVertical * 20,
+                  ),
                   _playerNameText(),
                   _nextCard(),
                 ],
-              )),
+              ),
             ),
             Visibility(
               visible: _isCardvisible == true,
@@ -192,82 +226,47 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
                 ),
               ),
             ),
-            Visibility(
-              visible: _isCardvisible == true,
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                      padding: const EdgeInsets.all(30.0),
-                      child: RaisedButton(
-                        color: Color.fromRGBO(255, 255, 255, 0.5),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            side: BorderSide(color: Colors.black)),
-                        onPressed: () {
-                          setState(() {
-                            //_getQuestion(neverEverHaveIList);
-                            _getPlayerName();
-                            _isCardvisible = false;
-                          });
-                        },
-                        child: Container(
-                          child: Text(
-                            "Nächste Person",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontFamily: 'Oswald',
-                            ),
-                          ),
-                        ),
-                      ))),
-            ),
-            Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                    padding: const EdgeInsets.all(40.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        ClipOval(
-                            child: Material(
-                                type: MaterialType.transparency,
-                                child: IconButton(
-                                    // color: Color.fromRGBO(255, 255, 255, 0.5),
-                                    // shape: RoundedRectangleBorder(
-                                    //     borderRadius: BorderRadius.circular(10.0),
-                                    //     side: BorderSide(color: Colors.black)),
-                                    iconSize: 50,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                    icon: Icon(Icons.close)))),
-                        Spacer(
-                          flex: 2,
-                        ),
-                        ClipOval(
-                            child: Material(
-                                type: MaterialType.transparency,
-                                child: IconButton(
-                                  onPressed: () {
-                                    _showMyDialog();
-                                  },
-                                  icon: Icon(Icons.help_outline),
-                                  iconSize: 50,
-                                  //purple
-                                ))),
-                      ],
-                    ))),
+            // Visibility(
+            //   visible: _isCardvisible == true,
+            //   child: Align(
+            //       alignment: Alignment.bottomCenter,
+            //       child: Padding(
+            //           padding: const EdgeInsets.all(30.0),
+            //           child: RaisedButton(
+            //             color: Color.fromRGBO(255, 255, 255, 0.5),
+            //             shape: RoundedRectangleBorder(
+            //                 borderRadius: BorderRadius.circular(10.0),
+            //                 side: BorderSide(color: Colors.black)),
+            //             onPressed: () {
+            //               setState(() {
+            //                 //_getQuestion(neverEverHaveIList);
+            //                 _getPlayerName();
+            //                 _isCardvisible = false;
+            //               });
+            //             },
+            //             child: Container(
+            //               child: Text(
+            //                 "Nächste Person",
+            //                 textAlign: TextAlign.center,
+            //                 style: TextStyle(
+            //                   fontSize: 30,
+            //                   fontFamily: 'Oswald',
+            //                 ),
+            //               ),
+            //             ),
+            //           ))),
+            // ),
           ],
+        )
 
-          // floatingActionButton: FloatingActionButton.extended(
-          //   onPressed: () {
-          //     generateRandomQuestion();
-          //   },
-          //   label: Text('Naechste Frage'),
-          //   backgroundColor: Colors.orange,
-          // ),
-        ));
+        // floatingActionButton: FloatingActionButton.extended(
+        //   onPressed: () {
+        //     generateRandomQuestion();
+        //   },
+        //   label: Text('Naechste Frage'),
+        //   backgroundColor: Colors.orange,
+        // ),
+        );
   }
 }
 
@@ -323,23 +322,17 @@ class _QuestionCardState extends State<QuestionCard> {
 
 Widget questionCardWidget(String text, BuildContext context) {
   return SizedBox(
-      height: MediaQuery.of(context).size.height *
-          0.7, //TODO can be weird, maybe try with paddingclass
-      width: MediaQuery.of(context).size.width * 0.74,
+      height: SizeConfig.blockSizeVertical * 70,
+      width: SizeConfig.blockSizeHorizontal * 75,
       child: Card(
-          color: Color.fromRGBO(242, 227, 208, 1),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              side: BorderSide(
+                color: Color.fromRGBO(238, 237, 237, 1),
+              )),
+          color: Color.fromRGBO(238, 237, 237, 1),
           elevation: 15.0,
-          child: FractionallySizedBox(
-              widthFactor: 0.9,
-              heightFactor: 0.95,
-              child: Container(
-                  //TODO Try to change Card shadow elevation etc..
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                    color: Colors.white, //TODO other white
-                    width: 3,
-                  )),
-                  child: CardSide(text: text)))));
+          child: CardSide(text: text)));
 }
 
 class CardSide extends StatelessWidget {
@@ -351,16 +344,16 @@ class CardSide extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: FractionallySizedBox(
-        widthFactor:
-            0.85, //TODO mayby muss try with padding class, can be better for bigger screen, also card stays small.
+        widthFactor: 0.85,
         heightFactor: 0.9,
         child: Center(
           child: AutoSizeText(
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 30,
-              height: 2,
+              fontSize: SizeConfig.safeBlockHorizontal * 7,
+              //height: 2,
+              height: SizeConfig.safeBlockVertical * 0.23,
               fontFamily: 'Oswald',
             ),
           ),
