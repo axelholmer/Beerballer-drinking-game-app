@@ -30,6 +30,7 @@ dependencies:
   url_launcher: ^5.4.2
   percent_indicator: ^2.1.5
   tuple: ^1.0.3
+  device_preview: ^0.4.7
 
 dev_dependencies:
   flutter_test:

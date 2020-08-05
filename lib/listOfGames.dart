@@ -17,7 +17,8 @@ class listOfGames extends StatelessWidget {
   final String logPath;
   final String pageTitle;
 
-  listOfGames({Key key, @required this.items, this.logPath, this.pageTitle}) : super(key: key);
+  listOfGames({Key key, @required this.items, this.logPath, this.pageTitle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +45,11 @@ class listOfGames extends StatelessWidget {
                   style: TextStyle(
                     fontSize: SizeConfig.safeBlockHorizontal * 8,
                     color: Color.fromRGBO(238, 237, 237, 1),
-                     fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w900,
                   ),
+                ),
+                SizedBox(
+                  width: SizeConfig.blockSizeHorizontal * 1.5,
                 ),
                 Image.asset(
                   logPath,

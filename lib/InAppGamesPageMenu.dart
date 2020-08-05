@@ -236,10 +236,10 @@ Widget _gameChoiceWidget(
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: 40));
+    gameChoiceWidgets.add(SizedBox(height: 20));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
   }
-  gameChoiceWidgets.add(SizedBox(height: 40));
+  //gameChoiceWidgets.add(SizedBox(height: 20));
 
   return Center(
       child: Column(children: <Widget>[

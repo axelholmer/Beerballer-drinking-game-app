@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/SizeConfig.dart';
 import 'dart:math';
 
 import 'package:testflutter/main.dart';
@@ -11,8 +12,8 @@ Widget Customfloatingactionbutton(myImage, ticketprovider) {
       duration: Duration(seconds: 1), vsync: ticketprovider);
 
   return Container(
-      height: 75.0,
-      width: 75.0,
+      height: SizeConfig.blockSizeVertical * 15.0,
+      width: SizeConfig.blockSizeHorizontal * 23,
       child: FloatingActionButton(
         onPressed: () {
         if(_controller.isCompleted) {

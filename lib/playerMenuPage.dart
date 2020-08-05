@@ -106,10 +106,10 @@ class _PlayersMenuState extends State<PlayersMenu>
             ),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 50, // constrain height
+            height: SizeConfig.blockSizeVertical * 40, // constrain height
             child: _buildPlayerList(),
           ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 5),
+          SizedBox(height: SizeConfig.blockSizeVertical * 3),
           //_warningTextNoPlayers(),
           RaisedButton(
             color: Theme.of(context).accentColor,
@@ -201,7 +201,7 @@ class _PlayersMenuState extends State<PlayersMenu>
     return ListView.separated(
       controller: _controller,
       itemCount: _players.length + 1,
-      padding: EdgeInsets.all(SizeConfig.safeBlockVertical * 6),
+      padding: EdgeInsets.all(SizeConfig.safeBlockVertical * 0),
       itemBuilder: (context, index) {
         if (index == _players.length) {
           return _buildLastRow();

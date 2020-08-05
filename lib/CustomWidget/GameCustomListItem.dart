@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/CustomWidget/customPopupDialog.dart';
 import 'package:testflutter/CustomWidget/customProgressbar.dart';
 import 'package:testflutter/SizeConfig.dart';
 import '../GameClass.dart';
@@ -134,19 +135,25 @@ class GameCustomListItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text(
-                        "Betrinkskala",
-                        style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                          fontWeight: FontWeight.w800,
-                          fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                        ),
-                      ),
-                      customProgressBar(gameClass.drunknessFactor),
-                    ],
-                  ),
+                  Container(
+                    
+                      width: SizeConfig.blockSizeHorizontal * 40,
+                      height: SizeConfig.blockSizeVertical * 12,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "Betrinkskala",
+                            style: TextStyle(
+                              color: Theme.of(context).accentColor,
+                              fontWeight: FontWeight.w800,
+                              fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                            ),
+                          ),
+                          customProgressBar(gameClass.drunknessFactor),
+                        ],
+                      )),
                   Column(
                     children: <Widget>[
                       Text("Spaßfaktor",
@@ -196,7 +203,15 @@ class GameCustomListItem extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(11.0),
                       side: BorderSide(color: Theme.of(context).primaryColor)),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => customPopupDialog(
+                          context,
+                          gameClass.gameName,
+                          gameClass.explanationList),
+                    );
+                  },
                   child: Container(
                     //
                     child: Text(

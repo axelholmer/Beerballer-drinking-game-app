@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testflutter/SizeConfig.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+//TODO fix sizes here
 Widget BottomNavigationBarButtons(BuildContext context) {
   return BottomAppBar(
     shape: const CircularNotchedRectangle(),
     child: Container(
       //color: Theme.of(context).accentColor,
-      height: 60.0,
+      height: SizeConfig.blockSizeVertical *9.0,
       child: Row /*or Column*/ (
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           IconButton(
-            iconSize: 40.0,
+            iconSize: SizeConfig.safeBlockHorizontal * 8.0,
             icon: Icon(FontAwesomeIcons.info),
             onPressed: () {},
           ),
           IconButton(
-            iconSize: 40.0,
+            iconSize: SizeConfig.safeBlockHorizontal * 8.0,
             icon: Icon(FontAwesomeIcons.shopify),
             onPressed: _launchURLShop,
           ),
           SizedBox(
-            width: 40,
+            width: SizeConfig.blockSizeHorizontal * 27,
           ),
           IconButton(
-            iconSize: 40.0,
+            iconSize:  SizeConfig.safeBlockHorizontal * 8.0,
             icon: Icon(FontAwesomeIcons.instagram),
             onPressed: _launchURLInsta,
           ),
           IconButton(
-            iconSize: 40.0,
+            iconSize:  SizeConfig.safeBlockHorizontal * 8.0,
             icon: Icon(FontAwesomeIcons.facebook),
             onPressed: _launchURLFacebook,
           ),

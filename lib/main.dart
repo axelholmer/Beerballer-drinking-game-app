@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/CategoryGamePage.dart';
@@ -319,7 +320,7 @@ Widget _gameChoiceWidgets(
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2.5));
+    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 1.5));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
   }
   //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2));
@@ -327,30 +328,38 @@ Widget _gameChoiceWidgets(
   return Center(
       child: Column(
     children: <Widget>[
-      Container(
+      SizedBox(
         height: SizeConfig.blockSizeVertical * 11,
       ),
-      Text(
-        "Best of Trinkspiele",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: SizeConfig.safeBlockHorizontal * 8,
-          fontWeight: FontWeight.w900,
-          color: Color.fromRGBO(238, 237, 237, 1),
-          height: 0.4,
-        ),
-      ),
-      Text(
-        "50 Spiele, um nie wieder nüchtern zu sein!",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: SizeConfig.safeBlockHorizontal * 3.8,
-          fontWeight: FontWeight.w700,
-          color: Color.fromRGBO(238, 237, 237, 1),
+      Container(
+        width: SizeConfig.screenWidth,
+        child: AutoSizeText(
+          "Best of Trinkspiele",
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: SizeConfig.safeBlockHorizontal * 8,
+            fontWeight: FontWeight.w900,
+            color: Color.fromRGBO(238, 237, 237, 1),
+            height: 0.4,
+          ),
         ),
       ),
       Container(
-        height: SizeConfig.blockSizeVertical * 2.5,
+        width: SizeConfig.screenWidth,
+        child: AutoSizeText(
+          "50 Spiele, um nie wieder nüchtern zu sein!",
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: SizeConfig.safeBlockHorizontal * 3.8,
+            fontWeight: FontWeight.w700,
+            color: Color.fromRGBO(238, 237, 237, 1),
+          ),
+        ),
+      ),
+      SizedBox(
+        height: SizeConfig.blockSizeVertical * 0.1,
       ),
       IntrinsicWidth(
         child: Column /*or Column*/ (
@@ -378,8 +387,8 @@ Widget _gameChoiceButton(
         child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
-        Container(
-          height: SizeConfig.blockSizeVertical * 8,
+        SizedBox(
+          // height: SizeConfig.blockSizeVertical * 2,
           width: SizeConfig.blockSizeHorizontal * 2,
         ),
         Text(
@@ -395,7 +404,7 @@ Widget _gameChoiceButton(
         ),
         Image.asset(
           gameChoice.item2,
-          //width: SizeConfig.blockSizeHorizontal * ,
+          width: SizeConfig.blockSizeHorizontal * 14,
           height: SizeConfig.blockSizeVertical * 8,
         ),
       ],

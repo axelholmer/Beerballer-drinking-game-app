@@ -1,0 +1,4 @@
+boardgame
+dicegame
+cardgame
+cupgame
