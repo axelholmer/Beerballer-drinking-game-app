@@ -216,8 +216,8 @@ class _MyAppState extends State<MyApp> {
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
     
     
-    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    precacheImage(myLogo.image, context);
+    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    // precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {
@@ -349,7 +349,7 @@ Widget _gameChoiceWidgets(
       ),
       Flexible(
         child: FractionallySizedBox(
-          heightFactor: 0.3,
+          heightFactor: 0.37,
           widthFactor: 1,
           child: Stack(
             alignment: Alignment.center,
@@ -474,7 +474,7 @@ Widget _gameChoiceWidgets(
       // ),
       Flexible(
           child: FractionallySizedBox(
-              heightFactor: 1.5,
+              heightFactor: 1.7,
               widthFactor: 1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -486,7 +486,7 @@ Widget _gameChoiceWidgets(
                           context)),
                   Flexible(
                       child: FractionallySizedBox(
-                    heightFactor: 0.30,
+                    heightFactor: 0.40,
                   )),
                   Flexible(
                       child: _gameChoiceButton(
@@ -495,7 +495,7 @@ Widget _gameChoiceWidgets(
                           context)),
                   Flexible(
                       child: FractionallySizedBox(
-                    heightFactor: 0.30,
+                    heightFactor: 0.40,
                   )),
                   Flexible(
                       child: _gameChoiceButton(
@@ -504,7 +504,7 @@ Widget _gameChoiceWidgets(
                           context)),
                   Flexible(
                       child: FractionallySizedBox(
-                    heightFactor: 0.30,
+                    heightFactor: 0.40,
                   )),
                   Flexible(
                       child: _gameChoiceButton(
@@ -513,7 +513,7 @@ Widget _gameChoiceWidgets(
                           context)),
                   Flexible(
                       child: FractionallySizedBox(
-                    heightFactor: 0.30,
+                    heightFactor: 0.40,
                   )),
                   Flexible(
                       child: _gameChoiceButton(
@@ -563,7 +563,7 @@ Widget _gameChoiceButton(
             Flexible(
                 child: FractionallySizedBox(
               heightFactor: 1,
-              widthFactor: 0.75,
+              widthFactor: 0.9,
               child: FittedBox(
                   alignment: Alignment.centerLeft,
                   fit: BoxFit.contain,

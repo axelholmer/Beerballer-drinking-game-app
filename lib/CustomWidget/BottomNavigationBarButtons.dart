@@ -50,7 +50,7 @@ Widget BottomNavigationBarButtons(BuildContext context) {
           //   ),
           // ),
           SizedBox(
-            width: SizeConfig.blockSizeHorizontal * 1,
+            width: SizeConfig.blockSizeHorizontal * 250,
           ),
           Expanded(
             child: FractionallySizedBox(

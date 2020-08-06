@@ -4,6 +4,7 @@
 
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/CategoryGamePage.dart';
@@ -236,54 +237,84 @@ Widget _gameChoiceWidget(
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: 20));
+    //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * ));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
+   gameChoiceWidgets.add( Flexible(
+        child: FractionallySizedBox(
+      heightFactor: 1,
+    )));
   }
   //gameChoiceWidgets.add(SizedBox(height: 20));
 
   return Center(
+      //Todo make this text + logo + backbutton its own widget.
       child: Column(children: <Widget>[
     SizedBox(
-      height: SizeConfig.blockSizeVertical * 5,
+      height: SizeConfig.blockSizeVertical * 35,
     ),
-    Row(children: <Widget>[
-      SizedBox(
-        width: SizeConfig.blockSizeHorizontal * 2,
+    Flexible(
+      child: FractionallySizedBox(
+        widthFactor: 1,
+        heightFactor: 0.35,
+        child: FittedBox(
+          alignment: Alignment.centerLeft,
+          fit: BoxFit.contain,
+          child: CustomBackButton(context),
+        ),
       ),
-      CustomBackButton(context),
-    ]),
-    Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      //crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          "In App spiele",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 8,
-            color: Color.fromRGBO(238, 237, 237, 1),
-            fontWeight: FontWeight.w900,
-          ),
-        ),
-        Image.asset(
-          "./assets/images/inGameAppIcon.png",
-          //width: SizeConfig.blockSizeHorizontal * ,
-          height: SizeConfig.blockSizeVertical * 8,
-        ),
-      ],
     ),
-    IntrinsicWidth(
-      child: Column /*or Column*/ (
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: gameChoiceWidgets,
+    Flexible(
+      child: FractionallySizedBox(
+        widthFactor: 1,
+        heightFactor: 0.5,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Flexible(
+                child: FractionallySizedBox(
+                    widthFactor: 1,
+                    heightFactor: 1,
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text(
+                        "In App spiele",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          // fontSize: SizeConfig.safeBlockHorizontal * 8,
+                          color: Color.fromRGBO(238, 237, 237, 1),
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ))),
+            Image.asset(
+              "./assets/images/inGameAppIcon.png",
+              width: SizeConfig.blockSizeHorizontal * 180,
+              height: SizeConfig.blockSizeVertical * 100,
+              //width: SizeConfig.blockSizeHorizontal * ,
+              //   height: SizeConfig.blockSizeVertical * 8,
+            ),
+          ],
+        ),
+      ),
+    ),
+    Flexible(
+      child: FractionallySizedBox(
+        widthFactor: 1,
+        heightFactor: 2.7,
+        child: Column /*or Column*/ (
+          mainAxisAlignment: MainAxisAlignment.end,
+          //crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: gameChoiceWidgets,
+        ),
       ),
     )
   ]));
 }
 
 Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
-  return RaisedButton(
+  return Flexible(
+      child: RaisedButton(
     color: Theme.of(context).accentColor,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(11.0),
@@ -293,20 +324,81 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
     onPressed: () {
       _selectGameChoice(gameChoice, context);
     },
-    child: Container(
+    child: FractionallySizedBox(
+        heightFactor: 0.35,
+        widthFactor: 0.80,
         child: Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Text(
-          gameChoice.title,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 6,
-          ),
-        ),
-      ],
-    )),
-  );
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // Flexible(  //Fix box
+            //     child: FractionallySizedBox(
+            //   widthFactor: 0.4,
+            // )),
+
+            SizedBox(
+              // height: SizeConfig.blockSizeVertical * 2,
+              width: SizeConfig.blockSizeHorizontal * 1,
+            ),
+            Flexible(
+                child: FractionallySizedBox(
+              heightFactor: 1,
+              widthFactor: 0.9,
+              child: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.contain,
+                  child: AutoSizeText(
+                    gameChoice.title,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    style: TextStyle(
+                        //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                        fontWeight: FontWeight.w700),
+                  )),
+            )),
+            // Text(
+            //   gameChoice.item1,
+            //   textAlign: TextAlign.center,
+            //   style: TextStyle(
+            //       fontSize: SizeConfig.safeBlockHorizontal * 50,
+            //       fontWeight: FontWeight.w700),
+            // ),
+
+            //  Flexible(  //Fix box
+            //     child: FractionallySizedBox(
+            //   widthFactor: 0.4,
+            // )),
+            // Container(
+            //   height: SizeConfig.blockSizeVertical * 1,
+            //   width: SizeConfig.blockSizeHorizontal * 3,
+            // ),
+          ],
+        )),
+  ));
+
+  // return  RaisedButton(
+  //   color: Theme.of(context).accentColor,
+  //   shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(11.0),
+  //       side: BorderSide(
+  //         color: Theme.of(context).accentColor,
+  //       )),
+  //   onPressed: () {
+  //     _selectGameChoice(gameChoice, context);
+  //   },
+  //   child: FractionallySizedBox(
+  //     widthFactor: 1,
+  //     child: FittedBox(
+  //         fit: BoxFit.contain,
+  //         child: AutoSizeText(
+  //           gameChoice.title,
+  //           maxLines: 1,
+  //           textAlign: TextAlign.center,
+  //           style: TextStyle(
+  //               //  fontSize: SizeConfig.safeBlockHorizontal * 6,
+  //               ),
+  //         )),
+  //   ),
+  // );
 }
 
 class GameChoice {
