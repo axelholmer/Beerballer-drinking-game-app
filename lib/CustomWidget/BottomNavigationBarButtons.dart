@@ -7,35 +7,79 @@ import 'package:url_launcher/url_launcher.dart';
 Widget BottomNavigationBarButtons(BuildContext context) {
   return BottomAppBar(
     shape: const CircularNotchedRectangle(),
-    child: Container(
+    child: FractionallySizedBox(
       //color: Theme.of(context).accentColor,
-      height: SizeConfig.blockSizeVertical *9.0,
+      heightFactor: 0.07,
+      // SizeConfig.blockSizeVertical *60.0,
       child: Row /*or Column*/ (
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          IconButton(
-            iconSize: SizeConfig.safeBlockHorizontal * 8.0,
-            icon: Icon(FontAwesomeIcons.info),
-            onPressed: () {},
-          ),
-          IconButton(
-            iconSize: SizeConfig.safeBlockHorizontal * 8.0,
-            icon: Icon(FontAwesomeIcons.shopify),
-            onPressed: _launchURLShop,
-          ),
+          Expanded(
+              child: FractionallySizedBox(
+            widthFactor: 1.25,
+            heightFactor: 1.25,
+            child: FittedBox(
+              
+              fit: BoxFit.contain,
+              child: IconButton(
+                //iconSize: SizeConfig.safeBlockHorizontal * 80.0,
+                icon: Icon(FontAwesomeIcons.info),
+                onPressed: () {},
+              ),
+            ),
+          )),
+          Expanded(
+              child: FractionallySizedBox(
+            widthFactor: 1.25,
+            heightFactor: 1.25,
+            child: FittedBox(
+              //alignment: Alignment.centerLeft,
+              fit: BoxFit.contain,
+              child: IconButton(
+                // iconSize: SizeConfig.safeBlockHorizontal * 80.0,
+                icon: Icon(FontAwesomeIcons.shopify),
+                onPressed: _launchURLShop,
+              ),
+            ),
+          )),
+
+          // Flexible(
+          //   fit: FlexFit.loose,
+          //   child: FractionallySizedBox(
+          //     widthFactor: 1,
+          //   ),
+          // ),
           SizedBox(
-            width: SizeConfig.blockSizeHorizontal * 27,
+            width: SizeConfig.blockSizeHorizontal * 1,
           ),
-          IconButton(
-            iconSize:  SizeConfig.safeBlockHorizontal * 8.0,
-            icon: Icon(FontAwesomeIcons.instagram),
-            onPressed: _launchURLInsta,
+          Expanded(
+            child: FractionallySizedBox(
+                widthFactor: 1.25,
+                heightFactor: 1.25,
+                child: FittedBox(
+                  //alignment: Alignment.centerLeft,
+                  fit: BoxFit.contain,
+                  child: IconButton(
+                    //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
+                    icon: Icon(FontAwesomeIcons.instagram),
+                    onPressed: _launchURLInsta,
+                  ),
+                )),
           ),
-          IconButton(
-            iconSize:  SizeConfig.safeBlockHorizontal * 8.0,
-            icon: Icon(FontAwesomeIcons.facebook),
-            onPressed: _launchURLFacebook,
-          ),
+          Expanded(
+              child: FractionallySizedBox(
+            widthFactor: 1.25,
+            heightFactor: 1.25,
+            child: FittedBox(
+              //alignment: Alignment.centerLeft,
+              fit: BoxFit.contain,
+              child: IconButton(
+                //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
+                icon: Icon(FontAwesomeIcons.facebook),
+                onPressed: _launchURLFacebook,
+              ),
+            ),
+          ))
         ],
       ),
     ),

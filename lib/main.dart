@@ -5,6 +5,8 @@
 import 'dart:convert';
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/CategoryGamePage.dart';
@@ -50,8 +52,14 @@ void main() {
     //TODO look up where you should load assets
     listEstimateQuestions = value;
   });
+  debugDefaultTargetPlatformOverride = TargetPlatform.fuchsia;
 
-  runApp(MyApp());
+  runApp(DevicePreview(
+    //  enabled: !kReleaseMode,
+    enabled: false,
+    builder: (context) => MyApp(),
+  ));
+  // runApp(MyApp());
 }
 
 //TODO replace Container with SizedBox for Gaps -> more eff
@@ -206,6 +214,8 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // precacheImage(AssetImage("./assets/images/logo.png"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
+    
+    
     myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
     precacheImage(myLogo.image, context);
 
@@ -320,53 +330,205 @@ Widget _gameChoiceWidgets(
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 1.5));
+    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 30));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
   }
   //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2));
 
   return Center(
       child: Column(
+       mainAxisAlignment: MainAxisAlignment.start,
     children: <Widget>[
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.7,
+      // )),
+
       SizedBox(
-        height: SizeConfig.blockSizeVertical * 11,
+        height: SizeConfig.blockSizeVertical * 40,
       ),
-      Container(
-        width: SizeConfig.screenWidth,
-        child: AutoSizeText(
-          "Best of Trinkspiele",
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 8,
-            fontWeight: FontWeight.w900,
-            color: Color.fromRGBO(238, 237, 237, 1),
-            height: 0.4,
+      Flexible(
+        child: FractionallySizedBox(
+          heightFactor: 0.3,
+          widthFactor: 1,
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: FractionallySizedBox(
+                    heightFactor: 1,
+                    widthFactor: 0.9,
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: AutoSizeText(
+                        "Best of Trinkspiele",
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        style: TextStyle(
+                          //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                          fontWeight: FontWeight.w900,
+                          color: Color.fromRGBO(238, 237, 237, 1),
+                          //  height: 1,
+                        ),
+                      ),
+                    )),
+              ),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FractionallySizedBox(
+                    heightFactor: 0.45,
+                    widthFactor: 0.95,
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: AutoSizeText(
+                        "50 Spiele, um nie wieder nüchtern zu sein!",
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        style: TextStyle(
+                          //   fontSize: SizeConfig.safeBlockHorizontal * 35,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(238, 237, 237, 1),
+                        ),
+                      ),
+                    ),
+                  )),
+            ],
           ),
         ),
       ),
-      Container(
-        width: SizeConfig.screenWidth,
-        child: AutoSizeText(
-          "50 Spiele, um nie wieder nüchtern zu sein!",
-          textAlign: TextAlign.center,
-          maxLines: 1,
-          style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 3.8,
-            fontWeight: FontWeight.w700,
-            color: Color.fromRGBO(238, 237, 237, 1),
-          ),
-        ),
-      ),
-      SizedBox(
-        height: SizeConfig.blockSizeVertical * 0.1,
-      ),
-      IntrinsicWidth(
-        child: Column /*or Column*/ (
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: gameChoiceWidgets),
-      ),
+      // Flexible(
+      //   child: FractionallySizedBox(
+      //       heightFactor: 1.5,
+      //       widthFactor: 0.9,
+      //       child: FittedBox(
+      //         fit: BoxFit.contain,
+      //         child: AutoSizeText(
+      //           "Best of Trinkspiele",
+      //           textAlign: TextAlign.center,
+      //           maxLines: 1,
+      //           style: TextStyle(
+      //             //fontSize: SizeConfig.safeBlockHorizontal * 75,
+      //             fontWeight: FontWeight.w900,
+      //             color: Color.fromRGBO(238, 237, 237, 1),
+      //             //  height: 1,
+      //           ),
+      //         ),
+      //       )),
+      // ),
+
+      // Container(
+      //   width: SizeConfig.screenWidth,
+      //   child: AutoSizeText(
+      //     "Best of Trinkspiele",
+      //     textAlign: TextAlign.center,
+      //     maxLines: 1,
+      //     style: TextStyle(
+      //      fontSize: SizeConfig.safeBlockHorizontal * 75,
+      //       fontWeight: FontWeight.w900,
+      //       color: Color.fromRGBO(238, 237, 237, 1),
+      //       height: 0.4,
+      //     ),
+      //   ),
+      // ),
+      // Flexible(
+      //   child: FractionallySizedBox(
+      //       heightFactor: 0.85,
+      //       widthFactor: 0.95,
+      //       child: FittedBox(
+      //         fit: BoxFit.contain,
+      //         child: AutoSizeText(
+      //           "50 Spiele, um nie wieder nüchtern zu sein!",
+      //           textAlign: TextAlign.center,
+      //           maxLines: 1,
+      //           style: TextStyle(
+      //          //   fontSize: SizeConfig.safeBlockHorizontal * 35,
+      //             fontWeight: FontWeight.w700,
+      //             color: Color.fromRGBO(238, 237, 237, 1),
+      //           ),
+      //         ),
+      //       )),
+      // ),
+      // Container(
+      //   width: SizeConfig.screenWidth,
+      //   child: AutoSizeText(
+      //     "50 Spiele, um nie wieder nüchtern zu sein!",
+      //     textAlign: TextAlign.center,
+      //     maxLines: 1,
+      //     style: TextStyle(
+      //       fontSize: SizeConfig.safeBlockHorizontal * 35,
+      //       fontWeight: FontWeight.w700,
+      //       color: Color.fromRGBO(238, 237, 237, 1),
+      //     ),
+      //   ),
+      // ),
+
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: ,
+      //   widthFactor: 1,
+      // )),
+
+      // SizedBox(
+      //   height: SizeConfig.blockSizeVertical * 35,
+      // ),
+      Flexible(
+          child: FractionallySizedBox(
+              heightFactor: 1.5,
+              widthFactor: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Flexible(
+                      child: _gameChoiceButton(
+                          Tuple2<String, String>("In App Spiele",
+                              "./assets/images/inGameAppIcon.png"),
+                          context)),
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.30,
+                  )),
+                  Flexible(
+                      child: _gameChoiceButton(
+                          Tuple2<String, String>("Wurfelspiele",
+                              "./assets/images/diceGamesIcon.png"),
+                          context)),
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.30,
+                  )),
+                  Flexible(
+                      child: _gameChoiceButton(
+                          Tuple2<String, String>("Kartenspiele",
+                              "./assets/images/cardGamesIcon.png"),
+                          context)),
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.30,
+                  )),
+                  Flexible(
+                      child: _gameChoiceButton(
+                          Tuple2<String, String>("Brettspiele",
+                              "./assets/images/boardGameIcon.png"),
+                          context)),
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.30,
+                  )),
+                  Flexible(
+                      child: _gameChoiceButton(
+                          Tuple2<String, String>("Sonstiges",
+                              "./assets/images/otherGamesIcon.png"),
+                          context))
+                ],
+              ))),
+
+      // IntrinsicWidth(
+      //   child: Column /*or Column*/ (
+      //       mainAxisAlignment: MainAxisAlignment.center,
+      //       crossAxisAlignment: CrossAxisAlignment.stretch,
+      //       children: gameChoiceWidgets),
+      // ),
     ],
   ));
 }
@@ -383,32 +545,61 @@ Widget _gameChoiceButton(
     onPressed: () {
       _selectGameChoice(gameChoice, context);
     },
-    child: Container(
+    child: FractionallySizedBox(
+        heightFactor: 1,
+        widthFactor: 0.80,
         child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        SizedBox(
-          // height: SizeConfig.blockSizeVertical * 2,
-          width: SizeConfig.blockSizeHorizontal * 2,
-        ),
-        Text(
-          gameChoice.item1,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 4,
-              fontWeight: FontWeight.w700),
-        ),
-        Container(
-          height: SizeConfig.blockSizeVertical * 8,
-          width: SizeConfig.blockSizeHorizontal * 15,
-        ),
-        Image.asset(
-          gameChoice.item2,
-          width: SizeConfig.blockSizeHorizontal * 14,
-          height: SizeConfig.blockSizeVertical * 8,
-        ),
-      ],
-    )),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            // Flexible(  //Fix box
+            //     child: FractionallySizedBox(
+            //   widthFactor: 0.4,
+            // )),
+
+            SizedBox(
+              // height: SizeConfig.blockSizeVertical * 2,
+              width: SizeConfig.blockSizeHorizontal * 1,
+            ),
+            Flexible(
+                child: FractionallySizedBox(
+              heightFactor: 1,
+              widthFactor: 0.75,
+              child: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.contain,
+                  child: AutoSizeText(
+                    gameChoice.item1,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    style: TextStyle(
+                        //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                        fontWeight: FontWeight.w700),
+                  )),
+            )),
+            // Text(
+            //   gameChoice.item1,
+            //   textAlign: TextAlign.center,
+            //   style: TextStyle(
+            //       fontSize: SizeConfig.safeBlockHorizontal * 50,
+            //       fontWeight: FontWeight.w700),
+            // ),
+
+            //  Flexible(  //Fix box
+            //     child: FractionallySizedBox(
+            //   widthFactor: 0.4,
+            // )),
+            // Container(
+            //   height: SizeConfig.blockSizeVertical * 1,
+            //   width: SizeConfig.blockSizeHorizontal * 3,
+            // ),
+
+            Image.asset(
+              gameChoice.item2,
+              width: SizeConfig.blockSizeHorizontal * 140,
+              height: SizeConfig.blockSizeVertical * 65,
+            ),
+          ],
+        )),
   );
 }
 

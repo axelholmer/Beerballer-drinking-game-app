@@ -11,14 +11,16 @@ Widget Customfloatingactionbutton(myImage, ticketprovider) {
   _controller = AnimationController(
       duration: Duration(seconds: 1), vsync: ticketprovider);
 
-  return Container(
-      height: SizeConfig.blockSizeVertical * 15.0,
-      width: SizeConfig.blockSizeHorizontal * 23,
-      child: FloatingActionButton(
+  return FractionallySizedBox(
+    heightFactor: 0.13,
+    widthFactor: 0.22,
+    // height: SizeConfig.blockSizeVertical * 120.0,
+    // width: SizeConfig.blockSizeHorizontal * 210,
+    child: FloatingActionButton(
         onPressed: () {
-        if(_controller.isCompleted) {
-          _controller.reset();
-        }
+          if (_controller.isCompleted) {
+            _controller.reset();
+          }
           _controller.forward();
         },
         child: AnimatedBuilder(
@@ -32,7 +34,14 @@ Widget Customfloatingactionbutton(myImage, ticketprovider) {
                   child: myImage),
             );
           },
-          child: FlutterLogo(size: 200),
-        ),
-      ));
+          // child: FractionallySizedBox(
+          //     widthFactor: 1.5,
+          //     heightFactor: 1.5,
+          //     child: FittedBox(
+          //       fit: BoxFit.contain,
+          //       child: FlutterLogo(),
+          //     )
+          // FlutterLogo(size: 200),
+        )),
+  );
 }
