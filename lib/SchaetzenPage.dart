@@ -8,6 +8,8 @@ import 'dart:async' show Future, Timer;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:testflutter/CustomWidget/CustomBackButton.dart';
+import 'package:testflutter/CustomWidget/CustomCardText.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/SizeConfig.dart';
 import 'package:testflutter/main.dart';
 
@@ -108,18 +110,18 @@ class _SchaetzenPageState extends State<SchaetzenPage>
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Column(
+        body: Center(
+            child: Column(
           children: <Widget>[
-            Container(
-              height: SizeConfig.blockSizeVertical * 5,
+            SizedBox(
+              //always need this for title screens
+              height: SizeConfig.blockSizeVertical * 35,
             ),
-            Row(children: <Widget>[
-              Container(
-                width: SizeConfig.blockSizeHorizontal * 2,
-              ),
-              CustomBackButton(context),
-            ]),
-            Center(
+            CustomTopTitleScreenForIngameApp(
+              context,
+              "Schaetzen",
+            ),
+            Flexible(
                 child: AnimatedSwitcher(
               duration: const Duration(milliseconds: 600),
               transitionBuilder: (Widget child, Animation<double> animation) {
@@ -199,7 +201,7 @@ class _SchaetzenPageState extends State<SchaetzenPage>
           //   label: Text('Naechste Frage'),
           //   backgroundColor: Colors.orange,
           // ),
-        ));
+        )));
   }
 }
 
@@ -305,12 +307,12 @@ class _QuestionCardState extends State<QuestionCard>
 }
 
 typedef void CardToogle();
-
+//Whole Card layout
 Widget questionCardWidget(
     String text, BuildContext context, CardToogle _handleCardToogle) {
-  return SizedBox(
-      height: SizeConfig.blockSizeVertical * 70,
-      width: SizeConfig.blockSizeHorizontal * 75,
+  return FractionallySizedBox(
+      heightFactor: 0.86,
+      widthFactor: 0.7,
       child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
@@ -328,33 +330,17 @@ class CardSide extends StatelessWidget {
   final String text;
   final CardToogle onCardToogle;
 
-
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        //TODO put this one one Widget up.
-        onTap: () {
-          onCardToogle();
-        },
-        child: Container(
-          child: FractionallySizedBox(
-            widthFactor:
-                0.85, 
-            heightFactor: 0.9,
-            child: Center(
-              child: AutoSizeText(
-                text,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 7,
-                  //height: 2,
-                  height: SizeConfig.safeBlockVertical * 0.23,
-                  fontFamily: 'Oswald',
-                ),
-              ),
-            ),
-          ),
-        ));
+      //TODO put this one one Widget up.
+      onTap: () {
+        onCardToogle();
+      },
+
+      child: Center(
+        child: CustomCardText(context, "Schätzen", "./assets/images/IconsInGame/estimateIcon.jpg", text)
+      ),
+    );
   }
 }

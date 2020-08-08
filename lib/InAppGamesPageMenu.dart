@@ -8,6 +8,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:testflutter/CategoryGamePage.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreen.dart';
 import 'package:testflutter/NeverEverHaveIPage.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 
@@ -18,6 +19,7 @@ import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/CustomTopTitleScreen2.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
 import 'SchaetzenPage.dart';
@@ -239,112 +241,94 @@ Widget _gameChoiceWidget(
   for (var item in gameChoices) {
     //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * ));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
-   gameChoiceWidgets.add( Flexible(
-        child: FractionallySizedBox(
-      heightFactor: 1,
-    )));
+    // gameChoiceWidgets.add(Flexible(
+    //     child: FractionallySizedBox(
+    //   heightFactor: 0.4,
+    // )));
   }
-  //gameChoiceWidgets.add(SizedBox(height: 20));
+  // gameChoiceWidgets.add(
 
   return Center(
       //Todo make this text + logo + backbutton its own widget.
       child: Column(children: <Widget>[
     SizedBox(
+      //always need this for title screens
       height: SizeConfig.blockSizeVertical * 35,
     ),
-    Flexible(
-      child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 0.35,
-        child: FittedBox(
-          alignment: Alignment.centerLeft,
-          fit: BoxFit.contain,
-          child: CustomBackButton(context),
-        ),
-      ),
+    CustomTopTitleScreen2(
+      context,
+      "In App spiele",
+      "./assets/images/inGameAppIcon.png",
     ),
-    Flexible(
-      child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 0.5,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Flexible(
-                child: FractionallySizedBox(
-                    widthFactor: 1,
-                    heightFactor: 1,
-                    child: FittedBox(
-                      fit: BoxFit.contain,
-                      child: Text(
-                        "In App spiele",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          // fontSize: SizeConfig.safeBlockHorizontal * 8,
-                          color: Color.fromRGBO(238, 237, 237, 1),
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                    ))),
-            Image.asset(
-              "./assets/images/inGameAppIcon.png",
-              width: SizeConfig.blockSizeHorizontal * 180,
-              height: SizeConfig.blockSizeVertical * 100,
-              //width: SizeConfig.blockSizeHorizontal * ,
-              //   height: SizeConfig.blockSizeVertical * 8,
-            ),
-          ],
-        ),
-      ),
+    SizedBox(
+      //always need this for title screens
+      height: SizeConfig.blockSizeVertical * 50,
     ),
+    // Flexible(
+    //   child: FractionallySizedBox(
+    //     widthFactor: 1,
+    //     heightFactor: 2.3,
+    //     child: Column /*or Column*/ (
+    //       mainAxisAlignment: MainAxisAlignment.center,
+    //       mainAxisSize: MainAxisSize.min,
+    //       //crossAxisAlignment: CrossAxisAlignment.stretch,
+    //       children: gameChoiceWidgets,
+    //     ),
+    //   ),
+    // ),
+
+    Flexible(child: _gameChoiceButton(gameChoices[0], context)),
     Flexible(
-      child: FractionallySizedBox(
-        widthFactor: 1,
-        heightFactor: 2.7,
-        child: Column /*or Column*/ (
-          mainAxisAlignment: MainAxisAlignment.end,
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: gameChoiceWidgets,
-        ),
-      ),
-    )
+        child: FractionallySizedBox(
+      heightFactor: 0.45,
+    )),
+    Flexible(child: _gameChoiceButton(gameChoices[1], context)),
+    Flexible(
+        child: FractionallySizedBox(
+      heightFactor: 0.45,
+    )),
+    Flexible(child: _gameChoiceButton(gameChoices[2], context)),
+    Flexible(
+        child: FractionallySizedBox(
+      heightFactor: 0.45,
+    )),
+    Flexible(child: _gameChoiceButton(gameChoices[3], context)),
   ]));
 }
 
 Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
-  return Flexible(
-      child: RaisedButton(
-    color: Theme.of(context).accentColor,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(11.0),
-        side: BorderSide(
-          color: Theme.of(context).accentColor,
-        )),
-    onPressed: () {
-      _selectGameChoice(gameChoice, context);
-    },
-    child: FractionallySizedBox(
-        heightFactor: 0.35,
-        widthFactor: 0.80,
+  return FractionallySizedBox(
+    heightFactor: 1,
+    widthFactor: 0.80,
+    child: RaisedButton(
+        color: Theme.of(context).accentColor,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(11.0),
+            side: BorderSide(
+              color: Theme.of(context).accentColor,
+            )),
+        onPressed: () {
+          _selectGameChoice(gameChoice, context);
+        },
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Flexible(  //Fix box
             //     child: FractionallySizedBox(
             //   widthFactor: 0.4,
             // )),
 
-            SizedBox(
-              // height: SizeConfig.blockSizeVertical * 2,
-              width: SizeConfig.blockSizeHorizontal * 1,
-            ),
+            // SizedBox(
+            //   // height: SizeConfig.blockSizeVertical * 2,
+            //   width: SizeConfig.blockSizeHorizontal * 1,
+            // ),
             Flexible(
                 child: FractionallySizedBox(
               heightFactor: 1,
               widthFactor: 0.9,
+              //   alignment: Alignment.center,
               child: FittedBox(
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   fit: BoxFit.contain,
                   child: AutoSizeText(
                     gameChoice.title,
@@ -373,7 +357,7 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
             // ),
           ],
         )),
-  ));
+  );
 
   // return  RaisedButton(
   //   color: Theme.of(context).accentColor,

@@ -214,8 +214,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // precacheImage(AssetImage("./assets/images/logo.png"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
-    
-    
+
     // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
     // precacheImage(myLogo.image, context);
 
@@ -337,7 +336,7 @@ Widget _gameChoiceWidgets(
 
   return Center(
       child: Column(
-       mainAxisAlignment: MainAxisAlignment.start,
+    mainAxisAlignment: MainAxisAlignment.start,
     children: <Widget>[
       // Flexible(
       //     child: FractionallySizedBox(
@@ -345,11 +344,11 @@ Widget _gameChoiceWidgets(
       // )),
 
       SizedBox(
-        height: SizeConfig.blockSizeVertical * 40,
+        height: SizeConfig.blockSizeVertical * 90,
       ),
       Flexible(
         child: FractionallySizedBox(
-          heightFactor: 0.37,
+          heightFactor: 2.5,
           widthFactor: 1,
           child: Stack(
             alignment: Alignment.center,
@@ -469,59 +468,58 @@ Widget _gameChoiceWidgets(
       //   widthFactor: 1,
       // )),
 
-      // SizedBox(
-      //   height: SizeConfig.blockSizeVertical * 35,
-      // ),
+      SizedBox(
+        height: SizeConfig.blockSizeVertical * 90,
+      ),
+
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //         heightFactor: 1.7,
+      //         widthFactor: 1,
+      //         child: Column(
+      //           mainAxisAlignment: MainAxisAlignment.end,
+      //           children: <Widget>[
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "In App Spiele", "./assets/images/inGameAppIcon.png"),
+              context)),
       Flexible(
           child: FractionallySizedBox(
-              heightFactor: 1.7,
-              widthFactor: 1,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Flexible(
-                      child: _gameChoiceButton(
-                          Tuple2<String, String>("In App Spiele",
-                              "./assets/images/inGameAppIcon.png"),
-                          context)),
-                  Flexible(
-                      child: FractionallySizedBox(
-                    heightFactor: 0.40,
-                  )),
-                  Flexible(
-                      child: _gameChoiceButton(
-                          Tuple2<String, String>("Wurfelspiele",
-                              "./assets/images/diceGamesIcon.png"),
-                          context)),
-                  Flexible(
-                      child: FractionallySizedBox(
-                    heightFactor: 0.40,
-                  )),
-                  Flexible(
-                      child: _gameChoiceButton(
-                          Tuple2<String, String>("Kartenspiele",
-                              "./assets/images/cardGamesIcon.png"),
-                          context)),
-                  Flexible(
-                      child: FractionallySizedBox(
-                    heightFactor: 0.40,
-                  )),
-                  Flexible(
-                      child: _gameChoiceButton(
-                          Tuple2<String, String>("Brettspiele",
-                              "./assets/images/boardGameIcon.png"),
-                          context)),
-                  Flexible(
-                      child: FractionallySizedBox(
-                    heightFactor: 0.40,
-                  )),
-                  Flexible(
-                      child: _gameChoiceButton(
-                          Tuple2<String, String>("Sonstiges",
-                              "./assets/images/otherGamesIcon.png"),
-                          context))
-                ],
-              ))),
+        heightFactor: 0.60,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.60,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Kartenspiele", "./assets/images/cardGamesIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.60,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Brettspiele", "./assets/images/boardGameIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.60,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Sonstiges", "./assets/images/otherGamesIcon.png"),
+              context))
 
       // IntrinsicWidth(
       //   child: Column /*or Column*/ (
@@ -535,19 +533,19 @@ Widget _gameChoiceWidgets(
 
 Widget _gameChoiceButton(
     Tuple2<String, String> gameChoice, BuildContext context) {
-  return RaisedButton(
-    color: Theme.of(context).accentColor,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(11.0),
-        side: BorderSide(
-          color: Theme.of(context).accentColor,
-        )),
-    onPressed: () {
-      _selectGameChoice(gameChoice, context);
-    },
-    child: FractionallySizedBox(
-        heightFactor: 1,
-        widthFactor: 0.80,
+  return FractionallySizedBox(
+      heightFactor: 1.2,
+      widthFactor: 0.80,
+      child: RaisedButton(
+        color: Theme.of(context).accentColor,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(11.0),
+            side: BorderSide(
+              color: Theme.of(context).accentColor,
+            )),
+        onPressed: () {
+          _selectGameChoice(gameChoice, context);
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -555,14 +553,13 @@ Widget _gameChoiceButton(
             //     child: FractionallySizedBox(
             //   widthFactor: 0.4,
             // )),
-
             SizedBox(
               // height: SizeConfig.blockSizeVertical * 2,
               width: SizeConfig.blockSizeHorizontal * 1,
             ),
             Flexible(
                 child: FractionallySizedBox(
-              heightFactor: 1,
+              heightFactor: 0.9,
               widthFactor: 0.9,
               child: FittedBox(
                   alignment: Alignment.centerLeft,
@@ -596,11 +593,11 @@ Widget _gameChoiceButton(
             Image.asset(
               gameChoice.item2,
               width: SizeConfig.blockSizeHorizontal * 140,
-              height: SizeConfig.blockSizeVertical * 65,
+              height: SizeConfig.blockSizeVertical * 80,
             ),
           ],
-        )),
-  );
+        ),
+      ));
 }
 
 class GameChoice {

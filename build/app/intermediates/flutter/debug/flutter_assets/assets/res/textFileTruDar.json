@@ -1,0 +1,25 @@
+[
+    {
+      "text": "Wo & mit wem war dein erster Kuss?",
+      "questiontype": "truth"
+    },
+    {
+      "text": "Hast du schon einmal Drogen genommen? (außer Alkohol und Tabak)",
+      "questiontype": "truth"
+    },
+    {
+      "text": "Wer aus der Runde sollte am dringendsten zum Friseur?",
+      "questiontype": "truth"
+    },{
+      "text": "Versuche deine Beine hinter den Kopf zu bekommen",
+      "questiontype": "dare"
+    },{
+      "text": "Füttere die Person rechts neben dir mit etwas Leckerem",
+      "questiontype": "dare"
+    },{
+      "text": "Verbringe eine Runde mit den Füßen nach oben, Kopf nach unten",
+      "questiontype": "dare"
+    }
+  ]
+
+

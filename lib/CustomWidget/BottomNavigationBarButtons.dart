@@ -9,11 +9,14 @@ Widget BottomNavigationBarButtons(BuildContext context) {
     shape: const CircularNotchedRectangle(),
     child: FractionallySizedBox(
       //color: Theme.of(context).accentColor,
-      heightFactor: 0.07,
+      heightFactor: 0.08,
       // SizeConfig.blockSizeVertical *60.0,
       child: Row /*or Column*/ (
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+           SizedBox(
+            width: SizeConfig.blockSizeHorizontal * 20,
+          ),
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
@@ -31,7 +34,7 @@ Widget BottomNavigationBarButtons(BuildContext context) {
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
-            heightFactor: 1.25,
+            heightFactor: 1.35,
             child: FittedBox(
               //alignment: Alignment.centerLeft,
               fit: BoxFit.contain,
@@ -50,7 +53,7 @@ Widget BottomNavigationBarButtons(BuildContext context) {
           //   ),
           // ),
           SizedBox(
-            width: SizeConfig.blockSizeHorizontal * 250,
+            width: SizeConfig.blockSizeHorizontal * 300,
           ),
           Expanded(
             child: FractionallySizedBox(
@@ -79,7 +82,10 @@ Widget BottomNavigationBarButtons(BuildContext context) {
                 onPressed: _launchURLFacebook,
               ),
             ),
-          ))
+          )),
+          SizedBox(
+            width: SizeConfig.blockSizeHorizontal * 20,
+          ),
         ],
       ),
     ),
