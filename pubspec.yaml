@@ -51,7 +51,14 @@ flutter:
         - asset: assets/fonts/Oswald-VariableFont_wght.ttf
     - family: Inknut
       fonts:
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Medium.ttf
+          weight: 500
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf
+          weight: 600
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Bold.ttf
           weight: 700
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf
@@ -78,17 +85,12 @@ flutter:
     - assets/images/games/cardGames/Arschloch.jpg
     - assets/images/games/cardGames/maumau.jpg
     - assets/images/games/cardGames/pferderennen.jpg
-      
-    
+
     - assets/images/IconsInGame/categoryIcon.jpg
     - assets/images/IconsInGame/dareIcon.jpg
     - assets/images/IconsInGame/estimateIcon.jpg
     - assets/images/IconsInGame/neverEverHaveiIcon.jpg
     - assets/images/IconsInGame/trueIcon.jpg
-    
-    
-
-
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
