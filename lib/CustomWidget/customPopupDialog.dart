@@ -6,13 +6,25 @@ Widget customPopupDialog(
     BuildContext context, String gameName, List<String> explList) {
   List<Widget> listWidgets = List<Widget>();
 
-  for (var item in explList) {
-    if (item != "") {
-      listWidgets.add(CustomExplItemTest(context, item));
-      // listWidgets.add(SizedBox(
-      //   height: SizeConfig.blockSizeVertical * 1,
-      // ));
-    }
+
+
+for (var i = 0; i < explList.length ; i++) {
+
+
+
+ if (explList[i] != "") {
+  
+      listWidgets.add(CustomExplItemTest(context, explList[i], (i + 1).toString()));
+}
+  // for (var item in explList) {
+  //   if (item != "") {
+  //     listWidgets.add(CustomExplItemTest(context, item));
+  //     // listWidgets.add(SizedBox(
+  //     //   height: SizeConfig.blockSizeVertical * 1,
+  //     // ));
+  //   }
+
+
   }
 
   return new AlertDialog(

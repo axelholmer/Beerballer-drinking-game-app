@@ -56,7 +56,7 @@ void main() {
 
   runApp(DevicePreview(
     //  enabled: !kReleaseMode,
-    enabled: false,
+    enabled: true,
     builder: (context) => MyApp(),
   ));
   // runApp(MyApp());
@@ -215,8 +215,8 @@ class _MyAppState extends State<MyApp> {
     // precacheImage(AssetImage("./assets/images/logo.png"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
 
-    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    precacheImage(myLogo.image, context);
+    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    // precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {

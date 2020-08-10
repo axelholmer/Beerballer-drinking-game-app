@@ -30,19 +30,22 @@ class listOfGames extends StatelessWidget {
             SizedBox(
               height: SizeConfig.blockSizeVertical * 35,
             ),
-           CustomTopTitleScreen2(context, pageTitle, logPath),
+            CustomTopTitleScreen2(context, pageTitle, logPath),
             Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.all(0.0),
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  return GameCustomListItem(context, gameClass: items[index]);
-                  // return ListTile(
-                  //  // title: Text('${items[index]}'),
-                  // );
-                },
+                child: SafeArea(
+              child: Scrollbar(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(0.0),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return GameCustomListItem(context, gameClass: items[index]);
+                    // return ListTile(
+                    //  // title: Text('${items[index]}'),
+                    // );
+                  },
+                ),
               ),
-            ),
+            ))
           ],
         ));
   }

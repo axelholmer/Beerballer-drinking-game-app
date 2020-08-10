@@ -324,8 +324,8 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
             // ),
             Flexible(
                 child: FractionallySizedBox(
-              heightFactor: 1,
-              widthFactor: 0.9,
+              heightFactor: 0.7,
+              widthFactor: 1,
               //   alignment: Alignment.center,
               child: FittedBox(
                   alignment: Alignment.center,

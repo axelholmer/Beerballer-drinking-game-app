@@ -207,45 +207,45 @@ class _TruthOrDarePageState extends State<TruthOrDarePage>
                         children: <Widget>[
                           Flexible(
                             child: FractionallySizedBox(
-                                widthFactor: 0.8,
-                                heightFactor: 0.55,
-                                child: RaisedButton(
-                                    color: Theme.of(context).accentColor,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(11.0),
-                                        side: BorderSide(
-                                            color:
-                                                Theme.of(context).accentColor)),
-                                    onPressed: () {
-                                      setState(() {
-                                        _getTruthQuestion(listTruthQuestions);
-                                        _isCardvisible = true;
-                                      });
-                                    },
-                                    child: FractionallySizedBox(
-                                      heightFactor: 1,
-                                      widthFactor: 1,
-                                      child: FittedBox(
-                                          alignment: Alignment.center,
-                                          fit: BoxFit.contain,
-                                          child: Text(
-                                            "Wahrheit",
-                                            textAlign: TextAlign.center,
-                                            //maxLines: 1,
-                                            style: TextStyle(
-                                                //fontSize: SizeConfig.safeBlockHorizontal * 50,
-                                                fontWeight: FontWeight.w700),
-                                          )),
-                                    ))),
+                              widthFactor: 0.90,
+                              heightFactor: 0.65,
+                              child: RaisedButton(
+                                  color: Theme.of(context).accentColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(11.0),
+                                      side: BorderSide(
+                                          color:
+                                              Theme.of(context).accentColor)),
+                                  onPressed: () {
+                                    setState(() {
+                                      _getTruthQuestion(listTruthQuestions);
+                                      _isCardvisible = true;
+                                    });
+                                  },
+                                  child: FractionallySizedBox(
+                                    heightFactor: 0.8,
+                                    widthFactor: 1,
+                                    child: FittedBox(
+                                        alignment: Alignment.center,
+                                        fit: BoxFit.contain,
+                                        child: AutoSizeText(
+                                          "Wahrheit",
+                                          textAlign: TextAlign.center,
+                                          maxLines: 1,
+                                          style: TextStyle(
+                                              //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                              fontWeight: FontWeight.w700),
+                                        )),
+                                  )),
+                            ),
                           ),
                           SizedBox(
-                            width: SizeConfig.blockSizeHorizontal * 70,
+                            width: SizeConfig.blockSizeHorizontal * 40,
                           ),
                           Flexible(
                             child: FractionallySizedBox(
-                                widthFactor: 0.8,
-                                heightFactor: 0.55,
+                                widthFactor: 0.90,
+                                heightFactor: 0.65,
                                 child: RaisedButton(
                                     color: Theme.of(context).accentColor,
                                     shape: RoundedRectangleBorder(
@@ -261,17 +261,17 @@ class _TruthOrDarePageState extends State<TruthOrDarePage>
                                       });
                                     },
                                     child: FractionallySizedBox(
-                                      heightFactor: 1,
+                                      heightFactor: 0.8,
                                       widthFactor: 1,
                                       child: FittedBox(
                                           alignment: Alignment.center,
                                           fit: BoxFit.contain,
-                                          child: Text(
+                                          child: AutoSizeText(
                                             "Pflicht",
                                             textAlign: TextAlign.center,
-                                            //maxLines: 1,
+                                            maxLines: 1,
                                             style: TextStyle(
-                                                //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                               // fontSize: SizeConfig.safeBlockHorizontal * 10,
                                                 fontWeight: FontWeight.w700),
                                           )),
                                     ))),
@@ -483,26 +483,18 @@ class CardSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
-   
-   
-  if(q.typeOfQuestion == TypeOfQuestion.truth){
-    return Center(
-        child: CustomCardText(context, "Wahrheit",
-            "./assets/images/IconsInGame/trueIcon.jpg", q.questionText));
-  } else if(q.typeOfQuestion == TypeOfQuestion.dare){
-    return Center(
-        child: CustomCardText(context, "Pflicht",
-            "./assets/images/IconsInGame/dareIcon.jpg", q.questionText));
+    if (q.typeOfQuestion == TypeOfQuestion.truth) {
+      return Center(
+          child: CustomCardText(context, "Wahrheit",
+              "./assets/images/IconsInGame/trueIcon.jpg", q.questionText));
+    } else if (q.typeOfQuestion == TypeOfQuestion.dare) {
+      return Center(
+          child: CustomCardText(context, "Pflicht",
+              "./assets/images/IconsInGame/dareIcon.jpg", q.questionText));
+    } else {
+      return Center(
+          child: CustomCardText(context, "Error",
+              "./assets/images/IconsInGame/dareIcon.jpg", "Error"));
+    }
   }
-  else {
-
-     return Center(
-        child: CustomCardText(context, "Error",
-            "./assets/images/IconsInGame/dareIcon.jpg", "Error"));
-  }
-
-
-  }
-
 }
