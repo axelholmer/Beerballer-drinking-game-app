@@ -24,8 +24,8 @@ class GameCustomListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.blockSizeVertical * 72,
-      width: SizeConfig.blockSizeHorizontal * 200, //Here Cardsize
+      height: SizeConfig.blockSizeVertical * 700,
+      // width: SizeConfig.blockSizeHorizontal * 200, //Here Cardsize
       child: Card(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0))),
@@ -36,195 +36,420 @@ class GameCustomListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               // FlutterLogo(size: 200),
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                ),
 
-                child: Image.asset(gameClass.imagePath,
-                    height: SizeConfig.blockSizeVertical * 30,
-                    fit: BoxFit.fill),
-                // Container(
-                //   alignment: Alignment.bottomLeft,
-                //   child: Text(
-                //     gameClass.gameName,
-                //     style: TextStyle(
-                //       color: Theme.of(context).accentColor,
-                //       fontWeight: FontWeight.w800,
-                //       fontSize: SizeConfig.safeBlockHorizontal * 9,
-                //     ),
-                //   ),
-                // ),
+              Flexible(
+                flex: 8,
+                child: FractionallySizedBox(
+                    // widthFactor: 0.3,
+                    heightFactor: 1,
+                    child: Stack(
+                      children: [
+                        Container(
+                          constraints: BoxConstraints.expand(),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                            child: Image.asset(gameClass.imagePath,
+                                // height: SizeConfig.blockSizeVertical * 30,
+                                fit: BoxFit.fill),
+                            // Container(
+                            //   alignment: Alignment.bottomLeft,
+                            //   child: Text(
+                            //     gameClass.gameName,
+                            //     style: TextStyle(
+                            //       color: Theme.of(context).accentColor,
+                            //       fontWeight: FontWeight.w800,
+                            //       fontSize: SizeConfig.safeBlockHorizontal * 9,
+                            //     ),
+                            //   ),
+                            // ),
+                          ),
+                        ),
+                        Align(
+                            alignment: Alignment.bottomLeft,
+                            child: FractionallySizedBox(
+                                widthFactor: 1,
+                                heightFactor: 0.35,
+                                child: Row(
+                                  children: [
+                                    SizedBox(
+                                        width:
+                                            SizeConfig.blockSizeHorizontal * 50),
+                                    Flexible(
+                                        child: FractionallySizedBox(
+                                            widthFactor: 1,
+                                            heightFactor: 1,
+                                            child: FittedBox(
+                                                alignment: Alignment.centerLeft,
+                                                fit: BoxFit.contain,
+                                                child: AutoSizeText(
+                                                  gameClass.gameName,
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    color: Color.fromRGBO(
+                                                        250, 250, 250, 1),
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
+                                                ))))
+                                  ],
+                                )))
+                      ],
+                    )),
               ),
 
-              SizedBox(height: SizeConfig.blockSizeVertical * 1),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Container(
-                        height: SizeConfig.blockSizeVertical * 8,
-                        width: SizeConfig.blockSizeHorizontal * 40,
-                        child: Column(children: <Widget>[
-                          Icon(Icons.group,
-                              size: SizeConfig.safeBlockHorizontal * 7.5,
-                              color: Theme.of(context).accentColor),
-                          Text(
-                            gameClass.playerNumber,
-                            style: TextStyle(
-                                color: Color.fromRGBO(238, 237, 237, 1),
-                                fontWeight: FontWeight.w600,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                height: SizeConfig.safeBlockVertical * 0.25),
-                          )
-                        ])),
-                    Container(
-                        height: SizeConfig.blockSizeVertical * 8,
-                        width: SizeConfig.blockSizeHorizontal * 40,
-                        child: Column(children: <Widget>[
-                          Icon(Icons.access_time,
-                              size: SizeConfig.safeBlockHorizontal * 7.5,
-                              color: Theme.of(context).accentColor),
-                          Text(
-                            gameClass.gameDuration,
-                            style: TextStyle(
-                                color: Color.fromRGBO(238, 237, 237, 1),
-                                fontWeight: FontWeight.w600,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4,
-                                height: SizeConfig.safeBlockVertical * 0.25),
-                          ),
-                        ]))
-                  ]),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text("Materials:",
-                              style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontWeight: FontWeight.w800,
-                                fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                                height: SizeConfig.safeBlockVertical * 0.25,
-                              )),
-                          Container(
-                              // height: SizeConfig.blockSizeVertical * 10,
-                              width: SizeConfig.blockSizeHorizontal * 90,
-                              child: AutoSizeText(
-                                gameClass.materials,
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                //overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  color: Color.fromRGBO(238, 237, 237, 1),
-                                  fontWeight: FontWeight.w600,
-                                  fontSize:
-                                      SizeConfig.safeBlockHorizontal * 3.5,
-                                  height: SizeConfig.blockSizeVertical * 0.15,
-                                ),
-                              )),
-                        ])
-                  ]),
+              SizedBox(height: SizeConfig.blockSizeVertical * 20),
 
-              // SizedBox(
-              //   height: SizeConfig.blockSizeVertical * 0.5,
-              // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    
-                      width: SizeConfig.blockSizeHorizontal * 40,
-                      height: SizeConfig.blockSizeVertical * 12,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "Betrinkskala",
+//First Icon row
+              Flexible(
+                flex: 2,
+                child: FractionallySizedBox(
+                  //  widthFactor: 0.2,
+                  heightFactor: 1.1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 1,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                  child: FractionallySizedBox(
+                                      widthFactor: 1,
+                                      heightFactor: 1.6,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Icon(Icons.group,
+                                            // size: SizeConfig.safeBlockHorizontal *
+                                            //     7.5,
+                                            color:
+                                                Theme.of(context).accentColor),
+                                      )),
+                                ),
+                                SizedBox(
+                                    height: SizeConfig.blockSizeVertical * 20),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 1,
+                                        heightFactor: 2,
+                                        child: FittedBox(
+                                            // alignment: Alignment.centerLeft,
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              gameClass.playerNumber,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    238, 237, 237, 1),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ))))
+                              ]))),
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 1,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                  widthFactor: 1,
+                                  heightFactor: 1.6,
+                                  child: FittedBox(
+                                    // alignment: Alignment.centerLeft,
+                                    fit: BoxFit.contain,
+                                    child: Icon(Icons.access_time,
+                                        // size: SizeConfig.safeBlockHorizontal *
+                                        //     7.5,
+                                        color: Theme.of(context).accentColor),
+                                  ),
+                                )),
+                                SizedBox(
+                                    height: SizeConfig.blockSizeVertical * 20),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 1,
+                                        heightFactor: 2,
+                                        child: FittedBox(
+                                            // alignment: Alignment.centerLeft,
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              gameClass.gameDuration,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color.fromRGBO(
+                                                    238, 237, 237, 1),
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ))))
+                              ]))),
+                    ],
+                  ),
+                ),
+              ),
+//Materials
+              Flexible(
+                flex: 2,
+                child: FractionallySizedBox(
+                  //  widthFactor: 0.2,
+                  heightFactor: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    //   crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 2,
+                              heightFactor: 1,
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    SizedBox(
+                                        height:
+                                            SizeConfig.safeBlockVertical * 7),
+                                    Flexible(
+                                        child: FractionallySizedBox(
+                                      widthFactor: 1,
+                                      heightFactor: 1.75,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Text("Materialen:",
+                                            style: TextStyle(
+                                              color:
+                                                  Theme.of(context).accentColor,
+                                              fontWeight: FontWeight.w800,
+                                              // fontSize:
+                                              //     SizeConfig.safeBlockHorizontal *
+                                              //         4.5,
+                                              // height: SizeConfig.safeBlockVertical *
+                                              //     0.25,
+                                            )),
+                                      ),
+                                    )),
+                                    Flexible(
+                                        child: FractionallySizedBox(
+                                      widthFactor: 2,
+                                      heightFactor: 1.35,
+                                      child: FittedBox(
+                                          // alignment: Alignment.centerLeft,
+                                          fit: BoxFit.contain,
+                                          child: AutoSizeText(
+                                            gameClass.materials,
+                                            textAlign: TextAlign.center,
+                                            maxLines: 1,
+                                            //overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              color: Color.fromRGBO(
+                                                  238, 237, 237, 1),
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          )),
+                                    ))
+                                  ]))),
+                    ],
+                  ),
+                ),
+              ),
+
+//Drunkness & Funfactor
+              Flexible(
+                flex: 2,
+                child: FractionallySizedBox(
+                  //  widthFactor: 0.2,
+                  heightFactor: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 2,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                  child: FractionallySizedBox(
+                                      widthFactor: 0.6,
+                                      heightFactor: 1.5,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Text(
+                                          "Betrinkskala",
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).accentColor,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      )),
+                                ),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 0.5,
+                                        heightFactor: 0.8,
+                                        child: FittedBox(
+                                          // alignment: Alignment.centerLeft,
+                                          fit: BoxFit.contain,
+                                          child: customProgressBar(
+                                              gameClass.drunknessFactor),
+                                        )))
+                              ]))),
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 2,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                  child: FractionallySizedBox(
+                                      widthFactor: 0.6,
+                                      heightFactor: 1.5,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Text(
+                                          "Spaßfaktor",
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).accentColor,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      )),
+                                ),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 0.5,
+                                        heightFactor: 0.8,
+                                        child: FittedBox(
+                                          // alignment: Alignment.centerLeft,
+                                          fit: BoxFit.contain,
+                                          child: customProgressBar(
+                                              gameClass.funFactor),
+                                        )))
+                              ]))),
+                    ],
+                  ),
+                ),
+              ),
+
+              Flexible(
+                flex: 2,
+                child: FractionallySizedBox(
+                  //  widthFactor: 0.2,
+                  heightFactor: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 2,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                  child: FractionallySizedBox(
+                                      widthFactor: 0.6,
+                                      heightFactor: 1.5,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Text(
+                                          "Dirty Faktor",
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).accentColor,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      )),
+                                ),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 0.5,
+                                        heightFactor: 0.8,
+                                        child: FittedBox(
+                                          // alignment: Alignment.centerLeft,
+                                          fit: BoxFit.contain,
+                                          child: customProgressBar(
+                                              gameClass.dirtyFactor),
+                                        )))
+                              ]))),
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 2,
+                              heightFactor: 1,
+                              child: Column(children: <Widget>[
+                                Flexible(
+                                  child: FractionallySizedBox(
+                                      widthFactor: 0.6,
+                                      heightFactor: 1.5,
+                                      child: FittedBox(
+                                        // alignment: Alignment.centerLeft,
+                                        fit: BoxFit.contain,
+                                        child: Text(
+                                          "Komplexität",
+                                          style: TextStyle(
+                                            color:
+                                                Theme.of(context).accentColor,
+                                            fontWeight: FontWeight.w800,
+                                          ),
+                                        ),
+                                      )),
+                                ),
+                                Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 0.5,
+                                        heightFactor: 0.8,
+                                        child: FittedBox(
+                                          // alignment: Alignment.centerLeft,
+                                          fit: BoxFit.contain,
+                                          child: customProgressBar(
+                                              gameClass.difficulty),
+                                        )))
+                              ]))),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(height: SizeConfig.blockSizeVertical * 10),
+              Flexible(
+                  flex: 2,
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    heightFactor: 0.8,
+                    child: RaisedButton(
+                      color: Colors.yellow[600],
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(11.0),
+                          side: BorderSide(
+                              color: Theme.of(context).primaryColor)),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => customPopupDialog(
+                              context,
+                              gameClass.gameName,
+                              gameClass.explanationList),
+                        );
+                      },
+                      child: FractionallySizedBox(
+                        widthFactor: 1,
+                        heightFactor: 1.1,
+                        child: FittedBox(
+                          // alignment: Alignment.centerLeft,
+                          fit: BoxFit.contain,
+                          child: Text(
+                            "So funktionierts!",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Theme.of(context).accentColor,
                               fontWeight: FontWeight.w800,
-                              fontSize: SizeConfig.safeBlockHorizontal * 4.5,
                             ),
                           ),
-                          customProgressBar(gameClass.drunknessFactor),
-                        ],
-                      )),
-                  Column(
-                    children: <Widget>[
-                      Text("Spaßfaktor",
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w800,
-                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          )),
-                      customProgressBar(gameClass.funFactor),
-                    ],
-                  )
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Text("Dirty Faktor",
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w800,
-                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          )),
-                      customProgressBar(gameClass.dirtyFactor),
-                    ],
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Text("Komplexität",
-                          style: TextStyle(
-                            color: Theme.of(context).accentColor,
-                            fontWeight: FontWeight.w800,
-                            fontSize: SizeConfig.safeBlockHorizontal * 4.5,
-                          )),
-                      customProgressBar(gameClass.difficulty),
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(
-                height: SizeConfig.blockSizeVertical * 3,
-              ),
-              Align(
-                child: RaisedButton(
-                  color: Colors.yellow[600],
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(11.0),
-                      side: BorderSide(color: Theme.of(context).primaryColor)),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) => customPopupDialog(
-                          context,
-                          gameClass.gameName,
-                          gameClass.explanationList),
-                    );
-                  },
-                  child: Container(
-                    //
-                    child: Text(
-                      "So funktionierts!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: SizeConfig.safeBlockHorizontal * 5,
-                        fontWeight: FontWeight.w800,
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
+                  ))
             ],
           ),
         ),

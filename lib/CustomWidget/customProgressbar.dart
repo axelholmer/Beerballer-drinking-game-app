@@ -17,8 +17,8 @@ Widget customProgressBar( String progress) {
   return 
     LinearPercentIndicator(
       alignment: MainAxisAlignment.center,
-      width: SizeConfig.blockSizeHorizontal * 27,//100.0,
-      lineHeight: SizeConfig.blockSizeVertical * 1.1,//8.0,
+      width: SizeConfig.blockSizeHorizontal * 125,//100.0,
+      lineHeight: SizeConfig.blockSizeVertical * 4,//8.0,
       percent: progressDouble,
       progressColor: color,
       linearStrokeCap: LinearStrokeCap.butt,

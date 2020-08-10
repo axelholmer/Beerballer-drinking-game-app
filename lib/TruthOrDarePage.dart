@@ -7,10 +7,13 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future, Timer;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
+import 'package:testflutter/Questionclasses/Question.dart';
 import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomBackButton.dart';
+import 'CustomWidget/CustomCardText.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Player.dart';
 import 'Questionclasses/TruthOrDareQuestion.dart';
@@ -166,92 +169,118 @@ class _TruthOrDarePageState extends State<TruthOrDarePage>
     );
   }
 
-//TODO fix too long of a name in playermneu char limit
-  Widget _playerNameText() {
-    return Text(
-      _currentPlayerName,
-      textAlign: TextAlign.center,
-      overflow: TextOverflow.ellipsis,
-      style: new TextStyle(
-        fontSize: SizeConfig.safeBlockHorizontal * 10,
-        color: Colors.orange[200],
-      ),
-      //style: TextStyle(fontWeight: FontWeight.bold),
-    );
-  }
-
   Widget _trueDareButtonsRow(final List<TruthOrDareQuestion> listTruthQuestions,
       final List<TruthOrDareQuestion> listDareQuestions) {
     return Visibility(
-      visible: _isCardvisible == false,
-      child: Center(
+        visible: _isCardvisible == false,
+        child: Flexible(
+            child: FractionallySizedBox(
+          widthFactor: 1,
+          heightFactor: 0.8,
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          _playerNameText(),
-          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
-              ),
-              Expanded(
-                  child: RaisedButton(
-                color: Theme.of(context).accentColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(11.0),
-                    side: BorderSide(color: Theme.of(context).accentColor)),
-                onPressed: () {
-                  setState(() {
-                    _getTruthQuestion(listTruthQuestions);
-                    _isCardvisible = true;
-                  });
-                },
-                child: Container(
-                  //
-                  child: Text(
-                    "Wahrheit",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 6,
-                    ),
-                  ),
-                ),
-              )),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
-              ),
-              Expanded(
-                  child: RaisedButton(
-                color: Theme.of(context).accentColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(11.0),
-                    side: BorderSide(color: Theme.of(context).accentColor)),
-                onPressed: () {
-                  setState(() {
-                    _getDareQuestion(listDareQuestions);
-                    _isCardvisible = true;
-                  });
-                },
-                child: Container(
-                  //
-                  child: Text(
-                    "Pflicht",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: SizeConfig.safeBlockHorizontal * 6,
-                    ),
-                  ),
-                ),
-              )),
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 7, // constrain height
-              ),
+              Flexible(
+                  child: FractionallySizedBox(
+                      widthFactor: 1,
+                      heightFactor: 0.4,
+                      child: FittedBox(
+                          alignment: Alignment.center,
+                          fit: BoxFit.contain,
+                          child: Text(
+                            _currentPlayerName,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: new TextStyle(
+                              //fontSize: SizeConfig.safeBlockHorizontal * 10,
+                              color: Colors.orange[200],
+                            ),
+                            //style: TextStyle(fontWeight: FontWeight.bold),
+                          )))),
+              Flexible(
+                  child: FractionallySizedBox(
+                      heightFactor: 0.5,
+                      widthFactor: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Flexible(
+                            child: FractionallySizedBox(
+                                widthFactor: 0.8,
+                                heightFactor: 0.55,
+                                child: RaisedButton(
+                                    color: Theme.of(context).accentColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(11.0),
+                                        side: BorderSide(
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    onPressed: () {
+                                      setState(() {
+                                        _getTruthQuestion(listTruthQuestions);
+                                        _isCardvisible = true;
+                                      });
+                                    },
+                                    child: FractionallySizedBox(
+                                      heightFactor: 1,
+                                      widthFactor: 1,
+                                      child: FittedBox(
+                                          alignment: Alignment.center,
+                                          fit: BoxFit.contain,
+                                          child: Text(
+                                            "Wahrheit",
+                                            textAlign: TextAlign.center,
+                                            //maxLines: 1,
+                                            style: TextStyle(
+                                                //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                                fontWeight: FontWeight.w700),
+                                          )),
+                                    ))),
+                          ),
+                          SizedBox(
+                            width: SizeConfig.blockSizeHorizontal * 70,
+                          ),
+                          Flexible(
+                            child: FractionallySizedBox(
+                                widthFactor: 0.8,
+                                heightFactor: 0.55,
+                                child: RaisedButton(
+                                    color: Theme.of(context).accentColor,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(11.0),
+                                        side: BorderSide(
+                                            color:
+                                                Theme.of(context).accentColor)),
+                                    onPressed: () {
+                                      setState(() {
+                                        _getDareQuestion(listDareQuestions);
+                                        _isCardvisible = true;
+                                      });
+                                    },
+                                    child: FractionallySizedBox(
+                                      heightFactor: 1,
+                                      widthFactor: 1,
+                                      child: FittedBox(
+                                          alignment: Alignment.center,
+                                          fit: BoxFit.contain,
+                                          child: Text(
+                                            "Pflicht",
+                                            textAlign: TextAlign.center,
+                                            //maxLines: 1,
+                                            style: TextStyle(
+                                                //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                                fontWeight: FontWeight.w700),
+                                          )),
+                                    ))),
+                          )
+                        ],
+                      ))),
             ],
-          )
-        ],
-      )),
-    );
+          ),
+        )));
   }
 
 //TODO Refactoring here, too crowded
@@ -267,30 +296,25 @@ class _TruthOrDarePageState extends State<TruthOrDarePage>
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Column(
+        body: Center(
+            child: Column(
           children: <Widget>[
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 5,
+              height: SizeConfig.blockSizeVertical * 35,
             ),
-            Row(children: <Widget>[
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 2,
-              ),
-              CustomBackButton(context),
-            ]),
+            CustomTopTitleScreenForIngameApp(context, ""),
             Visibility(
               visible: _isCardvisible == true,
-              child: Center(
-                child: QuestionCard(
-                  //Here QuestionCard
-                  question: _currentQuestion,
-                  key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
-                ),
-              ),
+              child: Flexible(
+                  child: QuestionCard(
+                //Here QuestionCard
+                question: _currentQuestion,
+                key: ValueKey<TruthOrDareQuestion>(_currentQuestion),
+              )),
             ),
-            SizedBox(
-              height: SizeConfig.blockSizeVertical * 20,
-            ),
+            // SizedBox(
+            //   height: SizeConfig.blockSizeVertical * 20,
+            // ),
             _trueDareButtonsRow(listTruthQuestions, listDareQuestions),
 
             // Visibility(
@@ -368,7 +392,7 @@ class _TruthOrDarePageState extends State<TruthOrDarePage>
           //   label: Text('Naechste Frage'),
           //   backgroundColor: Colors.orange,
           // ),
-        ));
+        )));
   }
 }
 
@@ -414,7 +438,7 @@ class _QuestionCardState extends State<QuestionCard> {
               //onCardToogle();
             },
             child: questionCardWidget(
-              _question.questionText,
+              _question,
               context,
             )),
       ],
@@ -422,45 +446,63 @@ class _QuestionCardState extends State<QuestionCard> {
   }
 }
 
-Widget questionCardWidget(String text, BuildContext context) {
-  return SizedBox(
-      height: SizeConfig.blockSizeVertical * 70,
-      width: SizeConfig.blockSizeHorizontal * 75,
+Widget questionCardWidget(TruthOrDareQuestion question, BuildContext context) {
+  return FractionallySizedBox(
+      heightFactor: 0.86,
+      widthFactor: 0.7,
       child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
               side: BorderSide(
-                color: Color.fromRGBO(238, 237, 237, 1),
-              )),
-          color: Color.fromRGBO(238, 237, 237, 1),
+                  //  color: Color.fromRGBO(238, 237, 237, 1),
+                  )),
+          color: Color.fromRGBO(254, 254, 254, 1),
           elevation: 15.0,
-          child: CardSide(text: text)));
+          child: CardSide(
+            q: question,
+          )));
+
+  // return SizedBox(
+  //     height: SizeConfig.blockSizeVertical * 70,
+  //     width: SizeConfig.blockSizeHorizontal * 75,
+  //     child: Card(
+  //         shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(25.0),
+  //             side: BorderSide(
+  //               color: Color.fromRGBO(238, 237, 237, 1),
+  //             )),
+  //         color: Color.fromRGBO(238, 237, 237, 1),
+  //         elevation: 15.0,
+  //         child: CardSide(text: text)));
 }
 
 class CardSide extends StatelessWidget {
-  CardSide({this.text}) : super(key: ObjectKey(text));
+  CardSide({this.q}) : super(key: ObjectKey(q));
 
-  final String text;
+  final TruthOrDareQuestion q;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        heightFactor: 0.9,
-        child: Center(
-          child: AutoSizeText(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 7,
-              //height: 2,
-              height: SizeConfig.safeBlockVertical * 0.23,
-              fontFamily: 'Oswald',
-            ),
-          ),
-        ),
-      ),
-    );
+   
+   
+   
+  if(q.typeOfQuestion == TypeOfQuestion.truth){
+    return Center(
+        child: CustomCardText(context, "Wahrheit",
+            "./assets/images/IconsInGame/trueIcon.jpg", q.questionText));
+  } else if(q.typeOfQuestion == TypeOfQuestion.dare){
+    return Center(
+        child: CustomCardText(context, "Pflicht",
+            "./assets/images/IconsInGame/dareIcon.jpg", q.questionText));
   }
+  else {
+
+     return Center(
+        child: CustomCardText(context, "Error",
+            "./assets/images/IconsInGame/dareIcon.jpg", "Error"));
+  }
+
+
+  }
+
 }

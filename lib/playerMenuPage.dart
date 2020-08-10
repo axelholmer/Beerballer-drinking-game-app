@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreen2.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/GameChoicheEnum.dart';
 import 'package:testflutter/NeverEverHaveIPage.dart';
 
@@ -42,7 +45,7 @@ class _PlayersMenuState extends State<PlayersMenu>
 
   final _players = <Player>[
     Player.fromStart(name: 'Player1'),
-    Player.fromStart(name: 'Player2'),
+   // Player.fromStart(name: 'Player2'),
   ];
 
   void _routeHandler() {
@@ -87,59 +90,106 @@ class _PlayersMenuState extends State<PlayersMenu>
         body: Center(
             child: Column(children: <Widget>[
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 5,
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 35,
           ),
-          Row(children: <Widget>[
-            Container(
-              width: SizeConfig.blockSizeHorizontal * 2,
-            ),
-            CustomBackButton(context),
-          ]),
-          Text(
-            "Spielermenu",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 8,
-              color: Color.fromRGBO(238, 237, 237, 1),
-              fontWeight: FontWeight.w900,
-              //height: 0.4,
+          CustomTopTitleScreen2(
+              context, "Spielermenu", "./assets/images/otherGamesIcon.png"),
+          SizedBox(
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 25,
+          ),
+          Flexible(
+            flex: 3,
+            child: FractionallySizedBox(
+              heightFactor: 0.95,
+              widthFactor: 0.8, // constrain height
+              child: _buildPlayerList(),
             ),
           ),
           SizedBox(
-            height: SizeConfig.blockSizeVertical * 40, // constrain height
-            child: _buildPlayerList(),
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 30,
           ),
-          SizedBox(height: SizeConfig.blockSizeVertical * 3),
-          //_warningTextNoPlayers(),
-          RaisedButton(
-            color: Theme.of(context).accentColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(11.0),
-                side: BorderSide(color: Theme.of(context).accentColor)),
-            onPressed: () {
-              if (_players.length < 2) {
-                _showNoPlayersDialog();
-              } else {
-                _routeHandler();
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) =>
-                //           TruthOrDarePage(listPlayer: _players)),
-                // );
-              }
-            },
-            child: Container(
-              //
-              child: Text(
-                "Prost!",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: SizeConfig.safeBlockHorizontal * 7,
-                ),
-              ),
-            ),
-          ),
+          Flexible(
+              flex: 1,
+              child: FractionallySizedBox(
+                widthFactor: 0.35,
+                heightFactor: 0.5,
+
+                child: RaisedButton(
+                    color: Theme.of(context).accentColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(11.0),
+                        side: BorderSide(
+                          color: Theme.of(context).accentColor,
+                        )),
+                    onPressed: () {
+                      if (_players.length < 1) {
+                        _showNoPlayersDialog();
+                      } else {
+                        _routeHandler();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) =>
+                        //           TruthOrDarePage(listPlayer: _players)),
+                        // );
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Flexible(
+                            child: FractionallySizedBox(
+                          heightFactor: 1,
+                          widthFactor: 0.9,
+                          //   alignment: Alignment.center,
+                          child: FittedBox(
+                              alignment: Alignment.center,
+                              fit: BoxFit.contain,
+                              child: AutoSizeText(
+                                "Prost!",
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                    fontWeight: FontWeight.w700),
+                              )),
+                        )),
+                      ],
+                    )),
+
+                // RaisedButton(
+                //   color: Theme.of(context).accentColor,
+                //   shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(11.0),
+                //       side: BorderSide(color: Theme.of(context).accentColor)),
+                //   onPressed: () {
+                //     if (_players.length < 2) {
+                //       _showNoPlayersDialog();
+                //     } else {
+                //       _routeHandler();
+                //       // Navigator.push(
+                //       //   context,
+                //       //   MaterialPageRoute(
+                //       //       builder: (context) =>
+                //       //           TruthOrDarePage(listPlayer: _players)),
+                //       // );
+                //     }
+                //   },
+                //   child: Container(
+                //     //
+                //     child: Text(
+                //       "Prost!",
+                //       textAlign: TextAlign.center,
+                //       style: TextStyle(
+                //         fontSize: SizeConfig.safeBlockHorizontal * 7,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ))
         ])));
   }
 
@@ -255,10 +305,38 @@ class _PlayersMenuState extends State<PlayersMenu>
     // focusNode = null;
     // }
 
+    // return Container(
+    //     height: SizeConfig.blockSizeVertical * 100,
+        // width: SizeConfig.blockSizeHorizontal * 20,
+
+        // child: Row(
+        //   children: [
+
+        //     Container(
+        //       height: SizeConfig.blockSizeVertical * 100,
+        //       width: SizeConfig.blockSizeHorizontal * 600,
+        //       child: 
+        //     TextField(
+        //       style: TextStyle(
+        //         fontSize: SizeConfig.safeBlockHorizontal * 6,
+        //         color: Colors.orange[200],
+        //       ),
+        //       controller: myController,
+        //       onChanged: (text) {
+        //         _players[index].name = text;
+        //       },
+        //       decoration: InputDecoration(
+        //           border: InputBorder.none, hintText: player.name),
+        //     ),)
+        //   ],
+        // ));
     return ListTile(
+
+      contentPadding: EdgeInsets.all(SizeConfig.safeBlockVertical * 0),
+
         title: TextField(
           style: TextStyle(
-            fontSize: SizeConfig.safeBlockHorizontal * 7,
+           fontSize: SizeConfig.safeBlockHorizontal * 7,
             color: Colors.orange[200],
           ),
           controller: myController,

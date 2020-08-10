@@ -317,9 +317,9 @@ Widget questionCardWidget(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
               side: BorderSide(
-                color: Color.fromRGBO(238, 237, 237, 1),
+              //  color: Color.fromRGBO(238, 237, 237, 1),
               )),
-          color: Color.fromRGBO(238, 237, 237, 1),
+          color: Color.fromRGBO(254, 254, 254, 1),
           elevation: 15.0,
           child: CardSide(text: text, onCardToogle: _handleCardToogle)));
 }

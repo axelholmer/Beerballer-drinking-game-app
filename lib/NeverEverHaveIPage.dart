@@ -7,10 +7,12 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future, Timer;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomBackButton.dart';
+import 'CustomWidget/CustomCardText.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Player.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
@@ -39,7 +41,7 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
   int _currentPlayerListCount;
   String _currentPlayerName;
 
-  bool _isCardvisible = true;
+  bool _isCardvisible = false;
 
   @override
   void initState() {
@@ -191,34 +193,106 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Column(
+        body: Center(
+            child: Column(
           children: <Widget>[
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 5,
+              height: SizeConfig.blockSizeVertical * 35,
             ),
-            Row(children: <Widget>[
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 2,
-              ),
-              CustomBackButton(context),
-            ]),
+            CustomTopTitleScreenForIngameApp(context, ""),
+
             Visibility(
-              visible: _isCardvisible == false,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: SizeConfig.blockSizeVertical * 20,
+                visible: _isCardvisible == false,
+                child: Flexible(
+                    child: FractionallySizedBox(
+                  widthFactor: 1,
+                  heightFactor: 0.8,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                          child: FractionallySizedBox(
+                              widthFactor: 1,
+                              heightFactor: 0.4,
+                              child: FittedBox(
+                                  alignment: Alignment.center,
+                                  fit: BoxFit.contain,
+                                  child: Text(
+                                    _currentPlayerName,
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: new TextStyle(
+                                      //fontSize: SizeConfig.safeBlockHorizontal * 10,
+                                      color: Colors.orange[200],
+                                    ),
+                                    //style: TextStyle(fontWeight: FontWeight.bold),
+                                  )))),
+                      Flexible(
+                          child: FractionallySizedBox(
+                              heightFactor: 0.5,
+                              widthFactor: 1,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: FractionallySizedBox(
+                                        widthFactor: 0.70,
+                                        heightFactor: 0.6,
+                                        child: RaisedButton(
+                                            color:
+                                                Theme.of(context).accentColor,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(11.0),
+                                                side: BorderSide(
+                                                    color: Theme.of(context)
+                                                        .accentColor)),
+                                            onPressed: () {
+                                              setState(() {
+                                                _isCardvisible = true;
+                                              });
+                                            },
+                                            child: FractionallySizedBox(
+                                              heightFactor: 1,
+                                              widthFactor: 1,
+                                              child: FittedBox(
+                                                  alignment: Alignment.center,
+                                                  fit: BoxFit.contain,
+                                                  child: Text(
+                                                    "Ich habe noch nie...",
+                                                    textAlign: TextAlign.center,
+                                                    //maxLines: 1,
+                                                    style: TextStyle(
+                                                        //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  )),
+                                            ))),
+                                  ),
+                                ],
+                              ))),
+                    ],
                   ),
-                  _playerNameText(),
-                  _nextCard(),
-                ],
-              ),
-            ),
+                ))),
+            // Visibility(
+            //   visible: _isCardvisible == false,
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.center,
+            //     children: <Widget>[
+            //       SizedBox(
+            //         height: SizeConfig.blockSizeVertical * 20,
+            //       ),
+            //       _playerNameText(),
+            //       _nextCard(),
+            //     ],
+            //   ),
+            // ),
+
             Visibility(
               visible: _isCardvisible == true,
-              child: Center(
+              child: Flexible(
                 child: QuestionCard(
                   //Here QuestionCard
                   question: _currentQuestion,
@@ -259,14 +333,14 @@ class _NeverEverHaveIPageState extends State<NeverEverHaveIPage>
           ],
         )
 
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: () {
-        //     generateRandomQuestion();
-        //   },
-        //   label: Text('Naechste Frage'),
-        //   backgroundColor: Colors.orange,
-        // ),
-        );
+            // floatingActionButton: FloatingActionButton.extended(
+            //   onPressed: () {
+            //     generateRandomQuestion();
+            //   },
+            //   label: Text('Naechste Frage'),
+            //   backgroundColor: Colors.orange,
+            // ),
+            ));
   }
 }
 
@@ -321,18 +395,33 @@ class _QuestionCardState extends State<QuestionCard> {
 }
 
 Widget questionCardWidget(String text, BuildContext context) {
-  return SizedBox(
-      height: SizeConfig.blockSizeVertical * 70,
-      width: SizeConfig.blockSizeHorizontal * 75,
+  return FractionallySizedBox(
+      heightFactor: 0.86,
+      widthFactor: 0.7,
       child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
               side: BorderSide(
-                color: Color.fromRGBO(238, 237, 237, 1),
-              )),
-          color: Color.fromRGBO(238, 237, 237, 1),
+                  //  color: Color.fromRGBO(238, 237, 237, 1),
+                  )),
+          color: Color.fromRGBO(254, 254, 254, 1),
           elevation: 15.0,
-          child: CardSide(text: text)));
+          child: CardSide(
+            text: text,
+          )));
+
+  // return SizedBox(
+  //     height: SizeConfig.blockSizeVertical * 70,
+  //     width: SizeConfig.blockSizeHorizontal * 75,
+  //     child: Card(
+  //         shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(25.0),
+  //             side: BorderSide(
+  //               color: Color.fromRGBO(238, 237, 237, 1),
+  //             )),
+  //         color: Color.fromRGBO(238, 237, 237, 1),
+  //         elevation: 15.0,
+  //         child: CardSide(text: text)));
 }
 
 class CardSide extends StatelessWidget {
@@ -342,23 +431,8 @@ class CardSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        heightFactor: 0.9,
-        child: Center(
-          child: AutoSizeText(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 7,
-              //height: 2,
-              height: SizeConfig.safeBlockVertical * 0.23,
-              fontFamily: 'Oswald',
-            ),
-          ),
-        ),
-      ),
-    );
+    return Center(
+        child: CustomCardText(context, "Wahrheit",
+            "./assets/images/IconsInGame/trueIcon.jpg", text));
   }
 }

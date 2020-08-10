@@ -12,6 +12,8 @@ import 'package:testflutter/main.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomBackButton.dart';
+import 'CustomWidget/CustomCardText.dart';
+import 'CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Player.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
@@ -169,24 +171,25 @@ class _CategoryGameState extends State<CategoryGamePage>
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        body: Column(
+        body: Center(child: Column(
           children: <Widget>[
             SizedBox(
-              height: SizeConfig.blockSizeVertical * 5,
+              //always need this for title screens
+              height: SizeConfig.blockSizeVertical * 35,
             ),
-            Row(children: <Widget>[
-              SizedBox(
-                width: SizeConfig.blockSizeHorizontal * 2,
-              ),
-              CustomBackButton(context),
-            ]),
-            Center(
+            CustomTopTitleScreenForIngameApp(
+              context,
+              "Schaetzen",
+            ),
+
+            Flexible(
               child: QuestionCard(
                 //Here QuestionCard
                 question: _currentQuestion,
                 key: ValueKey<QuestionCategoryGame>(_currentQuestion),
               ),
             ),
+
             // Align(
             //     alignment: Alignment.bottomCenter,
             //     child: Padding(
@@ -223,7 +226,7 @@ class _CategoryGameState extends State<CategoryGamePage>
           //   label: Text('Naechste Frage'),
           //   backgroundColor: Colors.orange,
           // ),
-        ));
+        )));
   }
 }
 
@@ -278,18 +281,33 @@ class _QuestionCardState extends State<QuestionCard> {
 }
 
 Widget questionCardWidget(String text, BuildContext context) {
-  return SizedBox(
-       height: SizeConfig.blockSizeVertical * 70,
-      width: SizeConfig.blockSizeHorizontal * 75,
+  return FractionallySizedBox(
+      heightFactor: 0.86,
+      widthFactor: 0.7,
       child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
               side: BorderSide(
-                color: Color.fromRGBO(238, 237, 237, 1),
-              )),
-          color: Color.fromRGBO(238, 237, 237, 1),
+                  //  color: Color.fromRGBO(238, 237, 237, 1),
+                  )),
+          color: Color.fromRGBO(254, 254, 254, 1),
           elevation: 15.0,
-          child: CardSide(text: text)));
+          child: CardSide(
+            text: text,
+          )));
+
+  // return SizedBox(
+  //     height: SizeConfig.blockSizeVertical * 70,
+  //     width: SizeConfig.blockSizeHorizontal * 75,
+  //     child: Card(
+  //         shape: RoundedRectangleBorder(
+  //             borderRadius: BorderRadius.circular(25.0),
+  //             side: BorderSide(
+  //               color: Color.fromRGBO(238, 237, 237, 1),
+  //             )),
+  //         color: Color.fromRGBO(238, 237, 237, 1),
+  //         elevation: 15.0,
+  //         child: CardSide(text: text)));
 }
 
 class CardSide extends StatelessWidget {
@@ -299,23 +317,9 @@ class CardSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        heightFactor: 0.9,
-        child: Center(
-          child: AutoSizeText(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 7,
-              //height: 2,
-              height: SizeConfig.safeBlockVertical * 0.23,
-              fontFamily: 'Oswald',
-            ),
-          ),
-        ),
-      ),
-    );
+    return Center(
+        child: CustomCardText(context, "Kategoriespiel",
+            "./assets/images/IconsInGame/categoryIcon.jpg", text));
+  
   }
 }
