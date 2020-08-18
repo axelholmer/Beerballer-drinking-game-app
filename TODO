@@ -14,7 +14,14 @@ TODO:
 14. Inforseite Beerbakler bottomactionbar (hur ska den se ut? Sophie).
 15. title platzieren auf Karten.
 16. göra linjerna pa kortlayouten tjockare i inapp spiele
-
+17. Gör sa att man ej kan ändra oriteneirng
+18. Gör sa att backbutton följer med
+19. Ta bort knappen sonstiges i menun
+20. precache
+21.lägg till expl i inappspiele och överallt imlp knapp där man kan fa hjälp
+22. Lägg till error exception för images om dem widget far tom pathstring blir laddade med image asset, väldigt viktig kan fa hela app att crasha,
+kolla denna https://stackoverflow.com/questions/54031804/what-are-the-double-question-marks-in-dart
+23. Kolla vrf kort som blir utbytta försvinner
 
 Feedback:
 leichtes grau beim Playermenu.

@@ -56,7 +56,7 @@ void main() {
 
   runApp(DevicePreview(
     //  enabled: !kReleaseMode,
-    enabled: true,
+    enabled: false,
     builder: (context) => MyApp(),
   ));
   // runApp(MyApp());
@@ -67,11 +67,13 @@ class InheritedMainWidget extends InheritedWidget {
   InheritedMainWidget({
     Key key,
     this.myLogo,
+    this.listEstimateQuestions,
     this.listTruDareQuestions,
     this.listNeverHaveIQuestions,
     this.listCategoryQuestions,
     Widget child,
   }) : super(key: key, child: child);
+  final List<QuestionEstimation> listEstimateQuestions;
   final List<TruthOrDareQuestion> listTruDareQuestions;
   final List<QuestionNeverHaveI> listNeverHaveIQuestions;
   final List<QuestionCategoryGame> listCategoryQuestions;
@@ -79,7 +81,7 @@ class InheritedMainWidget extends InheritedWidget {
 
   @override
   bool updateShouldNotify(InheritedMainWidget old) {
-    return listTruDareQuestions != old.listTruDareQuestions &&
+    return listEstimateQuestions != old.listEstimateQuestions && listTruDareQuestions != old.listTruDareQuestions &&
         myLogo != old.myLogo &&
         listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
         listCategoryQuestions != old.listCategoryQuestions;
@@ -274,6 +276,7 @@ class _MyAppState extends State<MyApp> {
             fontFamily: 'Inknut'),
         home: GameMenu(),
       ),
+      listEstimateQuestions: listEstimateQuestions,
       listTruDareQuestions: listTruDareQuestions,
       listNeverHaveIQuestions: listNeverEverHAveIquestions,
       listCategoryQuestions: listCategoryQuestions,

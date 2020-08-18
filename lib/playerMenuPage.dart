@@ -12,6 +12,7 @@ import 'package:testflutter/NeverEverHaveIPage.dart';
 
 import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
+import 'package:testflutter/TruthOrDareSwipePage.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomBackButton.dart';
@@ -56,8 +57,8 @@ class _PlayersMenuState extends State<PlayersMenu>
           Navigator.push(
               context,
               CustomTransistionAnimation(
-                  page: TruthOrDarePage(
-                listPlayer: _players,
+                  page: TruthOrDareSwipePage(
+                // listPlayer: _players,
               )));
         }
         break;

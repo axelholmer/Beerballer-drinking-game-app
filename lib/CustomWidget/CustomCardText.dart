@@ -4,6 +4,11 @@ import '../SizeConfig.dart';
 
 Widget CustomCardText(
     BuildContext context, String gameTitle, String iconPath, String cardText) {
+
+
+     // if(ico)
+
+
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -48,7 +53,7 @@ Widget CustomCardText(
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: SizeConfig.safeBlockHorizontal * 6,
-              //height: 2,
+            //  height: SizeConfig.safeBlockVertical * ,
               //   height: SizeConfig.safeBlockVertical * 0.23,
               //  fontFamily: 'Oswald',
               fontWeight: FontWeight.w600,

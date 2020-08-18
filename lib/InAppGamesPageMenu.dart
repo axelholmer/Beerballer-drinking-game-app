@@ -15,6 +15,7 @@ import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
+import 'package:testflutter/EstimateSwipe.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CustomWidget/CustomBackButton.dart';
@@ -27,6 +28,7 @@ import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'SizeConfig.dart';
+import 'TruthOrDareSwipePage.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
 import 'main.dart';
@@ -324,7 +326,7 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
             // ),
             Flexible(
                 child: FractionallySizedBox(
-              heightFactor: 0.7,
+              heightFactor: 0.8,
               widthFactor: 1,
               //   alignment: Alignment.center,
               child: FittedBox(
@@ -405,18 +407,24 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
         Navigator.push(
             context,
             CustomTransistionAnimation(
-                page: SchaetzenPage(listQuestions: listEstimateQuestions)));
+              //page: SchaetzenSwipe(listQuestions: listEstimateQuestions)));
+                page: EstimateSwipe()));
       }
       break;
     case 1:
-      Navigator.push(
-          context,
-          CustomTransistionAnimation(
-              page: PlayersMenu(
-            GameChoicheEnum.wahrheitOderPflicht,
-            gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,
-          )));
-
+      // Navigator.push(
+      //     context,
+      //     CustomTransistionAnimation(
+      //         page: PlayersMenu(
+      //       GameChoicheEnum.wahrheitOderPflicht,
+      //       gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,
+      //     )));
+ Navigator.push(
+              context,
+              CustomTransistionAnimation(
+                  page: TruthOrDareSwipePage(
+                // listPlayer: _players,
+              )));
       break;
     case 2:
       {

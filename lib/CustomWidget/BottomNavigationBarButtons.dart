@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:testflutter/InfoPage.dart';
 import 'package:testflutter/SizeConfig.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../customTransistionAnimation.dart';
 
 //TODO fix sizes here
 Widget BottomNavigationBarButtons(BuildContext context) {
@@ -27,7 +30,11 @@ Widget BottomNavigationBarButtons(BuildContext context) {
               child: IconButton(
                 //iconSize: SizeConfig.safeBlockHorizontal * 80.0,
                 icon: Icon(FontAwesomeIcons.info),
-                onPressed: () {},
+                onPressed: () {
+Navigator.push(
+            context, CustomTransistionAnimation(page: InfoPage()));
+
+                },
               ),
             ),
           )),
