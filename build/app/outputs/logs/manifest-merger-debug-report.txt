@@ -51,7 +51,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Ax
 	android:label
 		ADDED from C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:10:9-36
 	android:icon
-		ADDED from C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:11:9-43
+		ADDED from C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:11:9-45
 	android:name
 		ADDED from C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:9:9-57
 activity#com.example.testflutter.MainActivity
