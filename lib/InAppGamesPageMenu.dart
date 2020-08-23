@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:testflutter/CategoryGamePage.dart';
 import 'package:testflutter/CustomWidget/CustomTopTitleScreen.dart';
 import 'package:testflutter/NeverEverHaveIPage.dart';
+import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
@@ -18,6 +19,7 @@ import 'package:testflutter/TruthOrDarePage.dart';
 import 'package:testflutter/EstimateSwipe.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'CategoryGamePageSwipe.dart';
 import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomTopTitleScreen2.dart';
@@ -407,7 +409,7 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
         Navigator.push(
             context,
             CustomTransistionAnimation(
-              //page: SchaetzenSwipe(listQuestions: listEstimateQuestions)));
+                //page: SchaetzenSwipe(listQuestions: listEstimateQuestions)));
                 page: EstimateSwipe()));
       }
       break;
@@ -419,23 +421,23 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
       //       GameChoicheEnum.wahrheitOderPflicht,
       //       gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,
       //     )));
- Navigator.push(
-              context,
-              CustomTransistionAnimation(
-                  page: TruthOrDareSwipePage(
-                // listPlayer: _players,
-              )));
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: TruthOrDareSwipePage(
+                  // listPlayer: _players,
+                  )));
       break;
     case 2:
       {
         Navigator.push(
             context,
-            CustomTransistionAnimation(
-                page: PlayersMenu(
-              GameChoicheEnum.ichHabeNochNie,
-              gamechoicheenum: GameChoicheEnum.ichHabeNochNie,
-            )));
-        print(choice.title);
+            // CustomTransistionAnimation(
+            //     page: PlayersMenu(
+            //   GameChoicheEnum.ichHabeNochNie,
+            //   gamechoicheenum: GameChoicheEnum.ichHabeNochNie,
+            // ))
+            CustomTransistionAnimation(page: NeverEverHavieIPageSwipe()));
         // = listTruDareQuestions;
         //  InheritedTruDarData.of(context).
       }
@@ -443,7 +445,7 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
     case 3:
       {
         Navigator.push(
-            context, CustomTransistionAnimation(page: CategoryGamePage()));
+            context, CustomTransistionAnimation(page: CategoryGamePageSwipe()));
         print(choice.title);
       }
       break;

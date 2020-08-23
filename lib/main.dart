@@ -626,8 +626,6 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
       }
       break;
     case "Wurfelspiele":
-      listDiceGames = sortGamesIntoLists(listGames, "dicegame");
-      print(listDiceGames);
       // Navigator.push(
       //     context,
       //     CustomTransistionAnimation(
@@ -643,7 +641,6 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
       break;
     case "Kartenspiele":
       listCardGames = sortGamesIntoLists(listGames, "cardgame");
-      print(listCardGames);
       Navigator.push(
           context,
           CustomTransistionAnimation(

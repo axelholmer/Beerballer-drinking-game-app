@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:testflutter/CustomWidget/CustomTopTitleScreen2.dart';
 import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/GameChoicheEnum.dart';
-import 'package:testflutter/NeverEverHaveIPage.dart';
+import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 
 import 'package:testflutter/SchaetzenPage.dart';
 import 'package:testflutter/TruthOrDarePage.dart';
@@ -66,8 +66,8 @@ class _PlayersMenuState extends State<PlayersMenu>
         Navigator.push(
             context,
             CustomTransistionAnimation(
-                page: NeverEverHaveIPage(
-              listPlayer: _players,
+                page: NeverEverHavieIPageSwipe(
+             // listPlayer: _players,
             )));
 
         break;
