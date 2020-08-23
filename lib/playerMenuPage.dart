@@ -10,8 +10,7 @@ import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/GameChoicheEnum.dart';
 import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 
-import 'package:testflutter/SchaetzenPage.dart';
-import 'package:testflutter/TruthOrDarePage.dart';
+
 import 'package:testflutter/TruthOrDareSwipePage.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';

@@ -22,11 +22,20 @@ class CategoryGamePageSwipe extends StatefulWidget {
 class _CategoryGamePageSwipeState extends State<CategoryGamePageSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
+  bool isInfoExplVisible;
   List<QuestionCategoryGame> questionsList = List<QuestionCategoryGame>();
 
   @override
   void initState() {
     super.initState();
+  }
+
+   hideInfoExpl() {
+    if (isInfoExplVisible) {
+      isInfoExplVisible = false;
+    } else {
+      isInfoExplVisible = true;
+    }
   }
 
   @override
@@ -54,7 +63,7 @@ class _CategoryGamePageSwipeState extends State<CategoryGamePageSwipe>
             ),
             CustomTopTitleScreenForIngameApp(
               context,
-              "Schaetzen",
+              "Schaetzen", hideInfoExpl
             ),
             SizedBox(
               //always need this for title screens

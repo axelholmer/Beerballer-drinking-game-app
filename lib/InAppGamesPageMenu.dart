@@ -7,15 +7,14 @@ import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:testflutter/CategoryGamePage.dart';
+
 import 'package:testflutter/CustomWidget/CustomTopTitleScreen.dart';
-import 'package:testflutter/NeverEverHaveIPage.dart';
+
 import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
-import 'package:testflutter/SchaetzenPage.dart';
-import 'package:testflutter/TruthOrDarePage.dart';
+
 import 'package:testflutter/EstimateSwipe.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -25,7 +24,7 @@ import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomTopTitleScreen2.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
-import 'SchaetzenPage.dart';
+
 import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

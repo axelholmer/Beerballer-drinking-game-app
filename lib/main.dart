@@ -9,14 +9,13 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:testflutter/CategoryGamePage.dart';
+
 import 'package:testflutter/InAppGamesPageMenu.dart';
-import 'package:testflutter/NeverEverHaveIPage.dart';
+
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
-import 'package:testflutter/SchaetzenPage.dart';
-import 'package:testflutter/TruthOrDarePage.dart';
+
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:testflutter/listOfGames.dart';
 import 'package:tuple/tuple.dart';
@@ -25,7 +24,7 @@ import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'GameClass.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
-import 'SchaetzenPage.dart';
+
 import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -631,6 +630,7 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
       //     CustomTransistionAnimation(
       //         page: listOfGames(
       //             items: List<String>.generate(10000, (i) => "Item $i"))));
+     listDiceGames = sortGamesIntoLists(listGames, "dicegame");
       Navigator.push(
           context,
           CustomTransistionAnimation(

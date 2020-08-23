@@ -23,72 +23,16 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
   List<QuestionNeverHaveI> questionsList = List<QuestionNeverHaveI>();
-
-  //int _truthQuestionListCount = 0;
-  // int _dareQuestionListCount = 0;
   QuestionNeverHaveI _currentQuestion;
-  // //List<TruthOrDareQuestion> listForCardCount = List<TruthOrDareQuestion>();
-  // List<TruthOrDareQuestion> listTruthQuestions = List<TruthOrDareQuestion>();
-  // List<TruthOrDareQuestion> listDareQuestions = List<TruthOrDareQuestion>();
 
-  // static List<TruthOrDareQuestion> _getTruthOrDareLists(
-  //     BuildContext context, TypeOfQuestion type) {
-  //   List<TruthOrDareQuestion> allQuestionsList =
-  //       InheritedMainWidget.of(context).listTruDareQuestions;
-
-  //   List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
-  //   List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
-
-  //   for (final element in allQuestionsList) {
-  //     if (element.typeOfQuestion == TypeOfQuestion.truth) {
-  //       truthQuestionList.add(element);
-  //     } else if (element.typeOfQuestion == TypeOfQuestion.dare) {
-  //       dareQuestionList.add(element);
-  //     } else {
-  //       print("Error CardType: " +
-  //           element.typeOfQuestion.toString()); //TODO Here real logging
-  //     }
-  //   }
-
-  //   if (type == TypeOfQuestion.truth) {
-  //     return truthQuestionList;
-  //   } else if (type == TypeOfQuestion.dare) {
-  //     return dareQuestionList;
-  //   } else {
-  //     print("No type assigned"); //TODO Here log
-  //     return null;
-  //   }
-  // }
-
-  // TruthOrDareQuestion _getTruthQuestion() {
-  //   //return //widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
-
-  //   if (_truthQuestionListCount < listTruthQuestions.length) {
-  //     // _currentQuestion = list[_truthQuestionListCount];
-  //     // _truthQuestionListCount++;
-  //     return listTruthQuestions[_truthQuestionListCount++];
-  //   } else {
-  //     _truthQuestionListCount = 0;
-  //     // _currentQuestion = list[_truthQuestionListCount];
-  //     // _truthQuestionListCount++;
-  //     return listTruthQuestions[_truthQuestionListCount++];
-  //   }
-  // }
-
-  // TruthOrDareQuestion _getDareQuestion() {
-  //   //return //widget.listQuestions[rng.nextInt(widget.listQuestions.length)];
-
-  //   if (_dareQuestionListCount < listDareQuestions.length) {
-  //     //_currentQuestion = list[_dareQuestionListCount];
-  //     //_dareQuestionListCount++;
-  //     return listDareQuestions[_dareQuestionListCount++];
-  //   } else {
-  //     _dareQuestionListCount = 0;
-  //     // _currentQuestion = list[_dareQuestionListCount];
-  //     // _dareQuestionListCount++;
-  //     return listDareQuestions[_dareQuestionListCount++];
-  //   }
-  // }
+ bool isInfoExplVisible = false;
+  hideInfoExpl() {
+    if (isInfoExplVisible) {
+      isInfoExplVisible = false;
+    } else {
+      isInfoExplVisible = true;
+    }
+  }
 
   @override
   void initState() {
@@ -124,7 +68,7 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
             ),
             CustomTopTitleScreenForIngameApp(
               context,
-              "Schaetzen",
+              "Schaetzen", hideInfoExpl
             ),
             SizedBox(
               //always need this for title screens

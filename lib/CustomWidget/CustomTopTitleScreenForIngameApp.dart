@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:testflutter/CustomWidget/InfoButton.dart';
 
 import '../SizeConfig.dart';
 import 'CustomBackButton.dart';
 
+typedef void HideInfoExpl();
+
 Widget CustomTopTitleScreenForIngameApp(
-    BuildContext context, String title) {
+    BuildContext context, String title, HideInfoExpl hideInfoExpl ) {
   return Container(
           height: SizeConfig.safeBlockVertical * 110,
           width:  SizeConfig.screenWidth,
@@ -14,10 +17,24 @@ Widget CustomTopTitleScreenForIngameApp(
               child: FractionallySizedBox(
                 widthFactor: 1,
                 heightFactor: 1,
-                child: FittedBox(
+                child: 
+                FittedBox(
                   alignment: Alignment.centerLeft,
                   fit: BoxFit.contain,
                   child: CustomBackButton(context),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: FractionallySizedBox(
+                widthFactor: 1,
+                heightFactor: 1,
+                child: 
+                FittedBox(
+                  alignment: Alignment.centerRight,
+                  fit: BoxFit.contain,
+                  child: InfoButton(context, hideInfoExpl),
                 ),
               ),
             ),

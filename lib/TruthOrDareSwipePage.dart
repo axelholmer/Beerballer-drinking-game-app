@@ -30,6 +30,16 @@ class _TruthOrDareSwipePage extends State<TruthOrDareSwipePage>
   List<TruthOrDareQuestion> listTruthQuestions = List<TruthOrDareQuestion>();
   List<TruthOrDareQuestion> listDareQuestions = List<TruthOrDareQuestion>();
 
+
+bool isInfoExplVisible = false;
+  hideInfoExpl() {
+    if (isInfoExplVisible) {
+      isInfoExplVisible = false;
+    } else {
+      isInfoExplVisible = true;
+    }
+  }
+
   static List<TruthOrDareQuestion> _getTruthOrDareLists(
       BuildContext context, TypeOfQuestion type) {
     List<TruthOrDareQuestion> allQuestionsList =
@@ -37,6 +47,7 @@ class _TruthOrDareSwipePage extends State<TruthOrDareSwipePage>
 
     List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
     List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
+
 
     for (final element in allQuestionsList) {
       if (element.typeOfQuestion == TypeOfQuestion.truth) {
@@ -124,7 +135,7 @@ class _TruthOrDareSwipePage extends State<TruthOrDareSwipePage>
             ),
             CustomTopTitleScreenForIngameApp(
               context,
-              "Schaetzen",
+              "Schaetzen", hideInfoExpl
             ),
             SizedBox(
               //always need this for title screens
@@ -213,13 +224,7 @@ class _QuestionCardState extends State<QuestionCard>
     super.dispose();
   }
 
-  // @override
-  // void didUpdateWidget(QuestionCard oldWidget) {
-  //   print("update: " + oldWidget.question.questionText);
-  //   super.didUpdateWidget(oldWidget);
-  //  // _question = widget.question;
-  //  // _controller.reset();
-  // }
+
 
   void _handleCardToogle(TypeOfQuestion questionType) {
     setState(() {

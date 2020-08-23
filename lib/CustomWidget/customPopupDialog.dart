@@ -54,10 +54,6 @@ for (var i = 0; i < explList.length ; i++) {
                     child: Container(
               color: Color.fromRGBO(50, 50, 50, 1),
               child: Column(children: listWidgets
-                  //  CustomExplItemTest(context, "terrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrffffffffffffffst"),
-                  //  SizedBox(height: SizeConfig.blockSizeVertical * 40,),
-                  //  CustomExplItemTest(context, "terrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrffffffffffffffst"),
-
                   ),
             ))),
           ),

@@ -18,14 +18,27 @@ class EstimateSwipe extends StatefulWidget {
 class _EstimateSwipeState extends State<EstimateSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
+
   List<QuestionEstimation> estimateQuestions = List<QuestionEstimation>();
+  bool isInfoExplVisible = false;
+
+  hideInfoExpl() {
+    setState(() {
+      print(isInfoExplVisible);
+      if (isInfoExplVisible) {
+        isInfoExplVisible = false;
+      } else {
+        isInfoExplVisible = true;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     if (!estimateQuestions.isNotEmpty) {
       estimateQuestions = InheritedMainWidget.of(context).listEstimateQuestions;
       estimateQuestions.shuffle();
     }
-
     //print(estimateQuestions[_index].questionText);
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
@@ -34,48 +47,58 @@ class _EstimateSwipeState extends State<EstimateSwipe>
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Center(
-          child: Column(children: <Widget>[
-            SizedBox(
-              //always need this for title screens
-              height: SizeConfig.blockSizeVertical * 35,
-            ),
-            CustomTopTitleScreenForIngameApp(
-              context,
-              "Schaetzen",
-            ),
-             SizedBox(
-              //always need this for title screens
-              height: SizeConfig.blockSizeVertical * 20,
-            ),
-            Flexible(
-                child: PageView.builder(
-              itemCount: estimateQuestions.length,
-              controller: PageController(viewportFraction: 0.7),
-              onPageChanged: (int index) => setState(() => _index = index),
-              itemBuilder: (_, i) {
-                return Transform.scale(
-                  scale: i == _index ? 1 : 0.9,
-                  child: QuestionCard(question: estimateQuestions[i]),
+            child: Stack(
+          children: [
+            Column(children: <Widget>[
+              SizedBox(
+                //always need this for title screens
+                height: SizeConfig.blockSizeVertical * 35,
+              ),
+              CustomTopTitleScreenForIngameApp(
+                  context, "Schaetzen", hideInfoExpl),
+              SizedBox(
+                //always need this for title screens
+                height: SizeConfig.blockSizeVertical * 20,
+              ),
+              Flexible(
+                  child: PageView.builder(
+                itemCount: estimateQuestions.length,
+                controller: PageController(viewportFraction: 0.7),
+                onPageChanged: (int index) => setState(() => _index = index),
+                itemBuilder: (_, i) {
+                  return Transform.scale(
+                    scale: i == _index ? 1 : 0.9,
+                    child: QuestionCard(question: estimateQuestions[i]),
 
-                  //  Card(
-                  //   elevation: 6,
-                  //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                  //   child: Center(
-                  //     child: Text(
-                  //       "${estimateQuestions[i].questionText}",
-                  //       style: TextStyle(fontSize: 32),
-                  //     ),
-                  //   ),
-                  // ),
-                );
-              },
-            )),
-            SizedBox(
-              //always need this for title screens
-              height: SizeConfig.blockSizeVertical * 30,
-            ),
-          ]),
-        ));
+                    //  Card(
+                    //   elevation: 6,
+                    //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                    //   child: Center(
+                    //     child: Text(
+                    //       "${estimateQuestions[i].questionText}",
+                    //       style: TextStyle(fontSize: 32),
+                    //     ),
+                    //   ),
+                    // ),
+                  );
+                },
+              )),
+              SizedBox(
+                //always need this for title screens
+                height: SizeConfig.blockSizeVertical * 30,
+              ),
+            ]),
+            Visibility(
+                visible: isInfoExplVisible,
+                // maintainState: true,
+                child: GestureDetector(
+                  onTap: () {
+                    hideInfoExpl();
+                  },
+                  child: Container(color: Colors.black.withOpacity(0.4)),
+                ))
+          ],
+        )));
   }
 }
 
@@ -100,7 +123,6 @@ class _QuestionCardState extends State<QuestionCard>
 
   @override
   void initState() {
-    
     super.initState();
 
     _question = widget.question;
@@ -154,7 +176,7 @@ class _QuestionCardState extends State<QuestionCard>
           animation: _backScale,
           builder: (BuildContext context, Widget child) {
             final Matrix4 transform = new Matrix4.identity()
-              ..scale( _backScale.value, 1.0, 1.0);
+              ..scale(_backScale.value, 1.0, 1.0);
             return new Transform(
               transform: transform,
               alignment: FractionalOffset.center,
@@ -216,7 +238,6 @@ class CardSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
     return InkWell(
       //TODO put this one one Widget up.
       onTap: () {
