@@ -6,6 +6,7 @@ import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomCardText.dart';
 import 'CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'CustomWidget/customPopupDialog.dart';
 import 'SizeConfig.dart';
 
 class EstimateSwipe extends StatefulWidget {
@@ -18,6 +19,7 @@ class EstimateSwipe extends StatefulWidget {
 class _EstimateSwipeState extends State<EstimateSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
+  final List<String> listRules = ["Blab", "bla"];
 
   List<QuestionEstimation> estimateQuestions = List<QuestionEstimation>();
   bool isInfoExplVisible = false;
@@ -28,11 +30,28 @@ class _EstimateSwipeState extends State<EstimateSwipe>
       if (isInfoExplVisible) {
         isInfoExplVisible = false;
       } else {
+
+        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => customPopupDialog(
+                              context,
+                              "Schätzen", listRules
+                        ));
         isInfoExplVisible = true;
       }
     });
   }
 
+
+@override
+void initState() {
+    Future.delayed(const Duration(milliseconds: 300), () {
+
+hideInfoExpl();
+
+});
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     if (!estimateQuestions.isNotEmpty) {
@@ -95,11 +114,88 @@ class _EstimateSwipeState extends State<EstimateSwipe>
                   onTap: () {
                     hideInfoExpl();
                   },
-                  child: Container(color: Colors.black.withOpacity(0.4)),
-                ))
+                  child: explScreen(context),
+                )),
+           
           ],
         )));
   }
+}
+
+Widget explScreen(BuildContext context) {
+  return FractionallySizedBox(
+      widthFactor: 1,
+      heightFactor: 1,
+      child: Container(
+          color: Colors.black.withOpacity(0.55),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                    child: FractionallySizedBox(
+                  heightFactor: 0.5,
+                  widthFactor: 1,
+                  child: Image.asset(
+                    "./assets/images/IconsInGame/tap.png",
+                    // width: SizeConfig.blockSizeHorizontal * 190,
+                    // height: SizeConfig.blockSizeVertical * 125,
+                    //width: SizeConfig.blockSizeHorizontal * ,
+                    //   height: SizeConfig.blockSizeVertical * 8,
+                  ),
+                )),
+                Flexible(
+                    child: FractionallySizedBox(
+                        heightFactor: 0.4,
+                        widthFactor: 0.8,
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "Tap eine Karte zum Umdrehen",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                //height: SizeConfig.safeBlockHorizontal * 0.1,
+                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                //  height: 1,
+                              ),
+                            )))),
+                SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                    child: FractionallySizedBox(
+                  heightFactor: 0.5,
+                  widthFactor: 1,
+                  child: Image.asset(
+                    "./assets/images/IconsInGame/swipe.png",
+                    // width: SizeConfig.blockSizeHorizontal * 190,
+                    // height: SizeConfig.blockSizeVertical * 125,
+                    //width: SizeConfig.blockSizeHorizontal * ,
+                    //   height: SizeConfig.blockSizeVertical * 8,
+                  ),
+                )),
+                Flexible(
+                    child: FractionallySizedBox(
+                        heightFactor: 0.4,
+                        widthFactor: 0.7,
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "Swipe für nächste Karte",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                //   height: SizeConfig.safeBlockHorizontal * 0.1,
+                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                //  height: 1,
+                              ),
+                            )))),
+              ],
+            ),
+          )));
 }
 
 class QuestionCard extends StatefulWidget {

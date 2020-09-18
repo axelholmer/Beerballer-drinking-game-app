@@ -62,7 +62,7 @@ for (var i = 0; i < explList.length ; i++) {
     actions: <Widget>[
       new FlatButton(
         onPressed: () {
-          Navigator.of(context).pop();
+         Navigator.of(context).pop();
         },
         textColor: Colors.orange[200],
         child: const Text('Okay, got it!'),
