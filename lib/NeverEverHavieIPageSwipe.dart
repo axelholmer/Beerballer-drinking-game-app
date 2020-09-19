@@ -9,6 +9,7 @@ import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomCardText.dart';
 import 'CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'CustomWidget/customPopupDialog.dart';
 import 'SizeConfig.dart';
 
 class NeverEverHavieIPageSwipe extends StatefulWidget {
@@ -24,22 +25,38 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
   int _index = 0;
   List<QuestionNeverHaveI> questionsList = List<QuestionNeverHaveI>();
   QuestionNeverHaveI _currentQuestion;
+    final List<String> listRules = ["Blab", "bla"];
+
 
  bool isInfoExplVisible = false;
   hideInfoExpl() {
-    if (isInfoExplVisible) {
-      isInfoExplVisible = false;
-    } else {
-      isInfoExplVisible = true;
-    }
+    setState(() {
+      print(isInfoExplVisible);
+      if (isInfoExplVisible) {
+        isInfoExplVisible = false;
+      } else {
+
+        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => customPopupDialog(
+                              context,
+                              "Ich habe noch nie", listRules
+                        ));
+        isInfoExplVisible = true;
+      }
+    });
   }
 
   @override
   void initState() {
-    super.initState();
+Future.delayed(const Duration(milliseconds: 100), () {
 
-    // _truthQuestionListCount = 0;
-    // _dareQuestionListCount = 0;
+hideInfoExpl();
+
+});
+
+
+    super.initState();
   }
 
   @override
@@ -61,7 +78,9 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Center(
-          child: Column(children: <Widget>[
+          child: 
+           Stack(
+          children: [ Column(children: <Widget>[
             SizedBox(
               //always need this for title screens
               height: SizeConfig.blockSizeVertical * 35,
@@ -90,8 +109,94 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
               height: SizeConfig.blockSizeVertical * 30,
             ),
           ]),
-        ));
+         Visibility(
+                visible: isInfoExplVisible,
+                // maintainState: true,
+                child: GestureDetector(
+                  onTap: () {
+                    hideInfoExpl();
+                  },
+                  child: explScreen(context),
+                )),
+        
+          ])));
   }
+
+  Widget explScreen(BuildContext context) {
+  return FractionallySizedBox(
+      widthFactor: 1,
+      heightFactor: 1,
+      child: Container(
+          color: Colors.black.withOpacity(0.55),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                    child: FractionallySizedBox(
+                  heightFactor: 0.5,
+                  widthFactor: 1,
+                  child: Image.asset(
+                    "./assets/images/IconsInGame/tap.png",
+                    // width: SizeConfig.blockSizeHorizontal * 190,
+                    // height: SizeConfig.blockSizeVertical * 125,
+                    //width: SizeConfig.blockSizeHorizontal * ,
+                    //   height: SizeConfig.blockSizeVertical * 8,
+                  ),
+                )),
+                Flexible(
+                    child: FractionallySizedBox(
+                        heightFactor: 0.4,
+                        widthFactor: 0.8,
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "Tap eine Karte zum Umdrehen",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                //height: SizeConfig.safeBlockHorizontal * 0.1,
+                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                //  height: 1,
+                              ),
+                            )))),
+                SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                    child: FractionallySizedBox(
+                  heightFactor: 0.5,
+                  widthFactor: 1,
+                  child: Image.asset(
+                    "./assets/images/IconsInGame/swipe.png",
+                    // width: SizeConfig.blockSizeHorizontal * 190,
+                    // height: SizeConfig.blockSizeVertical * 125,
+                    //width: SizeConfig.blockSizeHorizontal * ,
+                    //   height: SizeConfig.blockSizeVertical * 8,
+                  ),
+                )),
+                Flexible(
+                    child: FractionallySizedBox(
+                        heightFactor: 0.4,
+                        widthFactor: 0.7,
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Text(
+                              "Swipe für nächste Karte",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                //   height: SizeConfig.safeBlockHorizontal * 0.1,
+                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                fontWeight: FontWeight.w700,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                //  height: 1,
+                              ),
+                            )))),
+              ],
+            ),
+          )));
+}
 }
 
 class QuestionCard extends StatefulWidget {

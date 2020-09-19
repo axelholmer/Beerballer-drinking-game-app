@@ -216,8 +216,8 @@ class _MyAppState extends State<MyApp> {
     // precacheImage(AssetImage("./assets/images/logo.png"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
 
-    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    // precacheImage(myLogo.image, context);
+    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {
@@ -517,13 +517,13 @@ Widget _gameChoiceWidgets(
           child: FractionallySizedBox(
         heightFactor: 0.60,
       )),
-      Flexible(
-          child: _gameChoiceButton(
-              Tuple2<String, String>(
-                  "Sonstiges", "./assets/images/otherGamesIcon.png"),
-              context))
+      // Flexible(
+      //     child: _gameChoiceButton(
+      //         Tuple2<String, String>(
+      //             "Sonstiges", "./assets/images/otherGamesIcon.png"),
+      //         context))
 
-      // IntrinsicWidth(
+      // // IntrinsicWidth(
       //   child: Column /*or Column*/ (
       //       mainAxisAlignment: MainAxisAlignment.center,
       //       crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -43,16 +43,17 @@ for (var i = 0; i < explList.length ; i++) {
       ),
     ), //fix Text size etc
     content: Container(
+        color: Color.fromRGBO(50, 50, 50, 1),
         width: SizeConfig.safeBlockHorizontal * 400,
         height: SizeConfig.safeBlockVertical * 650,
         child: SafeArea(
           child: Scrollbar(
             child: SingleChildScrollView(
-                //Here a widget list of Texts
+            
 
                 child: Center(
                     child: Container(
-              color: Color.fromRGBO(50, 50, 50, 1),
+             // color: Color.fromRGBO(50, 50, 50, 1),
               child: Column(children: listWidgets
                   ),
             ))),

@@ -1,27 +1,26 @@
 TODO:
 1. Icons anpassen - Done
 2. Best of trinkspiele zu png - Done
-3. Homescreen Appicon
-4. Loadingscreen
+3. Homescreen Appicon - Done (IOS muss stille be done)
+4. Loadingscreen - 
 5. Soundeffects in App? - No
 6. Sophie: Content
-7. Gestures feature einbauen bei Inapp Spielen - Vielleicht sophie.
-8. animationen für cards? screen wechelns, popup dialogs.
-10. Change icon für Store/website..
-11. Title von App.
-12. Provköra pa olika mobiler + ios
-13. Infoseite Regeln spiele + gesture Infoseite
-14. Inforseite Beerbakler bottomactionbar (hur ska den se ut? Sophie).
-15. title platzieren auf Karten.
-16. göra linjerna pa kortlayouten tjockare i inapp spiele
+7. Gestures feature einbauen bei Inapp Spielen - Vielleicht sophie. - Done
+17. add backbutton to info page -> Gör sa att backbutton följer med -Done
+
+
+
 17. Gör sa att man ej kan ändra oriteneirng
-18. Gör sa att backbutton följer med
 19. Ta bort knappen sonstiges i menun
-20. precache
-21.lägg till expl i inappspiele och överallt imlp knapp där man kan fa hjälp
-22. Lägg till error exception för images om dem widget far tom pathstring blir laddade med image asset, väldigt viktig kan fa hela app att crasha,
+ Bilder för varje icke in app spiele (kanske göra mindre)?
+20. precache ?
+23. Kolla vrf kort som blir utbytta försvinne?
+
+
+
+
 kolla denna https://stackoverflow.com/questions/54031804/what-are-the-double-question-marks-in-dart
-23. Kolla vrf kort som blir utbytta försvinner
+r
 
 Feedback:
 leichtes grau beim Playermenu.
@@ -31,3 +30,10 @@ titeln irgendwo anders? - Mach erstmal auf dem
 Loadingscreen: Beerballog auf Schwarze Hintergrund.
 Appicon: Beerball icon.
 Music: Keine music.
+
+
+IOS:
+Check Launchicons.
+
+
+Frage: Name von App
