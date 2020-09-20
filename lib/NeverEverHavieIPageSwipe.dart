@@ -217,7 +217,7 @@ class QuestionCard extends StatefulWidget {
 }
 
 class _QuestionCardState extends State<QuestionCard>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin  , AutomaticKeepAliveClientMixin<QuestionCard> {
   //TruthOrDareQuestion _question;
   AnimationController _controller;
   Animation<double> _frontScale;
@@ -338,6 +338,10 @@ class _QuestionCardState extends State<QuestionCard>
       ],
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
 
 Widget questionCardFrontSideWidget(

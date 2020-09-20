@@ -216,8 +216,8 @@ class _MyAppState extends State<MyApp> {
     // precacheImage(AssetImage("./assets/images/logo.png"), context);
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
 
-    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    precacheImage(myLogo.image, context);
+    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    // precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {
@@ -257,13 +257,9 @@ class _MyAppState extends State<MyApp> {
     precacheImage(AssetImage("./assets/images/inGameAppIcon.png"), context);
     precacheImage(AssetImage("./assets/images/otherGamesIcon.png"), context);
 
-    precacheImage(
-        AssetImage("./assets/images/games/cardGames/Arschloch.jpg"), context);
-    precacheImage(
-        AssetImage("./assets/images/games/cardGames/pferderennen.jpg"),
-        context);
-    precacheImage(
-        AssetImage("assets/images/games/cardGames/maumau.jpg"), context);
+    precacheImage(AssetImage("./assets/images/Infopage/logowhite.png"), context);
+    precacheImage(AssetImage("./assets/images/Infopage/crossIcon.png"), context);
+
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
     return InheritedMainWidget(
       child: MaterialApp(
@@ -471,7 +467,7 @@ Widget _gameChoiceWidgets(
       // )),
 
       SizedBox(
-        height: SizeConfig.blockSizeVertical * 90,
+        height: SizeConfig.blockSizeVertical * 110,
       ),
 
       // Flexible(
@@ -481,6 +477,8 @@ Widget _gameChoiceWidgets(
       //         child: Column(
       //           mainAxisAlignment: MainAxisAlignment.end,
       //           children: <Widget>[
+
+        
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
@@ -488,7 +486,7 @@ Widget _gameChoiceWidgets(
               context)),
       Flexible(
           child: FractionallySizedBox(
-        heightFactor: 0.60,
+        heightFactor: 0.65,
       )),
       Flexible(
           child: _gameChoiceButton(
@@ -497,7 +495,7 @@ Widget _gameChoiceWidgets(
               context)),
       Flexible(
           child: FractionallySizedBox(
-        heightFactor: 0.60,
+        heightFactor: 0.65,
       )),
       Flexible(
           child: _gameChoiceButton(
@@ -506,7 +504,7 @@ Widget _gameChoiceWidgets(
               context)),
       Flexible(
           child: FractionallySizedBox(
-        heightFactor: 0.60,
+        heightFactor: 0.65,
       )),
       Flexible(
           child: _gameChoiceButton(
@@ -515,7 +513,7 @@ Widget _gameChoiceWidgets(
               context)),
       Flexible(
           child: FractionallySizedBox(
-        heightFactor: 0.60,
+        heightFactor: 0.65,
       )),
       // Flexible(
       //     child: _gameChoiceButton(
@@ -536,7 +534,7 @@ Widget _gameChoiceWidgets(
 Widget _gameChoiceButton(
     Tuple2<String, String> gameChoice, BuildContext context) {
   return FractionallySizedBox(
-      heightFactor: 1.2,
+      heightFactor: 1.15,
       widthFactor: 0.80,
       child: RaisedButton(
         color: Theme.of(context).accentColor,

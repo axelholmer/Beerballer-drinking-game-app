@@ -47,14 +47,17 @@ class InfoPage extends StatelessWidget {
                   Container(
                       height: SizeConfig.safeBlockVertical * 200,
                       child: FittedBox(
-                        fit: BoxFit.contain,
-                        child: Image.asset(
-                            "./assets/images/Infopage/logowhite.png",
-                            // width: SizeConfig.blockSizeHorizontal * 140,
-                            // height: SizeConfig.blockSizeVertical * 80,
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                            colorBlendMode: BlendMode.modulate),
-                      )),
+                          fit: BoxFit.contain,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                                minWidth: 1, minHeight: 1), // here
+                            child: Image.asset(
+                                "./assets/images/Infopage/logowhite.png",
+                                // width: SizeConfig.blockSizeHorizontal * 140,
+                                // height: SizeConfig.blockSizeVertical * 80,
+                                color: Color.fromRGBO(255, 255, 255, 1),
+                                colorBlendMode: BlendMode.modulate),
+                          ))),
                   SizedBox(height: SizeConfig.blockSizeVertical * 20),
                   Container(
                       height: SizeConfig.safeBlockVertical * 80,
@@ -214,23 +217,25 @@ class InfoPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Flexible(
-                                flex: 1,
-                                child: Container(
+                                  flex: 1,
+                                  child: Container(
                                     //width: 200
                                     // height: SizeConfig.blockSizeVertical * 80,
                                     // padding: EdgeInsets.all(SizeConfig.safeBlockHorizontal *
                                     //     2.5), //I used some padding without fixed width and height
-
                                     child: FittedBox(
-                                  fit: BoxFit.contain,
-                                  child: Image.asset(
-                                      "./assets/images/Infopage/crossIcon.png"
-                                      // width: SizeConfig.blockSizeHorizontal * 140,
-                                      // height: SizeConfig.blockSizeVertical * 80,
-                                      ),
-                                )),
-                              ),
-                              // SizedBox(width: SizeConfig.blockSizeHorizontal * 35),
+                                        fit: BoxFit.contain,
+                                        child: ConstrainedBox(
+                                          constraints: BoxConstraints(
+                                              minWidth: 1,
+                                              minHeight: 1), // here
+                                          child: Image.asset(
+                                              "./assets/images/Infopage/crossIcon.png"
+                                              // width: SizeConfig.blockSizeHorizontal * 140,
+                                              // height: SizeConfig.blockSizeVertical * 80,
+                                              ),
+                                        )),
+                                  )),
                               Flexible(
                                 flex: 5,
                                 // width: SizeConfig.blockSizeHorizontal * 470,

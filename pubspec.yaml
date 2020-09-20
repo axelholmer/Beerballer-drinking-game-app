@@ -87,9 +87,8 @@ flutter:
     - assets/images/otherGamesIcon.png
     - assets/images/diceGamesIcon.png
 
-    - assets/images/games/cardGames/Arschloch.jpg
-    - assets/images/games/cardGames/maumau.jpg
-    - assets/images/games/cardGames/pferderennen.jpg
+    - assets/images/games/
+    
 
     - assets/images/IconsInGame/categoryIcon.jpg
     - assets/images/IconsInGame/dareIcon.jpg

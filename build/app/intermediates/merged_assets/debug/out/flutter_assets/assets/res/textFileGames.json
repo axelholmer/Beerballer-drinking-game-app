@@ -18,7 +18,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/Arschloch.jpg"
+    "imagePath": "./assets/images/games/archloch.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Pferderennen",
@@ -39,7 +39,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/pferderennen.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Mau Mau",
@@ -60,7 +60,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/maumau.jpg"
+    "imagePath": "./assets/images/games/maumau.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Kings Cup",
@@ -81,7 +81,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/maumau.jpg"
+    "imagePath": "./assets/images/games/maumau.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Alkohol Black Jack",
@@ -102,7 +102,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/maumau.jpg"
+    "imagePath": "./assets/images/games/blackjack.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Bus fahren",
@@ -123,7 +123,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/maumau.jpg"
+    "imagePath": "./assets/images/games/busfahren.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Captain Shithead",
@@ -144,7 +144,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/captainshithead.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Klopf die Karte",
@@ -165,7 +165,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/klopfdiekarte.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Puste die Karte",
@@ -186,7 +186,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/pferderennen.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Bierbeln",
@@ -207,7 +207,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/bierbeln.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Damenwahl",
@@ -228,7 +228,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/damenwahl.jpg"
   },
    { "typeOfGame": "cardgame",
     "gameName": "Asssaufen",
@@ -249,7 +249,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/asssaufen.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Kartensaugen",
@@ -270,7 +270,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/kartensaugen.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Höher oder tiefer",
@@ -291,7 +291,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/höherodertiefer.jpg"
   },
   { "typeOfGame": "cardgame",
     "gameName": "Drink Bitch",
@@ -312,7 +312,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/drinkbitch.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Beer Pong",
@@ -333,7 +333,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/beerpong.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Rage Cage",
@@ -354,7 +354,7 @@
     "explanation8": "Das Spiel endet, wenn der letzte Becher in der Mitte getrunken wurde.",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/ragecage.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Flip Cup",
@@ -375,7 +375,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/flipcup.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Flip Cup Tic Tac Toe",
@@ -396,7 +396,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/flipcuptiktaktoe.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Fusion",
@@ -417,7 +417,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/fusion.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Klimpern",
@@ -438,7 +438,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/klimpern.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Soccer",
@@ -459,7 +459,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/soccer.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Darepong",
@@ -480,7 +480,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/darepong.jpg"
   },
   { "typeOfGame": "cupgame",
     "gameName": "Shotpong",
@@ -501,7 +501,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/shotpong.jpg"
   },
   { "typeOfGame": "dicegame",
     "gameName": "Mäxchen",
@@ -522,7 +522,7 @@
     "explanation8": "Falls ein Spieler die 21 geworfen hat, ruft er Mäxchen, zeigt allen die Würfel und jeder trinkt.",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Mäxchen.jpg"
   },
   { "typeOfGame": "dicegame",
     "gameName": "Biermeister",
@@ -543,7 +543,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/biermeister.jpg"
   },
   { "typeOfGame": "dicegame",
     "gameName": "Avalanche",
@@ -564,7 +564,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/avalanche.jpg"
   },
   { "typeOfGame": "boardgame",
     "gameName": "Bier ärgere dich nicht",
@@ -585,7 +585,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/bierargerdichnicht.jpg"
   },
   { "typeOfGame": "boardgame",
     "gameName": "Alkopoly",
@@ -606,7 +606,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/pferderennen.jpg"
   },
   { "typeOfGame": "boardgame",
     "gameName": "Looping Louie",
@@ -627,7 +627,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/LoopingLouie.jpg"
   },
   { "typeOfGame": "boardgame",
     "gameName": "Jenga",
@@ -648,7 +648,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/DrungJenga.jpg"
   },
   { "typeOfGame": "boardgame",
     "gameName": "Shots versenken",
@@ -669,7 +669,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Shotsversenken.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Wer würde eher?",
@@ -690,7 +690,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/werwürdeeher.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Kanake",
@@ -711,7 +711,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/kanake.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Finger aufs Glas",
@@ -732,7 +732,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/FingeraufGlas.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Flachwitz Challenge",
@@ -753,7 +753,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/flachwitzchallenge.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Klatschen (Brasilien Style)",
@@ -774,7 +774,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Klattschen.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Wer bin ich?",
@@ -795,7 +795,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/werbinich.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Zigarettenschachtel werfen",
@@ -816,7 +816,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Zigarettenschachtelwerfen.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Kommando Pimperle",
@@ -837,7 +837,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/kommandopimperle.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "15 Wortersetzen",
@@ -858,7 +858,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/wortersetzen.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Russische Post",
@@ -879,7 +879,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/russischePost.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Russisch Roulette",
@@ -900,7 +900,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/russischroulette.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Flunky Ball",
@@ -921,7 +921,7 @@
     "explanation8": "Wenn von einem Spieler das Bier umgeworfen wird oder es anfängt überzuschäumen, bekommt er ein weiteres Bier als Strafbier.",
     "explanation9": "Gewonnen hat das Team, bei dem alle Spieler des Teams ihr Bier erfolgreich geext haben.",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/flunkyball.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Elefantenrennen",
@@ -942,7 +942,7 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Elefantenrennen.jpg"
   },
   { "typeOfGame": "?",
     "gameName": "Klamottenmarathon",
@@ -963,6 +963,6 @@
     "explanation8": "",
     "explanation9": "",
     "explanation10": "",
-    "imagePath": "./assets/images/games/cardGames/pferderennen.jpg"
+    "imagePath": "./assets/images/games/Klamottenmarathon.jpg"
   }
 ]

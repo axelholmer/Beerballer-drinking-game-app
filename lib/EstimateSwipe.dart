@@ -207,8 +207,8 @@ class QuestionCard extends StatefulWidget {
   _QuestionCardState createState() => _QuestionCardState();
 }
 
-class _QuestionCardState extends State<QuestionCard>
-    with TickerProviderStateMixin {
+class _QuestionCardState extends State<QuestionCard> 
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin<QuestionCard> {
   QuestionEstimation _question;
   AnimationController _controller;
   Animation<double> _frontScale;
@@ -244,6 +244,11 @@ class _QuestionCardState extends State<QuestionCard>
     _controller.dispose();
     super.dispose();
   }
+ 
+  @override
+  
+  bool get wantKeepAlive => true;
+
 
   // @override
   // void didUpdateWidget(QuestionCard oldWidget) {
@@ -264,6 +269,10 @@ class _QuestionCardState extends State<QuestionCard>
 
   @override
   Widget build(BuildContext context) {
+   
+   
+
+   
     return new Stack(
       children: <Widget>[
         new AnimatedBuilder(

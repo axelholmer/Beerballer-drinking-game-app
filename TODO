@@ -7,33 +7,36 @@ TODO:
 6. Sophie: Content
 7. Gestures feature einbauen bei Inapp Spielen - Vielleicht sophie. - Done
 17. add backbutton to info page -> Gör sa att backbutton följer med -Done
+17. Gör sa att man ej kan ändra oriteneirng - Done
+19. Ta bort knappen sonstiges i menun - Done
+23. Kolla vrf kort som blir utbytta försvinne? - Done
 
 
 
-17. Gör sa att man ej kan ändra oriteneirng
-19. Ta bort knappen sonstiges i menun
- Bilder för varje icke in app spiele (kanske göra mindre)?
-20. precache ?
-23. Kolla vrf kort som blir utbytta försvinne?
-
+Bilder för varje icke in app spiele (kanske göra mindre)? - on the way
+24. still missing text and launchscreen
 
 
 
 kolla denna https://stackoverflow.com/questions/54031804/what-are-the-double-question-marks-in-dart
-r
+
 
 Feedback:
 leichtes grau beim Playermenu.
 progressbar green machen. - Done
 titeln irgendwo anders? - Mach erstmal auf dem
-
-Loadingscreen: Beerballog auf Schwarze Hintergrund.
-Appicon: Beerball icon.
 Music: Keine music.
 
 
+Pot bug: 25. fixa konstigt error som dyker när man trycker första gangen pa infopage. - May be fixed, but still need test
+
 IOS:
 Check Launchicons.
+check portraitmode.
 
 
 Frage: Name von App
+Gamesbildern: 
+Kingscup
+puste die karte
+Alkopoly
