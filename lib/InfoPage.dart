@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/SizeConfig.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/CustomTopTitleScreen2.dart';
@@ -59,19 +60,25 @@ class InfoPage extends StatelessWidget {
                                 colorBlendMode: BlendMode.modulate),
                           ))),
                   SizedBox(height: SizeConfig.blockSizeVertical * 20),
-                  Container(
-                      height: SizeConfig.safeBlockVertical * 80,
-                      child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Text(
-                            "www.beerballer.com",
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                            style: TextStyle(
-                                //fontSize: SizeConfig.safeBlockHorizontal * 50,
-                                color: Color.fromRGBO(235, 235, 235, 1),
-                                fontWeight: FontWeight.w400),
-                          ))),
+
+                  InkWell(
+                      child: Container(
+                          height: SizeConfig.safeBlockVertical * 80,
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "www.beerballer.com",
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                    color: Color.fromRGBO(235, 235, 235, 1),
+                                    fontWeight: FontWeight.w400),
+                              ))),
+                      onTap: () async {
+                        await launch("https://beerballer.com/");
+                      }),
+
                   SizedBox(height: SizeConfig.blockSizeVertical * 10),
                   Container(
                       height: SizeConfig.safeBlockVertical * 80,
@@ -87,14 +94,13 @@ class InfoPage extends StatelessWidget {
                                 fontWeight: FontWeight.w800),
                           ))),
                   SizedBox(height: SizeConfig.blockSizeVertical * 10),
-
                   Container(
                     // height: SizeConfig.safeBlockVertical *300,
                     width: SizeConfig.safeBlockHorizontal * 85,
                     child: Text(
-                      "Wir sind ein junges Startup aus Darmstadt,\ndie selbst bei jeder Gelegenheit gerne Beer\nPong spielen. Aus der Begeisterung (und\nvielleicht dem ein oder anderen Getränk zu\nviel..) kam uns die Idee für BeerBaller:\nEine innovative Marke im Bereich\nTrinkspiele mit der wir all unsere kreativen\nIdeen verwirklichen können!",
+                      "Wir sind ein junges Startup aus Darmstadt, die selbst bei jeder Gelegenheit gerne BeerPong spielen. Aus der Begeisterung (und vielleicht dem ein oder anderen Getränk zu viel..) kam uns die Idee für BeerBaller: Eine innovative Marke im Bereich Trinkspiele mit der wir all unsere kreativen Ideen verwirklichen können!",
                       textAlign: TextAlign.start,
-                      maxLines: 8,
+                      // maxLines: 8,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),
@@ -142,9 +148,10 @@ class InfoPage extends StatelessWidget {
                     width: SizeConfig.safeBlockHorizontal * 85,
 
                     child: Text(
-                      "Mit unseren Produkten und Events wollen\nwir Spaß und gute Laune in die\nGesellschaft bringen!",
+                      // "Mit unseren Produkten und Events wollen\nwir Spaß und gute Laune in die\nGesellschaft bringen!",
+                      "Mit unseren Produkten und Events wollen wir Spaß und gute Laune in die Gesellschaft bringen!",
                       textAlign: TextAlign.start,
-                      maxLines: 3,
+                      // maxLines: 3,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),
@@ -196,9 +203,10 @@ class InfoPage extends StatelessWidget {
                     // height: SizeConfig.safeBlockVertical *300,
                     width: SizeConfig.safeBlockHorizontal * 85,
                     child: Text(
-                      "Wir waren ziemlich unzufrieden mit\nden bisherigen Trinkspiel Apps auf dem Markt:",
+                      // "Wir waren ziemlich unzufrieden mit\nden bisherigen Trinkspiel Apps auf dem Markt:",
+                      "Wir waren ziemlich unzufrieden mit den bisherigen Trinkspiel Apps auf dem Markt:",
                       textAlign: TextAlign.start,
-                      maxLines: 3,
+                      // maxLines: 3,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),
@@ -206,7 +214,6 @@ class InfoPage extends StatelessWidget {
                           fontWeight: FontWeight.w300),
                     ),
                   ),
-
                   Container(
                       // height: SizeConfig.safeBlockVertical *300,
                       width: SizeConfig.safeBlockHorizontal * 85,
@@ -418,9 +425,10 @@ class InfoPage extends StatelessWidget {
                               flex: 5,
                               // width: SizeConfig.blockSizeHorizontal * 470,
                               child: Text(
-                                "Bei uns bekommt ihr eine Sammlung\naus über 50 Trinkspielen, die ihr mit\ndem Handy oder wenig Material schnell\numsetzen könnt.",
+                                // "Bei uns bekommt ihr eine Sammlung\naus über 50 Trinkspielen, die ihr mit\ndem Handy oder wenig Material schnell\numsetzen könnt.",
+                                "Bei uns bekommt ihr eine Sammlung aus über 50 Trinkspielen, die ihr mit dem Handy oder wenig Material schnell umsetzen könnt.",
                                 textAlign: TextAlign.start,
-                                maxLines: 4,
+                                // maxLines: 4,
                                 style: TextStyle(
                                     //fontSize: SizeConfig.safeBlockHorizontal * 50,
                                     color: Color.fromRGBO(232, 232, 232, 1),
@@ -458,9 +466,10 @@ class InfoPage extends StatelessWidget {
                     width: SizeConfig.safeBlockHorizontal * 85,
 
                     child: Text(
-                      "Die App war doch deutlich mehr Arbeit als\nanfangs gedacht:)\nWir hoffen sehr, dass sie euch gefällt!",
+                      // "Die App war doch deutlich mehr Arbeit als\anfangs gedacht:)\nWir hoffen sehr, dass sie euch gefällt!",
+                      "Die App war doch deutlich mehr Arbeit als anfangs gedacht:) Wir hoffen sehr, dass sie euch gefällt!",
                       textAlign: TextAlign.start,
-                      maxLines: 3,
+                      // maxLines: 3,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),
@@ -473,9 +482,10 @@ class InfoPage extends StatelessWidget {
                     // height: SizeConfig.safeBlockVertical *300,
                     width: SizeConfig.safeBlockHorizontal * 85,
                     child: Text(
-                      "Wenn ihr uns unterstützen möchtet noch\nweitere Trinkspiele in diese App zu\nintegrieren, würden wir uns riesig über\neine Bewertung im Appstore oder\nGoogle Play store freuen!",
+                      // "Wenn ihr uns unterstützen möchtet noch\nweitere Trinkspiele in diese App zu\nintegrieren, würden wir uns riesig über\neine Bewertung im Appstore oder\nGoogle Play store freuen!",
+                      "Wenn ihr uns unterstützen möchtet noch weitere Trinkspiele in diese App zu integrieren, würden wir uns riesig über eine Bewertung im Appstore oder Google Play store freuen!",
                       textAlign: TextAlign.start,
-                      maxLines: 5,
+                      // maxLines: 5,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),
@@ -502,9 +512,10 @@ class InfoPage extends StatelessWidget {
                     // height: SizeConfig.safeBlockVertical *300,
                     width: SizeConfig.safeBlockHorizontal * 85,
                     child: Text(
-                      "Folgt uns gerne auf Instagram und bleibt\nimmer auf dem neuesten Stand über unsere\neuesten Produktideen und anstehende\Events.",
+                      // "Folgt uns gerne auf Instagram und bleibt\nimmer auf dem neuesten Stand über unsere\neuesten Produktideen und anstehende\Events.",
+                      "Folgt uns gerne auf Instagram und bleibt immer auf dem neuesten Stand über unsere euesten Produktideen und anstehende events.",
                       textAlign: TextAlign.start,
-                      maxLines: 4,
+                      // maxLines: 4,
                       style: TextStyle(
                           //fontSize: SizeConfig.safeBlockHorizontal * 50,
                           color: Color.fromRGBO(232, 232, 232, 1),

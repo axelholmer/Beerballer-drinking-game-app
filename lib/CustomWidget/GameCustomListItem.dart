@@ -231,7 +231,7 @@ class GameCustomListItem extends StatelessWidget {
                                     )),
                                     Flexible(
                                         child: FractionallySizedBox(
-                                      widthFactor: 2,
+                                      widthFactor: 0.49,
                                       heightFactor: 1.35,
                                       child: FittedBox(
                                           // alignment: Alignment.centerLeft,
@@ -419,7 +419,8 @@ class GameCustomListItem extends StatelessWidget {
                     widthFactor: 0.5,
                     heightFactor: 0.8,
                     child: RaisedButton(
-                      color: Colors.yellow[600],
+                      color: Colors.yellow[700],
+                    //  color: Colors.orange[300],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(11.0),
                           side: BorderSide(

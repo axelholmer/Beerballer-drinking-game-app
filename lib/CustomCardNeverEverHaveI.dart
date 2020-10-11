@@ -27,7 +27,7 @@ Widget CustomCardNeverEverHaveI(
       Flexible(
           child: FractionallySizedBox(
               heightFactor: 0.55,
-              widthFactor: 1,
+              widthFactor: .87,
               child: FittedBox(
                   fit: BoxFit.contain,
                   child: AutoSizeText(

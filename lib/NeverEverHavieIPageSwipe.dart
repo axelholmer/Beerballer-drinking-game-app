@@ -25,7 +25,7 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
   int _index = 0;
   List<QuestionNeverHaveI> questionsList = List<QuestionNeverHaveI>();
   QuestionNeverHaveI _currentQuestion;
-    final List<String> listRules = ["Blab", "bla"];
+    final List<String> listRules = ["Die App gibt verschiedene Sätze vor, welche alle mit \"Ich habe noch nie\" beginnen.", "Jeder, bei dem diese Aussage nicht der Wahrheit entspricht (er es schon einmal gemacht hat) muss einen Schluck trinken", "Danach folgt die nächste Aussage"];
 
 
  bool isInfoExplVisible = false;

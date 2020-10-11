@@ -1,0 +1,8 @@
+# Referenced at C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:17
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:22
+-keep class com.example.testflutter.MainActivity { <init>(); }
+# Referenced at C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:17
+-keep class io.flutter.app.FlutterApplication { <init>(); }
+# Referenced at C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:44
+-keep class io.flutter.plugins.urllauncher.WebViewActivity { <init>(); }

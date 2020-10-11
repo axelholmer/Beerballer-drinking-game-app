@@ -25,7 +25,7 @@ class _CategoryGamePageSwipeState extends State<CategoryGamePageSwipe>
   int _index = 0;
   bool isInfoExplVisible = false;
   List<QuestionCategoryGame> questionsList = List<QuestionCategoryGame>();
-  final List<String> listRules = ["Blab", "bla"];
+  final List<String> listRules = ["Es wird jeweils eine Kategorie von der App vorgegeben", "Reihum muss jeder Mitspieler nun einen Begriff nennen, welcher in die Kategorie fällt", "Der erste, dem kein Begriff mehr einfällt muss einen Schluck trinken", "Darauf folgt der nächste Begriff"];
   @override
   void initState() {
 
@@ -92,7 +92,7 @@ hideInfoExpl();
               itemBuilder: (_, i) {
                 return Transform.scale(
                     scale: i == _index ? 1 : 0.9,
-                    child: questionCardBackSideWidget(context, questionsList[i].questionText, "Categoriespiel", "./assets/images/IconsInGame/categoryIcon.jpg"));
+                    child: questionCardBackSideWidget(context, questionsList[i].questionText, "Kategoriespiel", "./assets/images/IconsInGame/categoryIcon.jpg"));
               },
             )),
             SizedBox(

@@ -19,7 +19,7 @@ class EstimateSwipe extends StatefulWidget {
 class _EstimateSwipeState extends State<EstimateSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
-  final List<String> listRules = ["Blab", "bla"];
+  final List<String> listRules = ["Handy in die Hand nehmen und die angegebenen Schätzfragen beantworten", "Jeder Mitspieler gibt eine Antwort auf die Frage", "Der am weitesten mit seiner Schätzung entfernteste Spieler muss einen Schluck trinken", "Anschließend folgt die nächste Schätzfrage"];
 
   List<QuestionEstimation> estimateQuestions = List<QuestionEstimation>();
   bool isInfoExplVisible = false;

@@ -27,7 +27,7 @@ Widget CustomCardText(
       Flexible(
           child: FractionallySizedBox(
               heightFactor: 0.55,
-              widthFactor: 1,
+              widthFactor: .87,
               child: FittedBox(
                   fit: BoxFit.contain,
                   child: AutoSizeText(
@@ -52,7 +52,7 @@ Widget CustomCardText(
         child: AutoSizeText(cardText,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: SizeConfig.safeBlockHorizontal * 6,
+              fontSize: SizeConfig.safeBlockHorizontal * 4.5,
             //  height: SizeConfig.safeBlockVertical * ,
               //   height: SizeConfig.safeBlockVertical * 0.23,
               //  fontFamily: 'Oswald',

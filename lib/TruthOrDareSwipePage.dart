@@ -30,7 +30,7 @@ class _TruthOrDareSwipePage extends State<TruthOrDareSwipePage>
   List<TruthOrDareQuestion> listForCardCount = List<TruthOrDareQuestion>();
   List<TruthOrDareQuestion> listTruthQuestions = List<TruthOrDareQuestion>();
   List<TruthOrDareQuestion> listDareQuestions = List<TruthOrDareQuestion>();
-final List<String> listRules = ["Blab", "bla"];
+final List<String> listRules = ["Das Handy reihum weiter geben. Jeder Mitspieler muss reihum entweder Wahrheit oder Pflicht  erfüllen", "Bei Wahrheit wird dem Spieler eine Frage gestellt. Bei Pflicht eine Aufgabe.", "Wenn der Spieler sich weigert diese zu erfüllen/beantworten muss er einen Schluck trinken.", "Alternativ kann man auch ausmachen, dass man eine bestimmte Anzahl an Schlücken verteilen darf, wenn die Frage/Aufgabe erledigt ist."];
 
 bool isInfoExplVisible = false;
   hideInfoExpl() {
@@ -54,6 +54,7 @@ bool isInfoExplVisible = false;
       BuildContext context, TypeOfQuestion type) {
     List<TruthOrDareQuestion> allQuestionsList =
         InheritedMainWidget.of(context).listTruDareQuestions;
+        allQuestionsList.shuffle();
 
     List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
     List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
@@ -387,7 +388,7 @@ class _QuestionCardState extends State<QuestionCard>
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive =>true;
 }
 
 Widget questionCardFrontSideWidget(

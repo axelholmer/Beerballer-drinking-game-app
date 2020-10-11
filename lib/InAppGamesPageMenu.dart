@@ -214,7 +214,7 @@ class InAppGamesPageMenu extends StatefulWidget {
 class InAppGamesPageMenuState extends State<InAppGamesPageMenu>
     with TickerProviderStateMixin {
   final List<GameChoice> _gameChoices = const <GameChoice>[
-    const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
+    const GameChoice(title: 'Schätzen', id: GameChoicheEnum.estimate),
     const GameChoice(
         title: 'Wahrheit oder Pflicht',
         id: GameChoicheEnum.wahrheitOderPflicht),
@@ -260,7 +260,7 @@ Widget _gameChoiceWidget(
     ),
     CustomTopTitleScreen2(
       context,
-      "In App spiele",
+      "In-App Spiele",
       "./assets/images/inGameAppIcon.png",
     ),
     SizedBox(

@@ -23,13 +23,15 @@ Widget BottomNavigationBarButtons(BuildContext context) {
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
-            heightFactor: 1.25,
+            // heightFactor: 1.25,
+            heightFactor: 1.1,
             child: FittedBox(
               
               fit: BoxFit.contain,
               child: IconButton(
                 //iconSize: SizeConfig.safeBlockHorizontal * 80.0,
-                icon: Icon(FontAwesomeIcons.info),
+                // icon: Icon(FontAwesomeIcons.info),
+                icon: Image.asset('./assets/images/info.png'),
                 onPressed: () {
 Navigator.push(
             context, CustomTransistionAnimation(page: InfoPage()));
@@ -41,13 +43,14 @@ Navigator.push(
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
-            heightFactor: 1.35,
+            heightFactor: 1.1,
             child: FittedBox(
               //alignment: Alignment.centerLeft,
               fit: BoxFit.contain,
               child: IconButton(
                 // iconSize: SizeConfig.safeBlockHorizontal * 80.0,
-                icon: Icon(FontAwesomeIcons.shopify),
+               // icon: Icon(FontAwesomeIcons.shopify),
+               icon: Image.asset('./assets/images/bier.png'),
                 onPressed: _launchURLShop,
               ),
             ),
@@ -60,18 +63,19 @@ Navigator.push(
           //   ),
           // ),
           SizedBox(
-            width: SizeConfig.blockSizeHorizontal * 300,
+            width: SizeConfig.blockSizeHorizontal * 250,
           ),
           Expanded(
             child: FractionallySizedBox(
                 widthFactor: 1.25,
-                heightFactor: 1.25,
+                heightFactor: 1.1,
                 child: FittedBox(
                   //alignment: Alignment.centerLeft,
                   fit: BoxFit.contain,
                   child: IconButton(
                     //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
-                    icon: Icon(FontAwesomeIcons.instagram),
+                    // icon: Icon(FontAwesomeIcons.instagram),
+                     icon: Image.asset('./assets/images/instagram.png'),
                     onPressed: _launchURLInsta,
                   ),
                 )),
@@ -79,14 +83,15 @@ Navigator.push(
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
-            heightFactor: 1.25,
+            heightFactor: 1.12,
             child: FittedBox(
               //alignment: Alignment.centerLeft,
               fit: BoxFit.contain,
               child: IconButton(
                 //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
-                icon: Icon(FontAwesomeIcons.facebook),
-                onPressed: _launchURLFacebook,
+                // icon: Icon(FontAwesomeIcons.facebook),
+                icon: Image.asset('./assets/images/tiktok.png'),
+                onPressed: _launchURLTiktok,
               ),
             ),
           )),
@@ -119,8 +124,8 @@ _launchURLShop() async {
 }
 
 //Todo implement this method with all the other buttons, parameter says what to do
-_launchURLFacebook() async {
-  final url = 'https://www.facebook.com/BeerBaller/';
+_launchURLTiktok() async {
+  final url = 'https://www.tiktok.com/@beerballer?source=h5_m';
   if (await canLaunch(url)) {
     await launch(url);
   } else {

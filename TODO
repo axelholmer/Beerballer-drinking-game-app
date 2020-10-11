@@ -35,8 +35,13 @@ Check Launchicons.
 check portraitmode.
 
 
-Frage: Name von App
+Frage: 
+Name von App
+Need a description
+
 Gamesbildern: 
 Kingscup
 puste die karte
 Alkopoly
+
+flutter build apk --split-per-abi
