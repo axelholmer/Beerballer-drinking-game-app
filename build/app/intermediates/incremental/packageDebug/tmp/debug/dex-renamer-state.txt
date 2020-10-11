@@ -1,4 +1,4 @@
-#Sun Oct 11 17:21:56 CEST 2020
+#Mon Oct 12 01:30:28 CEST 2020
 base.0=C\:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

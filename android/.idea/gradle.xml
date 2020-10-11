@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.8/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-0.0.2+1/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.4.10/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_macos-0.0.1+7/android" />
+            <option value="C:/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-0.1.1+6/android" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
