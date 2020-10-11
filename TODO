@@ -1,0 +1,47 @@
+TODO:
+1. Icons anpassen - Done
+2. Best of trinkspiele zu png - Done
+3. Homescreen Appicon - Done (IOS muss stille be done)
+4. Loadingscreen - 
+5. Soundeffects in App? - No
+6. Sophie: Content
+7. Gestures feature einbauen bei Inapp Spielen - Vielleicht sophie. - Done
+17. add backbutton to info page -> Gör sa att backbutton följer med -Done
+17. Gör sa att man ej kan ändra oriteneirng - Done
+19. Ta bort knappen sonstiges i menun - Done
+23. Kolla vrf kort som blir utbytta försvinne? - Done
+
+
+
+Bilder för varje icke in app spiele (kanske göra mindre)? - on the way
+24. still missing text and launchscreen
+
+
+
+kolla denna https://stackoverflow.com/questions/54031804/what-are-the-double-question-marks-in-dart
+
+
+Feedback:
+leichtes grau beim Playermenu.
+progressbar green machen. - Done
+titeln irgendwo anders? - Mach erstmal auf dem
+Music: Keine music.
+
+
+Pot bug: 25. fixa konstigt error som dyker när man trycker första gangen pa infopage. - May be fixed, but still need test
+
+IOS:
+Check Launchicons.
+check portraitmode.
+
+
+Frage: 
+Name von App
+Need a description
+
+Gamesbildern: 
+Kingscup
+puste die karte
+Alkopoly
+
+flutter build apk --split-per-abi

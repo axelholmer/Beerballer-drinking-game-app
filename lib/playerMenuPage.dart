@@ -1,21 +1,27 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/services.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreen2.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreenForIngameApp.dart';
 import 'package:testflutter/GameChoicheEnum.dart';
-import 'package:testflutter/NeverEverHaveIPage.dart';
+import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 
-import 'package:testflutter/SchaetzenPage.dart';
-import 'package:testflutter/TruthOrDarePage.dart';
+
+import 'package:testflutter/TruthOrDareSwipePage.dart';
 
 import 'CustomWidget/BottomNavigationBarButtons.dart';
+import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
+import 'SizeConfig.dart';
 import 'customTransistionAnimation.dart';
 import 'main.dart';
 import 'Player.dart';
 
+//TODO add Icon to the title text of the page.
 //TODO Use Playerliste und wähl RandomSpieler aus, welcher Name bei Wahl/Pfilch knöppfe Auftaucht. Dann sollte/Könnte dieser Person
 //sachen mit anderen Personen machen
 
@@ -39,7 +45,7 @@ class _PlayersMenuState extends State<PlayersMenu>
 
   final _players = <Player>[
     Player.fromStart(name: 'Player1'),
-    Player.fromStart(name: 'Player2'),
+   // Player.fromStart(name: 'Player2'),
   ];
 
   void _routeHandler() {
@@ -50,14 +56,18 @@ class _PlayersMenuState extends State<PlayersMenu>
           Navigator.push(
               context,
               CustomTransistionAnimation(
-                  page: TruthOrDarePage(listPlayer: _players,)));
+                  page: TruthOrDareSwipePage(
+                // listPlayer: _players,
+              )));
         }
         break;
       case GameChoicheEnum.ichHabeNochNie:
         Navigator.push(
             context,
             CustomTransistionAnimation(
-                page: NeverEverHaveIPage(listPlayer: _players,)));
+                page: NeverEverHavieIPageSwipe(
+             // listPlayer: _players,
+            )));
 
         break;
       default:
@@ -71,86 +81,116 @@ class _PlayersMenuState extends State<PlayersMenu>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
             InheritedMainWidget.of(context).myLogo, this),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         resizeToAvoidBottomPadding: false,
         body: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-              Padding(
-                  padding: const EdgeInsets.all(40.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      ClipOval(
-                          child: Material(
-                              type: MaterialType.transparency,
-                              child: IconButton(
-                                  // color: Color.fromRGBO(255, 255, 255, 0.5),
-                                  // shape: RoundedRectangleBorder(
-                                  //     borderRadius: BorderRadius.circular(10.0),
-                                  //     side: BorderSide(color: Colors.black)),
-                                  iconSize: 50,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  icon: Icon(Icons.close)))),
-                      Spacer(
-                        flex: 2,
-                      ),
-                      ClipOval(
-                          child: Material(
-                              type: MaterialType.transparency,
-                              child: IconButton(
-                                onPressed: () {
-                                  print("INFO!");
-                                },
-                                icon: Icon(Icons.help_outline),
-                                iconSize: 50,
-                                //purple
-                              ))),
-                    ],
-                  )),
-              SizedBox(
-                height: 400, // constrain height
-                child: _buildPlayerList(),
-              ),
-              SizedBox(height: 40),
-              //_warningTextNoPlayers(),
-              RaisedButton(
-                color: Color.fromRGBO(255, 255, 255, 0.5),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    side: BorderSide(color: Colors.black)),
-                onPressed: () {
-                  if (_players.length < 2) {
-                    _showNoPlayersDialog();
-                  } else {
-                    _routeHandler();
+            child: Column(children: <Widget>[
+          SizedBox(
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 35,
+          ),
+          CustomTopTitleScreen2(
+              context, "Spielermenu", "./assets/images/otherGamesIcon.png"),
+          SizedBox(
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 25,
+          ),
+          Flexible(
+            flex: 3,
+            child: FractionallySizedBox(
+              heightFactor: 0.95,
+              widthFactor: 0.8, // constrain height
+              child: _buildPlayerList(),
+            ),
+          ),
+          SizedBox(
+            //always need this for title screens
+            height: SizeConfig.blockSizeVertical * 30,
+          ),
+          Flexible(
+              flex: 1,
+              child: FractionallySizedBox(
+                widthFactor: 0.35,
+                heightFactor: 0.5,
 
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           TruthOrDarePage(listPlayer: _players)),
-                    // );
-                  }
-                },
-                child: Container(
-                  //
-                  child: Text(
-                    "Prost!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                    ),
-                  ),
-                ),
-              ),
-            ])));
+                child: RaisedButton(
+                    color: Theme.of(context).accentColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(11.0),
+                        side: BorderSide(
+                          color: Theme.of(context).accentColor,
+                        )),
+                    onPressed: () {
+                      if (_players.length < 1) {
+                        _showNoPlayersDialog();
+                      } else {
+                        _routeHandler();
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) =>
+                        //           TruthOrDarePage(listPlayer: _players)),
+                        // );
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Flexible(
+                            child: FractionallySizedBox(
+                          heightFactor: 1,
+                          widthFactor: 0.9,
+                          //   alignment: Alignment.center,
+                          child: FittedBox(
+                              alignment: Alignment.center,
+                              fit: BoxFit.contain,
+                              child: AutoSizeText(
+                                "Prost!",
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    //fontSize: SizeConfig.safeBlockHorizontal * 50,
+                                    fontWeight: FontWeight.w700),
+                              )),
+                        )),
+                      ],
+                    )),
+
+                // RaisedButton(
+                //   color: Theme.of(context).accentColor,
+                //   shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(11.0),
+                //       side: BorderSide(color: Theme.of(context).accentColor)),
+                //   onPressed: () {
+                //     if (_players.length < 2) {
+                //       _showNoPlayersDialog();
+                //     } else {
+                //       _routeHandler();
+                //       // Navigator.push(
+                //       //   context,
+                //       //   MaterialPageRoute(
+                //       //       builder: (context) =>
+                //       //           TruthOrDarePage(listPlayer: _players)),
+                //       // );
+                //     }
+                //   },
+                //   child: Container(
+                //     //
+                //     child: Text(
+                //       "Prost!",
+                //       textAlign: TextAlign.center,
+                //       style: TextStyle(
+                //         fontSize: SizeConfig.safeBlockHorizontal * 7,
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ))
+        ])));
   }
 
 //fix select of routes, avoid switch and more compact class. check out named routes
@@ -211,7 +251,7 @@ class _PlayersMenuState extends State<PlayersMenu>
     return ListView.separated(
       controller: _controller,
       itemCount: _players.length + 1,
-      padding: const EdgeInsets.all(30.0),
+      padding: EdgeInsets.all(SizeConfig.safeBlockVertical * 0),
       itemBuilder: (context, index) {
         if (index == _players.length) {
           return _buildLastRow();
@@ -248,7 +288,10 @@ class _PlayersMenuState extends State<PlayersMenu>
       },
       leading: IconButton(
         //TODO fixa denna
-        icon: new Icon(Icons.add_circle),
+        icon: new Icon(
+          Icons.add_circle,
+          color: Theme.of(context).accentColor,
+        ),
       ),
     );
   }
@@ -262,25 +305,62 @@ class _PlayersMenuState extends State<PlayersMenu>
     // focusNode = null;
     // }
 
+    // return Container(
+    //     height: SizeConfig.blockSizeVertical * 100,
+        // width: SizeConfig.blockSizeHorizontal * 20,
+
+        // child: Row(
+        //   children: [
+
+        //     Container(
+        //       height: SizeConfig.blockSizeVertical * 100,
+        //       width: SizeConfig.blockSizeHorizontal * 600,
+        //       child: 
+        //     TextField(
+        //       style: TextStyle(
+        //         fontSize: SizeConfig.safeBlockHorizontal * 6,
+        //         color: Colors.orange[200],
+        //       ),
+        //       controller: myController,
+        //       onChanged: (text) {
+        //         _players[index].name = text;
+        //       },
+        //       decoration: InputDecoration(
+        //           border: InputBorder.none, hintText: player.name),
+        //     ),)
+        //   ],
+        // ));
     return ListTile(
-      title: TextField(
-        style: _biggerFont,
-        controller: myController,
-        //focusNode: myFocusNode,
-        onChanged: (text) {
-          _players[index].name = text;
-        },
-        decoration:
-            InputDecoration(border: InputBorder.none, hintText: player.name),
-      ),
-      trailing: new IconButton(
-        icon: new Icon(Icons.remove_circle),
-        onPressed: () {
-          setState(() {
-            _players.removeAt(index);
-          });
-        },
-      ),
-    );
+
+      contentPadding: EdgeInsets.all(SizeConfig.safeBlockVertical * 0),
+
+        title: TextField(
+          style: TextStyle(
+           fontSize: SizeConfig.safeBlockHorizontal * 7,
+            color: Colors.orange[200],
+          ),
+          controller: myController,
+          onChanged: (text) {
+            _players[index].name = text;
+          },
+          decoration:
+              InputDecoration(border: InputBorder.none, hintText: player.name),
+        ),
+        trailing: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            IconButton(
+              icon: new Icon(
+                Icons.remove_circle,
+                color: Theme.of(context).accentColor,
+              ),
+              onPressed: () {
+                setState(() {
+                  _players.removeAt(index);
+                });
+              },
+            ),
+          ],
+        ));
   }
 }

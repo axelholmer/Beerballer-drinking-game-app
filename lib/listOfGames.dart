@@ -1,5 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/CustomWidget/CustomTopTitleScreen2.dart';
+import 'package:testflutter/CustomWidget/GameCustomListItem.dart';
+import 'package:testflutter/GameClass.dart';
+
+import 'CustomWidget/CustomBackButton.dart';
+import 'SizeConfig.dart';
 
 // void main() {
 //   runApp(MyApp(
@@ -8,23 +14,39 @@ import 'package:flutter/material.dart';
 // }
 
 class listOfGames extends StatelessWidget {
-  final List<String> items;
+  final List<GameClass> items;
+  final String logPath;
+  final String pageTitle;
 
-  listOfGames({Key key, @required this.items}) : super(key: key);
+  listOfGames({Key key, @required this.items, this.logPath, this.pageTitle})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final title = 'Long List';
-
     return Scaffold(
-      body: ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text('${items[index]}'),
-          );
-        },
-      ),
-    );
+        backgroundColor: Theme.of(context).primaryColor,
+        body: Column(
+          children: <Widget>[
+            SizedBox(
+              height: SizeConfig.blockSizeVertical * 35,
+            ),
+            CustomTopTitleScreen2(context, pageTitle, logPath),
+            Expanded(
+                child: SafeArea(
+              child: Scrollbar(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(0.0),
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return GameCustomListItem(context, gameClass: items[index]);
+                    // return ListTile(
+                    //  // title: Text('${items[index]}'),
+                    // );
+                  },
+                ),
+              ),
+            ))
+          ],
+        ));
   }
 }

@@ -28,12 +28,18 @@ dependencies:
   gradient_widgets: ^0.5.2
   font_awesome_flutter: ^8.8.1
   url_launcher: ^5.4.2
-
-
+  percent_indicator: ^2.1.5
+  tuple: ^1.0.3
+  device_preview: ^0.4.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/BeerBallerLogo_kleiner.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -48,15 +54,61 @@ flutter:
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-VariableFont_wght.ttf
+    - family: Inknut
+      fonts:
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Black.ttf
+          weight: 900
 
   assets:
-  - assets/images/PNGFormat_klein.png
-  - assets/images/BeerBallerLogo_kleiner.png
-  - assets/res/textfile.json
-  - assets/res/textFileTruDar.json
-  - assets/res/textFileNeverEver.json
-  - assets/res/textFileCategoryGame.json
-  
+    - assets/images/PNGFormat_klein.png
+    - assets/images/BeerBallerLogo_kleiner.png
+    - assets/res/textfile.json
+    - assets/res/textFileTruDar.json
+    - assets/res/textFileNeverEver.json
+    - assets/res/textFileCategoryGame.json
+    - assets/res/textFileGames.json
+
+    - assets/images/boardGameIcon.png
+    - assets/images/cardGamesIcon.png
+    - assets/images/cupGamesIcon.png
+    - assets/images/inGameAppIcon.png
+    - assets/images/otherGamesIcon.png
+    - assets/images/diceGamesIcon.png
+
+    - assets/images/games/
+    
+
+    - assets/images/IconsInGame/categoryIcon.jpg
+    - assets/images/IconsInGame/dareIcon.jpg
+    - assets/images/IconsInGame/estimateIcon.jpg
+    - assets/images/IconsInGame/neverEverHaveiIcon.jpg
+    - assets/images/IconsInGame/trueIcon.jpg 
+    - assets/images/IconsInGame/swipe.png
+    - assets/images/IconsInGame/tap.png
+
+    - assets/images/Infopage/checkIcon.png
+    - assets/images/Infopage/crossIcon.png
+    - assets/images//Infopage/groupPic.jpg
+    - assets/images/Infopage/logowhite.png
+    - assets/images/Infopage/models.jpg
+    - assets/images/Infopage/teamBildTische.jpg
+    - assets/images/bier.png
+    - assets/images/info.png
+    - assets/images/instagram.png
+    - assets/images/tiktok.png
+
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
