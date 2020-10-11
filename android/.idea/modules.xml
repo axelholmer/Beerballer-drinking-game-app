@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1119158588/path_provider_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/1119158588/path_provider_linux.iml" group="android/path_provider_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2076001349/shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/2076001349/shared_preferences.iml" group="android/shared_preferences" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1853828757/shared_preferences_linux.iml" filepath="$PROJECT_DIR$/.idea/modules/1853828757/shared_preferences_linux.iml" group="android/shared_preferences_linux" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1987285763/shared_preferences_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/-1987285763/shared_preferences_macos.iml" group="android/shared_preferences_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/860265980/shared_preferences_web.iml" filepath="$PROJECT_DIR$/.idea/modules/860265980/shared_preferences_web.iml" group="android/shared_preferences_web" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1638632612/url_launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/-1638632612/url_launcher.iml" group="android/url_launcher" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1913307499/url_launcher_macos.iml" filepath="$PROJECT_DIR$/.idea/modules/1913307499/url_launcher_macos.iml" group="android/url_launcher_macos" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1002461132/url_launcher_web.iml" filepath="$PROJECT_DIR$/.idea/modules/1002461132/url_launcher_web.iml" group="android/url_launcher_web" />
+    </modules>
+  </component>
+</project>

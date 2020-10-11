@@ -4,36 +4,24 @@
         "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\drawable\\launch_background.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
-    },
-    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notify_panel_notification_icon_bg.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launchscreen.png.flat",
-        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-mdpi\\launchscreen.png"
     },
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_launchscreen.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-mdpi\\launchscreen.png"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_tile_bg.xml"
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_normal.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
     },
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",
@@ -44,10 +32,6 @@
         "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
-    },
-    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_custom_dialog.xml.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\custom_dialog.xml"
     },
@@ -56,16 +40,16 @@
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_bg_low.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_custom_big.xml.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout-v21\\notification_template_custom_big.xml"
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_action.xml.flat",
@@ -80,32 +64,12 @@
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_launchscreen.png.flat",
-        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\launchscreen.png"
-    },
-    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_launchscreen.png.flat",
         "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-hdpi\\launchscreen.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_part_chronometer.xml.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_icon_group.xml.flat",
@@ -124,6 +88,110 @@
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_action_tombstone.xml"
     },
     {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_normal.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notification_bg_low_normal.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notification_bg_low_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout-v21_notification_template_custom_big.xml.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout-v21\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notification_bg_low_pressed.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_launchscreen.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\launchscreen.png"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_template_part_chronometer.xml.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\layout_notification_action.xml.flat",
+        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable_notification_icon_background.xml.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_icon_background.xml"
     },
@@ -136,10 +204,6 @@
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable\\notification_bg.xml"
     },
     {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
-    },
-    {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_launchscreen.png.flat",
         "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-xxhdpi\\launchscreen.png"
     },
@@ -150,21 +214,5 @@
     {
         "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-v21_notification_action_background.xml.flat",
         "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-v21\\notification_action_background.xml"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_low_pressed.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-xhdpi-v4\\notify_panel_notification_icon_bg.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
-        "source": "C:\\Users\\Axel\\.gradle\\caches\\transforms-2\\files-2.1\\a528b13ac93e64cafa3d0480e2c93207\\core-1.1.0\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
-    },
-    {
-        "merged": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
 ]
