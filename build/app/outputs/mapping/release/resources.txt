@@ -515,7 +515,7 @@ Marking id:accessibility_custom_action_7:2131034142 used because its prefix matc
 Marking id:accessibility_custom_action_8:2131034143 used because its prefix matches string pool constant accessibility
 Marking id:accessibility_custom_action_9:2131034144 used because its prefix matches string pool constant accessibility
 Marking drawable:launch_background:2130968576 used because its prefix matches string pool constant launch
-Marking mipmap:launchscreen:2131230721 used because its prefix matches string pool constant launch
+Marking mipmap:launchscreen:2131230724 used because its prefix matches string pool constant launch
 Marking attr:android_color:-1 used because its prefix matches string pool constant android
 Marking attr:android_alpha:-1 used because its prefix matches string pool constant android
 Marking attr:android_fontStyle:-1 used because its prefix matches string pool constant android
@@ -536,29 +536,37 @@ Marking attr:android_endX:-1 used because its prefix matches string pool constan
 Marking attr:android_endY:-1 used because its prefix matches string pool constant android
 Marking attr:android_tileMode:-1 used because its prefix matches string pool constant android
 Marking attr:android_offset:-1 used because its prefix matches string pool constant android
+Marking color:dark_gray:2130837504 used because its prefix matches string pool constant dark
 Resource Reference Graph:
-color:notification_action_color_filter:2130837504 => [color:secondary_text_default_material_light:2130837507]
+color:notification_action_color_filter:2130837506 => [color:secondary_text_default_material_light:2130837509]
 dimen:notification_media_narrow_margin:2130903054 => [dimen:notification_content_margin_start:2130903050]
-drawable:notification_action_background:2130968577 => [color:ripple_material_light:2130837506, dimen:compat_button_inset_vertical_material:2130903041, dimen:compat_button_inset_horizontal_material:2130903040, dimen:compat_control_corner_material:2130903044, dimen:compat_button_padding_vertical_material:2130903043, dimen:compat_button_padding_horizontal_material:2130903042]
-drawable:notification_bg:2130968578 => [drawable:notification_bg_normal_pressed:2130968583, drawable:notification_bg_normal:2130968582]
-drawable:notification_bg_low:2130968579 => [drawable:notification_bg_low_pressed:2130968581, drawable:notification_bg_low_normal:2130968580]
-drawable:notification_icon_background:2130968584 => [color:notification_icon_bg_color:2130837505]
-drawable:notification_tile_bg:2130968587 => [drawable:notify_panel_notification_icon_bg:2130968588]
-layout:notification_action:2131165185 => [style:Widget_Compat_NotificationActionContainer:2131361798, dimen:notification_action_icon_size:2130903047, style:Widget_Compat_NotificationActionText:2131361799]
-layout:notification_action_tombstone:2131165186 => [style:Widget_Compat_NotificationActionContainer:2131361798, dimen:notification_action_icon_size:2130903047, style:Widget_Compat_NotificationActionText:2131361799]
-layout:notification_template_custom_big:2131165187 => [dimen:notification_large_icon_height:2130903051, dimen:notification_large_icon_width:2130903052, dimen:notification_main_column_padding_top:2130903053, dimen:notification_content_margin_start:2130903050, dimen:notification_right_side_padding_top:2130903056, layout:notification_template_part_time:2131165190, layout:notification_template_part_chronometer:2131165189, style:TextAppearance_Compat_Notification_Info:2131361794, layout:notification_template_icon_group:2131165188]
+drawable:launch_background:2130968576 => [color:dark_gray:2130837504, mipmap:launchscreen:2131230724]
+drawable:normal_background:2130968577 => [color:dark_gray:2130837504]
+drawable:notification_action_background:2130968578 => [color:ripple_material_light:2130837508, dimen:compat_button_inset_vertical_material:2130903041, dimen:compat_button_inset_horizontal_material:2130903040, dimen:compat_control_corner_material:2130903044, dimen:compat_button_padding_vertical_material:2130903043, dimen:compat_button_padding_horizontal_material:2130903042]
+drawable:notification_bg:2130968579 => [drawable:notification_bg_normal_pressed:2130968584, drawable:notification_bg_normal:2130968583]
+drawable:notification_bg_low:2130968580 => [drawable:notification_bg_low_pressed:2130968582, drawable:notification_bg_low_normal:2130968581]
+drawable:notification_icon_background:2130968585 => [color:notification_icon_bg_color:2130837507]
+drawable:notification_tile_bg:2130968588 => [drawable:notify_panel_notification_icon_bg:2130968589]
+layout:notification_action:2131165185 => [style:Widget_Compat_NotificationActionContainer:2131361799, dimen:notification_action_icon_size:2130903047, style:Widget_Compat_NotificationActionText:2131361800]
+layout:notification_action_tombstone:2131165186 => [style:Widget_Compat_NotificationActionContainer:2131361799, dimen:notification_action_icon_size:2130903047, style:Widget_Compat_NotificationActionText:2131361800]
+layout:notification_template_custom_big:2131165187 => [dimen:notification_large_icon_height:2130903051, dimen:notification_large_icon_width:2130903052, dimen:notification_main_column_padding_top:2130903053, dimen:notification_content_margin_start:2130903050, dimen:notification_right_side_padding_top:2130903056, layout:notification_template_part_time:2131165190, layout:notification_template_part_chronometer:2131165189, style:TextAppearance_Compat_Notification_Info:2131361795, layout:notification_template_icon_group:2131165188]
 layout:notification_template_icon_group:2131165188 => [dimen:notification_large_icon_height:2130903051, dimen:notification_large_icon_width:2130903052, dimen:notification_big_circle_margin:2130903049, dimen:notification_right_icon_size:2130903055]
-layout:notification_template_part_chronometer:2131165189 => [style:TextAppearance_Compat_Notification_Time:2131361796]
-layout:notification_template_part_time:2131165190 => [style:TextAppearance_Compat_Notification_Time:2131361796]
+layout:notification_template_part_chronometer:2131165189 => [style:TextAppearance_Compat_Notification_Time:2131361797]
+layout:notification_template_part_time:2131165190 => [style:TextAppearance_Compat_Notification_Time:2131361797]
+mipmap:ic_launcher:2131230721 => [color:ic_launcher_background:2130837505, mipmap:ic_launcher_foreground:2131230722]
+mipmap:ic_launcher_round:2131230723 => [color:ic_launcher_background:2130837505, mipmap:ic_launcher_foreground:2131230722]
 style:LaunchTheme:2131361792 => [drawable:launch_background:2130968576]
-style:TextAppearance_Compat_Notification_Info:2131361794 => [style:TextAppearance_Compat_Notification:2131361793, style:TextAppearance_Compat:-1, style:TextAppearance:-1]
-style:TextAppearance_Compat_Notification_Line2:2131361795 => [style:TextAppearance_Compat_Notification_Info:2131361794]
-style:TextAppearance_Compat_Notification_Time:2131361796 => [style:TextAppearance_Compat_Notification:2131361793, style:TextAppearance_Compat:-1, style:TextAppearance:-1]
-style:Widget_Compat_NotificationActionContainer:2131361798 => [drawable:notification_action_background:2130968577]
-style:Widget_Compat_NotificationActionText:2131361799 => [color:secondary_text_default_material_light:2130837507, dimen:notification_action_text_size:2130903048]
+style:NormalTheme:2131361793 => [drawable:normal_background:2130968577]
+style:TextAppearance_Compat_Notification_Info:2131361795 => [style:TextAppearance_Compat_Notification:2131361794, style:TextAppearance_Compat:-1, style:TextAppearance:-1]
+style:TextAppearance_Compat_Notification_Line2:2131361796 => [style:TextAppearance_Compat_Notification_Info:2131361795]
+style:TextAppearance_Compat_Notification_Time:2131361797 => [style:TextAppearance_Compat_Notification:2131361794, style:TextAppearance_Compat:-1, style:TextAppearance:-1]
+style:Widget_Compat_NotificationActionContainer:2131361799 => [drawable:notification_action_background:2130968578]
+style:Widget_Compat_NotificationActionText:2131361800 => [color:secondary_text_default_material_light:2130837509, dimen:notification_action_text_size:2130903048]
 
 The root reachable resources are:
-drawable:launch_background:2130968576,
+color:dark_gray:2130837504,
+   drawable:launch_background:2130968576,
+   drawable:normal_background:2130968577,
    id:accessibility_action_clickable_span:2131034112,
    id:accessibility_custom_action_0:2131034113,
    id:accessibility_custom_action_1:2131034114,
@@ -594,8 +602,8 @@ drawable:launch_background:2130968576,
    id:accessibility_custom_action_9:2131034144,
    id:text:2131034175,
    id:text2:2131034176,
-   mipmap:ic_launcher:2131230720,
-   mipmap:launchscreen:2131230721,
+   mipmap:ic_launcher:2131230721,
+   mipmap:launchscreen:2131230724,
    style:LaunchTheme:2131361792,
    attr:android_color:-1,
    attr:android_alpha:-1,
@@ -651,3 +659,14 @@ Skipped unused resource res/layout-v21/notification_action.xml: -1 bytes (replac
 Skipped unused resource res/layout-v21/notification_action_tombstone.xml: -1 bytes (replaced with small dummy file of size 104 bytes)
 Skipped unused resource res/layout-v21/notification_template_custom_big.xml: -1 bytes (replaced with small dummy file of size 104 bytes)
 Skipped unused resource res/layout-v21/notification_template_icon_group.xml: -1 bytes (replaced with small dummy file of size 104 bytes)
+Skipped unused resource res/mipmap-mdpi-v4/back.png: 2602 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-mdpi-v4/ic_launcher_round.png: 5673 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-hdpi-v4/back.png: 2602 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-hdpi-v4/ic_launcher_round.png: 11416 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xhdpi-v4/back.png: 2602 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xhdpi-v4/ic_launcher_round.png: 19016 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxhdpi-v4/back.png: 2602 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxhdpi-v4/ic_launcher_round.png: 36294 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxxhdpi-v4/back.png: 2602 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-xxxhdpi-v4/ic_launcher_round.png: 57697 bytes (replaced with small dummy file of size 67 bytes)
+Skipped unused resource res/mipmap-anydpi-v26/ic_launcher_round.xml: -1 bytes (replaced with small dummy file of size 104 bytes)

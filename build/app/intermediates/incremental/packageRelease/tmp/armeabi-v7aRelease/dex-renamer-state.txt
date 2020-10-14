@@ -1,4 +1,4 @@
-#Mon Oct 05 14:11:18 CEST 2020
+#Wed Oct 14 02:36:42 CEST 2020
 base.0=C\:\\Users\\Axel\\Desktop\\Beerballer\\App\\BeerballerTrinkspielApp\\build\\app\\intermediates\\transforms\\r8\\release\\0\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

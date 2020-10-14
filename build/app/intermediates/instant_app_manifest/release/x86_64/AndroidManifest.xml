@@ -28,6 +28,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize" >
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@drawable/normal_background" />
+            <meta-data
+                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+                android:resource="@drawable/launch_background" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

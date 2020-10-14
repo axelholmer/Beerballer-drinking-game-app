@@ -215,8 +215,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
 
-    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    // precacheImage(myLogo.image, context);
+    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {
@@ -300,7 +300,7 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
       const <Tuple2<String, String>>[
     Tuple2<String, String>(
         "In-App Spiele", "./assets/images/inGameAppIcon.png"),
-    Tuple2<String, String>("Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+    Tuple2<String, String>("Würfelspiele", "./assets/images/diceGamesIcon.png"),
     Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
     Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
     Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
@@ -490,7 +490,7 @@ Widget _gameChoiceWidgets(
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
-                  "Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+                  "Würfelspiele", "./assets/images/diceGamesIcon.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -637,7 +637,7 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
             context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
       }
       break;
-    case "Wurfelspiele":
+    case "Würfelspiele":
       // Navigator.push(
       //     context,
       //     CustomTransistionAnimation(

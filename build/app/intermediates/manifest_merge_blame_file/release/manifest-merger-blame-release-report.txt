@@ -17,7 +17,7 @@
 15         FlutterApplication and put your custom class here.
 16    -->
 17    <application
-17-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:8:5-30:19
+17-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:8:5-38:19
 18        android:name="io.flutter.app.FlutterApplication"
 18-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:9:9-57
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -27,7 +27,7 @@
 21        android:label="Best of Trinkspiele" >
 21-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:10:9-44
 22        <activity
-22-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:12:9-24:20
+22-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:12:9-32:20
 23            android:name="com.example.testflutter.MainActivity"
 23-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:13:13-41
 24            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -42,36 +42,49 @@
 28-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:16:13-47
 29            android:windowSoftInputMode="adjustResize" >
 29-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:19:13-55
-30            <intent-filter>
-30-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:20:13-23:29
-31                <action android:name="android.intent.action.MAIN" />
-31-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:21:17-68
-31-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:21:25-66
-32
-33                <category android:name="android.intent.category.LAUNCHER" />
-33-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:22:17-76
-33-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:22:27-74
-34            </intent-filter>
-35        </activity>
-36        <!--
-37             Don't delete the meta-data below.
-38             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-39        -->
-40        <meta-data
-40-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:27:9-29:33
-41            android:name="flutterEmbedding"
-41-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:28:13-44
-42            android:value="2" />
-42-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:29:13-30
-43
-44        <activity
-44-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:8:9-11:74
-45            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-45-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:9:13-74
-46            android:exported="false"
-46-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:10:13-37
-47            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-47-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:11:13-71
-48    </application>
-49
-50</manifest>
+30            <meta-data
+30-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:20:14-23:19
+31                android:name="io.flutter.embedding.android.NormalTheme"
+31-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:21:17-72
+32                android:resource="@drawable/normal_background" />
+32-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:22:17-63
+33            <meta-data
+33-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:24:13-27:19
+34                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+34-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:25:17-81
+35                android:resource="@drawable/launch_background" />
+35-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:26:17-63
+36
+37            <intent-filter>
+37-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:28:13-31:29
+38                <action android:name="android.intent.action.MAIN" />
+38-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:29:17-68
+38-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:29:25-66
+39
+40                <category android:name="android.intent.category.LAUNCHER" />
+40-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:30:17-76
+40-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:30:27-74
+41            </intent-filter>
+42        </activity>
+43        <!--
+44             Don't delete the meta-data below.
+45             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+46        -->
+47        <meta-data
+47-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:35:9-37:33
+48            android:name="flutterEmbedding"
+48-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:36:13-44
+49            android:value="2" />
+49-->C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\android\app\src\main\AndroidManifest.xml:37:13-30
+50
+51        <activity
+51-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:8:9-11:74
+52            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
+52-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:9:13-74
+53            android:exported="false"
+53-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:10:13-37
+54            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+54-->[:url_launcher] C:\Users\Axel\Desktop\Beerballer\App\BeerballerTrinkspielApp\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:11:13-71
+55    </application>
+56
+57</manifest>
