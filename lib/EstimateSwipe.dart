@@ -19,7 +19,14 @@ class EstimateSwipe extends StatefulWidget {
 class _EstimateSwipeState extends State<EstimateSwipe>
     with TickerProviderStateMixin {
   int _index = 0;
-  final List<String> listRules = ["Handy in die Hand nehmen und die angegebenen Schätzfragen beantworten", "Jeder Mitspieler gibt eine Antwort auf die Frage", "Der am weitesten mit seiner Schätzung entfernteste Spieler muss einen Schluck trinken", "Anschließend folgt die nächste Schätzfrage"];
+  final List<String> listRules = [
+    "In diesem Spiel kann man seiner Kreativität freien Lauf lassen. Bestimmte Sachen muss man abschätzen, z.B. Entfernungen schätzen, Gewicht schätzen, …. Der am weitesten von der Schätzung entfernt wird, muss trinken.",
+    "Vor der Schätzrunde wird definiert, wo man die richtige Antwort findet. Bei Distanzen muss z.B. unterschieden werden ob die Lauf- oder Fahrstrecke gemeint ist",
+    "Jeder Spieler schreibt seine Antwort auf einen Zettel",
+    "Im Anschluss ließt jeder Spieler laut seine Antwort vor. Erst Danach wird die richtige Antwort bekannt gegeben",
+    "Der Spieler mit der größten Fehleinschätzung muss trinken",
+    "Anschließend folgt die nächste Schätzfrage",
+  ];
 
   List<QuestionEstimation> estimateQuestions = List<QuestionEstimation>();
   bool isInfoExplVisible = false;
@@ -30,28 +37,23 @@ class _EstimateSwipeState extends State<EstimateSwipe>
       if (isInfoExplVisible) {
         isInfoExplVisible = false;
       } else {
-
         showDialog(
-                          context: context,
-                          builder: (BuildContext context) => customPopupDialog(
-                              context,
-                              "Schätzen", listRules
-                        ));
+            context: context,
+            builder: (BuildContext context) =>
+                customPopupDialog(context, "Schätzen", listRules));
         isInfoExplVisible = true;
       }
     });
   }
 
-
-@override
-void initState() {
+  @override
+  void initState() {
     Future.delayed(const Duration(milliseconds: 100), () {
-
-hideInfoExpl();
-
-});
+      hideInfoExpl();
+    });
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     if (!estimateQuestions.isNotEmpty) {
@@ -63,7 +65,7 @@ hideInfoExpl();
         backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
-            InheritedMainWidget.of(context).myLogo, this),
+            InheritedMainWidget.of(context).myLogo, this, context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Center(
             child: Stack(
@@ -116,7 +118,6 @@ hideInfoExpl();
                   },
                   child: explScreen(context),
                 )),
-           
           ],
         )));
   }
@@ -207,7 +208,7 @@ class QuestionCard extends StatefulWidget {
   _QuestionCardState createState() => _QuestionCardState();
 }
 
-class _QuestionCardState extends State<QuestionCard> 
+class _QuestionCardState extends State<QuestionCard>
     with TickerProviderStateMixin, AutomaticKeepAliveClientMixin<QuestionCard> {
   QuestionEstimation _question;
   AnimationController _controller;
@@ -244,11 +245,9 @@ class _QuestionCardState extends State<QuestionCard>
     _controller.dispose();
     super.dispose();
   }
- 
-  @override
-  
-  bool get wantKeepAlive => true;
 
+  @override
+  bool get wantKeepAlive => true;
 
   // @override
   // void didUpdateWidget(QuestionCard oldWidget) {
@@ -269,10 +268,6 @@ class _QuestionCardState extends State<QuestionCard>
 
   @override
   Widget build(BuildContext context) {
-   
-   
-
-   
     return new Stack(
       children: <Widget>[
         new AnimatedBuilder(

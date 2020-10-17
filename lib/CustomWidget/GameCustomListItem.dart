@@ -419,8 +419,9 @@ class GameCustomListItem extends StatelessWidget {
                     widthFactor: 0.5,
                     heightFactor: 0.8,
                     child: RaisedButton(
-                      color: Colors.yellow[700],
+                      // color: Colors.yellow[700],
                     //  color: Colors.orange[300],
+                    color: Colors.grey[300],
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(11.0),
                           side: BorderSide(

@@ -1,30 +1,20 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'dart:convert';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:testflutter/CustomWidget/CustomTopTitleScreen.dart';
-
 import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
-
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
-
 import 'package:testflutter/EstimateSwipe.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'CategoryGamePageSwipe.dart';
+import 'CategoryGamePage.dart';
 import 'CustomWidget/CustomBackButton.dart';
 import 'CustomWidget/BottomNavigationBarButtons.dart';
 import 'CustomWidget/CustomTopTitleScreen2.dart';
 import 'CustomWidget/Customfloatingactionbutton.dart';
 import 'Questionclasses/QuestionNeverHaveI.dart';
-
 import 'Questionclasses/TruthOrDareQuestion.dart';
 import 'Player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,178 +23,6 @@ import 'TruthOrDareSwipePage.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
 import 'main.dart';
-
-//TODO create custom SplashScreen
-//Todo put underscore(private) to items
-//ctrl och click pa ngt bra genväg
-
-// List<QuestionEstimation> listEstimateQuestions;
-// List<TruthOrDareQuestion> listTruDareQuestions;
-// List<QuestionNeverHaveI> listNeverEverHAveIquestions;
-// List<QuestionCategoryGame> listCategoryQuestions;
-
-// void main() {
-//   loadEstimateAsset().then((value) {
-//     //TODO look up where you should load assets
-//     listEstimateQuestions = value;
-//   });
-
-//   runApp(MyApp());
-// }
-
-// //Try surround Materialapp with inheritedwidget and update Values over updateShouldNotify
-// class InheritedMainWidget extends InheritedWidget {
-//   InheritedMainWidget({
-//     Key key,
-//     this.myLogo,
-//     this.listTruDareQuestions,
-//     this.listNeverHaveIQuestions,
-//     this.listCategoryQuestions,
-//     Widget child,
-//   }) : super(key: key, child: child);
-//   final List<TruthOrDareQuestion> listTruDareQuestions;
-//   final List<QuestionNeverHaveI> listNeverHaveIQuestions;
-//   final List<QuestionCategoryGame> listCategoryQuestions;
-//   final Image myLogo;
-
-//   @override
-//   bool updateShouldNotify(InheritedMainWidget old) {
-//     return listTruDareQuestions != old.listTruDareQuestions &&
-//         myLogo != old.myLogo &&
-//         listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
-//         listCategoryQuestions != old.listCategoryQuestions;
-//   }
-
-//   static InheritedMainWidget of(BuildContext context) {
-//     return context.dependOnInheritedWidgetOfExactType<InheritedMainWidget>();
-//   }
-// }
-
-// //Estimate Load
-// Future<List<QuestionEstimation>> loadEstimateAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//   final questionsString =
-//       await rootBundle.loadString('./assets/res/textfile.json');
-
-//   return parseEstimateQuestion(questionsString);
-// }
-
-// List<QuestionEstimation> parseEstimateQuestion(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed
-//       .map<QuestionEstimation>((json) => QuestionEstimation.fromJson(json))
-//       .toList();
-// }
-
-// //TruDare Load
-// Future<List<TruthOrDareQuestion>> loadTruDareAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//   final questionsString =
-//       await rootBundle.loadString('./assets/res/textFileTruDar.json');
-
-//   return parseTruDareQuestion(questionsString);
-// }
-
-// List<TruthOrDareQuestion> parseTruDareQuestion(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed
-//       .map<TruthOrDareQuestion>((json) => TruthOrDareQuestion.fromJson(json))
-//       .toList();
-// }
-
-// //NeverHaveI LOad
-// Future<List<QuestionNeverHaveI>> loadNeverHaveIAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//   final questionsString =
-//       await rootBundle.loadString('./assets/res/textFileNeverEver.json');
-
-//   return parseNeverHaveIQuestion(questionsString);
-// }
-
-// List<QuestionNeverHaveI> parseNeverHaveIQuestion(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed
-//       .map<QuestionNeverHaveI>((json) => QuestionNeverHaveI.fromJson(json))
-//       .toList();
-// }
-
-// //Category Load
-// Future<List<QuestionCategoryGame>> loadCategoryAsset() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-
-//   final questionsString =
-//       await rootBundle.loadString('./assets/res/textFileCategoryGame.json');
-
-//   return parseCategoryQuestion(questionsString);
-// }
-
-// List<QuestionCategoryGame> parseCategoryQuestion(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed
-//       .map<QuestionCategoryGame>((json) => QuestionCategoryGame.fromJson(json))
-//       .toList();
-// }
-
-// class MyApp extends StatefulWidget {
-//   @override
-//   _MyAppState createState() => _MyAppState();
-// }
-
-// class _MyAppState extends State<MyApp> {
-//   Image myLogo;
-//   @override
-//   void initState() {
-//     // precacheImage(AssetImage("./assets/images/logo.png"), context);
-//     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
-//     myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-//     precacheImage(myLogo.image, context);
-
-//     loadTruDareAsset().then((value) {
-//       setState(() {
-//         listTruDareQuestions = value;
-//       });
-//     });
-
-//     loadNeverHaveIAsset().then((value) {
-//       setState(() {
-//         listNeverEverHAveIquestions = value;
-//       });
-//     });
-
-//     loadCategoryAsset().then((value) {
-//       setState(() {
-//         listCategoryQuestions = value;
-//       });
-//     });
-
-//     super.initState();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     precacheImage(
-//         AssetImage("./assets/images/BeerBallerLogo_kleiner.png"), context);
-//     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
-//     return InheritedMainWidget(
-//       child: MaterialApp(
-//         title: 'Beerballer Trinkspiele',
-//         theme: ThemeData(
-//             brightness: Brightness.light,
-//             primaryColor: Colors.lightBlue[800],
-//             accentColor: Colors.orangeAccent[200],
-//             fontFamily: 'Oswald'),
-//         home: GameMenu(),
-//       ),
-//       listTruDareQuestions: listTruDareQuestions,
-//       listNeverHaveIQuestions: listNeverEverHAveIquestions,
-//       listCategoryQuestions: listCategoryQuestions,
-//       myLogo: myLogo,
-//     );
-//   }
-// }
 
 class InAppGamesPageMenu extends StatefulWidget {
   @override
@@ -231,7 +49,7 @@ class InAppGamesPageMenuState extends State<InAppGamesPageMenu>
       body: _gameChoiceWidget(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
-          InheritedMainWidget.of(context).myLogo, this),
+          InheritedMainWidget.of(context).myLogo, this, context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
@@ -444,7 +262,7 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
     case 3:
       {
         Navigator.push(
-            context, CustomTransistionAnimation(page: CategoryGamePageSwipe()));
+            context, CustomTransistionAnimation(page: CategoryGamePage()));
         print(choice.title);
       }
       break;
@@ -459,4 +277,7 @@ void _selectGameChoice(GameChoice choice, BuildContext context) {
       }
       break;
   }
+}
+
+newCategorySwipe() {
 }

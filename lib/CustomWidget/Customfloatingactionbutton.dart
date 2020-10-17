@@ -5,7 +5,7 @@ import 'dart:math';
 
 import 'package:testflutter/main.dart';
 
-Widget Customfloatingactionbutton(myImage, ticketprovider) {
+Widget Customfloatingactionbutton(myImage, ticketprovider, context) {
   AnimationController _controller;
 
   _controller = AnimationController(
@@ -18,10 +18,11 @@ Widget Customfloatingactionbutton(myImage, ticketprovider) {
     // width: SizeConfig.blockSizeHorizontal * 210,
     child: FloatingActionButton(
         onPressed: () {
-          if (_controller.isCompleted) {
-            _controller.reset();
-          }
-          _controller.forward();
+          Navigator.of(context).popUntil((route) => route.isFirst);
+          //   if (_controller.isCompleted) {
+          //     _controller.reset();
+          //   }
+          //   _controller.forward();
         },
         child: AnimatedBuilder(
           animation: _controller,

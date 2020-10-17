@@ -25,23 +25,22 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
   int _index = 0;
   List<QuestionNeverHaveI> questionsList = List<QuestionNeverHaveI>();
   QuestionNeverHaveI _currentQuestion;
-    final List<String> listRules = ["Die App gibt verschiedene Sätze vor, welche alle mit \"Ich habe noch nie\" beginnen.", "Jeder, bei dem diese Aussage nicht der Wahrheit entspricht (er es schon einmal gemacht hat) muss einen Schluck trinken", "Danach folgt die nächste Aussage"];
+  final List<String> listRules = [
+    "Entweder kann man sich Fragen selbst überlegen oder man verwendet diese App um das Spiel „Ich hab noch nie“ zu spielen.",
+    "Ein Spieler darf eine Aussage tätigen, z.B. „Ich hab noch nie einen One night stand gehabt“. Jeder, der schon einen hatte, muss trinken. Danach ist der nächste Spieler dran.",
+  ];
 
-
- bool isInfoExplVisible = false;
+  bool isInfoExplVisible = false;
   hideInfoExpl() {
     setState(() {
       print(isInfoExplVisible);
       if (isInfoExplVisible) {
         isInfoExplVisible = false;
       } else {
-
         showDialog(
-                          context: context,
-                          builder: (BuildContext context) => customPopupDialog(
-                              context,
-                              "Ich habe noch nie", listRules
-                        ));
+            context: context,
+            builder: (BuildContext context) =>
+                customPopupDialog(context, "Ich habe noch nie", listRules));
         isInfoExplVisible = true;
       }
     });
@@ -49,12 +48,9 @@ class _NeverEverHavieIPageSwipeState extends State<NeverEverHavieIPageSwipe>
 
   @override
   void initState() {
-Future.delayed(const Duration(milliseconds: 100), () {
-
-hideInfoExpl();
-
-});
-
+    Future.delayed(const Duration(milliseconds: 100), () {
+      hideInfoExpl();
+    });
 
     super.initState();
   }
@@ -70,25 +66,21 @@ hideInfoExpl();
       questionsList.shuffle();
     }
 
-
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
-            InheritedMainWidget.of(context).myLogo, this),
+            InheritedMainWidget.of(context).myLogo, this, context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Center(
-          child: 
-           Stack(
-          children: [ Column(children: <Widget>[
+            child: Stack(children: [
+          Column(children: <Widget>[
             SizedBox(
               //always need this for title screens
               height: SizeConfig.blockSizeVertical * 35,
             ),
             CustomTopTitleScreenForIngameApp(
-              context,
-              "Schaetzen", hideInfoExpl
-            ),
+                context, "Schaetzen", hideInfoExpl),
             SizedBox(
               //always need this for title screens
               height: SizeConfig.blockSizeVertical * 20,
@@ -109,94 +101,93 @@ hideInfoExpl();
               height: SizeConfig.blockSizeVertical * 30,
             ),
           ]),
-         Visibility(
-                visible: isInfoExplVisible,
-                // maintainState: true,
-                child: GestureDetector(
-                  onTap: () {
-                    hideInfoExpl();
-                  },
-                  child: explScreen(context),
-                )),
-        
-          ])));
+          Visibility(
+              visible: isInfoExplVisible,
+              // maintainState: true,
+              child: GestureDetector(
+                onTap: () {
+                  hideInfoExpl();
+                },
+                child: explScreen(context),
+              )),
+        ])));
   }
 
   Widget explScreen(BuildContext context) {
-  return FractionallySizedBox(
-      widthFactor: 1,
-      heightFactor: 1,
-      child: Container(
-          color: Colors.black.withOpacity(0.55),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Flexible(
-                    child: FractionallySizedBox(
-                  heightFactor: 0.5,
-                  widthFactor: 1,
-                  child: Image.asset(
-                    "./assets/images/IconsInGame/tap.png",
-                    // width: SizeConfig.blockSizeHorizontal * 190,
-                    // height: SizeConfig.blockSizeVertical * 125,
-                    //width: SizeConfig.blockSizeHorizontal * ,
-                    //   height: SizeConfig.blockSizeVertical * 8,
+    return FractionallySizedBox(
+        widthFactor: 1,
+        heightFactor: 1,
+        child: Container(
+            color: Colors.black.withOpacity(0.55),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.5,
+                    widthFactor: 1,
+                    child: Image.asset(
+                      "./assets/images/IconsInGame/tap.png",
+                      // width: SizeConfig.blockSizeHorizontal * 190,
+                      // height: SizeConfig.blockSizeVertical * 125,
+                      //width: SizeConfig.blockSizeHorizontal * ,
+                      //   height: SizeConfig.blockSizeVertical * 8,
+                    ),
+                  )),
+                  Flexible(
+                      child: FractionallySizedBox(
+                          heightFactor: 0.4,
+                          widthFactor: 0.8,
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Tap eine Karte zum Umdrehen",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  //height: SizeConfig.safeBlockHorizontal * 0.1,
+                                  //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  //  height: 1,
+                                ),
+                              )))),
+                  SizedBox(
+                    height: 20,
                   ),
-                )),
-                Flexible(
-                    child: FractionallySizedBox(
-                        heightFactor: 0.4,
-                        widthFactor: 0.8,
-                        child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: Text(
-                              "Tap eine Karte zum Umdrehen",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                //height: SizeConfig.safeBlockHorizontal * 0.1,
-                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                //  height: 1,
-                              ),
-                            )))),
-                SizedBox(
-                  height: 20,
-                ),
-                Flexible(
-                    child: FractionallySizedBox(
-                  heightFactor: 0.5,
-                  widthFactor: 1,
-                  child: Image.asset(
-                    "./assets/images/IconsInGame/swipe.png",
-                    // width: SizeConfig.blockSizeHorizontal * 190,
-                    // height: SizeConfig.blockSizeVertical * 125,
-                    //width: SizeConfig.blockSizeHorizontal * ,
-                    //   height: SizeConfig.blockSizeVertical * 8,
-                  ),
-                )),
-                Flexible(
-                    child: FractionallySizedBox(
-                        heightFactor: 0.4,
-                        widthFactor: 0.7,
-                        child: FittedBox(
-                            fit: BoxFit.contain,
-                            child: Text(
-                              "Swipe für nächste Karte",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                //   height: SizeConfig.safeBlockHorizontal * 0.1,
-                                //fontSize: SizeConfig.safeBlockHorizontal * 75,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromRGBO(255, 255, 255, 1),
-                                //  height: 1,
-                              ),
-                            )))),
-              ],
-            ),
-          )));
-}
+                  Flexible(
+                      child: FractionallySizedBox(
+                    heightFactor: 0.5,
+                    widthFactor: 1,
+                    child: Image.asset(
+                      "./assets/images/IconsInGame/swipe.png",
+                      // width: SizeConfig.blockSizeHorizontal * 190,
+                      // height: SizeConfig.blockSizeVertical * 125,
+                      //width: SizeConfig.blockSizeHorizontal * ,
+                      //   height: SizeConfig.blockSizeVertical * 8,
+                    ),
+                  )),
+                  Flexible(
+                      child: FractionallySizedBox(
+                          heightFactor: 0.4,
+                          widthFactor: 0.7,
+                          child: FittedBox(
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Swipe für nächste Karte",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  //   height: SizeConfig.safeBlockHorizontal * 0.1,
+                                  //fontSize: SizeConfig.safeBlockHorizontal * 75,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  //  height: 1,
+                                ),
+                              )))),
+                ],
+              ),
+            )));
+  }
 }
 
 class QuestionCard extends StatefulWidget {
@@ -217,7 +208,7 @@ class QuestionCard extends StatefulWidget {
 }
 
 class _QuestionCardState extends State<QuestionCard>
-    with TickerProviderStateMixin  , AutomaticKeepAliveClientMixin<QuestionCard> {
+    with TickerProviderStateMixin, AutomaticKeepAliveClientMixin<QuestionCard> {
   //TruthOrDareQuestion _question;
   AnimationController _controller;
   Animation<double> _frontScale;

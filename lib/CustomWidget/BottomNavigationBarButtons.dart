@@ -17,7 +17,7 @@ Widget BottomNavigationBarButtons(BuildContext context) {
       child: Row /*or Column*/ (
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-           SizedBox(
+          SizedBox(
             width: SizeConfig.blockSizeHorizontal * 20,
           ),
           Expanded(
@@ -26,45 +26,18 @@ Widget BottomNavigationBarButtons(BuildContext context) {
             // heightFactor: 1.25,
             heightFactor: 1.1,
             child: FittedBox(
-              
               fit: BoxFit.contain,
               child: IconButton(
                 //iconSize: SizeConfig.safeBlockHorizontal * 80.0,
                 // icon: Icon(FontAwesomeIcons.info),
                 icon: Image.asset('./assets/images/info.png'),
                 onPressed: () {
-Navigator.push(
-            context, CustomTransistionAnimation(page: InfoPage()));
-
+                  Navigator.push(
+                      context, CustomTransistionAnimation(page: InfoPage()));
                 },
               ),
             ),
           )),
-          Expanded(
-              child: FractionallySizedBox(
-            widthFactor: 1.25,
-            heightFactor: 1.1,
-            child: FittedBox(
-              //alignment: Alignment.centerLeft,
-              fit: BoxFit.contain,
-              child: IconButton(
-                // iconSize: SizeConfig.safeBlockHorizontal * 80.0,
-               // icon: Icon(FontAwesomeIcons.shopify),
-               icon: Image.asset('./assets/images/bier.png'),
-                onPressed: _launchURLShop,
-              ),
-            ),
-          )),
-
-          // Flexible(
-          //   fit: FlexFit.loose,
-          //   child: FractionallySizedBox(
-          //     widthFactor: 1,
-          //   ),
-          // ),
-          SizedBox(
-            width: SizeConfig.blockSizeHorizontal * 250,
-          ),
           Expanded(
             child: FractionallySizedBox(
                 widthFactor: 1.25,
@@ -75,22 +48,40 @@ Navigator.push(
                   child: IconButton(
                     //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
                     // icon: Icon(FontAwesomeIcons.instagram),
-                     icon: Image.asset('./assets/images/instagram.png'),
+                    icon: Image.asset('./assets/images/instagram.png'),
                     onPressed: _launchURLInsta,
                   ),
                 )),
           ),
+          SizedBox(
+            width: SizeConfig.blockSizeHorizontal * 250,
+          ),
           Expanded(
               child: FractionallySizedBox(
             widthFactor: 1.25,
-            heightFactor: 1.12,
+            heightFactor: 1.1,
+            child: FittedBox(
+              //alignment: Alignment.centerLeft,
+              fit: BoxFit.contain,
+              child: IconButton(
+                // iconSize: SizeConfig.safeBlockHorizontal * 80.0,
+                // icon: Icon(FontAwesomeIcons.shopify),
+                icon: Image.asset('./assets/images/bier.png'),
+                onPressed: _launchURLShop,
+              ),
+            ),
+          )),
+          Expanded(
+              child: FractionallySizedBox(
+            widthFactor: 1.3,
+            heightFactor: 1.14,
             child: FittedBox(
               //alignment: Alignment.centerLeft,
               fit: BoxFit.contain,
               child: IconButton(
                 //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
                 // icon: Icon(FontAwesomeIcons.facebook),
-                icon: Image.asset('./assets/images/tiktok.png'),
+                icon: Image.asset('./assets/images/cart.png'),
                 onPressed: _launchURLTiktok,
               ),
             ),

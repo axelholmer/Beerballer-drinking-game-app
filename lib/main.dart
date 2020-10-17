@@ -61,7 +61,6 @@ void main() {
   ));
   // runApp(MyApp());
 }
-
 //TODO replace Container with SizedBox for Gaps -> more eff
 class InheritedMainWidget extends InheritedWidget {
   InheritedMainWidget({
@@ -215,8 +214,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
 
-    myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
-    precacheImage(myLogo.image, context);
+    // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
+    // precacheImage(myLogo.image, context);
 
     loadTruDareAsset().then((value) {
       setState(() {
@@ -304,7 +303,7 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
     Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
     Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
     Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
-    Tuple2<String, String>("Sonstiges", "./assets/images/otherGamesIcon.png")
+    Tuple2<String, String>("Kaum Material", "./assets/images/otherGamesIcon.png")
   ];
 
   @override
@@ -315,7 +314,7 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
       body: _gameChoiceWidgets(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
-          InheritedMainWidget.of(context).myLogo, this),
+          InheritedMainWidget.of(context).myLogo, this, context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
@@ -374,11 +373,11 @@ Widget _gameChoiceWidgets(
                   alignment: Alignment.bottomCenter,
                   child: FractionallySizedBox(
                     heightFactor: 0.45,
-                    widthFactor: 0.95,
+                    widthFactor: 0.94,
                     child: FittedBox(
                       fit: BoxFit.contain,
                       child: AutoSizeText(
-                        "50 Spiele, um nie wieder nüchtern zu sein!",
+                        "50 Spiele, um nie wieder nüchtern zu werden!",
                         textAlign: TextAlign.center,
                         maxLines: 1,
                         style: TextStyle(
@@ -526,7 +525,7 @@ Widget _gameChoiceWidgets(
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
-                  "Sonstiges", "./assets/images/otherGamesIcon.png"),
+                  "Kaum Material", "./assets/images/otherGamesIcon.png"),
               context)),
                 Flexible(
           child: FractionallySizedBox(
@@ -684,7 +683,7 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
                   logPath: choice.item2,
                   pageTitle: choice.item1)));
       break;
-    case "Sonstiges":
+    case "Kaum Material":
      listOtherGames = sortGamesIntoLists(listGames, "?");
        Navigator.push(
           context,

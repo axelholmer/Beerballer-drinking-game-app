@@ -107,7 +107,7 @@ flutter:
     - assets/images/bier.png
     - assets/images/info.png
     - assets/images/instagram.png
-    - assets/images/tiktok.png
+    - assets/images/cart.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
