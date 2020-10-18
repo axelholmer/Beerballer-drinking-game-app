@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:testflutter/InfoPage.dart';
+import 'package:testflutter/ShopMenuPage.dart';
 import 'package:testflutter/SizeConfig.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -82,7 +83,10 @@ Widget BottomNavigationBarButtons(BuildContext context) {
                 //  iconSize:  SizeConfig.safeBlockHorizontal * 80.0,
                 // icon: Icon(FontAwesomeIcons.facebook),
                 icon: Image.asset('./assets/images/cart.png'),
-                onPressed: _launchURLTiktok,
+                onPressed: () {
+                  Navigator.push(context,
+                      CustomTransistionAnimation(page: ShopMenuPage()));
+                },
               ),
             ),
           )),

@@ -8,6 +8,7 @@ import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/EstimateSwipe.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
+import 'package:tuple/tuple.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'CategoryGamePage.dart';
 import 'CustomWidget/CustomBackButton.dart';
@@ -24,29 +25,40 @@ import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
 import 'main.dart';
 
+
 class ShopMenuPage extends StatefulWidget {
   @override
   _ShopMenuPageState createState() => _ShopMenuPageState();
 }
 
-class _ShopMenuPageState extends State<ShopMenuPage>
-    with TickerProviderStateMixin {
-  final List<GameChoice> _gameChoices = const <GameChoice>[
-    const GameChoice(title: 'Schätzen', id: GameChoicheEnum.estimate),
-    const GameChoice(
-        title: 'Wahrheit oder Pflicht',
-        id: GameChoicheEnum.wahrheitOderPflicht),
-    const GameChoice(
-        title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
-    const GameChoice(
-        title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
+class _ShopMenuPageState extends State<ShopMenuPage> with TickerProviderStateMixin {
+  // final List<GameChoice> _gameChoices = const <GameChoice>[
+  //   const GameChoice(title: 'Schaetzen', id: GameChoicheEnum.estimate),
+  //   const GameChoice(
+  //       title: 'Wahrheit oder Pflicht',
+  //       id: GameChoicheEnum.wahrheitOderPflicht),
+  //   const GameChoice(
+  //       title: 'Ich habe noch nie', id: GameChoicheEnum.ichHabeNochNie),
+  //   const GameChoice(
+  //       title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
+  // ];
+
+  final List<Tuple2<String, String>> _gameChoices =
+      const <Tuple2<String, String>>[
+    Tuple2<String, String>(
+        "In-App Spiele", "./assets/images/inGameAppIcon.png"),
+    Tuple2<String, String>("Würfelspiele", "./assets/images/diceGamesIcon.png"),
+    Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
+    Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
+    Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
+    Tuple2<String, String>("Kaum Material", "./assets/images/otherGamesIcon.png")
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: _gameChoiceWidget(_gameChoices, context),
+      body: _gameChoiceWidgets(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
           InheritedMainWidget.of(context).myLogo, this, context),
@@ -55,73 +67,108 @@ class _ShopMenuPageState extends State<ShopMenuPage>
   }
 }
 
-Widget _gameChoiceWidget(
-    final List<GameChoice> gameChoices, BuildContext context) {
+Widget _gameChoiceWidgets(
+    final List<Tuple2<String, String>> gameChoices, BuildContext context) {
   List<Widget> gameChoiceWidgets = [];
 
   for (var item in gameChoices) {
-    //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * ));
+    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 30));
     gameChoiceWidgets.add(_gameChoiceButton(item, context));
-    // gameChoiceWidgets.add(Flexible(
-    //     child: FractionallySizedBox(
-    //   heightFactor: 0.4,
-    // )));
   }
-  // gameChoiceWidgets.add(
+  //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2));
 
   return Center(
-      //Todo make this text + logo + backbutton its own widget.
-      child: Column(children: <Widget>[
-    SizedBox(
+      child: Column(
+ 
+    children: <Widget>[
+      SizedBox(
       //always need this for title screens
       height: SizeConfig.blockSizeVertical * 35,
     ),
     CustomTopTitleScreen2(
       context,
-      "In-App Spiele",
+      "BeerBaller Shop",
       "./assets/images/inGameAppIcon.png",
     ),
-    SizedBox(
+  
+     SizedBox(
       //always need this for title screens
       height: SizeConfig.blockSizeVertical * 50,
     ),
-    // Flexible(
-    //   child: FractionallySizedBox(
-    //     widthFactor: 1,
-    //     heightFactor: 2.3,
-    //     child: Column /*or Column*/ (
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       mainAxisSize: MainAxisSize.min,
-    //       //crossAxisAlignment: CrossAxisAlignment.stretch,
-    //       children: gameChoiceWidgets,
-    //     ),
-    //   ),
-    // ),
 
-    Flexible(child: _gameChoiceButton(gameChoices[0], context)),
-    Flexible(
-        child: FractionallySizedBox(
-      heightFactor: 0.45,
-    )),
-    Flexible(child: _gameChoiceButton(gameChoices[1], context)),
-    Flexible(
-        child: FractionallySizedBox(
-      heightFactor: 0.45,
-    )),
-    Flexible(child: _gameChoiceButton(gameChoices[2], context)),
-    Flexible(
-        child: FractionallySizedBox(
-      heightFactor: 0.45,
-    )),
-    Flexible(child: _gameChoiceButton(gameChoices[3], context)),
-  ]));
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //         heightFactor: 1.7,
+      //         widthFactor: 1,
+      //         child: Column(
+      //           mainAxisAlignment: MainAxisAlignment.end,
+      //           children: <Widget>[
+
+        
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Beer Pong Equipment", "./assets/images/inGameAppIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.15,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Trinkspiele", "./assets/images/diceGamesIcon.png"),
+              context)),
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.85,
+      // )),
+      // Flexible(
+      //     child: _gameChoiceButton(
+      //         Tuple2<String, String>(
+      //             "Kartenspiele", "./assets/images/cardGamesIcon.png"),
+      //         context)),
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.85,
+      // )),
+      // Flexible(
+      //     child: _gameChoiceButton(
+      //         Tuple2<String, String>(
+      //             "Brettspiele", "./assets/images/boardGameIcon.png"),
+      //         context)),
+      // Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.85,
+      // )),
+      //   Flexible(
+      //     child: _gameChoiceButton(
+      //         Tuple2<String, String>(
+      //             "Becherspiele", "./assets/images/cupGamesIcon.png"),
+      //         context)),
+      //  Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.85,
+      // )),
+      // Flexible(
+      //     child: _gameChoiceButton(
+      //         Tuple2<String, String>(
+      //             "Kaum Material", "./assets/images/otherGamesIcon.png"),
+      //         context)),
+      //           Flexible(
+      //     child: FractionallySizedBox(
+      //   heightFactor: 0.85,
+      // )),
+    ],
+  ));
 }
 
-Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
+Widget _gameChoiceButton(
+    Tuple2<String, String> gameChoice, BuildContext context) {
   return FractionallySizedBox(
-    heightFactor: 1,
-    widthFactor: 0.80,
-    child: RaisedButton(
+      heightFactor: 0.4,
+      widthFactor: 0.80,
+      child: RaisedButton(
         color: Theme.of(context).accentColor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(11.0),
@@ -132,27 +179,25 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
           _selectGameChoice(gameChoice, context);
         },
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             // Flexible(  //Fix box
             //     child: FractionallySizedBox(
             //   widthFactor: 0.4,
             // )),
-
-            // SizedBox(
-            //   // height: SizeConfig.blockSizeVertical * 2,
-            //   width: SizeConfig.blockSizeHorizontal * 1,
-            // ),
+            SizedBox(
+              // height: SizeConfig.blockSizeVertical * 2,
+              width: SizeConfig.blockSizeHorizontal * 1,
+            ),
             Flexible(
                 child: FractionallySizedBox(
-              heightFactor: 0.8,
-              widthFactor: 1,
-              //   alignment: Alignment.center,
+              heightFactor: 0.78,
+              widthFactor: 0.9,
               child: FittedBox(
-                  alignment: Alignment.center,
+                  alignment: Alignment.centerLeft,
                   fit: BoxFit.contain,
                   child: AutoSizeText(
-                    gameChoice.title,
+                    gameChoice.item1,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
@@ -176,34 +221,15 @@ Widget _gameChoiceButton(GameChoice gameChoice, BuildContext context) {
             //   height: SizeConfig.blockSizeVertical * 1,
             //   width: SizeConfig.blockSizeHorizontal * 3,
             // ),
-          ],
-        )),
-  );
 
-  // return  RaisedButton(
-  //   color: Theme.of(context).accentColor,
-  //   shape: RoundedRectangleBorder(
-  //       borderRadius: BorderRadius.circular(11.0),
-  //       side: BorderSide(
-  //         color: Theme.of(context).accentColor,
-  //       )),
-  //   onPressed: () {
-  //     _selectGameChoice(gameChoice, context);
-  //   },
-  //   child: FractionallySizedBox(
-  //     widthFactor: 1,
-  //     child: FittedBox(
-  //         fit: BoxFit.contain,
-  //         child: AutoSizeText(
-  //           gameChoice.title,
-  //           maxLines: 1,
-  //           textAlign: TextAlign.center,
-  //           style: TextStyle(
-  //               //  fontSize: SizeConfig.safeBlockHorizontal * 6,
-  //               ),
-  //         )),
-  //   ),
-  // );
+            Image.asset(
+              gameChoice.item2,
+              width: SizeConfig.blockSizeHorizontal * 140,
+              height: SizeConfig.blockSizeVertical * 80,
+            ),
+          ],
+        ),
+      ));
 }
 
 class GameChoice {
@@ -219,65 +245,76 @@ class GameChoice {
 // }
 // UserStatus.notDetermined;
 
-void _selectGameChoice(GameChoice choice, BuildContext context) {
-  switch (choice.id.index) {
-    case 0:
-      {
-        Navigator.push(
-            context,
-            CustomTransistionAnimation(
-                //page: SchaetzenSwipe(listQuestions: listEstimateQuestions)));
-                page: EstimateSwipe()));
-      }
-      break;
-    case 1:
-      // Navigator.push(
-      //     context,
-      //     CustomTransistionAnimation(
-      //         page: PlayersMenu(
-      //       GameChoicheEnum.wahrheitOderPflicht,
-      //       gamechoicheenum: GameChoicheEnum.wahrheitOderPflicht,
-      //     )));
-      Navigator.push(
-          context,
-          CustomTransistionAnimation(
-              page: TruthOrDareSwipePage(
-                  // listPlayer: _players,
-                  )));
-      break;
-    case 2:
-      {
-        Navigator.push(
-            context,
-            // CustomTransistionAnimation(
-            //     page: PlayersMenu(
-            //   GameChoicheEnum.ichHabeNochNie,
-            //   gamechoicheenum: GameChoicheEnum.ichHabeNochNie,
-            // ))
-            CustomTransistionAnimation(page: NeverEverHavieIPageSwipe()));
-        // = listTruDareQuestions;
-        //  InheritedTruDarData.of(context).
-      }
-      break;
-    case 3:
-      {
-        Navigator.push(
-            context, CustomTransistionAnimation(page: CategoryGamePage()));
-        print(choice.title);
-      }
-      break;
-    case 4:
-      {
-        print(choice.title);
-      }
-      break;
-    default:
-      {
-        print('route not found');
-      }
-      break;
-  }
-}
-
-newCategorySwipe() {
+//TODO a loadFunction for multiplelists
+void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
+  // switch (choice.item1) {
+  //   case "In-App Spiele":
+  //     {
+  //       Navigator.push(
+  //           context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
+  //     }
+  //     break;
+  //   case "Würfelspiele":
+  //     // Navigator.push(
+  //     //     context,
+  //     //     CustomTransistionAnimation(
+  //     //         page: listOfGames(
+  //     //             items: List<String>.generate(10000, (i) => "Item $i"))));
+  //    listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+  //     Navigator.push(
+  //         context,
+  //         CustomTransistionAnimation(
+  //             page: listOfGames(
+  //                 items: listDiceGames,
+  //                 logPath: choice.item2,
+  //                 pageTitle: choice.item1)));
+  //     break;
+  //   case "Kartenspiele":
+  //     listCardGames = sortGamesIntoLists(listGames, "cardgame");
+  //     Navigator.push(
+  //         context,
+  //         CustomTransistionAnimation(
+  //             page: listOfGames(
+  //                 items: listCardGames,
+  //                 logPath: choice.item2,
+  //                 pageTitle: choice.item1)));
+  //     break;
+  //   case "Brettspiele":
+  //     listBoardGames = sortGamesIntoLists(listGames, "boardgame");
+  //     print(listBoardGames);
+  //     Navigator.push(
+  //         context,
+  //         CustomTransistionAnimation(
+  //             page: listOfGames(
+  //                 items: listBoardGames,
+  //                 logPath: choice.item2,
+  //                 pageTitle: choice.item1)));
+  //     break;
+  //   case "Becherspiele":
+  //     listCupGames = sortGamesIntoLists(listGames, "cupgame");
+  //     print(listCupGames);
+  //     Navigator.push(
+  //         context,
+  //         CustomTransistionAnimation(
+  //             page: listOfGames(
+  //                 items: listCupGames,
+  //                 logPath: choice.item2,
+  //                 pageTitle: choice.item1)));
+  //     break;
+  //   case "Kaum Material":
+  //    listOtherGames = sortGamesIntoLists(listGames, "?");
+  //      Navigator.push(
+  //         context,
+  //         CustomTransistionAnimation(
+  //             page: listOfGames(
+  //                 items: listOtherGames,
+  //                 logPath: choice.item2,
+  //                 pageTitle: choice.item1)));
+  //     break;
+  //   default:
+  //     {
+  //       print('route not found');
+  //     }
+  //     break;
+  // }
 }
