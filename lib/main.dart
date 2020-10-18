@@ -684,7 +684,7 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
                   pageTitle: choice.item1)));
       break;
     case "Kaum Material":
-     listOtherGames = sortGamesIntoLists(listGames, "?");
+     listOtherGames = sortGamesIntoLists(listGames, "other");
        Navigator.push(
           context,
           CustomTransistionAnimation(

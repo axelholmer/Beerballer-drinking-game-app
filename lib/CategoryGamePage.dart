@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
@@ -257,6 +258,8 @@ class _QuestionCardState extends State<QuestionCard>
     });
   }
 
+
+//TODO, fix that the Category name also is display, maybe overloading constructors? Oder {this one} and leave one field empty with "".
   @override
   Widget build(BuildContext context) {
     return new Stack(
@@ -264,9 +267,9 @@ class _QuestionCardState extends State<QuestionCard>
         new AnimatedBuilder(
           child: questionCardWidget(
               // _question.questionText, context, _handleCardToogle),
-              "...Volvo\n...BWM\n...Ferrari\n...Volvo\n...Tesla",
+              "...Apple\n...Sony\n...Samsung\n...Huawei\n...Motorola\n...Lenovo\n...OnePlus\n...Blackberry\n...Microsoft\n...LG",
               context,
-              _handleCardToogle),
+              _handleCardToogle, true),
           animation: _backScale,
           builder: (BuildContext context, Widget child) {
             final Matrix4 transform = new Matrix4.identity()
@@ -280,7 +283,7 @@ class _QuestionCardState extends State<QuestionCard>
         ),
         new AnimatedBuilder(
           child: questionCardWidget(
-              _question.questionText, context, _handleCardToogle),
+              _question.questionText, context, _handleCardToogle, false),
           animation: _frontScale,
           builder: (BuildContext context, Widget child) {
             final Matrix4 transform = new Matrix4.identity()
@@ -298,7 +301,7 @@ class _QuestionCardState extends State<QuestionCard>
 }
 
 Widget questionCardWidget(
-    String text, BuildContext context, CardToogle _handleCardToogle) {
+    String text, BuildContext context, CardToogle _handleCardToogle, bool isBackSide) {
   //Here Imp turn animation.
   return AnimatedSwitcher(
       duration: const Duration(milliseconds: 600),
@@ -317,26 +320,84 @@ Widget questionCardWidget(
               child: CardSide(
                 text: text,
                 onCardToogle: _handleCardToogle,
+                isBackside: isBackSide,
               ))));
 }
 
 typedef void CardToogle();
 
 class CardSide extends StatelessWidget {
-  CardSide({this.text, this.onCardToogle}) : super(key: ObjectKey(text));
+  CardSide({this.text, this.onCardToogle, this.isBackside})
+      : super(key: ObjectKey(text));
 
   final String text;
   final CardToogle onCardToogle;
+  final bool isBackside;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        onCardToogle();
-      },
-      child: Center(
-          child: CustomCardText(context, "Kategoriespiel",
-              "./assets/images/IconsInGame/estimateIcon.jpg", text)),
+    if (isBackside) {
+      return InkWell(
+        onTap: () {
+          onCardToogle();
+        },
+        child: Center(
+            child: CardTextCategoryBackSide(context, "Kategoriespiel",
+                "./assets/images/IconsInGame/estimateIcon.jpg", text)),
+      );
+    } else {
+      return InkWell(
+        onTap: () {
+          onCardToogle();
+        },
+        child: Center(
+            child: CustomCardText(context, "Kategoriespiel",
+                "./assets/images/IconsInGame/estimateIcon.jpg", text)),
+      );
+    }
+  }
+
+  Widget CardTextCategoryBackSide(BuildContext context, String gameTitle,
+      String iconPath, String cardText) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(
+            child: FractionallySizedBox(
+                heightFactor: 0.55,
+                widthFactor: .87,
+                child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: AutoSizeText(
+                      gameTitle,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        //  fontSize: SizeConfig.safeBlockHorizontal * 7,
+                        //height: 2,
+                        //  height: SizeConfig.safeBlockVertical * 0.23,
+                        //fontFamily: 'Oswald',
+                        fontWeight: FontWeight.w900,
+                      ),
+                    )))),
+        SizedBox(
+          height: SizeConfig.blockSizeVertical * 80,
+        ),
+        Flexible(
+            child: FractionallySizedBox(
+          heightFactor: 1.4,
+          widthFactor: 0.9,
+          alignment: Alignment.bottomCenter,
+          child: AutoSizeText(cardText,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: SizeConfig.safeBlockHorizontal * 4.5,
+                //  height: SizeConfig.safeBlockVertical * ,
+                //   height: SizeConfig.safeBlockVertical * 0.23,
+                //  fontFamily: 'Oswald',
+                fontWeight: FontWeight.w600,
+              )),
+        ))
+      ],
     );
   }
 }

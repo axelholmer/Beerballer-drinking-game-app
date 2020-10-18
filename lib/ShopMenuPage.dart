@@ -7,6 +7,8 @@ import 'package:testflutter/NeverEverHavieIPageSwipe.dart';
 import 'package:testflutter/Questionclasses/QuestionCategoryGame.dart';
 import 'package:testflutter/Questionclasses/QuestionEstimation.dart';
 import 'package:testflutter/EstimateSwipe.dart';
+import 'package:testflutter/ShopPages/ShopDrinkingGamesMenuPage.dart';
+import 'package:testflutter/ShopPages/shopBeerPongEquipmentMenuPage.dart';
 import 'package:testflutter/customTransistionAnimation.dart';
 import 'package:tuple/tuple.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -43,22 +45,11 @@ class _ShopMenuPageState extends State<ShopMenuPage> with TickerProviderStateMix
   //       title: 'Kategoriespiel', id: GameChoicheEnum.kategorieSpiel),
   // ];
 
-  final List<Tuple2<String, String>> _gameChoices =
-      const <Tuple2<String, String>>[
-    Tuple2<String, String>(
-        "In-App Spiele", "./assets/images/inGameAppIcon.png"),
-    Tuple2<String, String>("Würfelspiele", "./assets/images/diceGamesIcon.png"),
-    Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
-    Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
-    Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
-    Tuple2<String, String>("Kaum Material", "./assets/images/otherGamesIcon.png")
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      body: _gameChoiceWidgets(_gameChoices, context),
+      body: _shopChoiceWidgets( context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
           InheritedMainWidget.of(context).myLogo, this, context),
@@ -67,15 +58,11 @@ class _ShopMenuPageState extends State<ShopMenuPage> with TickerProviderStateMix
   }
 }
 
-Widget _gameChoiceWidgets(
-    final List<Tuple2<String, String>> gameChoices, BuildContext context) {
-  List<Widget> gameChoiceWidgets = [];
+Widget _shopChoiceWidgets(
+   BuildContext context) {
+ 
 
-  for (var item in gameChoices) {
-    gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 30));
-    gameChoiceWidgets.add(_gameChoiceButton(item, context));
-  }
-  //gameChoiceWidgets.add(SizedBox(height: SizeConfig.blockSizeVertical * 2));
+
 
   return Center(
       child: Column(
@@ -106,16 +93,16 @@ Widget _gameChoiceWidgets(
 
         
       Flexible(
-          child: _gameChoiceButton(
+          child: _shopMenuChoiceButton(
               Tuple2<String, String>(
                   "Beer Pong Equipment", "./assets/images/inGameAppIcon.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
-        heightFactor: 0.15,
+        heightFactor: 0.1,
       )),
       Flexible(
-          child: _gameChoiceButton(
+          child: _shopMenuChoiceButton(
               Tuple2<String, String>(
                   "Trinkspiele", "./assets/images/diceGamesIcon.png"),
               context)),
@@ -163,8 +150,8 @@ Widget _gameChoiceWidgets(
   ));
 }
 
-Widget _gameChoiceButton(
-    Tuple2<String, String> gameChoice, BuildContext context) {
+Widget _shopMenuChoiceButton(
+    Tuple2<String, String> choice, BuildContext context) {
   return FractionallySizedBox(
       heightFactor: 0.4,
       widthFactor: 0.80,
@@ -176,7 +163,7 @@ Widget _gameChoiceButton(
               color: Theme.of(context).accentColor,
             )),
         onPressed: () {
-          _selectGameChoice(gameChoice, context);
+          _selectShopMenuChoice(choice, context);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,7 +184,7 @@ Widget _gameChoiceButton(
                   alignment: Alignment.centerLeft,
                   fit: BoxFit.contain,
                   child: AutoSizeText(
-                    gameChoice.item1,
+                    choice.item1,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
@@ -223,7 +210,7 @@ Widget _gameChoiceButton(
             // ),
 
             Image.asset(
-              gameChoice.item2,
+              choice.item2,
               width: SizeConfig.blockSizeHorizontal * 140,
               height: SizeConfig.blockSizeVertical * 80,
             ),
@@ -246,75 +233,25 @@ class GameChoice {
 // UserStatus.notDetermined;
 
 //TODO a loadFunction for multiplelists
-void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
-  // switch (choice.item1) {
-  //   case "In-App Spiele":
-  //     {
-  //       Navigator.push(
-  //           context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
-  //     }
-  //     break;
-  //   case "Würfelspiele":
-  //     // Navigator.push(
-  //     //     context,
-  //     //     CustomTransistionAnimation(
-  //     //         page: listOfGames(
-  //     //             items: List<String>.generate(10000, (i) => "Item $i"))));
-  //    listDiceGames = sortGamesIntoLists(listGames, "dicegame");
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listDiceGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Kartenspiele":
-  //     listCardGames = sortGamesIntoLists(listGames, "cardgame");
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listCardGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Brettspiele":
-  //     listBoardGames = sortGamesIntoLists(listGames, "boardgame");
-  //     print(listBoardGames);
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listBoardGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Becherspiele":
-  //     listCupGames = sortGamesIntoLists(listGames, "cupgame");
-  //     print(listCupGames);
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listCupGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Kaum Material":
-  //    listOtherGames = sortGamesIntoLists(listGames, "?");
-  //      Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listOtherGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   default:
-  //     {
-  //       print('route not found');
-  //     }
-  //     break;
-  // }
+void _selectShopMenuChoice(Tuple2<String, String> choice, BuildContext context) {
+  switch (choice.item1) {
+    case "Trinkspiele":
+      {
+        Navigator.push(
+            context, CustomTransistionAnimation(page: ShopDrinkingGamesMenuPage()));
+      }
+      break;
+    case "Beer Pong Equipment":
+     listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: ShopBeerPongEquipmentMenuPage()));
+      break;
+    default:
+      {
+        print('route not found');
+      }
+      break;
+  }
 }
