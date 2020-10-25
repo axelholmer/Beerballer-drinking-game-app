@@ -267,7 +267,8 @@ class _QuestionCardState extends State<QuestionCard>
         new AnimatedBuilder(
           child: questionCardWidget(
               // _question.questionText, context, _handleCardToogle),
-              "...Apple\n...Sony\n...Samsung\n...Huawei\n...Motorola\n...Lenovo\n...OnePlus\n...Blackberry\n...Microsoft\n...LG",
+              _question.questionTextBackside,
+              // "...Apple\n...Sony\n...Samsung\n...Huawei\n...Motorola\n...Lenovo\n...OnePlus\n...Blackberry\n...Microsoft\n...LG",
               context,
               _handleCardToogle, true),
           animation: _backScale,
@@ -380,7 +381,7 @@ class CardSide extends StatelessWidget {
                       ),
                     )))),
         SizedBox(
-          height: SizeConfig.blockSizeVertical * 80,
+          height: SizeConfig.blockSizeVertical * 85,
         ),
         Flexible(
             child: FractionallySizedBox(
