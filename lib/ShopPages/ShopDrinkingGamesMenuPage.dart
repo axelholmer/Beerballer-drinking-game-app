@@ -40,7 +40,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       CustomTopTitleScreen2(
         context,
         "Trinkspiele",
-        "./assets/images/inGameAppIcon.png",
+        "./assets/images/Shop/Icons/cart.png",
       ),
 
       SizedBox(
@@ -59,7 +59,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Shotpong", "./assets/images/inGameAppIcon.png"),
+                  "Shotpong", "./assets/images/Shop/Icons/shotpong.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -68,7 +68,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Dare Pong", "./assets/images/diceGamesIcon.png"),
+                  "Dare Pong", "./assets/images/Shop/Icons/darepong.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -77,7 +77,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Wer lacht verliert!", "./assets/images/cardGamesIcon.png"),
+                  "Wer lacht verliert!", "./assets/images/Shop/Icons/glasses.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -86,7 +86,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Bar Quartett", "./assets/images/boardGameIcon.png"),
+                  "Bar Quartett", "./assets/images/Shop/Icons/barQuartet.png"),
               context)),
       // Flexible(
       //     child: FractionallySizedBox(

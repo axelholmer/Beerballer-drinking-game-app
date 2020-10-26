@@ -31,6 +31,7 @@ dependencies:
   percent_indicator: ^2.1.5
   tuple: ^1.0.3
   device_preview: ^0.4.7
+  carousel_slider: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,20 @@ flutter:
           weight: 800
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Black.ttf
           weight: 900
+    # - family: Now
+    #   fonts:
+    #     - asset: assets/fonts/Now_Thin/Now-Thin.ttf
+    #       weight: 300
+    #     - asset: assets/fonts/Now_Thin/Now-Light.ttf
+    #       weight: 400
+    #     - asset: assets/fonts/Now_Thin/Now-Regular.ttf
+    #       weight: 600
+    #     - asset: assets/fonts/Now_Thin/Now-Medium.ttf
+    #       weight: 700
+    #     - asset: assets/fonts/Now_Thin/Now-Bold.ttf
+    #       weight: 800
+    #     - asset: assets/fonts/Now_Thin/Now-Black.ttf
+    #       weight: 900
 
   assets:
     - assets/images/PNGFormat_klein.png
@@ -108,6 +123,26 @@ flutter:
     - assets/images/info.png
     - assets/images/instagram.png
     - assets/images/cart.png
+    - assets/images/cart.png
+
+    - assets/images/Shop/Icons/
+    - assets/images/Shop/BeerPong/Bälle/
+
+    - assets/images/Shop/BeerPong/Becher/BlackCups/
+    - assets/images/Shop/BeerPong/Becher/BlueCups/
+    - assets/images/Shop/BeerPong/Becher/PinkCups/
+    - assets/images/Shop/BeerPong/Becher/RedCups/
+    - assets/images/Shop/BeerPong/Becher/ShotCups/
+    - assets/images/Shop/BeerPong/Becher/YellowCups/
+
+    - assets/images/Shop/BeerPong/Matte/
+
+    - assets/images/Shop/BeerPong/Tische/Allblack/
+    - assets/images/Shop/BeerPong/Tische/LEDTisch/
+    - assets/images/Shop/BeerPong/Tische/WoodNIce/
+
+
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

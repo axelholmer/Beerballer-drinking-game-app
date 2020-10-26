@@ -31,6 +31,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'SizeConfig.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
+import 'popupDialogWarning.dart';
 
 //TODO create custom SplashScreen
 //Todo put underscore(private) to items
@@ -241,8 +242,13 @@ class _MyAppState extends State<MyApp> {
       });
     });
 
+ 
+    
     super.initState();
   }
+
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +311,21 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
     Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
     Tuple2<String, String>("Kaum Material", "./assets/images/otherGamesIcon.png")
   ];
+
+
+
+
+@override
+  void initState() {
+    Future.delayed(const Duration(milliseconds: 100), () {
+ showDialog(
+            context: context,
+             barrierDismissible: false,
+            builder: (BuildContext context) => popupDialogWarning(
+                context));      
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

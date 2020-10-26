@@ -40,7 +40,7 @@ class _ShopBeerPongEquipmentMenuPageState extends State<ShopBeerPongEquipmentMen
 
 Widget _shopChoiceWidgets(BuildContext context) {
   //Here are all Products defined
- final List<ProductClass> listBeerPongTablesProducts = [ProductClass(productName: "Allblack", description: "Schwarz wie die Nacht", url: "https://beerballer.com/produkt/beer-pong-tisch-allblack-beerballer/", productPicturesPaths: [""] )];
+ final List<ProductClass> listBeerPongTablesProducts = [ProductClass(productName: "Allblack", description: "Schwarz wie die Nacht", url: "https://beerballer.com/produkt/beer-pong-tisch-allblack-beerballer/", productPicturesPaths: ["./assets/images/Shop/BeerPong/Tische/Allblack/44.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/45.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/46.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/47.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/48.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/49.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/50.jpg", "./assets/images/Shop/BeerPong/Tische/Allblack/51.jpg"])];
  final List<ProductClass> listBallsProducts = [];
  final List<ProductClass> listCupsProducts = [];
  final List<ProductClass> listCarpetProducts = [];
@@ -54,7 +54,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       CustomTopTitleScreen2(
         context,
         "Beer Pong",
-        "./assets/images/inGameAppIcon.png",
+         "./assets/images/Shop/Icons/cart.png",
       ),
 
       SizedBox(
@@ -64,7 +64,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Tische", "./assets/images/inGameAppIcon.png"),
+                  "Tische",  "./assets/images/Shop/Icons/beerpongtable.png"),
               context, listBeerPongTablesProducts)),
       Flexible(
           child: FractionallySizedBox(
@@ -73,7 +73,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Bälle", "./assets/images/diceGamesIcon.png"),
+                  "Bälle",  "./assets/images/Shop/Icons/balls.png"),
               context, listBallsProducts)),
       Flexible(
           child: FractionallySizedBox(
@@ -82,7 +82,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Becher", "./assets/images/cardGamesIcon.png"),
+                  "Becher",  "./assets/images/Shop/Icons/cups.png"),
               context, listCupsProducts)),
       Flexible(
           child: FractionallySizedBox(
@@ -91,7 +91,7 @@ Widget _shopChoiceWidgets(BuildContext context) {
       Flexible(
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
-                  "Matte", "./assets/images/boardGameIcon.png"),
+               "Becher", "./assets/images/Shop/Icons/carpet.png"),
               context, listCarpetProducts)),
       // Flexible(
       //     child: FractionallySizedBox(

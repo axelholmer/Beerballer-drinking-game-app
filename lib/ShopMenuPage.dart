@@ -75,7 +75,7 @@ Widget _shopChoiceWidgets(
     CustomTopTitleScreen2(
       context,
       "BeerBaller Shop",
-      "./assets/images/inGameAppIcon.png",
+      "./assets/images/Shop/Icons/cart.png",
     ),
   
      SizedBox(
@@ -166,26 +166,28 @@ Widget _shopMenuChoiceButton(
           _selectShopMenuChoice(choice, context);
         },
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        
+         mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // Flexible(  //Fix box
             //     child: FractionallySizedBox(
             //   widthFactor: 0.4,
             // )),
-            SizedBox(
-              // height: SizeConfig.blockSizeVertical * 2,
-              width: SizeConfig.blockSizeHorizontal * 1,
-            ),
+            // SizedBox(
+            //   // height: SizeConfig.blockSizeVertical * 2,
+            //   width: SizeConfig.blockSizeHorizontal * 1,
+            // ),
             Flexible(
                 child: FractionallySizedBox(
               heightFactor: 0.78,
               widthFactor: 0.9,
+            //  alignment: Alignment.center,
               child: FittedBox(
-                  alignment: Alignment.centerLeft,
+                 // alignment: Alignment.center,
                   fit: BoxFit.contain,
                   child: AutoSizeText(
                     choice.item1,
-                    textAlign: TextAlign.center,
+                   // textAlign: TextAlign.center,
                     maxLines: 1,
                     style: TextStyle(
                         //fontSize: SizeConfig.safeBlockHorizontal * 50,
@@ -209,11 +211,11 @@ Widget _shopMenuChoiceButton(
             //   width: SizeConfig.blockSizeHorizontal * 3,
             // ),
 
-            Image.asset(
-              choice.item2,
-              width: SizeConfig.blockSizeHorizontal * 140,
-              height: SizeConfig.blockSizeVertical * 80,
-            ),
+            // Image.asset(
+            //   choice.item2,
+            //   width: SizeConfig.blockSizeHorizontal * 140,
+            //   height: SizeConfig.blockSizeVertical * 80,
+            // ),
           ],
         ),
       ));
@@ -242,7 +244,7 @@ void _selectShopMenuChoice(Tuple2<String, String> choice, BuildContext context) 
       }
       break;
     case "Beer Pong Equipment":
-     listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+    //  listDiceGames = sortGamesIntoLists(listGames, "dicegame");
       Navigator.push(
           context,
           CustomTransistionAnimation(

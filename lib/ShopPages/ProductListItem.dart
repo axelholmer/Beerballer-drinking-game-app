@@ -2,27 +2,32 @@ import 'dart:ffi';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:testflutter/CustomWidget/CustomBackButton.dart';
+import 'package:testflutter/CustomWidget/NoScrollbar.dart';
 import 'package:testflutter/CustomWidget/customPopupDialog.dart';
 import 'package:testflutter/CustomWidget/customProgressbar.dart';
 import 'package:testflutter/SizeConfig.dart';
 import '../GameClass.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
+import 'dart:math' as math;
 import 'ProductClass.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-class ProductListItem extends StatelessWidget {
-  const ProductListItem(BuildContext context, {this.product
-      // this.thumbnail,
-      // this.title,
-      // this.user,
-      // this.viewCount,
-      });
+class ProductListItem extends StatefulWidget {
+  ProductListItem(BuildContext context, {this.product});
   final ProductClass product;
+  final CarouselController buttonCarouselController = CarouselController();
 
-  // final Widget thumbnail;
-  // final String title;
-  // final String user;
-  // final int viewCount;
+  @override
+  State<StatefulWidget> createState() {
+    return _ProductListItemState();
+  }
+}
+
+
+//TODO disable horizontal scroll and make buttons splash bigger -> make container splash
+class _ProductListItemState extends State<ProductListItem> {
+  int _current = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,160 +44,239 @@ class ProductListItem extends StatelessWidget {
             children: <Widget>[
               // FlutterLogo(size: 200),
 
-
-
-//               Flexible(
-//                 flex: 8,
-//                 child: FractionallySizedBox(
-//                     // widthFactor: 0.3,
-//                     heightFactor: 1,
-//                     child: Stack(
-//                       children: [
-//                         Container(
-//                           constraints: BoxConstraints.expand(),
-//                           child: ClipRRect(
-//                             borderRadius: BorderRadius.only(
-//                               topLeft: Radius.circular(8.0),
-//                               topRight: Radius.circular(8.0),
-//                             ),
-//                             child: Image.asset(product.imagePath,
-//                                 // height: SizeConfig.blockSizeVertical * 30,
-//                                 fit: BoxFit.fill),
-//                             // Container(
-//                             //   alignment: Alignment.bottomLeft,
-//                             //   child: Text(
-//                             //     gameClass.gameName,
-//                             //     style: TextStyle(
-//                             //       color: Theme.of(context).accentColor,
-//                             //       fontWeight: FontWeight.w800,
-//                             //       fontSize: SizeConfig.safeBlockHorizontal * 9,
-//                             //     ),
-//                             //   ),
-//                             // ),
-//                           ),
-//                         ),
-//                         Align(
-//                             alignment: Alignment.bottomLeft,
-//                             child: FractionallySizedBox(
-//                                 widthFactor: 1,
-//                                 heightFactor: 0.35,
-//                                 child: Row(
-//                                   children: [
-//                                     SizedBox(
-//                                         width:
-//                                             SizeConfig.blockSizeHorizontal * 50),
-//                                     Flexible(
-//                                         child: FractionallySizedBox(
-//                                             widthFactor: 1,
-//                                             heightFactor: 1,
-//                                             child: FittedBox(
-//                                                 alignment: Alignment.centerLeft,
-//                                                 fit: BoxFit.contain,
-//                                                 child: AutoSizeText(
-//                                                   product.gameName,
-//                                                   textAlign: TextAlign.center,
-//                                                   style: TextStyle(
-//                                                     color: Color.fromRGBO(
-//                                                         250, 250, 250, 1),
-//                                                     fontWeight: FontWeight.w700,
-//                                                   ),
-//                                                 ))))
-//                                   ],
-//                                 )))
-//                       ],
-//                     )),
-//               ),
+              Flexible(
+                flex: 22,
+                child: FractionallySizedBox(
+                    // widthFactor: 0.3,
+                    //  heightFactor: 1,
+                    child: Stack(
+                  children: [
+                    Container(
+                        constraints: BoxConstraints.expand(),
+                        child: NoScrollbar(
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8.0),
+                                topRight: Radius.circular(8.0),
+                              ),
+                              child: CarouselSlider(
+                                carouselController:
+                                    widget.buttonCarouselController,
+                                options: CarouselOptions(
+                                    viewportFraction: 1.0,
+                                    height: 500,
+                                    autoPlay: false,
+                                    onPageChanged: (index, reason) {
+                                      setState(() {
+                                        _current = index;
+                                      });
+                                    }),
+                                items: widget.product.productPicturesPaths
+                                    .map((i) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                        // width: MediaQuery.of(context).size.width,
+                                        child: Image.asset(i,
+                                            height:
+                                                SizeConfig.blockSizeVertical *
+                                                    30,
+                                            fit: BoxFit.fill),
+                                      );
+                                    },
+                                  );
+                                }).toList(),
+                              )
+                              // Image.asset(product.productPicturesPaths[0],
+                              //     // height: SizeConfig.blockSizeVertical * 30,
+                              //     fit: BoxFit.fill),
+                              ),
+                        )),
+                    Container(constraints: BoxConstraints.expand()),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.2,
+                        child: Center(
+                          child: FractionallySizedBox(
+                            widthFactor: 1,
+                            heightFactor: 0.55,
+                            child: FittedBox(
+                              alignment: Alignment.centerLeft,
+                              fit: BoxFit.contain,
+                              child: IconButton(
+                                splashColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                //padding: EdgeInsets.all(0),
+                                color: Color.fromRGBO(225, 225, 225, 1),
+                                //iconSize: SizeConfig.blockSizeVertical * 5,
+                                icon: Icon(Icons.arrow_back_ios),
+                                onPressed: () {
+                                  widget.buttonCarouselController.previousPage(
+                                      duration: Duration(milliseconds: 300),
+                                      curve: Curves.linear);
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: FractionallySizedBox(
+                          widthFactor: 0.2,
+                          child: Center(
+                            child: FractionallySizedBox(
+                              widthFactor: 1,
+                              heightFactor: 0.55,
+                              child: FittedBox(
+                                alignment: Alignment.centerLeft,
+                                fit: BoxFit.contain,
+                                child: Transform(
+                                  alignment: Alignment.center,
+                                  transform: Matrix4.rotationY(math.pi),
+                                  child: IconButton(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    //padding: EdgeInsets.all(0),
+                                    color: Color.fromRGBO(225, 225, 225, 1),
+                                    //iconSize: SizeConfig.blockSizeVertical * 5,
+                                    icon: Icon(Icons.arrow_back_ios),
+                                    onPressed: () {
+                                      widget.buttonCarouselController.nextPage(
+                                          duration: Duration(milliseconds: 300),
+                                          curve: Curves.linear);
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )),
+                    Align( alignment: Alignment.bottomCenter,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:
+                            widget.product.productPicturesPaths.map((url) {
+                          int index =
+                              widget.product.productPicturesPaths.indexOf(url);
+                          return Container(
+                            width: 8.0,
+                            height: 8.0,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 10.0, horizontal: 2.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _current == index
+                                  ? Color.fromRGBO(0, 0, 0, 0.9)
+                                  : Color.fromRGBO(0, 0, 0, 0.4),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  ],
+                )),
+              ),
 
 //               SizedBox(height: SizeConfig.blockSizeVertical * 20),
 
-// //First Icon row
-//               Flexible(
-//                 flex: 2,
-//                 child: FractionallySizedBox(
-//                   //  widthFactor: 0.2,
-//                   heightFactor: 1.1,
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                     children: [
-//                       Flexible(
-//                           child: FractionallySizedBox(
-//                               widthFactor: 1,
-//                               heightFactor: 1,
-//                               child: Column(children: <Widget>[
-//                                 Flexible(
-//                                   child: FractionallySizedBox(
-//                                       widthFactor: 1,
-//                                       heightFactor: 1.6,
-//                                       child: FittedBox(
-//                                         // alignment: Alignment.centerLeft,
-//                                         fit: BoxFit.contain,
-//                                         child: Icon(Icons.group,
-//                                             // size: SizeConfig.safeBlockHorizontal *
-//                                             //     7.5,
-//                                             color:
-//                                                 Theme.of(context).accentColor),
-//                                       )),
-//                                 ),
-//                                 SizedBox(
-//                                     height: SizeConfig.blockSizeVertical * 20),
-//                                 Flexible(
-//                                     child: FractionallySizedBox(
-//                                         widthFactor: 1,
-//                                         heightFactor: 2,
-//                                         child: FittedBox(
-//                                             // alignment: Alignment.centerLeft,
-//                                             fit: BoxFit.contain,
-//                                             child: Text(
-//                                               product.playerNumber,
-//                                               textAlign: TextAlign.center,
-//                                               style: TextStyle(
-//                                                 color: Color.fromRGBO(
-//                                                     238, 237, 237, 1),
-//                                                 fontWeight: FontWeight.w600,
-//                                               ),
-//                                             ))))
-//                               ]))),
-//                       Flexible(
-//                           child: FractionallySizedBox(
-//                               widthFactor: 1,
-//                               heightFactor: 1,
-//                               child: Column(children: <Widget>[
-//                                 Flexible(
-//                                     child: FractionallySizedBox(
-//                                   widthFactor: 1,
-//                                   heightFactor: 1.6,
-//                                   child: FittedBox(
-//                                     // alignment: Alignment.centerLeft,
-//                                     fit: BoxFit.contain,
-//                                     child: Icon(Icons.access_time,
-//                                         // size: SizeConfig.safeBlockHorizontal *
-//                                         //     7.5,
-//                                         color: Theme.of(context).accentColor),
-//                                   ),
-//                                 )),
-//                                 SizedBox(
-//                                     height: SizeConfig.blockSizeVertical * 20),
-//                                 Flexible(
-//                                     child: FractionallySizedBox(
-//                                         widthFactor: 1,
-//                                         heightFactor: 2,
-//                                         child: FittedBox(
-//                                             // alignment: Alignment.centerLeft,
-//                                             fit: BoxFit.contain,
-//                                             child: Text(
-//                                               product.gameDuration,
-//                                               textAlign: TextAlign.center,
-//                                               style: TextStyle(
-//                                                 color: Color.fromRGBO(
-//                                                     238, 237, 237, 1),
-//                                                 fontWeight: FontWeight.w600,
-//                                               ),
-//                                             ))))
-//                               ]))),
-//                     ],
-//                   ),
-//                 ),
-//               ),
+//ProductTitel
+              Flexible(
+                flex: 4,
+                child: FractionallySizedBox(
+                    //  widthFactor: 0.2,
+                    //  heightFactor: 0.6,
+                    child: Container(
+                  decoration: new BoxDecoration(
+                      color: Color.fromRGBO(126, 126, 126, 1)),
+                  child: FractionallySizedBox(
+                      widthFactor: 0.93,
+                      heightFactor: 1.9,
+                      child: FittedBox(
+                          alignment: Alignment.centerLeft,
+                          fit: BoxFit.contain,
+                          child: AutoSizeText(
+                            widget.product.productName,
+                            textAlign: TextAlign.center,
+                            // maxLines: 1,
+                            //overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Color.fromRGBO(238, 237, 237, 1),
+                              fontWeight: FontWeight.w800,
+                              //  height: SizeConfig.blockSizeHorizontal * 4.1
+                            ),
+                          ))),
+                )),
+              ),
+
+              //Product description
+              Flexible(
+                  flex: 6,
+                  // fit: FlexFit.loose,
+                  child: FractionallySizedBox(
+                    //  widthFactor: 0.2,
+                    heightFactor: 1,
+                    child: FractionallySizedBox(
+                        widthFactor: 0.6,
+                        heightFactor: 1,
+                        child: FittedBox(
+                            alignment: Alignment.topCenter,
+                            fit: BoxFit.contain,
+                            child: AutoSizeText(
+                              widget.product.description,
+                              textAlign: TextAlign.center,
+                              // maxLines: 1,
+                              //overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: Color.fromRGBO(238, 237, 237, 1),
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ))),
+                  )),
+// SizedBox(height: SizeConfig.blockSizeVertical * 50),
+              Flexible(
+                  flex: 4,
+                  child: FractionallySizedBox(
+                      widthFactor: 1,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.5,
+                        heightFactor: 0.75,
+                        child: RaisedButton(
+                          // color: Colors.yellow[700],
+                          //  color: Colors.orange[300],
+                          color: Colors.grey[300],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(11.0),
+                              side: BorderSide(
+                                  color: Theme.of(context).primaryColor)),
+                          onPressed: () {
+                            // showDialog(
+                            //   context: context,
+                            //   builder: (BuildContext context) => customPopupDialog(
+                            //       context,
+                            //       product.gameName,
+                            //       product.explanationList),
+                            // );
+                          },
+                          child: FractionallySizedBox(
+                            widthFactor: 1,
+                            heightFactor: 1.4,
+                            child: FittedBox(
+                              // alignment: Alignment.centerLeft,
+                              fit: BoxFit.contain,
+                              child: Text(
+                                "Mehr erfahren!",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )))
 // //Materials
 //               Flexible(
 //                 flex: 2,
@@ -456,9 +540,6 @@ class ProductListItem extends StatelessWidget {
 //                       ),
 //                     ),
 //                   ))
-
-
-
             ],
           ),
         ),
