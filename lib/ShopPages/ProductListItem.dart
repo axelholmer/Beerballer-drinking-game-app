@@ -7,6 +7,7 @@ import 'package:testflutter/CustomWidget/NoScrollbar.dart';
 import 'package:testflutter/CustomWidget/customPopupDialog.dart';
 import 'package:testflutter/CustomWidget/customProgressbar.dart';
 import 'package:testflutter/SizeConfig.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../GameClass.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:math' as math;
@@ -24,10 +25,21 @@ class ProductListItem extends StatefulWidget {
   }
 }
 
-
 //TODO disable horizontal scroll and make buttons splash bigger -> make container splash
 class _ProductListItemState extends State<ProductListItem> {
   int _current = 0;
+
+
+
+_launchUrl() async {
+  final url = widget.product.url;
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,8 +54,6 @@ class _ProductListItemState extends State<ProductListItem> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              // FlutterLogo(size: 200),
-
               Flexible(
                 flex: 22,
                 child: FractionallySizedBox(
@@ -66,6 +76,8 @@ class _ProductListItemState extends State<ProductListItem> {
                                     viewportFraction: 1.0,
                                     height: 500,
                                     autoPlay: false,
+                                    enableInfiniteScroll: false,
+                                    scrollPhysics: new NeverScrollableScrollPhysics(),
                                     onPageChanged: (index, reason) {
                                       setState(() {
                                         _current = index;
@@ -92,30 +104,30 @@ class _ProductListItemState extends State<ProductListItem> {
                               //     fit: BoxFit.fill),
                               ),
                         )),
-                    Container(constraints: BoxConstraints.expand()),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: FractionallySizedBox(
-                        widthFactor: 0.2,
-                        child: Center(
+                      child: Material(
+                        color: Colors.white.withOpacity(0.0),
+                        child: InkWell(
+                          onTap: () {
+                             widget.buttonCarouselController.previousPage(
+                                    duration: Duration(milliseconds: 300),
+                                    curve: Curves.linear);
+                          },
                           child: FractionallySizedBox(
-                            widthFactor: 1,
-                            heightFactor: 0.55,
-                            child: FittedBox(
-                              alignment: Alignment.centerLeft,
-                              fit: BoxFit.contain,
-                              child: IconButton(
-                                splashColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                //padding: EdgeInsets.all(0),
-                                color: Color.fromRGBO(225, 225, 225, 1),
-                                //iconSize: SizeConfig.blockSizeVertical * 5,
-                                icon: Icon(Icons.arrow_back_ios),
-                                onPressed: () {
-                                  widget.buttonCarouselController.previousPage(
-                                      duration: Duration(milliseconds: 300),
-                                      curve: Curves.linear);
-                                },
+                            widthFactor: 0.2,
+                            child: Center(
+                              child: FractionallySizedBox(
+                                widthFactor: 0.8,
+                                heightFactor: 0.2,
+                                child: FittedBox(
+                                  alignment: Alignment.centerLeft,
+                                  fit: BoxFit.contain,
+                                  child: Icon(
+                                      // color: Color.fromRGBO(225, 225, 225, 1),
+                                      Icons.arrow_back_ios,
+                                      color: Color.fromRGBO(225, 225, 225, 1)),
+                                ),
                               ),
                             ),
                           ),
@@ -124,37 +136,98 @@ class _ProductListItemState extends State<ProductListItem> {
                     ),
                     Align(
                         alignment: Alignment.centerRight,
-                        child: FractionallySizedBox(
-                          widthFactor: 0.2,
-                          child: Center(
-                            child: FractionallySizedBox(
-                              widthFactor: 1,
-                              heightFactor: 0.55,
-                              child: FittedBox(
-                                alignment: Alignment.centerLeft,
-                                fit: BoxFit.contain,
-                                child: Transform(
-                                  alignment: Alignment.center,
-                                  transform: Matrix4.rotationY(math.pi),
-                                  child: IconButton(
-                                    splashColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    //padding: EdgeInsets.all(0),
-                                    color: Color.fromRGBO(225, 225, 225, 1),
-                                    //iconSize: SizeConfig.blockSizeVertical * 5,
-                                    icon: Icon(Icons.arrow_back_ios),
-                                    onPressed: () {
-                                      widget.buttonCarouselController.nextPage(
-                                          duration: Duration(milliseconds: 300),
-                                          curve: Curves.linear);
-                                    },
+                        child: Material(
+                          color: Colors.white.withOpacity(0.0),
+                          child: InkWell(
+                              onTap: () {
+                                widget.buttonCarouselController.nextPage(
+                                    duration: Duration(milliseconds: 300),
+                                    curve: Curves.linear);
+                              },
+                              child: FractionallySizedBox(
+                                widthFactor: 0.2,
+                                child: Center(
+                                  child: FractionallySizedBox(
+                                    widthFactor: 0.8,
+                                    heightFactor: 0.2,
+                                    child: FittedBox(
+                                      alignment: Alignment.centerLeft,
+                                      fit: BoxFit.contain,
+                                      child: Transform(
+                                        alignment: Alignment.center,
+                                        transform: Matrix4.rotationY(math.pi),
+                                        child: Icon(Icons.arrow_back_ios,
+                                            color: Color.fromRGBO(
+                                                225, 225, 225, 1)),
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
+                              )),
                         )),
-                    Align( alignment: Alignment.bottomCenter,
+                    // Align(
+                    //   alignment: Alignment.centerLeft,
+                    //   child: FractionallySizedBox(
+                    //     widthFactor: 0.2,
+                    //     child: Center(
+                    //       child: FractionallySizedBox(
+                    //         widthFactor: 1,
+                    //         heightFactor: 0.55,
+                    //         child: FittedBox(
+                    //           alignment: Alignment.centerLeft,
+                    //           fit: BoxFit.contain,
+                    //           child: IconButton(
+                    //             splashColor: Colors.transparent,
+                    //             highlightColor: Colors.transparent,
+                    //             //padding: EdgeInsets.all(0),
+                    //             color: Color.fromRGBO(225, 225, 225, 1),
+                    //             //iconSize: SizeConfig.blockSizeVertical * 5,
+                    //             icon: Icon(Icons.arrow_back_ios),
+                    //             onPressed: () {
+                    //               widget.buttonCarouselController.previousPage(
+                    //                   duration: Duration(milliseconds: 300),
+                    //                   curve: Curves.linear);
+                    //             },
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+                    // Align(
+                    //     alignment: Alignment.centerRight,
+                    //     child: FractionallySizedBox(
+                    //       widthFactor: 0.2,
+                    //       child: Center(
+                    //         child: FractionallySizedBox(
+                    //           widthFactor: 1,
+                    //           heightFactor: 0.55,
+                    //           child: FittedBox(
+                    //             alignment: Alignment.centerLeft,
+                    //             fit: BoxFit.contain,
+                    //             child: Transform(
+                    //               alignment: Alignment.center,
+                    //               transform: Matrix4.rotationY(math.pi),
+                    //               child: IconButton(
+                    //                 splashColor: Colors.transparent,
+                    //                 highlightColor: Colors.transparent,
+                    //                 //padding: EdgeInsets.all(0),
+                    //                 color: Color.fromRGBO(225, 225, 225, 1),
+                    //                 //iconSize: SizeConfig.blockSizeVertical * 5,
+                    //                 icon: Icon(Icons.arrow_back_ios),
+                    //                 onPressed: () {
+                    //                   widget.buttonCarouselController.nextPage(
+                    //                       duration: Duration(milliseconds: 300),
+                    //                       curve: Curves.linear);
+                    //                 },
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     )),
+                    Align(
+                      alignment: Alignment.bottomCenter,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:
@@ -203,7 +276,7 @@ class _ProductListItemState extends State<ProductListItem> {
                             // maxLines: 1,
                             //overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                              color: Color.fromRGBO(238, 237, 237, 1),
+                              color: Color.fromRGBO(255, 255, 255, 1),
                               fontWeight: FontWeight.w800,
                               //  height: SizeConfig.blockSizeHorizontal * 4.1
                             ),
@@ -219,12 +292,12 @@ class _ProductListItemState extends State<ProductListItem> {
                     //  widthFactor: 0.2,
                     heightFactor: 1,
                     child: FractionallySizedBox(
-                        widthFactor: 0.6,
-                        heightFactor: 1,
+                        widthFactor: 1,
+                        heightFactor: 0.6,
                         child: FittedBox(
-                            alignment: Alignment.topCenter,
+                            alignment: Alignment.center,
                             fit: BoxFit.contain,
-                            child: AutoSizeText(
+                            child: Text(
                               widget.product.description,
                               textAlign: TextAlign.center,
                               // maxLines: 1,
@@ -251,15 +324,7 @@ class _ProductListItemState extends State<ProductListItem> {
                               borderRadius: BorderRadius.circular(11.0),
                               side: BorderSide(
                                   color: Theme.of(context).primaryColor)),
-                          onPressed: () {
-                            // showDialog(
-                            //   context: context,
-                            //   builder: (BuildContext context) => customPopupDialog(
-                            //       context,
-                            //       product.gameName,
-                            //       product.explanationList),
-                            // );
-                          },
+                          onPressed: _launchUrl,
                           child: FractionallySizedBox(
                             widthFactor: 1,
                             heightFactor: 1.4,

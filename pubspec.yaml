@@ -103,13 +103,12 @@ flutter:
     - assets/images/diceGamesIcon.png
 
     - assets/images/games/
-    
 
     - assets/images/IconsInGame/categoryIcon.jpg
     - assets/images/IconsInGame/dareIcon.jpg
     - assets/images/IconsInGame/estimateIcon.jpg
     - assets/images/IconsInGame/neverEverHaveiIcon.jpg
-    - assets/images/IconsInGame/trueIcon.jpg 
+    - assets/images/IconsInGame/trueIcon.jpg
     - assets/images/IconsInGame/swipe.png
     - assets/images/IconsInGame/tap.png
 
@@ -126,24 +125,28 @@ flutter:
     - assets/images/cart.png
 
     - assets/images/Shop/Icons/
-    - assets/images/Shop/BeerPong/Bälle/
 
+    - assets/images/Shop/BeerPong/Bälle/
     - assets/images/Shop/BeerPong/Becher/BlackCups/
     - assets/images/Shop/BeerPong/Becher/BlueCups/
     - assets/images/Shop/BeerPong/Becher/PinkCups/
     - assets/images/Shop/BeerPong/Becher/RedCups/
     - assets/images/Shop/BeerPong/Becher/ShotCups/
     - assets/images/Shop/BeerPong/Becher/YellowCups/
-
     - assets/images/Shop/BeerPong/Matte/
-
     - assets/images/Shop/BeerPong/Tische/Allblack/
     - assets/images/Shop/BeerPong/Tische/LEDTisch/
     - assets/images/Shop/BeerPong/Tische/WoodNIce/
 
+    - assets/images/Shop/Trinkspiele/DarePong/Normal/
+    - assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/
 
+    - assets/images/Shop/Trinkspiele/ShotPong/Standard/
+    - assets/images/Shop/Trinkspiele/ShotPong/Cherry/
 
+    - assets/images/Shop/Trinkspiele/BarQuartett/
 
+    - assets/images/Shop/Trinkspiele/Werlachtverliert/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

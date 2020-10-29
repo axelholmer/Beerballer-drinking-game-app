@@ -6,7 +6,15 @@ import '../CustomWidget/CustomTopTitleScreen2.dart';
 import '../CustomWidget/Customfloatingactionbutton.dart';
 import '../SizeConfig.dart';
 import '../GameChoicheEnum.dart';
+import '../customTransistionAnimation.dart';
 import '../main.dart';
+import 'ListOfProductsPage.dart';
+import 'ProductClass.dart';
+
+
+
+
+//Todo: Check if everythins is alrigt. 
 
 class ShopDrinkingGamesMenuPage extends StatefulWidget {
   @override
@@ -30,6 +38,86 @@ class _ShopDrinkingGamesMenuPageState extends State<ShopDrinkingGamesMenuPage>
 }
 
 Widget _shopChoiceWidgets(BuildContext context) {
+  final List<ProductClass> listShotpong = [
+    ProductClass(
+        productName: "Shotpong Classic",
+        description: "Beer Pong als Short Version",
+        url:
+            "https://beerballer.com/produkt/shotpong-classic-das-party-highlight/",
+        productPicturesPaths: [
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/83.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/84.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/85.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/86.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/87.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/88.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/89.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Standard/90.jpg",
+        ]),
+    ProductClass(
+        productName: "Shotpong Cherry",
+        description: "Aus hochwertigem Kirschholz",
+        url: "https://beerballer.com/produkt/shotpong-cherry-partyhighlight/",
+        productPicturesPaths: [
+          "./assets/images/Shop/Trinkspiele/ShotPong/Cherry/78.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Cherry/79.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Cherry/80.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Cherry/81.jpg",
+          "./assets/images/Shop/Trinkspiele/ShotPong/Cherry/82.jpg",
+        ]),
+  ];
+  final List<ProductClass> listDarePong = [
+    ProductClass(
+        productName: "Dare Pong Classic",
+        description: "Beer Pong meets Truth or Dare",
+        url:
+            "https://beerballer.com/produkt/dare-pong-trinkspielneuheit-partyhighlight/",
+        productPicturesPaths: [
+          "./assets/images/Shop/Trinkspiele/DarePong/Normal/70.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/Normal/71.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/Normal/72.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/Normal/73.jpg",
+        ]),
+        ProductClass(
+        productName: "Dare Pong Festival Edition",
+        description: "Hol dir das Festival nach Hause",
+        url:
+            "https://beerballer.com/produkt/dare-pong-festival-edition-trinkspielneuheit/",
+        productPicturesPaths: [
+          "./assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/74.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/75.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/76.jpg",
+          "./assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/77.jpg",
+        ])
+  ];
+  final List<ProductClass> listWrLachtVerliert = [
+    ProductClass(
+        productName: "Wer lacht verliert",
+        description: "Niveaulimbo für Erwachsene",
+        url:
+            "https://beerballer.com/produkt/wer-lacht-verliert-trinkspiel-niveaulimbo/",
+        productPicturesPaths: [
+          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/91.jpg",
+          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/92.jpg",
+          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/93.jpg",
+          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/94.jpg",
+          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/95.jpg",
+        ]),
+  ];
+  final List<ProductClass> listBarQuartett = [
+    ProductClass(
+        productName: "Bar Quartett",
+        description: "32 Locations - 64 Gutscheine - 224€ Sparen",
+        url:
+            "https://beerballer.com/produkt/bar-quartett-trinkspiel-gutscheinheft/",
+        productPicturesPaths: [
+          "./assets/images/Shop/Trinkspiele/BarQuartett/66.jpg",
+          "./assets/images/Shop/Trinkspiele/BarQuartett/67.jpg",
+          "./assets/images/Shop/Trinkspiele/BarQuartett/68.jpg",
+          "./assets/images/Shop/Trinkspiele/BarQuartett/69.jpg",      
+        ])
+  ];
+
   return Center(
       child: Column(
     children: <Widget>[
@@ -60,7 +148,8 @@ Widget _shopChoiceWidgets(BuildContext context) {
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
                   "Shotpong", "./assets/images/Shop/Icons/shotpong.png"),
-              context)),
+              context,
+              listShotpong)),
       Flexible(
           child: FractionallySizedBox(
         heightFactor: 0.25,
@@ -69,16 +158,18 @@ Widget _shopChoiceWidgets(BuildContext context) {
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
                   "Dare Pong", "./assets/images/Shop/Icons/darepong.png"),
-              context)),
+              context,
+              listDarePong)),
       Flexible(
           child: FractionallySizedBox(
         heightFactor: 0.25,
       )),
       Flexible(
           child: _shopMenuChoiceButton(
-              Tuple2<String, String>(
-                  "Wer lacht verliert!", "./assets/images/Shop/Icons/glasses.png"),
-              context)),
+              Tuple2<String, String>("Wer lacht verliert!",
+                  "./assets/images/Shop/Icons/glasses.png"),
+              context,
+              listWrLachtVerliert)),
       Flexible(
           child: FractionallySizedBox(
         heightFactor: 0.25,
@@ -87,7 +178,8 @@ Widget _shopChoiceWidgets(BuildContext context) {
           child: _shopMenuChoiceButton(
               Tuple2<String, String>(
                   "Bar Quartett", "./assets/images/Shop/Icons/barQuartet.png"),
-              context)),
+              context,
+              listBarQuartett)),
       // Flexible(
       //     child: FractionallySizedBox(
       //   heightFactor: 0.85,
@@ -114,8 +206,8 @@ Widget _shopChoiceWidgets(BuildContext context) {
   ));
 }
 
-Widget _shopMenuChoiceButton(
-    Tuple2<String, String> gameChoice, BuildContext context) {
+Widget _shopMenuChoiceButton(Tuple2<String, String> gameChoice,
+    BuildContext context, List<ProductClass> listProducts) {
   return FractionallySizedBox(
       heightFactor: 0.9,
       widthFactor: 0.80,
@@ -127,7 +219,7 @@ Widget _shopMenuChoiceButton(
               color: Theme.of(context).accentColor,
             )),
         onPressed: () {
-          _selectShopMenuChoice(gameChoice, context);
+          _selectShopMenuChoice(gameChoice, context, listProducts);
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,85 +280,52 @@ class GameChoice {
   final String title;
   final GameChoicheEnum id;
 }
-//TODO Enum better als string?
-// enum UserStatus {
-//   notDetermined,
-//   notSignedIn,
-//   signedIn,
-// }
-// UserStatus.notDetermined;
 
-//TODO a loadFunction for multiplelists
-void _selectShopMenuChoice(
-    Tuple2<String, String> choice, BuildContext context) {
-  // switch (choice.item1) {
-  //   case "In-App Spiele":
-  //     {
-  //       Navigator.push(
-  //           context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
-  //     }
-  //     break;
-  //   case "Würfelspiele":
-  //     // Navigator.push(
-  //     //     context,
-  //     //     CustomTransistionAnimation(
-  //     //         page: listOfGames(
-  //     //             items: List<String>.generate(10000, (i) => "Item $i"))));
-  //    listDiceGames = sortGamesIntoLists(listGames, "dicegame");
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listDiceGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Kartenspiele":
-  //     listCardGames = sortGamesIntoLists(listGames, "cardgame");
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listCardGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Brettspiele":
-  //     listBoardGames = sortGamesIntoLists(listGames, "boardgame");
-  //     print(listBoardGames);
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listBoardGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Becherspiele":
-  //     listCupGames = sortGamesIntoLists(listGames, "cupgame");
-  //     print(listCupGames);
-  //     Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listCupGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   case "Kaum Material":
-  //    listOtherGames = sortGamesIntoLists(listGames, "?");
-  //      Navigator.push(
-  //         context,
-  //         CustomTransistionAnimation(
-  //             page: listOfGames(
-  //                 items: listOtherGames,
-  //                 logPath: choice.item2,
-  //                 pageTitle: choice.item1)));
-  //     break;
-  //   default:
-  //     {
-  //       print('route not found');
-  //     }
-  //     break;
-  // }
+void _selectShopMenuChoice(Tuple2<String, String> choice, BuildContext context,
+    List<ProductClass> listProducts) {
+  switch (choice.item1) {
+    case "Shotpong":
+      {
+        Navigator.push(
+            context,
+            CustomTransistionAnimation(
+                page: ListOfProductsPage(
+                    items: listProducts, //Here Array of Products
+                    logPath: choice.item2,
+                    pageTitle: choice.item1)));
+      }
+      break;
+    case "Dare Pong":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: ListOfProductsPage(
+                  items: listProducts,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
+      break;
+    case "Wer lacht verliert!":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: ListOfProductsPage(
+                  items: listProducts,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
+      break;
+    case "Bar Quartett":
+      Navigator.push(
+          context,
+          CustomTransistionAnimation(
+              page: ListOfProductsPage(
+                  items: listProducts,
+                  logPath: choice.item2,
+                  pageTitle: choice.item1)));
+      break;
+    default:
+      {
+        print('route not found');
+      }
+      break;
+  }
 }
