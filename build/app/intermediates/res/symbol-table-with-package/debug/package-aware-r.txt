@@ -11,6 +11,7 @@ attr fontStyle
 attr fontVariationSettings
 attr fontWeight
 attr ttcIndex
+color dark_gray
 color ic_launcher_background
 color notification_action_color_filter
 color notification_icon_bg_color
@@ -39,6 +40,7 @@ dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
 drawable launch_background
+drawable normal_background
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -126,12 +128,14 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+mipmap back
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 mipmap launchscreen
 string status_bar_notification_info_overflow
 style LaunchTheme
+style NormalTheme
 style TextAppearance_Compat_Notification
 style TextAppearance_Compat_Notification_Info
 style TextAppearance_Compat_Notification_Line2

@@ -1,306 +1,410 @@
 [
-  {
-    "text": "Automarken"
-  },
-  {
-    "text": "Scary-Movies"
-  },
-  {
-    "text": "Getränkemarken"
-  },
-  {
-    "text": "Biermarken"
-  },
-  {
-    "text": "Schauspieler"
-  },
-  {
-    "text": "Handymarken"
-  },
-  {
-    "text": "Fernsehserien"
-  },
-  {
-    "text": "Fernsehsender"
-  },
-  {
-    "text": "Automarken"
-  },
-  {
-    "text": "Länder"
-  },
-  {
-    "text": "Städte"
-  },
-  {
-    "text": "Flüsse"
-  },
-  {
-    "text": "US Präsidenten"
-  },
-  {
-    "text": "Sexpositionen"
-  },
-  {
-    "text": "Musikarten"
-  },
-  {
-    "text": "Gemüse"
-  },
-  {
-    "text": "Obst"
-  },
-  {
-    "text": "Pizzasorten"
-  },
-  {
-    "text": "Kuchensorten"
-  },
-  {
-    "text": "Pilzsorten"
-  },
-  {
-    "text": "Käsesorten"
-  },
-  {
-    "text": "Süßigkeiten"
-  },
-  {
-    "text": "Teesorten"
-  },
-  {
-    "text": "Cocktailsorten"
-  },
-  {
-    "text": "Hunderassen"
-  },
-  {
-    "text": "Baumarten"
-  },
-  {
-    "text": "Insekten"
-  },
-  {
-    "text": "Fischarten"
-  },
-  {
-    "text": "Zeichentrickserien"
-  },
-  {
-    "text": "YouTube Kanal"
-  },
-  {
-    "text": "Videospiel/Computerspiel"
-  },
-  {
-    "text": "Superkraft"
-  },
-  {
-    "text": "Synonym für Geschlechtsverkehr"
-  },
-  {
-    "text": "Todesursache"
-  },
-  {
-    "text": "Fußballspieler"
-  },
-  {
-    "text": "Sportler"
-  },
-  {
-    "text": "Schauspieler"
-  },
-  {
-    "text": "Autor"
-  },
-  {
-    "text": "Politiker"
-  },
-  {
-    "text": "Sänger"
-  },
-  {
-    "text": "Künstler"
-  },
-  {
-    "text": "Körperteil"
-  },
-  {
-    "text": "Sprache"
-  },
-  {
-    "text": "Hobby"
-  },
-  {
-    "text": "Gefühl"
-  },
-  {
-    "text": "Krankheit"
-  },
-  {
-    "text": "Verbrechen"
-  },
-  {
-    "text": "Berg"
-  },
-  {
-    "text": "Meer"
-  },
-  {
-    "text": "Farbe"
-  },
-  {
-    "text": "Werkzeug"
-  },
-  {
-    "text": "Schimpfwort"
-  },
-  {
-    "text": "Mpdemarke"
-  },
-  {
-    "text": "Kosmetikartikel"
-  },
-  {
-    "text": "Sportart"
-  },
-  {
-    "text": "Schulfach"
-  },
-  {
-    "text": "Gegenstand, der gerade im Raum ist"
-  },
-  {
-    "text": "Werbeslogan"
-  },
-  {
-    "text": "Jugendwort"
-  },
-  {
-    "text": "Eissorten"
-  },
-  {
-    "text": "Naturkatastrophen"
-  },
-  {
-    "text": "Chemisches Element"
-  },
-  {
-    "text": "Gewürz"
-  },
-  {
-    "text": "Trennungsgrund"
-  },
-  {
-    "text": "Disneyfigur"
-  },
-  {
-    "text": "Musikinstrument"
-  },
-  {
-    "text": "Mädchennamen mit N"
-  },
-  {
-    "text": "Europäische Länder"
-  },
-  {
-    "text": "Afrikanische Länder"
-  },
-  {
-    "text": "Jungennamen mit A"
-  },
-  {
-    "text": "Musikgenres"
-  },
-  {
-    "text": "Hunderassen"
-  },
-  {
-    "text": "Fußballvereine"
-  },
-  {
-    "text": "Berufe"
-  },
-  {
-    "text": "Großstädte"
-  },
-  {
-    "text": "Serien"
-  },
-  {
-    "text": "Insekten"
-  },
-  {
-    "text": "Disney Charakteure"
-  },
-  {
-    "text": "Sprachen"
-  },
-  {
-    "text": "Werkzeuge"
-  },
-  {
-    "text": "Brettspiele"
-  },
-  {
-    "text": "Verbrechen"
-  },
-  {
-    "text": "Dinge aus dem Badezimmer"
-  },
-  {
-    "text": "Farben"
-  },
-  {
-    "text": "Dinge aus der Küche"
-  },
-  {
-    "text": "Zeichentrickserien"
-  },
-  {
-    "text": "Deutsche Sehenswürdigkeiten"
-  },
-  {
-    "text": "Körperteile"
-  },
-  {
-    "text": "Musikgenres"
-  },
-  {
-    "text": "Verben"
-  },
-  {
-    "text": "Elektronische Geräte"
-  },
-  {
-    "text": "Hauptstädte"
-  },
-  {
-    "text": "Fußballvereine"
-  },
-  {
-    "text": "Buchtitel"
-  },
-  {
-    "text": "Bands"
-  },
-  {
-    "text": "Typisch Deutsch"
-  },
-  {
-    "text": "Superhelden"
-  },
-  {
-    "text": "Schurken"
-  },
-  {
-    "text": "Transportmittel"
-  },
-  {
-    "text": "Berge"
-  },
-  {
-    "text": "Radmarken"
-  }
-]
+    {
+      "text": "Handymarken",
+      "textBackside": "...Apple\n...Sony\n...Samsung\n...Huawei\n...Motorola\n...Lenovo\n...OnePlus\n...Blackberry\n...Microsoft\n...LG"
+    },
+    {
+      "text": "Pilzsorten",
+      "textBackside": "...Champignon\n...Shiitake\n...Pfifferlinge\n...Fliegenpilz\n...Außsternpilz\n...Seitlinge\n...Steinpilz\n...Birkenpilz\n...Brätling\n...Frauentäubling"
+    },
+    {
+      "text": "Kosmetikartikel",
+      "textBackside": "...Öl\n...Puder\n...Badesalz\n...Creme\n...Salbe\n...Rouge\n...Deo\n...Gel"
+    },
+    {
+      "text": "Disney Akteure",
+      "textBackside": "...Micky Maus\n...Minny Maus\n...Pluto\n...Goofy\n...Tick\n...Trick\n...Track\n...Dagobert Duck"
+    },
+    {
+      "text": "Deutsche Sehenswürdigkeiten",
+      "textBackside": "...Brandenburger Tor\n...Siegessäule\n...Schloss Neuschwanstein\n...Berliner Fernsehturm\n...Marienplatz\n...Ulmer Münster\n...Kölner Dom\n...Bodensee\n...Dresdner Frauenkirche"
+    },
+    {
+      "text": "Naturkatastrophen",
+      "textBackside": "...Tornado\n...Tsunami\n...Sturm\n...Erdbeben\n...Vulkanausbruch\n...Unwetter\n...Hurricane\n...Überschwemmungen"
+    },
+    {
+      "text": "Werkzeuge",
+      "textBackside": "...Hammer\n...Schraubenzieher\n...Bohrer\n...Kreuzschlitz\n...Säge\n...Armaturenschlüssel\n...Presszange\n...Schraubenschlüssel"
+    },
+    {
+      "text": "US Präsidenten",
+      "textBackside": "...Trump\n...Obama\n...Bush\n...Lincoln\n...Clinton\n...Reagan\n...Carter\n...Ford"
+    },
+    {
+      "text": "Dinge aus dem Badezimmer",
+      "textBackside": "...Handtuch\n...Badetuch\n...Zahnbürste\n...Bürste\n...Kamm\n...Nagelscheere\n...Lippenstift\n...Zahnbürste"
+    },
+    {
+      "text": "Chemisches Element",
+      "textBackside": "...Wasserstoff\n...Kohlenstoff\n...Helium\n...Lithium\n...Sauerstoff\n...Fluor\n...Neon\n...Natrium"
+    },
+    {
+      "text": "Afrikanische Länder",
+      "textBackside": "...Marokko\n...Algerien\n...Tunesien\n...Ägypten\n...Südafrika\n...Namibia\n...Uganda\n...Äthiopien"
+    },
+    {
+      "text": "Schulfach",
+      "textBackside": "...Mathe\n...Deutsch\n...Englisch\n...Erdkunde\n...Sport\n...Französisch\n...Geschichte\n...Gemeinschaftskunde"
+    },
+    {
+      "text": "Farben",
+      "textBackside": "...Rot\n...Gelb\n...Grün\n...Blau\n...Pink\n...Orange\n...Silbern\n...Golden"
+    },
+    {
+      "text": "Hobby",
+      "textBackside": "...Fußball\n...Handball\n...Basketball\n...Kochen\n...Gärtnern\n...Häkeln\n...Malen\n...Radeln"
+    },
+    {
+      "text": "Gegenstand, der gerade im Raum ist",
+      "textBackside": "Ihr wisst besser als wir, was bei euch gerade im Raum ist ;)"
+    },
+    {
+      "text": "Insekten",
+      "textBackside": "...Kreuzspinne\n...Maikäfer\n...Grashüpfer\n...Grille\n...Mücke\n...Schnake\n...Zecke\n...Fliege"
+    },
+    {
+      "text": "Körperteil",
+      "textBackside": "...Ohren\n...Nase\n...Mund\n...Hände\n...Finger\n...Oberschenkel\n...Fuß\n...Zehen"
+    },
+    {
+      "text": "Superkraft",
+      "textBackside": "...fliegen\n...unsichtbar sein\n...unendliche Kräfte\n...Superspeed\n...Telekinese\n...durch Wände gehen\n...Teleportation\n...Feuer entsehen lassen"
+    },
+    {
+      "text": "Verbrechen",
+      "textBackside": "...Diebstahl\n...Mord\n...Einbruch\n...Erpressung\n...Vergewaltigung\n...Untat\n...Delikt\n...Raub"
+    },
+    {
+      "text": "Süßigkeiten",
+      "textBackside": "...Schokolade\n...Kekse\n...Lolli\n...Dragee\n...Bonbon\n...Gummibärchen\n...Riegel\n...Traubenzucker"
+    },
+    {
+      "text": "Hunderassen",
+      "textBackside": "...Berner Senner\n...Golden Retriever\n...Chihuahua\n...Pudel\n...Mops\n...Labrador\n...Dalmatiner\n...Bulldogge"
+    },
+    {
+      "text": "Fernsehsender",
+      "textBackside": "...ARD\n...ZDF\n...arte\n...Pro7\n...Sat.1\n...RTL\n...RTL 2\n...N24"
+    },
+    {
+      "text": "Schauspieler",
+      "textBackside": "...Sylvester Stallone\n...Dwayne Johnson\n...Matt Damon\n...Johnny Depp\n...Leonardo di Capri\n...Cameron Diaz\n...Scarlette Johnasson\n...Charlize Theron"
+    },
+    {
+      "text": "Synonym für Geschlechtsverkehr",
+      "textBackside": "...Liebe machen\n...Sex\n...bumsen\n...ficken\n...vögeln\n...begatten\n...kojettieren\n...bujen"
+    },
+    {
+      "text": "Großstädte",
+      "textBackside": "...Tokio\n...Bangkok\n...Berlin\n...Paris\n...London\n...New York\n...Mexiko-City\n...Lagos"
+    },
+    {
+      "text": "Fernsehserien",
+      "textBackside": "...GZSZ\n...Lindenstraße\n...Two and a half men\n...Babylon Berlin\n...Oktoberfest 1900\n...Berlin Tag&Nacht\n...Köln 50667\n...Charite"
+    },
+    {
+      "text": "Fußballspieler",
+      "textBackside": "...Messi\n...Ronaldo\n...Reus\n...Neymar\n...Matthäus\n...Beckenbauer\n...Pele\n...Maradona"
+    },
+    {
+      "text": "Flüsse",
+      "textBackside": "...Rhein\n...Main\n...Donau\n...Elbe\n...Mosel\n...Amazonas\n...Nil\n...Yangtsekiang"
+    },
+    {
+      "text": "Gefühl",
+      "textBackside": "...heiter\n...lustig\n...traurig\n...aufgeregt\n...leer\n...gut\n...ängstlich\n...verärgert"
+    },
+    {
+      "text": "Länder",
+      "textBackside": "...Deutschland\n...Dänemark\n...Belgien\n...Niederlande\n...Frankreich\n...Schweiz\n...Lichtenstein\n...Österreich"
+    },
+    {
+      "text": "Musikgenres",
+      "textBackside": "...Rap\n...HipHop\n...Electro\n...R´n´B\n...Pop\n...Dancehall\n...Reggae\n...Schlager"
+    },
+    {
+      "text": "Hauptstädte",
+      "textBackside": "...Berlin\n...Paris\n...Kopenhagen\n...Brüssel\n...Wien\n...Rom\n...Bangkok\n...Tokio"
+    },
+    {
+      "text": "Trennungsgrund",
+      "textBackside": "...Untreue\n...Ärger mit Kindern\n...Alltagsstreitereien\n...Zeitmangel\n...Egoismus\n...Entfernung\n...Sexflaute\n...Geldsorgen"
+    },
+    {
+      "text": "Automarken",
+      "textBackside": "...Audi\n...BMW\n...Mercedes\n...Mini\n...Porsche\n...Chrysler\n...VW\n...McLaren"
+    },
+    {
+      "text": "Biermarken",
+      "textBackside": "...Paulaner\n...Franziskaner\n...Gude\n...Gilde\n...Oettinger\n...Corona\n...Heineken\n...Becks"
+    },
+    {
+      "text": "Werbeslogan",
+      "textBackside": "...Haribo macht...\n...Quadratisch,...\n...Merci, dass es...\n...Für alle die kein...\n...Red Bull verleiht...\n...Nike, just...."
+    },
+    {
+      "text": "Horrorfilme",
+      "textBackside": "...Scary Movie\n...Wrong Turn\n...Es\n...Get Out\n...Split\n...1922\n...Purge\n...Jigsaw"
+    },
+    {
+      "text": "Youtube Kanal",
+      "textBackside": "...Gewitterimkopf\n...unsympathisch\n...inscope21\n...freekickerz\n...julienbam\n...dagibee\n...pewdiepie\n...mrbeast"
+    },
+    {
+      "text": "Fischarten",
+      "textBackside": "...Forelle\n...Lachs\n...Saibling\n...Thunfisch\n...Dorade\n...Flunder\n...Clownfisch\n...Scholle"
+    },
+    {
+      "text": "Käsesorten",
+      "textBackside": "...Edamer\n...Maasdamer\n...Gouda\n...Brie\n...Camembert\n...Frischkäse\n...Bergkäse\n...Cheddar"
+    },
+    {
+      "text": "Berufe",
+      "textBackside": "...Schreiner\n...Maurer\n...Zimmerer\n...Architekt\n...Manager\n...Fischer\n...Verputzer\n...Kfz-Mechaniker"
+    },
+    {
+      "text": "Getränkemarken",
+      "textBackside": "...Coca Cola\n...Bionade\n...Club Mate\n...Pepsi\n...Fanta\n...Sprite\n...7up\n...Krombacher"
+    },
+    {
+      "text": "Eissorte",
+      "textBackside": "...Schokolade\n...Vanille\n...Stracieatella\n...Pistazie\n...Walnuss\n...Zitrone\n...Apfel\n...Cookies"
+    },
+    {
+      "text": "Schimpfwort",
+      "textBackside": "...Arschloch\n...Spast\n...Missgeburt\n...Wichser\n...Hund\n...Bastard\n...Ekelpaket\n...Mutterficker"
+    },
+    {
+      "text": "Zeichentrickserien",
+      "textBackside": "...Heidi\n...Pumuckl\n...Phineas&Ferb\n...Spongebob\n...Disneys große Pause\n...Kim Possible\n...Naruto\n...Sandmann"
+    },
+    {
+      "text": "Sportart",
+      "textBackside": "...Fußball\n...Basketball\n...Tennis\n...Karate\n...Judo\n...Schwimmen\n...Badminton\n...Formel 1"
+    },
+    {
+      "text": "Europäische Länder",
+      "textBackside": "...Deutschland\n...Frankreich\n...Dänemark\n...Belgien\n...Italien\n...Spanien\n...Portugal\n...Island"
+    },
+    {
+      "text": "Kuchensorten",
+      "textBackside": "...Käsekuchen\n...Schokokuchen\n...Marmorkuchen\n...Rhabarberkuchen\n...Sachertorte\n...Schwarzwälderkirsch\n...Kürbiskuchen\n...Wilde Wachau"
+    },
+    {
+      "text": "Cocktailsorten",
+      "textBackside": "...Gin Tonic\n...Sex on the beach\n...Mojito\n...Caipirinha\n...MaiTai\n...Daiquiri\n...GinFizz\n...Aperol Spritz"
+    },
+    {
+      "text": "Musikinstrument",
+      "textBackside": "...Tuba\n...Fagott\n...Trompete\n...Trommel\n...Rassel\n...Triangel\n...Schlagzeug\n...Tenorhorn"
+    },
+    {
+      "text": "Superhelden",
+      "textBackside": "...Superman\n...Batman\n...Ironman\n...Captain America\n...Hulk\n...Aquaman\n...Black Panther\n...Black Widow"
+    },
+    {
+      "text": "Verben",
+      "textBackside": "...backen\n...befehlen\n...empfehlen\n...spielen\n...trommeln\n...kochen\n...besaufen\n...beißen"
+    },
+    {
+      "text": "Städte",
+      "textBackside": "...Darmstadt\n...München\n...Stuttgart\n...Köln\n...Düsseldorf\n...Hamburg\n...Bremen\n...Kiel"
+    },
+    {
+      "text": "Fußballvereine",
+      "textBackside": "...FC Bayern München\n...Darmstadt 98\n...Rot Weiss Essen\n...Hamburger SV\n...FC Barcelona\n...1. FC Köln\n...RCD Mallorca\n...AC Mailand"
+    },
+    {
+      "text": "Elektronische Geräte",
+      "textBackside": "...Handy\n...MP3Player\n...Playstation\n...Xbox\n...Laptop\n...Computer\n...TV\n...Kühlschrank"
+    },
+    {
+      "text": "Künstler",
+      "textBackside": "...Picasso\n...van Gogh\n...Dali\n...Matisse\n...Hundertwasser\n...Monet\n...Dürer\n...Rembrandt"
+    },
+    {
+      "text": "Sexstellungen",
+      "textBackside": "...Missionar\n...Doggy\n...Cowgirl\n...69\n...Löffelchen\n...Stehend\n...Kerze\n...Schubkarre"
+    }
+    ,
+    {
+      "text": "Mädchennamen mit N",
+      "textBackside": "...Nicole\n...Nina\n...Nora\n...Nele\n...Nadine\n...Nala\n...Naomi\n...Natalie"
+    }
+    ,
+    {
+      "text": "Schurken",
+      "textBackside": "...Pennywise\n...Joker\n...Bane\n...Sauron\n...Freddy Kruger\n...Lord Voldemort\n...Hannibal Lecter\n...Darth Vader"
+    }
+    ,
+    {
+      "text": "Sportler",
+      "textBackside": "...Kobe Bryant\n...Michael Jordan\n...Lebron James\n...Leon Dreisaitl\n...Colin Kapernick\n...Tiger Woods\n...Rafael Nadal\n...Roger Federer"
+    }
+    ,
+    {
+      "text": "Brettspiele",
+      "textBackside": "...Mensch ärgere dich nicht\n...Mikado\n...Looping Louie\n...Plitsch Platsch Pinguin\n...Hütchenspiel\n...Memory\n...Das verrückte Labyrinth\n...Siedler von Catan"
+    }
+    ,
+    {
+      "text": "Pizzasorten",
+      "textBackside": "...Salami\n...Schinken\n...Margaritha\n...Peperoni\n...Hawaii\n...Funghi\n...Speziale\n...Vegetariano"
+    }
+    ,
+    {
+      "text": "Berge",
+      "textBackside": "...Zugspitze\n...Kilimandscharo\n...Mount Everest\n...K2\n...Ural\n...Feldberg\n...Appeninnen\n...Großklöckner"
+    }
+    ,
+    {
+      "text": "Jungennamen mit A",
+      "textBackside": "...Aaron\n...Ansgar\n...Arnd\n...Alfons\n...Adelheid\n...Adam\n...Adrian\n...Albert"
+    }
+    ,
+    {
+      "text": "Modemarke",
+      "textBackside": "...Gucci\n...Calvin Klein\n...Hugo Boss\n...Adidas\n...Nike\n...Lacoste\n...Tommy Hilfiger\n...Burberry"
+    }
+    ,
+    {
+      "text": "Typisch Deutsch",
+      "textBackside": "...Auto waschen\n...sich über normalen Lärm aufregen\n...\"Die Jugend von heute\"\n...Fleisch bei jeder Mahlzeit\n...Bier trinken"
+    }
+    ,
+    {
+      "text": "Todesursache",
+      "textBackside": "...Herzinfarkt\n...Lungenentzündung\n...Krebs\n...Vergiftung\n...Erschießung\n...Erhängung\n...Überdosis\n...Unfall"
+    }
+    ,
+    {
+      "text": "Autor",
+      "textBackside": "...Kafka\n...J.K. Rowling\n...Kutscher\n...Fitzek\n...Ende\n...Brecht\n...Tolkien\n...King"
+    }
+    ,
+    {
+      "text": "Gewässer",
+      "textBackside": "...Mittelmeer\n...Schwarzes Meer\n...Totes Meer\n...Atlantik\n...Pazifik\n...Indischer Ozean\n...Japanisches Meer\n...Beringsee"
+    }
+    ,
+    {
+      "text": "Dinge aus der Küche",
+      "textBackside": "...Messer\n...Löffel\n...Gabel\n...Topf\n...Pfanne\n...Kühlschrank\n...Glas\n...Sieb"
+    }
+    ,
+    {
+      "text": "Buchtitel",
+      "textBackside": "...Don Quijote\n...Denke nach und werde reich\n...Der Hobbit\n...Der Da Vinci Code\n...Black Beauty\n...Der Adler ist gelandet\n...Harry Potter\n...Unten am Fluss"
+    }
+    ,
+    {
+      "text": "Bands",
+      "textBackside": "...U2\n...Beatles\n...AnnenMayKantereit\n...Provinzband\n...ACDC\n...Queen\n...Rolling Stones\n...Led Zeppelin"
+    }
+    ,
+    {
+      "text": "Transportmittel",
+      "textBackside": "...Auto\n...Bus\n...Zug\n...Straßenbahn\n...Flugzeug\n...EScooter\n...Roller\n...Fahrrad"
+    }
+    ,
+    {
+      "text": "Krankheit",
+      "textBackside": "...Husten\n...Schnupfen\n...Kopfschmerzen\n...Arthrose\n...Bandscheibenvorfall\n...Bindehautentzündung\n...Gicht\n...Gürtelrose"
+    }
+    ,
+    {
+      "text": "Sänger",
+      "textBackside": "...Elton John\n...Lady Gaga\n...Bruno Mars\n...Ed Sheeran\n...Billie Eilish\n...Adele\n...Taylor Swift\n...The Weekend"
+    }
+    ,
+    {
+      "text": "Politiker",
+      "textBackside": "...Merkel\n...Habeck\n...Söder\n...Gysi\n...Kohl\n...Scholz\n...Maas\n...Seehofer"
+    },
+    {
+      "text": "Jugendwort",
+      "textBackside": "...Mashallah\n...Lost\n...Cringe\n...Wyld\n...Sauftrag\n...No Front\n...Köftespieß\n...Diggah"
+    },
+    {
+      "text": "Baumarten",
+      "textBackside": "...Ahorn\n...Apfel\n...Birke\n...Kastanie\n...Buche\n...Esche\n...Eibe\n...Weide"
+    },
+    {
+      "text": "Videospiel",
+      "textBackside": "...Fifa\n...NBA2k\n...Call of Duty\n...Battlefield\n...Assasins Creed\n...Pacman\n...Tetris\n...Fall Guys"
+    },
+    {
+      "text": "Gewürz",
+      "textBackside": "...Pfeffer\n...Salz\n...Paprika\n...Knoblauch\n...Zimt\n...Kardamom\n...Nelken\n...Kümmel"
+    },
+    {
+      "text": "Teesorten",
+      "textBackside": "...Schwarztee\n...Weißtee\n...Grüntee\n...Kamille\n...Rooibos\n...Früchtetee\n...Minze\n...Mate"
+    },
+    {
+      "text": "Gemüse",
+      "textBackside": "...Tomaten\n...Karotten\n...Gurken\n...Paprika\n...Spargel\n...Zucchini\n...Aubergine\n...Pilze"
+    },
+    {
+      "text": "Kinderspiele",
+      "textBackside": "...Verstecken\n...Fangen\n...Räuber und Gendarm\n...Blinde Kuh\n...Topf Schlagen\n...Seilspringen\n...Sackhüpfen\n...Bobbycar Rennen"
+    },
+    {
+      "text": "Getränke, die mit Cola schmecken",
+      "textBackside": "...Fanta\n...Bier\n...Weizen\n...Bacardi\n...Asbach\n...Jack Daniels\n...Captain\n...Jägermeister"
+    },
+    {
+      "text": "Biermarken",
+      "textBackside": "...Heineken\n...Paulaner\n...Corona\n...Franziskaner\n...Gude\n...Gilde\n...Radeberger\n...Löwenbräu"
+    } ,
+    {
+      "text": "Deutsche Unternehmen mit mehr als 10.000 Arbeitern",
+      "textBackside": "...Thyssen Krupp\n...Metro\n...Telekom\n...Siemens\n...Bosch\n...Daimler\n...Post\n...Bahn"
+    } ,
+    {
+      "text": "Kinderfilme\\Serien",
+      "textBackside": "...Nemo\n...Minions\n...König der Löwen\n...Lissi und der wilde Kaiser\n...Zoomania\n...Lassie\n...Nils Holgersonn\n...Michel aus Lönneberga"
+    } ,
+    {
+      "text": "Handyspiele",
+      "textBackside": "...Clash Royale\n...Brawl Stars\n...Candy Crush Saga\n...Asphalt\n...Subway Surfers\n...Doodle Jump\n...Angry Birds\n...Hill Climb Racing"
+    } ,
+    {
+      "text": "Lieblingsessen der Deutschen",
+      "textBackside": "...Currywurst\n...Döner\n...Bratkartoffeln\n...Braten\n...Knödel\n...Brezeln\n...Weißwürste\n...Eisbein"
+    } ,
+    {
+      "text": "Partysnacks",
+      "textBackside": "...Pizzaschnnecken\n...Chips\n...Salzstangen\n...Käsewürfel\n...Käsestangen\n...Pizzabrötchen\n...Minifrikadellen\n...Hähnchenspieße"
+    } ,
+    {
+      "text": "Dinge für einen Grillabend",
+      "textBackside": "...Steaks\n...Wurst\n...Nudelsalat\n...Brot\n...Kräuterbaguette\n...Soßen\n...Grill\n...Bier"
+    },
+    {
+      "text": "Dinge für einen Strandtag",
+      "textBackside": "...Handtuch\n...Sonnenschirm\n...Sonnencreme\n...Kopfbedeckung\n...Wasserball\n...Surfbrett\n...Getränke\n...Snacks"
+    },
+    {
+      "text": "Syonoyme für Alkohol trinken",
+      "textBackside": "...saufen\n...picheln\n...einen heben\n...einen reinzimmern\n...sich den Helm lackieren\n...Getränkeunfall veranstalten\n...einen in die Sakristei orgeln\n...plattern"
+    },
+    {
+      "text": "Nerviges",
+      "textBackside": "...langsames Internet\n...schmatzen\n...Feierabendverkehr\n...Geschirr spülen\n...Handy über Nacht nicht geladen\n...schlecht organisierte Partys\n...warmes Bier\n...nasse Socken"
+    },
+    {
+      "text": "Maildomains",
+      "textBackside": "...web\n...gmail\n...gmx\n...outlook\n...t-onlinemail\n...firemail\n...aol"
+    },
+    {
+      "text": "Sprachen",
+      "textBackside": "...deutsch\n...englisch\n...französisch\n...spanisch\n...tschechisch\n...polnisch\n...ungarisch\n...kroatisch"
+    },
+    {
+      "text": "Serien",
+      "textBackside": "...Babylon Berlin\n...Game of Thrones\n...Breaking Bad\n...Sherlock\n...Prison Break\n...Suits\n...How i met your mother\n...Modern family"
+    }
+  ]
 

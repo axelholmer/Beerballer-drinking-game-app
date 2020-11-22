@@ -31,6 +31,7 @@ dependencies:
   percent_indicator: ^2.1.5
   tuple: ^1.0.3
   device_preview: ^0.4.7
+  carousel_slider: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,24 @@ flutter:
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Black.ttf
           weight: 900
 
+    - family: LibreFranklin
+      fonts:
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Black.ttf
+          weight: 900
+    
+
   assets:
     - assets/images/PNGFormat_klein.png
     - assets/images/BeerBallerLogo_kleiner.png
@@ -88,13 +107,12 @@ flutter:
     - assets/images/diceGamesIcon.png
 
     - assets/images/games/
-    
 
     - assets/images/IconsInGame/categoryIcon.jpg
     - assets/images/IconsInGame/dareIcon.jpg
     - assets/images/IconsInGame/estimateIcon.jpg
     - assets/images/IconsInGame/neverEverHaveiIcon.jpg
-    - assets/images/IconsInGame/trueIcon.jpg 
+    - assets/images/IconsInGame/trueIcon.jpg
     - assets/images/IconsInGame/swipe.png
     - assets/images/IconsInGame/tap.png
 
@@ -107,8 +125,32 @@ flutter:
     - assets/images/bier.png
     - assets/images/info.png
     - assets/images/instagram.png
-    - assets/images/tiktok.png
+    - assets/images/cart.png
+    - assets/images/cart.png
 
+    - assets/images/Shop/Icons/
+
+    - assets/images/Shop/BeerPong/Bälle/
+    - assets/images/Shop/BeerPong/Becher/BlackCups/
+    - assets/images/Shop/BeerPong/Becher/BlueCups/
+    - assets/images/Shop/BeerPong/Becher/PinkCups/
+    - assets/images/Shop/BeerPong/Becher/RedCups/
+    - assets/images/Shop/BeerPong/Becher/ShotCups/
+    - assets/images/Shop/BeerPong/Becher/YellowCups/
+    - assets/images/Shop/BeerPong/Matte/
+    - assets/images/Shop/BeerPong/Tische/Allblack/
+    - assets/images/Shop/BeerPong/Tische/LEDTisch/
+    - assets/images/Shop/BeerPong/Tische/WoodNIce/
+
+    - assets/images/Shop/Trinkspiele/DarePong/Normal/
+    - assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/
+    
+    - assets/images/Shop/Trinkspiele/ShotPong/Standard/
+    - assets/images/Shop/Trinkspiele/ShotPong/Cherry/
+
+    - assets/images/Shop/Trinkspiele/BarQuartett/
+
+    - assets/images/Shop/Trinkspiele/Werlachtverliert/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg

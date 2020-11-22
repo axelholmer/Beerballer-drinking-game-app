@@ -30,35 +30,37 @@ class _TruthOrDareSwipePage extends State<TruthOrDareSwipePage>
   List<TruthOrDareQuestion> listForCardCount = List<TruthOrDareQuestion>();
   List<TruthOrDareQuestion> listTruthQuestions = List<TruthOrDareQuestion>();
   List<TruthOrDareQuestion> listDareQuestions = List<TruthOrDareQuestion>();
-final List<String> listRules = ["Das Handy reihum weiter geben. Jeder Mitspieler muss reihum entweder Wahrheit oder Pflicht  erfüllen", "Bei Wahrheit wird dem Spieler eine Frage gestellt. Bei Pflicht eine Aufgabe.", "Wenn der Spieler sich weigert diese zu erfüllen/beantworten muss er einen Schluck trinken.", "Alternativ kann man auch ausmachen, dass man eine bestimmte Anzahl an Schlücken verteilen darf, wenn die Frage/Aufgabe erledigt ist."];
+  final List<String> listRules = [
+    "Im klassischen Spiel „Wahrheit oder Pflicht“ wird reihum jeder nach Wahrheit oder Pflicht gefragt.",
+    "Bei der Auswahl Wahrheit, darf der der Spieler dem anderen eine Frage stellen und dieser muss er wahrheitsgemäß beantworten. Wer sich sich weigert, muss sein Glas leeren.",
+    "Bei der Auswahl Pflicht, darf der Spieler dem anderen eine Aufgabe stellen, die er erledigen muss. Wer sich sich weigert, muss sein Glas leeren.",
+    "Als Alternative kann man ausmachen, dass man – je nach Härte der Frage oder antwortet – eine bestimmte Anzahl an Schlücken verteilen darf, wenn die Frage/Aufgabe erledigt ist.",
+  ];
 
-bool isInfoExplVisible = false;
+  bool isInfoExplVisible = false;
   hideInfoExpl() {
     setState(() {
       print(isInfoExplVisible);
       if (isInfoExplVisible) {
         isInfoExplVisible = false;
       } else {
-
         showDialog(
-                          context: context,
-                          builder: (BuildContext context) => customPopupDialog(
-                              context,
-                              "Wahrheit oder Pflicht", listRules
-                        ));
+            context: context,
+            builder: (BuildContext context) =>
+                customPopupDialog(context, "Wahrheit oder Pflicht", listRules));
         isInfoExplVisible = true;
       }
     });
   }
+
   static List<TruthOrDareQuestion> _getTruthOrDareLists(
       BuildContext context, TypeOfQuestion type) {
     List<TruthOrDareQuestion> allQuestionsList =
         InheritedMainWidget.of(context).listTruDareQuestions;
-        allQuestionsList.shuffle();
+    allQuestionsList.shuffle();
 
     List<TruthOrDareQuestion> dareQuestionList = List<TruthOrDareQuestion>();
     List<TruthOrDareQuestion> truthQuestionList = List<TruthOrDareQuestion>();
-
 
     for (final element in allQuestionsList) {
       if (element.typeOfQuestion == TypeOfQuestion.truth) {
@@ -113,12 +115,9 @@ bool isInfoExplVisible = false;
 
   @override
   void initState() {
-
-      Future.delayed(const Duration(milliseconds: 100), () {
-
-hideInfoExpl();
-
-});
+    Future.delayed(const Duration(milliseconds: 100), () {
+      hideInfoExpl();
+    });
     super.initState();
 
     _truthQuestionListCount = 0;
@@ -142,19 +141,17 @@ hideInfoExpl();
         backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
-            InheritedMainWidget.of(context).myLogo, this),
+            InheritedMainWidget.of(context).myLogo, this, context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: Center(
-          child:  Stack(
-          children: [Column(children: <Widget>[
+            child: Stack(children: [
+          Column(children: <Widget>[
             SizedBox(
               //always need this for title screens
               height: SizeConfig.blockSizeVertical * 35,
             ),
             CustomTopTitleScreenForIngameApp(
-              context,
-              "Schaetzen", hideInfoExpl
-            ),
+                context, "Schaetzen", hideInfoExpl),
             SizedBox(
               //always need this for title screens
               height: SizeConfig.blockSizeVertical * 20,
@@ -177,17 +174,19 @@ hideInfoExpl();
               height: SizeConfig.blockSizeVertical * 30,
             ),
           ]),
-        Visibility(
-                visible: isInfoExplVisible,
-                // maintainState: true,
-                child: GestureDetector(
-                  onTap: () {
-                    hideInfoExpl();
-                  },
-                  child: explScreen(context),
-                )),   ] )));
+          Visibility(
+              visible: isInfoExplVisible,
+              // maintainState: true,
+              child: GestureDetector(
+                onTap: () {
+                  hideInfoExpl();
+                },
+                child: explScreen(context),
+              )),
+        ])));
   }
 }
+
 Widget explScreen(BuildContext context) {
   return FractionallySizedBox(
       widthFactor: 1,
@@ -263,6 +262,7 @@ Widget explScreen(BuildContext context) {
             ),
           )));
 }
+
 class QuestionCard extends StatefulWidget {
   //Not used
   //final TruthOrDareQuestion question;
@@ -323,8 +323,6 @@ class _QuestionCardState extends State<QuestionCard>
     _controller.dispose();
     super.dispose();
   }
-
-
 
   void _handleCardToogle(TypeOfQuestion questionType) {
     setState(() {
@@ -388,7 +386,7 @@ class _QuestionCardState extends State<QuestionCard>
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive =>true;
+  bool get wantKeepAlive => true;
 }
 
 Widget questionCardFrontSideWidget(

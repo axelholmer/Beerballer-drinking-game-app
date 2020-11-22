@@ -31,6 +31,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'SizeConfig.dart';
 import 'playerMenuPage.dart';
 import 'GameChoicheEnum.dart';
+import 'popupDialogWarning.dart';
 
 //TODO create custom SplashScreen
 //Todo put underscore(private) to items
@@ -81,7 +82,8 @@ class InheritedMainWidget extends InheritedWidget {
 
   @override
   bool updateShouldNotify(InheritedMainWidget old) {
-    return listEstimateQuestions != old.listEstimateQuestions && listTruDareQuestions != old.listTruDareQuestions &&
+    return listEstimateQuestions != old.listEstimateQuestions &&
+        listTruDareQuestions != old.listTruDareQuestions &&
         myLogo != old.myLogo &&
         listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
         listCategoryQuestions != old.listCategoryQuestions;
@@ -214,7 +216,6 @@ class _MyAppState extends State<MyApp> {
   Image myLogo;
   @override
   void initState() {
-
     // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
     // precacheImage(myLogo.image, context);
 
@@ -256,8 +257,10 @@ class _MyAppState extends State<MyApp> {
     precacheImage(AssetImage("./assets/images/inGameAppIcon.png"), context);
     precacheImage(AssetImage("./assets/images/otherGamesIcon.png"), context);
 
-    precacheImage(AssetImage("./assets/images/Infopage/logowhite.png"), context);
-    precacheImage(AssetImage("./assets/images/Infopage/crossIcon.png"), context);
+    precacheImage(
+        AssetImage("./assets/images/Infopage/logowhite.png"), context);
+    precacheImage(
+        AssetImage("./assets/images/Infopage/crossIcon.png"), context);
 
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
     return InheritedMainWidget(
@@ -300,12 +303,24 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
       const <Tuple2<String, String>>[
     Tuple2<String, String>(
         "In-App Spiele", "./assets/images/inGameAppIcon.png"),
-    Tuple2<String, String>("Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+    Tuple2<String, String>("Würfelspiele", "./assets/images/diceGamesIcon.png"),
     Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
     Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
     Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
-    Tuple2<String, String>("Sonstiges", "./assets/images/otherGamesIcon.png")
+    Tuple2<String, String>(
+        "Kaum Material", "./assets/images/otherGamesIcon.png")
   ];
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(milliseconds: 100), () {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => popupDialogWarning(context));
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -315,7 +330,7 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
       body: _gameChoiceWidgets(_gameChoices, context),
       bottomNavigationBar: BottomNavigationBarButtons(context),
       floatingActionButton: Customfloatingactionbutton(
-          InheritedMainWidget.of(context).myLogo, this),
+          InheritedMainWidget.of(context).myLogo, this, context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
@@ -374,11 +389,11 @@ Widget _gameChoiceWidgets(
                   alignment: Alignment.bottomCenter,
                   child: FractionallySizedBox(
                     heightFactor: 0.45,
-                    widthFactor: 0.95,
+                    widthFactor: 0.94,
                     child: FittedBox(
                       fit: BoxFit.contain,
                       child: AutoSizeText(
-                        "50 Spiele, um nie wieder nüchtern zu sein!",
+                        "50 Spiele, um nie wieder nüchtern zu werden!",
                         textAlign: TextAlign.center,
                         maxLines: 1,
                         style: TextStyle(
@@ -477,7 +492,6 @@ Widget _gameChoiceWidgets(
       //           mainAxisAlignment: MainAxisAlignment.end,
       //           children: <Widget>[
 
-        
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
@@ -490,7 +504,16 @@ Widget _gameChoiceWidgets(
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
-                  "Wurfelspiele", "./assets/images/diceGamesIcon.png"),
+                  "Kaum Material", "./assets/images/otherGamesIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.85,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Würfelspiele", "./assets/images/diceGamesIcon.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -514,24 +537,16 @@ Widget _gameChoiceWidgets(
           child: FractionallySizedBox(
         heightFactor: 0.85,
       )),
-        Flexible(
+      Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
                   "Becherspiele", "./assets/images/cupGamesIcon.png"),
               context)),
-       Flexible(
-          child: FractionallySizedBox(
-        heightFactor: 0.85,
-      )),
       Flexible(
-          child: _gameChoiceButton(
-              Tuple2<String, String>(
-                  "Sonstiges", "./assets/images/otherGamesIcon.png"),
-              context)),
-                Flexible(
           child: FractionallySizedBox(
         heightFactor: 0.85,
       )),
+
 // Flexible(
 //           child: FractionallySizedBox(
 //         heightFactor: 0.9,
@@ -637,13 +652,13 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
             context, CustomTransistionAnimation(page: InAppGamesPageMenu()));
       }
       break;
-    case "Wurfelspiele":
+    case "Würfelspiele":
       // Navigator.push(
       //     context,
       //     CustomTransistionAnimation(
       //         page: listOfGames(
       //             items: List<String>.generate(10000, (i) => "Item $i"))));
-     listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+      listDiceGames = sortGamesIntoLists(listGames, "dicegame");
       Navigator.push(
           context,
           CustomTransistionAnimation(
@@ -684,9 +699,9 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
                   logPath: choice.item2,
                   pageTitle: choice.item1)));
       break;
-    case "Sonstiges":
-     listOtherGames = sortGamesIntoLists(listGames, "?");
-       Navigator.push(
+    case "Kaum Material":
+      listOtherGames = sortGamesIntoLists(listGames, "other");
+      Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(

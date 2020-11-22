@@ -84,7 +84,7 @@ class _PlayersMenuState extends State<PlayersMenu>
         backgroundColor: Theme.of(context).primaryColor,
         bottomNavigationBar: BottomNavigationBarButtons(context),
         floatingActionButton: Customfloatingactionbutton(
-            InheritedMainWidget.of(context).myLogo, this),
+            InheritedMainWidget.of(context).myLogo, this, context),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         resizeToAvoidBottomPadding: false,
         body: Center(

@@ -46,6 +46,7 @@ Widget CustomTopTitleScreen2(
                             )),
                       ),
                     )),
+                    SizedBox(width: SizeConfig.safeBlockHorizontal * 1),
                     Image.asset(
                       iconPath,
                       width: SizeConfig.blockSizeHorizontal * 190,

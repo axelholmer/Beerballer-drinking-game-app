@@ -45,3 +45,16 @@ puste die karte
 Alkopoly
 
 flutter build apk --split-per-abi
+
+<item>
+    <shape android:shape="rectangle">
+        <solid android:color="@color/your_app_theme"/>
+    </shape>
+</item>
+<item>
+    <bitmap
+        android:gravity="center"
+        android:src="@drawable/your_logo"/>
+</item>
+
+https://github.com/flutter/flutter/issues/47634
