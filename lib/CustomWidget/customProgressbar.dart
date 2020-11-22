@@ -6,20 +6,22 @@ Widget customProgressBar(String progress) {
   final double progressDouble = double.parse(progress);
   var color;
 
-  if (progressDouble > 0.67) {
-    color = Colors.red;
-  } else if (progressDouble > 0.33) {
-    color = Colors.yellow;
-  } else {
-    color = Colors.green;
-  }
+  // if (progressDouble > 0.67) {
+  //   color = Colors.red;
+  // } else if (progressDouble > 0.33) {
+  //   color = Colors.yellow;
+  // } else {
+  //   color = Colors.green;
+  // }
 
+ 
   return LinearPercentIndicator(
     alignment: MainAxisAlignment.center,
     width: SizeConfig.blockSizeHorizontal * 125, //100.0,
     lineHeight: SizeConfig.blockSizeVertical * 4, //8.0,
     percent: progressDouble,
-    progressColor: color,
+    progressColor: Color.fromRGBO(238, 237, 237, 1),
+    backgroundColor: Color.fromRGBO(100, 100, 100, 1),
     linearStrokeCap: LinearStrokeCap.butt,
   );
 }

@@ -71,20 +71,24 @@ flutter:
           weight: 800
         - asset: assets/fonts/Inknut_Antiqua/InknutAntiqua-Black.ttf
           weight: 900
-    # - family: Now
-    #   fonts:
-    #     - asset: assets/fonts/Now_Thin/Now-Thin.ttf
-    #       weight: 300
-    #     - asset: assets/fonts/Now_Thin/Now-Light.ttf
-    #       weight: 400
-    #     - asset: assets/fonts/Now_Thin/Now-Regular.ttf
-    #       weight: 600
-    #     - asset: assets/fonts/Now_Thin/Now-Medium.ttf
-    #       weight: 700
-    #     - asset: assets/fonts/Now_Thin/Now-Bold.ttf
-    #       weight: 800
-    #     - asset: assets/fonts/Now_Thin/Now-Black.ttf
-    #       weight: 900
+
+    - family: LibreFranklin
+      fonts:
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Libre_Franklin/LibreFranklin-Black.ttf
+          weight: 900
+    
 
   assets:
     - assets/images/PNGFormat_klein.png
@@ -140,7 +144,7 @@ flutter:
 
     - assets/images/Shop/Trinkspiele/DarePong/Normal/
     - assets/images/Shop/Trinkspiele/DarePong/FestivalEdition/
-
+    
     - assets/images/Shop/Trinkspiele/ShotPong/Standard/
     - assets/images/Shop/Trinkspiele/ShotPong/Cherry/
 

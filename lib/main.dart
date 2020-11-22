@@ -62,6 +62,7 @@ void main() {
   ));
   // runApp(MyApp());
 }
+
 //TODO replace Container with SizedBox for Gaps -> more eff
 class InheritedMainWidget extends InheritedWidget {
   InheritedMainWidget({
@@ -81,7 +82,8 @@ class InheritedMainWidget extends InheritedWidget {
 
   @override
   bool updateShouldNotify(InheritedMainWidget old) {
-    return listEstimateQuestions != old.listEstimateQuestions && listTruDareQuestions != old.listTruDareQuestions &&
+    return listEstimateQuestions != old.listEstimateQuestions &&
+        listTruDareQuestions != old.listTruDareQuestions &&
         myLogo != old.myLogo &&
         listNeverHaveIQuestions != old.listNeverHaveIQuestions &&
         listCategoryQuestions != old.listCategoryQuestions;
@@ -214,7 +216,6 @@ class _MyAppState extends State<MyApp> {
   Image myLogo;
   @override
   void initState() {
-
     // myLogo = Image.asset("./assets/images/BeerBallerLogo_kleiner.png");
     // precacheImage(myLogo.image, context);
 
@@ -242,13 +243,8 @@ class _MyAppState extends State<MyApp> {
       });
     });
 
- 
-    
     super.initState();
   }
-
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -261,8 +257,10 @@ class _MyAppState extends State<MyApp> {
     precacheImage(AssetImage("./assets/images/inGameAppIcon.png"), context);
     precacheImage(AssetImage("./assets/images/otherGamesIcon.png"), context);
 
-    precacheImage(AssetImage("./assets/images/Infopage/logowhite.png"), context);
-    precacheImage(AssetImage("./assets/images/Infopage/crossIcon.png"), context);
+    precacheImage(
+        AssetImage("./assets/images/Infopage/logowhite.png"), context);
+    precacheImage(
+        AssetImage("./assets/images/Infopage/crossIcon.png"), context);
 
     // precacheImage(AssetImage("./assets/images/bild1.jpg"), context);
     return InheritedMainWidget(
@@ -309,20 +307,17 @@ class _GameMenuState extends State<GameMenu> with TickerProviderStateMixin {
     Tuple2<String, String>("Kartenspiele", "./assets/images/cardGamesIcon.png"),
     Tuple2<String, String>("Brettspiele", "./assets/images/boardGameIcon.png"),
     Tuple2<String, String>("Becherspiele", "./assets/images/cupGamesIcon.png"),
-    Tuple2<String, String>("Kaum Material", "./assets/images/otherGamesIcon.png")
+    Tuple2<String, String>(
+        "Kaum Material", "./assets/images/otherGamesIcon.png")
   ];
 
-
-
-
-@override
+  @override
   void initState() {
     Future.delayed(const Duration(milliseconds: 100), () {
- showDialog(
-            context: context,
-             barrierDismissible: false,
-            builder: (BuildContext context) => popupDialogWarning(
-                context));      
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) => popupDialogWarning(context));
     });
     super.initState();
   }
@@ -497,11 +492,19 @@ Widget _gameChoiceWidgets(
       //           mainAxisAlignment: MainAxisAlignment.end,
       //           children: <Widget>[
 
-        
       Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
                   "In-App Spiele", "./assets/images/inGameAppIcon.png"),
+              context)),
+      Flexible(
+          child: FractionallySizedBox(
+        heightFactor: 0.85,
+      )),
+      Flexible(
+          child: _gameChoiceButton(
+              Tuple2<String, String>(
+                  "Kaum Material", "./assets/images/otherGamesIcon.png"),
               context)),
       Flexible(
           child: FractionallySizedBox(
@@ -534,24 +537,16 @@ Widget _gameChoiceWidgets(
           child: FractionallySizedBox(
         heightFactor: 0.85,
       )),
-        Flexible(
+      Flexible(
           child: _gameChoiceButton(
               Tuple2<String, String>(
                   "Becherspiele", "./assets/images/cupGamesIcon.png"),
               context)),
-       Flexible(
-          child: FractionallySizedBox(
-        heightFactor: 0.85,
-      )),
       Flexible(
-          child: _gameChoiceButton(
-              Tuple2<String, String>(
-                  "Kaum Material", "./assets/images/otherGamesIcon.png"),
-              context)),
-                Flexible(
           child: FractionallySizedBox(
         heightFactor: 0.85,
       )),
+
 // Flexible(
 //           child: FractionallySizedBox(
 //         heightFactor: 0.9,
@@ -663,7 +658,7 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
       //     CustomTransistionAnimation(
       //         page: listOfGames(
       //             items: List<String>.generate(10000, (i) => "Item $i"))));
-     listDiceGames = sortGamesIntoLists(listGames, "dicegame");
+      listDiceGames = sortGamesIntoLists(listGames, "dicegame");
       Navigator.push(
           context,
           CustomTransistionAnimation(
@@ -705,8 +700,8 @@ void _selectGameChoice(Tuple2<String, String> choice, BuildContext context) {
                   pageTitle: choice.item1)));
       break;
     case "Kaum Material":
-     listOtherGames = sortGamesIntoLists(listGames, "other");
-       Navigator.push(
+      listOtherGames = sortGamesIntoLists(listGames, "other");
+      Navigator.push(
           context,
           CustomTransistionAnimation(
               page: listOfGames(

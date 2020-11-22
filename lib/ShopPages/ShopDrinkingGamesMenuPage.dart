@@ -97,11 +97,11 @@ Widget _shopChoiceWidgets(BuildContext context) {
         url:
             "https://beerballer.com/produkt/wer-lacht-verliert-trinkspiel-niveaulimbo/",
         productPicturesPaths: [
-          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/91.jpg",
-          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/92.jpg",
-          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/93.jpg",
-          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/94.jpg",
-          "./assets/images/Shop/BeerPong/Becher/Werlachtverliert/95.jpg",
+          "./assets/images/Shop/Trinkspiele/Werlachtverliert/91.jpg",
+          "./assets/images/Shop/Trinkspiele/Werlachtverliert/92.jpg",
+          "./assets/images/Shop/Trinkspiele/Werlachtverliert/93.jpg",
+          "./assets/images/Shop/Trinkspiele/Werlachtverliert/94.jpg",
+          "./assets/images/Shop/Trinkspiele/Werlachtverliert/95.jpg",
         ]),
   ];
   final List<ProductClass> listBarQuartett = [
